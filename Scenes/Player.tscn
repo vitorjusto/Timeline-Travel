@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://erfmsclpkmsj"]
+
+[ext_resource type="Script" path="res://Source/Models/Player/Player.cs" id="1_xfqv4"]
+[ext_resource type="Texture2D" uid="uid://d0tmatv34hhbj" path="res://Assets/Player/spaceship.png" id="1_ygnq1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_736oi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ygnq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfok"]
+size = Vector2(64, 64)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_xfqv4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_736oi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lmfok")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerBodyEntered"]

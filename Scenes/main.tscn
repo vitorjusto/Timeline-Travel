@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bujiiauth6no5"]
+
+[ext_resource type="PackedScene" uid="uid://erfmsclpkmsj" path="res://Scenes/Player.tscn" id="1_fn8jx"]
+[ext_resource type="PackedScene" uid="uid://bm27is2hj0xno" path="res://Scenes/Hud.tscn" id="2_qou5h"]
+[ext_resource type="PackedScene" uid="uid://bie542gje8vfa" path="res://Scenes/Projectiles/projectileManager.tscn" id="3_tbo7f"]
+[ext_resource type="PackedScene" uid="uid://4dqr70s7o5ti" path="res://Scenes/enemySpawner.tscn" id="4_36fse"]
+[ext_resource type="PackedScene" uid="uid://lwvwwrmrkoav" path="res://Scenes/Background/background_manager.tscn" id="4_ureka"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fn8jx")]
+position = Vector2(608, 720)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_36fse")]
+
+[node name="ProjectileManager" parent="." instance=ExtResource("3_tbo7f")]
+
+[node name="BackgroundManager" parent="." instance=ExtResource("4_ureka")]
+
+[node name="Hud" parent="." instance=ExtResource("2_qou5h")]
+
+[connection signal="PlayerHitEnemy" from="Player" to="EnemySpawner" method="PlayerHitEnemy"]
+[connection signal="PlayerHitProjectile" from="Player" to="ProjectileManager" method="PlayerHitProjectile"]
+[connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]

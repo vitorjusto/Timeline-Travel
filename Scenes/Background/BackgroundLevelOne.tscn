@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyk1yfnw0u76"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelOne/LevelOneParalaxLayer.cs" id="1_aaxuq"]
+[ext_resource type="Texture2D" uid="uid://bij3mvpfa8dlo" path="res://Assets/Background/LevelOne/MainBackground.png" id="1_x0dfk"]
+
+[node name="BackgroundLevelOne" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 977)
+script = ExtResource("1_aaxuq")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(720, 488)
+texture = ExtResource("1_x0dfk")

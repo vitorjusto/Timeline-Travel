@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm27is2hj0xno"]
+
+[ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
+
+[sub_resource type="FontFile" id="FontFile_885gs"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+
+[node name="Hud" type="Node2D"]
+script = ExtResource("1_sofgy")
+
+[node name="lblHp" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 32.0
+offset_right = 402.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 50
+text = "Hp: 10"
+
+[node name="lblLife" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 94.0
+offset_bottom = 58.0
+theme_override_fonts/font = SubResource("FontFile_885gs")
+theme_override_font_sizes/font_size = 50
+text = "Life: 3"

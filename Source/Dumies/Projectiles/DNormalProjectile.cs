@@ -1,0 +1,34 @@
+using Godot;
+using Shooter.Source.Dumies.Interfaces;
+
+namespace Shooter.Source.Dumies.Projectiles
+{
+    public class DNormalProjectile : IProjectileDummy
+    {
+
+        public float X;
+        public float Y;
+        public float XSpeed;
+        public float YSpeeed;
+
+        public DNormalProjectile(float x, float y, float xSpeed, float ySpeeed)
+        {
+            X = x;
+            Y = y;
+            XSpeed = xSpeed;
+            YSpeeed = ySpeeed;
+        }
+
+        public Node2D GetInstance()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/EnemyProjectiles/NormalProjectile.tscn");
+
+            var instance = (NormalProjectile)scene.Instantiate();
+
+            instance.SetPosition(X, Y);
+            instance.SetSpeed(XSpeed, YSpeeed);
+
+            return instance;
+        }
+    }
+}
