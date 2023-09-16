@@ -34,15 +34,6 @@ public partial class NormalProjectile : CharacterBody2D, IEnemyProjectile
 		QueueFree();
 	}
 
-	public void OnBodyEntered(Node2D node)
-	{
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-		enemySpawner.RemoveEnemy(node);
-
-		QueueFree();
-	}
-
     public int GetDamage()
     {
         return Damage;
