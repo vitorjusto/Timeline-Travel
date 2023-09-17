@@ -31,8 +31,9 @@ public partial class PlayerProjectile : Area2D
 	{
 		if(node is IEnemy)
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-			enemySpawner.RemoveEnemy(node);
+			var enemy = (IEnemy)node;
+
+			enemy.Destroy();
 
 			QueueFree();
 		}

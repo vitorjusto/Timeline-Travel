@@ -23,4 +23,11 @@ public partial class Common : CharacterBody2D, IEnemy
 
         enemySpawner.RemoveEnemy(this);
     }
+
+    public void Destroy()
+    {
+        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+        enemySpawner.RemoveEnemy(this);
+    }
 }

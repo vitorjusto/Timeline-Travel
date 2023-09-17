@@ -61,7 +61,7 @@ public partial class EnemySpawner : Node2D
 			var node = enemy.GetInstance();
 
 			Enemies.Add(node);
-			AddChild(node);
+			CallDeferred("add_child", node);
 		}
 	}
 

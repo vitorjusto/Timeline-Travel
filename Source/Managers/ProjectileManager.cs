@@ -41,7 +41,7 @@ public partial class ProjectileManager : Node2D
 		var node = projectile.GetInstance();
 
 		EnemiesProjectiles.Add(node);
-		AddChild(node);
+		CallDeferred("add_child", node);
 
 	}
 
