@@ -1,13 +1,16 @@
 using Godot;
+using System;
 using Shooter.Source.Interfaces;
 
-public partial class NormalProjectile : CharacterBody2D, IEnemyProjectile
+public partial class LightProjectile : CharacterBody2D, IEnemyProjectile
 {
 	
 	private float _Xspeed = 0;
 	private float _Yspeed = 0;
-	private float _speedModifier = 2;
-	public int Damage = 2;
+
+	private float _speedModifier = 5;
+
+	public int Damage = 1;
 	public override void _Ready()
 	{
 	}
@@ -38,5 +41,4 @@ public partial class NormalProjectile : CharacterBody2D, IEnemyProjectile
     {
         return Damage;
     }
-
 }

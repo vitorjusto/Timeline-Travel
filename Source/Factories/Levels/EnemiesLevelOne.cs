@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shooter.Source.Models.Levels;
 using Shooter.Source.Dumies.Enemies;
+using Shooter.Source.Enums;
 
 namespace Shooter.Source.Factories.Levels
 {
@@ -13,7 +14,7 @@ namespace Shooter.Source.Factories.Levels
         {
             return new List<EnemySection>()
             {
-                new EnemySection(10, true, new DBomber(300), new DCommon(1000)),
+                new EnemySection(10, true, new DSniper(300, EEnemyProjectileType.Light), new DSniper(600, EEnemyProjectileType.Normal), new DSniper(600, EEnemyProjectileType.Homing)),
             };
 
         }

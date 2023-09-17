@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://di6hl8vt7e6lk"]
+
+[ext_resource type="Script" path="res://Source/Models/Projectiles/EnemiesProjectiles/HomingProjectile.cs" id="1_tmijl"]
+[ext_resource type="Texture2D" uid="uid://cgechy41qd3g3" path="res://Assets/Projectiles/PlayerProjectile.png" id="2_sdiq8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35s77"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bxnp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sdiq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HomingProjectile" type="CharacterBody2D"]
+script = ExtResource("1_tmijl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_35s77")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_4bxnp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
