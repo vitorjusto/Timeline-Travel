@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn8gfdr8rj6kj"]
+
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_8nnyg"]
+[ext_resource type="Script" path="res://Source/Models/Enemies/Spreader.cs" id="1_hhx3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k285o"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2v1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8nnyg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spreader" type="CharacterBody2D"]
+script = ExtResource("1_hhx3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k285o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n2v1u")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
