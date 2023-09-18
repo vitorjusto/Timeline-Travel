@@ -1,0 +1,71 @@
+using Godot;
+using System;
+using Shooter.Source.Interfaces;
+
+public partial class Crusader : CharacterBody2D, IEnemy
+{
+	private float _speed = 0;
+
+	private int _time = 0;
+
+	private bool _isExplosing = false;
+
+    public override void _Process(double delta)
+	{
+		MoveEnemy();
+	}
+
+    private void MoveEnemy()
+    {
+		if(_time < 150)
+        	Position = new Vector2(x: Position.X, y: Position.Y + _speed);
+		else if(_time == 150)
+		{
+			_isExplosing = true; 
+			var animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			animation.Play("RayLazer");
+			animation.ApplyScale(new Vector2(x: 1, y: 990));
+
+			var collision = GetNode<CollisionShape2D>("CollisionShape2D");
+			collision.ApplyScale(new Vector2(x: 1, y: 990));
+
+			animation = GetNode<AnimatedSprite2D>("AuxAnimatedSprite");
+			animation.Play("RayLazer");
+			animation.ApplyScale(new Vector2(x: 1444, y: 1));
+
+			collision = GetNode<CollisionShape2D>("AuxCollision");
+			collision.ApplyScale(new Vector2(x: 1444, y: 1));
+		}else if(_time == 185)
+		{
+			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+        	enemySpawner.RemoveEnemy(this);
+		}
+
+		_time++;
+    }
+
+	public void SetSpeed(float speed)
+	{
+		_speed = speed;
+	}
+
+    public void OnScreenExited()
+    {
+        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+        enemySpawner.RemoveEnemy(this);
+    }
+
+	public bool IsImortal()
+	{
+		return _isExplosing;
+	}
+
+
+    public void Destroy()
+    {
+		if(!_isExplosing)
+			_time = 150;
+    }
+}

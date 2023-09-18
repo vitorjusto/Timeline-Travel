@@ -40,6 +40,11 @@ public partial class Bomber : CharacterBody2D, IEnemy
         enemySpawner.RemoveEnemy(this);
     }
 
+	public bool IsImortal()
+	{
+		return false;
+	}
+
 	public void Destroy()
 	{
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");

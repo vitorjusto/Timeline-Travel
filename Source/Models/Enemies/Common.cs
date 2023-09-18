@@ -24,6 +24,12 @@ public partial class Common : CharacterBody2D, IEnemy
         enemySpawner.RemoveEnemy(this);
     }
 
+	public bool IsImortal()
+	{
+		return false;
+	}
+
+
     public void Destroy()
     {
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");

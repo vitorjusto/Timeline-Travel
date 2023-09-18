@@ -121,8 +121,11 @@ public partial class Player : Area2D
 		{
 			if(_iFrame == 0)
 				Hp -= 3;
-				
-			EmitSignal("PlayerHitEnemy", node);
+
+			var enemy = (IEnemy)node;
+
+			if(!enemy.IsImortal())
+				EmitSignal("PlayerHitEnemy", node);
 
 		}else if(node is IEnemyProjectile)
 		{

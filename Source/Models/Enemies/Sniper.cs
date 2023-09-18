@@ -65,4 +65,10 @@ public partial class Sniper : CharacterBody2D, IEnemy
 
         enemySpawner.RemoveEnemy(this);
 	}
+
+	public bool IsImortal()
+	{
+		return false;
+	}
+
 }
