@@ -14,7 +14,7 @@ namespace Shooter.Source.Factories.Levels
         {
             return new List<EnemySection>()
             {
-                new EnemySection(10, true, new DCrusader(200, 5f), new DCrusader(200, 4f), new DCrusader(200, 3f), new DCrusader(200, 2f), new DCrusader(200, 1f), new DCrusader(200, 6f)),
+                new EnemySection(10, true, new DCurver(300f), new DCurver(400f), new DCurver(500f), new DCurver(600f)),
             };
 
         }
