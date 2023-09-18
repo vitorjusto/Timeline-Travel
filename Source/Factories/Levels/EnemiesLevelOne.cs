@@ -14,7 +14,7 @@ namespace Shooter.Source.Factories.Levels
         {
             return new List<EnemySection>()
             {
-                new EnemySection(10, true, new DCurver(300f), new DCurver(400f), new DCurver(500f), new DCurver(600f)),
+                new EnemySection(10, true, new DFollower(300, EEnemyProjectileType.Homing)),
             };
 
         }
