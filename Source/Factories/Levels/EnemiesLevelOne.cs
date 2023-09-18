@@ -14,7 +14,7 @@ namespace Shooter.Source.Factories.Levels
         {
             return new List<EnemySection>()
             {
-                new EnemySection(10, true, new DFollower(300, EEnemyProjectileType.Homing)),
+                new EnemySection(10, true, new DGooder(300, true)),
             };
 
         }
