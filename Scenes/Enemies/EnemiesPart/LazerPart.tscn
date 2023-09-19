@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://givfjti807ii"]
+
+[ext_resource type="Script" path="res://Source/Models/Enemies/Parts/LazerPart.cs" id="1_1xopc"]
+[ext_resource type="Texture2D" uid="uid://c6yuxrser4mrg" path="res://Assets/Projectiles/RayLazer.png" id="2_62il1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cvf3"]
+atlas = ExtResource("2_62il1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_142wp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cvf3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0g4b"]
+size = Vector2(32, 32)
+
+[node name="LazerPart" type="CharacterBody2D"]
+script = ExtResource("1_1xopc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_142wp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y0g4b")

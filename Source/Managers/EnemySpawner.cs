@@ -58,10 +58,7 @@ public partial class EnemySpawner : Node2D
 
 		foreach(IEnemyDummy enemy in currentSection.Enemies)
 		{
-			var node = enemy.GetInstance();
-
-			Enemies.Add(node);
-			CallDeferred("add_child", node);
+			AddEnemy(enemy);
 		}
 	}
 
@@ -77,5 +74,13 @@ public partial class EnemySpawner : Node2D
 		node.QueueFree();
 
 
+	}
+
+	public void AddEnemy(IEnemyDummy enemy)
+	{
+		var node = enemy.GetInstance();
+
+		Enemies.Add(node);
+		CallDeferred("add_child", node);
 	}
 }
