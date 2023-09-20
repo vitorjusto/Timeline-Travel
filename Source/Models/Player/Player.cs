@@ -28,6 +28,8 @@ public partial class Player : Area2D
 		ScreenSize = GetViewportRect().Size;
 		Hp = 10;
 
+		var animation = GetNode<AnimatedSprite2D>("AniTarget");
+		animation.Hide();
 	}
 
 	public override void _Process(double delta)
@@ -139,5 +141,19 @@ public partial class Player : Area2D
 
 		EmitSignal("PlayerHpUpdated", Hp);//Não pode colocar eventhandler (mesmo que o delegate obriga a por no nome)	
 
+	}
+
+	public void ShowTarget()
+	{
+		var animation = GetNode<AnimatedSprite2D>("AniTarget");
+		animation.Show();
+		animation.Play("default");
+	}
+
+	public void HideTarget()
+	{
+		var animation = GetNode<AnimatedSprite2D>("AniTarget");
+		animation.Hide();
+		animation.Stop();
 	}
 }

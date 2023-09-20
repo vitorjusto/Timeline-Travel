@@ -20,15 +20,6 @@ public partial class Lighting : Node2D, IEnemy
 		else
 			MakeLightning();
 
-		if(_time < 100)
-		{
-
-
-		}else if(_time < 105)
-		{
-
-		}
-
 		_time++;
 	}
 
