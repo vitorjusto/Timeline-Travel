@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://djyk1yfnw0u76"]
+[gd_scene load_steps=4 format=3 uid="uid://djyk1yfnw0u76"]
 
 [ext_resource type="Script" path="res://Source/Models/Background/LevelOne/LevelOneParalaxLayer.cs" id="1_aaxuq"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelOne/BackgroundLevelOne.cs" id="1_ekise"]
 [ext_resource type="Texture2D" uid="uid://bij3mvpfa8dlo" path="res://Assets/Background/LevelOne/MainBackground.png" id="1_x0dfk"]
 
 [node name="BackgroundLevelOne" type="Node2D"]
+script = ExtResource("1_ekise")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

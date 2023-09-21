@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class LevelOneParalaxLayer : ParallaxLayer
+public partial class BackgroundLevelOne : Node2D
 {
-
+	private int _time;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,10 +12,18 @@ public partial class LevelOneParalaxLayer : ParallaxLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		this.MotionOffset = new Vector2(
-    		x: 0,
-    		y: this.MotionOffset.Y + 2
-		);
+		
+		if(_time % 10 == 0)
+		{
+			var scene = GD.Load<PackedScene>("res://Scenes/Background/Stars.tscn");
+
+        	var instance = (Stars)scene.Instantiate();
+
+			AddChild(instance);
+		}
+
+
+		_time++;
 
 	}
 }

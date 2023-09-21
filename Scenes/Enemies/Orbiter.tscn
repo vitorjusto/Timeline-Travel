@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://tn28r71ba4u0"]
+
+[ext_resource type="Script" path="res://Source/Models/Enemies/Orbiter.cs" id="1_dfs80"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_n73ox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_climx"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6lof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n73ox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_dfs80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_climx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g6lof")
