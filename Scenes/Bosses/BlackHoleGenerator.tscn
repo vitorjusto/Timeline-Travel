@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://sri6vqy6btuv"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/BlackHoleGenerator.cs" id="1_i3g44"]
+[ext_resource type="Texture2D" uid="uid://byw71lvmxu4sf" path="res://Assets/Bosses/BlackHoleGenerator.png" id="2_fp48v"]
+[ext_resource type="PackedScene" uid="uid://c1rs3r8dxj7kq" path="res://Scenes/Bosses/BlackHoleGeneratorPart.tscn" id="2_icrl8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bht6"]
+atlas = ExtResource("2_fp48v")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbdv4"]
+atlas = ExtResource("2_fp48v")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8cyq"]
+atlas = ExtResource("2_fp48v")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktcg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bht6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbdv4")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8cyq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s488j"]
+size = Vector2(144, 144)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_i3g44")
+
+[node name="Arm1" parent="." instance=ExtResource("2_icrl8")]
+position = Vector2(-120, 64)
+
+[node name="Arm2" parent="." instance=ExtResource("2_icrl8")]
+position = Vector2(120, 64)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ktcg3")
+animation = &"Damage"
+speed_scale = 10.0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_s488j")
+
+[connection signal="DestroyArm" from="Arm1" to="." method="OnDestroyArm"]
+[connection signal="DestroyArm" from="Arm2" to="." method="OnDestroyArm"]

@@ -143,6 +143,14 @@ public partial class Player : Area2D
 
 	}
 
+	public void SetSpeed(float xspeed, float yspeed)
+	{
+		Position = new Vector2(
+    		x: Mathf.Clamp(Position.X + xspeed, 5, ScreenSize.X - 5),
+    		y: Mathf.Clamp(Position.Y + yspeed, 5, ScreenSize.Y - 5)
+		);
+	}
+
 	public void ShowTarget()
 	{
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");

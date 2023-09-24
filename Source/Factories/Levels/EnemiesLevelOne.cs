@@ -14,9 +14,7 @@ namespace Shooter.Source.Factories.Levels
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, false, new DOrbiter()),
-                new EnemySection(50, false, new DOrbiter()),
-                new EnemySection(50, false, new DOrbiter()),
+                new EnemySection(50, false, new DCommon(100)),
             };
 
         }

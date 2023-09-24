@@ -8,7 +8,7 @@ public partial class Stars : AnimatedSprite2D
 	{
 		Position = new Vector2(x: new Random().Next(0, 1444), y: -30);
 
-		var animation = new Random().Next(1, 6);
+		var animation = new Random().Next(1, 7);
 		if(animation == 1)
 			Play("Green1");
 		else if(animation == 2)

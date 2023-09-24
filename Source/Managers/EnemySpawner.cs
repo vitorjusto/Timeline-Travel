@@ -7,6 +7,7 @@ using Shooter.Source.Models.Levels;
 using Shooter.Source.Factories.Levels;
 using Shooter.Source.Dumies.Interfaces;
 using System.Linq;
+using Shooter.Source.Factories.Bosses;
 
 public partial class EnemySpawner : Node2D
 {
@@ -16,6 +17,9 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
+	public int CurrentLevel = 1;
+
+	public bool BossApeared = false;
 	public override void _Ready()
 	{
 		_enemySection = EnemiesLevelOne.GetEnemies();
@@ -45,8 +49,10 @@ public partial class EnemySpawner : Node2D
 
 	private void GetNextSection()
 	{
-		if(_enemySection.Count == 0)
+		if(!_enemySection.Any())
+		{
 			return;
+		}
 
 		var currentSection = _enemySection.First();
 		_enemySection.RemoveAt(0);
@@ -62,6 +68,12 @@ public partial class EnemySpawner : Node2D
 		}
 	}
 
+	private void GetBoss()
+	{
+		CallDeferred("add_child", BossFactory.GetBoss(CurrentLevel));
+		BossApeared = true;
+	}
+
 	public void PlayerHitEnemy(Node2D node)
 	{
 		RemoveEnemy(node);
@@ -73,7 +85,8 @@ public partial class EnemySpawner : Node2D
 
 		node.QueueFree();
 
-
+		if(Enemies.Count == 0 && !_enemySection.Any())
+			GetBoss();
 	}
 
 	public void AddEnemy(IEnemyDummy enemy)
