@@ -8,7 +8,7 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 	public bool ShowBlackHole = false;
 	public float RelativeX = 0;
 	public float RelativeY = 0;
-	public int _hp = 30;
+	public int _hp = 10;
 	public int _damageAnimation = 0;
 	public override void _Process(double delta)
 	{

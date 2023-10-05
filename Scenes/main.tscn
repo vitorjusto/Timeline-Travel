@@ -19,6 +19,7 @@ position = Vector2(608, 720)
 
 [node name="Hud" parent="." instance=ExtResource("2_qou5h")]
 
+[connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
 [connection signal="PlayerHitEnemy" from="Player" to="EnemySpawner" method="PlayerHitEnemy"]
 [connection signal="PlayerHitProjectile" from="Player" to="ProjectileManager" method="PlayerHitProjectile"]
 [connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]

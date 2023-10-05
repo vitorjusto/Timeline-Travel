@@ -20,8 +20,9 @@ public partial class Player : Area2D
 	private bool _showingIFrameAnimation = true;
 
     public Vector2 ScreenSize;
+    private bool _unableToMove;
 
-	public int Hp {get; set;}
+    public int Hp {get; set;}
 
 	public override void _Ready()
 	{
@@ -60,6 +61,9 @@ public partial class Player : Area2D
 
     private void MovePlayer()
     {
+		if(_unableToMove)
+			return;
+
         var velocity = Vector2.Zero; 
 
 		int currentSpeed = GetCurrentSpeed();
@@ -143,11 +147,11 @@ public partial class Player : Area2D
 
 	}
 
-	public void SetSpeed(float xspeed, float yspeed)
+	public void SetSpeed(float xspeed, float yspeed, int limit = 5)
 	{
 		Position = new Vector2(
-    		x: Mathf.Clamp(Position.X + xspeed, 5, ScreenSize.X - 5),
-    		y: Mathf.Clamp(Position.Y + yspeed, 5, ScreenSize.Y - 5)
+    		x: Mathf.Clamp(Position.X + xspeed, limit, ScreenSize.X - limit),
+    		y: Mathf.Clamp(Position.Y + yspeed, limit, ScreenSize.Y - limit)
 		);
 	}
 
@@ -163,5 +167,10 @@ public partial class Player : Area2D
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Hide();
 		animation.Stop();
+	}
+
+	public void OnEndingLevel()
+	{
+		_unableToMove = true;
 	}
 }

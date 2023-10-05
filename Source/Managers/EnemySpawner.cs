@@ -20,17 +20,30 @@ public partial class EnemySpawner : Node2D
 	public int CurrentLevel = 1;
 
 	public bool BossApeared = false;
-	public override void _Ready()
+    private bool _endingLevel;
+
+    public override void _Ready()
 	{
+
 		_enemySection = EnemiesLevelOne.GetEnemies();
 		Enemies = new List<Node2D>();
 		GetNextSection();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    private void EndingLevelAnimation()
+    {
+        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+		player.SetSpeed(0, -player.Speed, -100);
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
-		VerifyEnemySection();
+		if(_endingLevel)
+			EndingLevelAnimation();
+		else
+			VerifyEnemySection();
 	}
 
 	private void VerifyEnemySection()
@@ -83,17 +96,45 @@ public partial class EnemySpawner : Node2D
 	{
 		Enemies.Remove(node);
 
+		AddExplosion(node.Position.X, node.Position.Y);
+
 		node.QueueFree();
 
-		if(Enemies.Count == 0 && !_enemySection.Any())
+		if(Enemies.Count == 0 && !_enemySection.Any() && !BossApeared)
 			GetBoss();
 	}
 
-	public void AddEnemy(IEnemyDummy enemy)
+    public void AddExplosion(float x, float y)
+    {
+        var scene = GD.Load<PackedScene>("res://Scenes/Misc/Explosion.tscn");
+        var instance = (Explosion)scene.Instantiate();
+		instance.Position = new Vector2(x, y);
+
+		CallDeferred("add_child", instance);
+    }
+
+    public void AddEnemy(IEnemyDummy enemy)
 	{
 		var node = enemy.GetInstance();
 
 		Enemies.Add(node);
 		CallDeferred("add_child", node);
 	}
+
+	public void RemoveAllEnemies()
+	{
+		while(Enemies.Count > 0)
+		{
+			RemoveEnemy(Enemies[0]);
+		}
+	}
+
+	[Signal]
+	public delegate void EndingLevelEventHandler();
+
+    internal void EndLevel()
+    {
+		_endingLevel = true;
+        EmitSignal("EndingLevel");
+    }
 }

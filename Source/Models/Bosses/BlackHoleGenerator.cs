@@ -3,12 +3,15 @@ using System;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
+using Shooter.Source.Dumies.Enemies;
+using System.Threading;
 
 public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 {
 
 	private int _speed = 3;
-	private int _time = 0;
+    private bool _isDestroing = false;
+    private int _time = 0;
 	private bool _walking = false;
 
 	private int _hp = 2;
@@ -19,18 +22,23 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
 	private BlackHoleGeneratorPart _arm1;
 	private BlackHoleGeneratorPart _arm2;
+    private EnemySpawner _enemySpawner;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
 		_arm1 = GetNode<BlackHoleGeneratorPart>("Arm1");
 		_arm1.InvertArm();
 
 		_arm2 = GetNode<BlackHoleGeneratorPart>("Arm2");
+		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 	}
 
     public override void _Process(double delta)
 	{
-		if(_walking)
+
+		if(_isDestroing)
+			DestroyAnimation();
+		else if(_walking)
 			WalkEnemy();
 		else
 			MoveEnemy();
@@ -38,7 +46,19 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		_time++;
 	}
 
-	private void WalkEnemy()
+    private void DestroyAnimation()
+    {
+		_enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
+
+		if(_time == 300)
+		{
+			_enemySpawner.EndLevel();
+			_enemySpawner.RemoveEnemy(this);
+
+		}
+    }
+
+    private void WalkEnemy()
 	{
 
 		Position = new Vector2(x: Position.X + _speed, y: Position.Y);
@@ -84,6 +104,13 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 			}
 		}
 
+		if(_enemySpawner.Enemies.Count == 0)
+		{
+			_enemySpawner.AddEnemy(new DShoter(100, EEnemyProjectileType.Normal));
+			_enemySpawner.AddEnemy(new DShoter(1000, EEnemyProjectileType.Normal));
+
+		}
+
 	}
 
     private void MoveEnemy()
@@ -117,7 +144,9 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		if(_hp == 0)
 		{
 			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        	enemySpawner.RemoveEnemy(this);
+			_enemySpawner.RemoveAllEnemies();
+			_isDestroing = true;
+			_time = 0;
 		}
 	}
 

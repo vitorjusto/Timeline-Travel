@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dro6waqxtgdb7"]
+
+[ext_resource type="Script" path="res://Source/Models/Enemies/Shoter.cs" id="1_a7pqn"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_cecqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q0n6"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ucv36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cecqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Shoter" type="CharacterBody2D"]
+script = ExtResource("1_a7pqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1q0n6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ucv36")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)
