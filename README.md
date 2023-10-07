@@ -15,4 +15,4 @@ This game uses Godot engine and C# script
 
 ## Story
 
-Advanced creatures from other timeline created a 4d explosion, corrupting time and space and ivading and taking over others timelines, our objective is defeating these enemies and retore peace though all timelines
+Advanced creatures from other timeline created a 4d explosion, corrupting time and space and invading others timelines, your objective is defeat these enemies and restore peace though all timelines
