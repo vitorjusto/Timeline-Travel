@@ -1,4 +1,4 @@
-# Timeline-Travel
+# Timeline Travel
 
 Timeline Travel is a very hard space shoter game about traveling through timelines
 
