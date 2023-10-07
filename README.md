@@ -16,3 +16,9 @@ This game uses Godot engine and C# script
 ## Story
 
 Advanced creatures from other timeline created a 4d explosion, corrupting time and space and invading others timelines, your objective is defeat these enemies and restore peace though all timelines
+
+## Credits
+
+"Pixel Explosion" **by** JROB774 licensed Creative Commons: https://opengameart.org/content/pixel-explosion-12-frames
+
+Evething else made by me (Vitorjusto)
