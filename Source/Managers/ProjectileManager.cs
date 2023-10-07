@@ -2,6 +2,7 @@ using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using System.Collections.Generic;
 using Shooter.Source.Models.Levels;
+using System;
 
 public partial class ProjectileManager : Node2D
 {
@@ -53,7 +54,23 @@ public partial class ProjectileManager : Node2D
 
     private void RemoveProjectile(Node2D node)
     {
-        EnemiesProjectiles.Remove(node);
-		node.QueueFree();
+		try
+		{
+			EnemiesProjectiles.Remove(node);
+			node.QueueFree();
+		}catch(Exception ex)
+		{
+			
+		}
+        
     }
+
+    internal void RemoveAllProjectiles()
+    {
+        while(EnemiesProjectiles.Count > 0)
+		{
+			RemoveProjectile(EnemiesProjectiles[0]);
+		}
+    }
+
 }

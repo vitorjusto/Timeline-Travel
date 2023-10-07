@@ -13,7 +13,7 @@ public partial class Explosion : AnimatedSprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(_time == 11)
+		if(_time == 14)
 			QueueFree();
 
 		_time++;

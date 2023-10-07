@@ -21,20 +21,44 @@ public partial class Player : Area2D
 
     public Vector2 ScreenSize;
     private bool _unableToMove;
-
+    private bool _playerDestroyed;
+	private int _time = 0;
     public int Hp {get; set;}
+	public int Life = 3;
+    private GameManager _gameManager;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
 		Hp = 10;
 
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Hide();
+
+		_gameManager = GetTree().Root.GetNode<GameManager>("/root/Main");
 	}
 
 	public override void _Process(double delta)
 	{
+		if(_gameManager.IsBlackScreen)
+			return;
+
+		if(_playerDestroyed)
+		{
+			_time++;
+
+			if(_time > 20)
+			{
+				_time = 0;
+				EmitSignal("PlayerDestroyed");
+				_playerDestroyed = false;
+			}
+
+			return;
+
+		}
+
+
 		MovePlayer();
 		AnimateIFrame();
 	}
@@ -122,6 +146,8 @@ public partial class Player : Area2D
 
 	public void OnPlayerBodyEntered(Node2D node)
 	{
+		if(_playerDestroyed)
+			return;
 
 		if(node is IEnemy)
 		{
@@ -141,11 +167,28 @@ public partial class Player : Area2D
 			EmitSignal("PlayerHitProjectile", node);
 		}
 
-		_iFrame = IFrameTime;
+		if(_iFrame == 0)
+			_iFrame = IFrameTime;
 
-		EmitSignal("PlayerHpUpdated", Hp);//Não pode colocar eventhandler (mesmo que o delegate obriga a por no nome)	
+		if(Hp <= 0)
+		{
+			Hp = 0;
+
+			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+			enemySpawner.AddExplosion(Position.X, Position.Y);
+			Visible = false;
+
+			_playerDestroyed = true;
+		}
+
+		EmitSignal("PlayerHpUpdated", Hp);//Não pode colocar eventhandler (mesmo que o delegate obriga a por no nome)
 
 	}
+
+	[Signal]
+	public delegate void PlayerDestroyedEventHandler();	
+	[Signal]
+	public delegate void PlayerLifeUpdatedEventHandler(int life);
 
 	public void SetSpeed(float xspeed, float yspeed, int limit = 5)
 	{

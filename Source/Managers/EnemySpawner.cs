@@ -21,14 +21,28 @@ public partial class EnemySpawner : Node2D
 
 	public bool BossApeared = false;
     private bool _endingLevel;
+    private Node2D _boss;
+
 
     public override void _Ready()
 	{
-
-		_enemySection = EnemiesLevelOne.GetEnemies();
 		Enemies = new List<Node2D>();
+		StartLevel();
+	}
+
+	public void StartLevel()
+	{
+		GetEnemyLevel();
+
 		GetNextSection();
 	}
+
+    private void GetEnemyLevel()
+    {
+        if(CurrentLevel == 1)
+			_enemySection = EnemiesLevelOne.GetEnemies();
+    }
+
 
     private void EndingLevelAnimation()
     {
@@ -83,7 +97,9 @@ public partial class EnemySpawner : Node2D
 
 	private void GetBoss()
 	{
-		CallDeferred("add_child", BossFactory.GetBoss(CurrentLevel));
+		_boss = BossFactory.GetBoss(CurrentLevel);
+
+		CallDeferred("add_child", _boss);
 		BossApeared = true;
 	}
 
@@ -137,4 +153,22 @@ public partial class EnemySpawner : Node2D
 		_endingLevel = true;
         EmitSignal("EndingLevel");
     }
+
+    public void RestartLevel()
+    {
+        while(Enemies.Count > 0)
+		{
+			Enemies[0].QueueFree();
+			Enemies.RemoveAt(0);
+		}
+		
+		if(BossApeared)
+		{
+			_boss.QueueFree();
+			_boss = null;
+			BossApeared = false;
+		}
+
+    }
+
 }

@@ -19,5 +19,10 @@ public partial class Hud : Node2D
 		lblHp.Text = $"Hp: {hp}";
 	}
 
+	public void onPlayerLifeUpdated(int life)
+	{
+		var lblHp = GetNode<Label>("lblLife");
+		lblHp.Text = $"Hp: {life}";
+	}
 
 }
