@@ -19,6 +19,6 @@ Advanced creatures from other timeline created a 4d explosion, corrupting time a
 
 ## Credits
 
-"Pixel Explosion" **by** JROB774 licensed Creative Commons: https://opengameart.org/content/pixel-explosion-12-frames
+"Pixel Explosion" by **JROB774** licensed Creative Commons: https://opengameart.org/content/pixel-explosion-12-frames
 
 Evething else made by me (Vitorjusto)
