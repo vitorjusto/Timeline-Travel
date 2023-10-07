@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Godot;
 using System;
 
@@ -11,6 +12,8 @@ public partial class Hud : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(Input.IsActionJustPressed("pause"))
+			OnPausePressed();
 	}
 
 	public void PlayerHpUpdated(int hp)
@@ -25,4 +28,18 @@ public partial class Hud : Node2D
 		lblHp.Text = $"Hp: {life}";
 	}
 
+	public void OnPausePressed()
+	{
+		PauseGame();
+	}
+
+    public void PauseGame()
+    {
+        var lblPause = GetNode<Label>("lblPause");
+		lblPause.Visible = !lblPause.Visible;
+		EmitSignal("GamePaused", lblPause.Visible);
+    }
+
+	[Signal]
+	public delegate void GamePausedEventHandler(bool isPaused);
 }

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cgechy41qd3g3" path="res://Assets/Projectiles/PlayerProjectile.png" id="2_y0lyd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ecai"]
-radius = 8.0
+radius = 11.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hyu7"]
 animations = [{

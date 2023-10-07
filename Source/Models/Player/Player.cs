@@ -216,4 +216,9 @@ public partial class Player : Area2D
 	{
 		_unableToMove = true;
 	}
+
+	public void OnGamePaused(bool isPaused)
+	{
+		SetProcess(!isPaused);
+	}
 }

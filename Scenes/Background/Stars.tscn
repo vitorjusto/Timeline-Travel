@@ -331,7 +331,8 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-texture_filter = 2
+z_index = -1
+texture_filter = 1
 position = Vector2(-4.76837e-07, -4.76837e-07)
 scale = Vector2(1.95455, 1.95455)
 sprite_frames = SubResource("SpriteFrames_lvkp6")
@@ -339,5 +340,6 @@ animation = &"Green2"
 script = ExtResource("2_twqbj")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+texture_filter = 2
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

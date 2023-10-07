@@ -28,6 +28,16 @@ public partial class Stars : AnimatedSprite2D
 	{
 		Position = new Vector2(x: Position.X, y: Position.Y + 5);
 	}
+	
+	public void PauseAnimation(bool isPaused)
+	{
+		SetProcess(!isPaused);
+		
+		if(isPaused)
+			Stop();
+		else
+			Play();
+	}
 
 	public void OnScreenExited()
 	{

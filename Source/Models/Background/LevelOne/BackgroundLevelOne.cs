@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BackgroundLevelOne : Node2D
+public partial class BackgroundLevelOne : Node2D, IBackground
 {
 	private int _time;
 	// Called when the node enters the scene tree for the first time.
@@ -26,4 +26,19 @@ public partial class BackgroundLevelOne : Node2D
 		_time++;
 
 	}
+
+    public void PauseBackground(bool isPaused)
+    {
+		foreach(var efect in GetChildren())
+		{
+			
+			if(efect is Stars)
+				((Stars)efect).PauseAnimation(isPaused);
+			else
+				efect.GetChildren()[0].SetProcess(!isPaused);
+		}
+
+		SetProcess(!isPaused);
+    }
+
 }

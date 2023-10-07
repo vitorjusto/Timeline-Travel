@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm27is2hj0xno"]
+[gd_scene load_steps=5 format=3 uid="uid://bm27is2hj0xno"]
 
 [ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
+[ext_resource type="Texture2D" uid="uid://nwwt2vhp6t4v" path="res://Assets/Misc/PauseButton.png" id="2_skput"]
 
 [sub_resource type="FontFile" id="FontFile_885gs"]
 subpixel_positioning = 0
@@ -21,8 +22,21 @@ cache/0/50/0/scale = 1.0
 cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmi7a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="Hud" type="Node2D"]
 script = ExtResource("1_sofgy")
+
+[node name="lblPause" type="Label" parent="."]
+visible = false
+offset_left = 648.0
+offset_top = 448.0
+offset_right = 778.0
+offset_bottom = 518.0
+theme_override_fonts/font = SubResource("FontFile_885gs")
+theme_override_font_sizes/font_size = 50
+text = "pause"
 
 [node name="lblHp" type="Label" parent="."]
 offset_left = 248.0
@@ -40,3 +54,16 @@ offset_bottom = 58.0
 theme_override_fonts/font = SubResource("FontFile_885gs")
 theme_override_font_sizes/font_size = 50
 text = "Life: 3"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1336.0
+offset_top = 48.0
+offset_right = 1408.0
+offset_bottom = 120.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_mmi7a")
+icon = ExtResource("2_skput")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="OnPausePressed"]

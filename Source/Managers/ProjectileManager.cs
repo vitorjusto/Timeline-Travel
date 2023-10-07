@@ -73,4 +73,12 @@ public partial class ProjectileManager : Node2D
 		}
     }
 
+	public void OnGamePaused(bool isPaused)
+	{
+		foreach(var projectiles in GetChildren())
+		{
+			projectiles.SetProcess(!isPaused);
+		}
+	}
+
 }

@@ -170,5 +170,13 @@ public partial class EnemySpawner : Node2D
 		}
 
     }
+	
+	public void OnGamePaused(bool isPaused)
+	{
+		foreach(var projectiles in GetChildren())
+		{
+			projectiles.SetProcess(!isPaused);
+		}
+	}
 
 }
