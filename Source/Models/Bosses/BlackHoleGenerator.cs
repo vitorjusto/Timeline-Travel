@@ -115,7 +115,7 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-		if(_time < 50)
+		if(_time < 100)
 		{
         	Position = new Vector2(x: 722, y: Position.Y + _speed);
 

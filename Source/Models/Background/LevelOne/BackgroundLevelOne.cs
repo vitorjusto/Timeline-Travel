@@ -21,8 +21,7 @@ public partial class BackgroundLevelOne : Node2D, IBackground
 
 			AddChild(instance);
 		}
-
-
+		
 		_time++;
 
 	}

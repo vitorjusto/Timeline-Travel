@@ -4,14 +4,60 @@ using System;
 
 public partial class Hud : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    private bool _showingTimelineLabel;
+	private bool _showingWarningBoss;
+	private int _time = 0;
+
+
+    public override void _Ready()
 	{
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(_showingTimelineLabel)
+		{
+			_time++;
+
+			if(_time % 10 == 0)
+			{
+				var lblTimeline = GetNode<Label>("lblTimeline");
+				lblTimeline.Visible = !lblTimeline.Visible;
+			}
+
+			if(_time == 200)
+			{
+				var lblTimeline = GetNode<Label>("lblTimeline");
+				lblTimeline.Visible = false;
+				_time = 0;
+				_showingTimelineLabel = false;
+			}
+
+			return;
+		}else if(_showingWarningBoss)
+		{
+			_time++;
+
+			if(_time % 10 == 0)
+			{
+				var bossWarning = GetNode<Node2D>("BossWarning");
+				bossWarning.Visible = !bossWarning.Visible;
+			}
+
+			if(_time == 200)
+			{
+				var bossWarning = GetNode<Node2D>("BossWarning");
+				bossWarning.Visible = false;
+				_time = 0;
+				_showingWarningBoss = false;
+			}
+
+			return;
+
+		}
+
+
 		if(Input.IsActionJustPressed("pause"))
 			OnPausePressed();
 	}
@@ -25,7 +71,7 @@ public partial class Hud : Node2D
 	public void onPlayerLifeUpdated(int life)
 	{
 		var lblHp = GetNode<Label>("lblLife");
-		lblHp.Text = $"Hp: {life}";
+		lblHp.Text = $"Life: {life}";
 	}
 
 	public void OnPausePressed()
@@ -35,6 +81,9 @@ public partial class Hud : Node2D
 
     public void PauseGame()
     {
+		if(_showingTimelineLabel)
+			return;
+
         var lblPause = GetNode<Label>("lblPause");
 		lblPause.Visible = !lblPause.Visible;
 		EmitSignal("GamePaused", lblPause.Visible);
@@ -42,4 +91,27 @@ public partial class Hud : Node2D
 
 	[Signal]
 	public delegate void GamePausedEventHandler(bool isPaused);
+
+	public void ShowTimelineLabel(int currentLevel)
+	{
+		_showingTimelineLabel = true;
+
+		var bossWarning = GetNode<Node2D>("BossWarning");
+		bossWarning.Visible = false;
+
+		var lblTimeline = GetNode<Label>("lblTimeline");
+		
+		if(currentLevel == 1)
+			lblTimeline.Text = $"Our Timeline";
+		else
+			lblTimeline.Text = $"Timeline {currentLevel}";
+
+	}
+
+    internal void ShowWarningBoss()
+    {
+        _showingWarningBoss = true;
+		_time = 0;
+    }
+
 }

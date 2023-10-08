@@ -42,6 +42,7 @@ animations = [{
 size = Vector2(144, 144)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-272, -140)
 script = ExtResource("1_i3g44")
 
 [node name="Arm1" parent="." instance=ExtResource("2_icrl8")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dro6waqxtgdb7"]
 
-[ext_resource type="Script" path="res://Source/Models/Enemies/Shoter.cs" id="1_a7pqn"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_cecqy"]
+[ext_resource type="Script" path="res://Source/Models/Enemies/Shoter.cs" id="1_jsciy"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_icydk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1q0n6"]
 size = Vector2(64, 64)
@@ -10,7 +10,7 @@ size = Vector2(64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_cecqy")
+"texture": ExtResource("2_icydk")
 }],
 "loop": true,
 "name": &"default",
@@ -18,7 +18,7 @@ animations = [{
 }]
 
 [node name="Shoter" type="CharacterBody2D"]
-script = ExtResource("1_a7pqn")
+script = ExtResource("1_jsciy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1q0n6")

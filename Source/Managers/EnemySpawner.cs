@@ -21,9 +21,10 @@ public partial class EnemySpawner : Node2D
 
 	public bool BossApeared = false;
     private bool _endingLevel;
+	private bool _startingLevel;
+	private bool _showingWarningBoss;
     private Node2D _boss;
-
-
+	
     public override void _Ready()
 	{
 		Enemies = new List<Node2D>();
@@ -32,9 +33,14 @@ public partial class EnemySpawner : Node2D
 
 	public void StartLevel()
 	{
+		_time = 0;
+		_startingLevel = true;
+		var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
+
+		hud.ShowTimelineLabel(CurrentLevel);
+
 		GetEnemyLevel();
 
-		GetNextSection();
 	}
 
     private void GetEnemyLevel()
@@ -54,13 +60,29 @@ public partial class EnemySpawner : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-		if(_endingLevel)
+		if(_startingLevel)
+			WaitForTimelineLabel();
+		else if(_showingWarningBoss)
+			ShowWarningBoss();
+		else if(_endingLevel)
 			EndingLevelAnimation();
 		else
 			VerifyEnemySection();
 	}
 
-	private void VerifyEnemySection()
+    private void WaitForTimelineLabel()
+    {
+        _time++;
+
+		if(_time == 200)
+		{
+			_startingLevel = false;
+			_time = 0;
+			GetNextSection();
+		}
+    }
+
+    private void VerifyEnemySection()
 	{
 		if(_waitForEveryEnemy)
 		{
@@ -80,7 +102,6 @@ public partial class EnemySpawner : Node2D
 		{
 			return;
 		}
-
 		var currentSection = _enemySection.First();
 		_enemySection.RemoveAt(0);
 
@@ -117,8 +138,26 @@ public partial class EnemySpawner : Node2D
 		node.QueueFree();
 
 		if(Enemies.Count == 0 && !_enemySection.Any() && !BossApeared)
-			GetBoss();
+		{
+			var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
+
+			_showingWarningBoss = true;
+			hud.ShowWarningBoss();
+			_time = 0;
+		}
 	}
+
+    private void ShowWarningBoss()
+    {
+        _time++;
+		if(_time == 200)
+		{
+			_showingWarningBoss = false;
+			_time = 0;
+			GetBoss();
+		}
+    }
+
 
     public void AddExplosion(float x, float y)
     {
@@ -156,6 +195,7 @@ public partial class EnemySpawner : Node2D
 
     public void RestartLevel()
     {
+		_time = 0;
         while(Enemies.Count > 0)
 		{
 			Enemies[0].QueueFree();
@@ -173,10 +213,12 @@ public partial class EnemySpawner : Node2D
 	
 	public void OnGamePaused(bool isPaused)
 	{
-		foreach(var projectiles in GetChildren())
+		foreach(var enemy in GetChildren())
 		{
-			projectiles.SetProcess(!isPaused);
+			enemy.SetProcess(!isPaused);
 		}
+
+		SetProcess(!isPaused);
 	}
 
 }

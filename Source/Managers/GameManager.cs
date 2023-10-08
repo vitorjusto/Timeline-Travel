@@ -25,6 +25,8 @@ public partial class GameManager : Node2D
 				IsBlackScreen = false;
 				_time = 0;
 
+				
+
 				var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 				enemySpawner.StartLevel();
 			}
@@ -62,5 +64,8 @@ public partial class GameManager : Node2D
 		_time++;
 
     }
+
+	[Signal]
+	public delegate void BlackScreenFadedEventHandler();
 
 }
