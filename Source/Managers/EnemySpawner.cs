@@ -1,13 +1,11 @@
-using System.Security.AccessControl;
 using Godot;
-using Shooter.Source.Dumies.Enemies;
-using System;
 using System.Collections.Generic;
 using Shooter.Source.Models.Levels;
 using Shooter.Source.Factories.Levels;
 using Shooter.Source.Dumies.Interfaces;
 using System.Linq;
 using Shooter.Source.Factories.Bosses;
+using Shooter.Source.Factories.Enemies;
 
 public partial class EnemySpawner : Node2D
 {
@@ -50,6 +48,8 @@ public partial class EnemySpawner : Node2D
     {
         if(CurrentLevel == 1)
 			_enemySection = EnemiesLevelOne.GetEnemies();
+		if(CurrentLevel ==2)
+			_enemySection = EnemiesLevelTwo.GetEnemies();
     }
 
 
