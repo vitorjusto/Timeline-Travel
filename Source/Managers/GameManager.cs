@@ -25,6 +25,10 @@ public partial class GameManager : Node2D
 				IsBlackScreen = false;
 				_time = 0;
 				
+				var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+				player.EnablePlayerToMove();
+
 				var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 				enemySpawner.StartLevel();
 			}
