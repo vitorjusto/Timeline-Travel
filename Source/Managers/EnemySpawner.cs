@@ -24,11 +24,14 @@ public partial class EnemySpawner : Node2D
 	private bool _startingLevel;
 	private bool _showingWarningBoss;
     private Node2D _boss;
+	private GameManager _gameManager;
 	
     public override void _Ready()
 	{
 		Enemies = new List<Node2D>();
 		StartLevel();
+
+		_gameManager = GetTree().Root.GetNode<GameManager>("/root/Main");
 	}
 
 	public void StartLevel()
@@ -55,11 +58,25 @@ public partial class EnemySpawner : Node2D
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
 		player.SetSpeed(0, -player.Speed, -100);
+
+		if(_time > 200)
+		{
+			_endingLevel = false;
+			EmitSignal("LevelEnded");
+		}
+		
+		_time++;
     }
+
+	[Signal]
+	public delegate void LevelEndedEventHandler();
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+		if(_gameManager.IsBlackScreen)
+			return;
+
 		if(_startingLevel)
 			WaitForTimelineLabel();
 		else if(_showingWarningBoss)
@@ -137,7 +154,7 @@ public partial class EnemySpawner : Node2D
 
 		node.QueueFree();
 
-		if(Enemies.Count == 0 && !_enemySection.Any() && !BossApeared)
+		if(Enemies.Count == 0 && !_enemySection.Any() && !BossApeared  && !_endingLevel)
 		{
 			var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
 
@@ -191,6 +208,10 @@ public partial class EnemySpawner : Node2D
     {
 		_endingLevel = true;
         EmitSignal("EndingLevel");
+		_time = 0;
+
+		BossApeared = false;
+		_boss = null;
     }
 
     public void RestartLevel()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6ty08fs2p0r"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelOne/BackgroundLevelTwo.cs" id="1_wy2ip"]
+[ext_resource type="Texture2D" uid="uid://bkmu6tmaou4sn" path="res://Assets/Background/LevelTwo/LevelTwo.png" id="2_lmucq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_wy2ip")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(5085.9, 3670.99)
+
+[node name="LevelTwo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(2537, 1836.5)
+scale = Vector2(16.9533, 19.3211)
+texture = ExtResource("2_lmucq")

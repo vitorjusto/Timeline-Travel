@@ -24,9 +24,7 @@ public partial class GameManager : Node2D
 				blackScreen.Visible = false;
 				IsBlackScreen = false;
 				_time = 0;
-
 				
-
 				var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 				enemySpawner.StartLevel();
 			}
@@ -64,6 +62,33 @@ public partial class GameManager : Node2D
 		_time++;
 
     }
+
+	public void OnLevelPassed()
+	{
+		StartNewLevel();
+	}
+
+	private void StartNewLevel()
+	{
+		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/BlackScreen");
+		blackScreen.Visible = true;
+		IsBlackScreen = true;
+
+		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		player.Position = new Vector2(x: 722, y: 720);
+
+		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		enemySpawner.RestartLevel();
+		enemySpawner.CurrentLevel += 1;
+
+		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+		projectileManager.RemoveAllProjectiles();
+
+		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
+		backgroundManager.SetNewBackgroundLevel(enemySpawner.CurrentLevel);
+
+		_time++;
+	}
 
 	[Signal]
 	public delegate void BlackScreenFadedEventHandler();

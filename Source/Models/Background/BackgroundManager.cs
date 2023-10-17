@@ -1,20 +1,17 @@
 using Godot;
+using Shooter.Source.Factories.Levels;
 using System;
 
 public partial class BackgroundManager : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 
-	private IBackground _currentBackground;
+	private Node2D _currentBackground;
 	public override void _Ready()
 	{
-		var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelOne.tscn");
+		_currentBackground = LevelsFactory.GetBackground(1);
 
-        var instance = (BackgroundLevelOne)scene.Instantiate();
-
-		_currentBackground = instance;
-
-		AddChild(instance);
+		AddChild(_currentBackground);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,8 +19,16 @@ public partial class BackgroundManager : Node2D
 	{
 	}
 
+	public void SetNewBackgroundLevel(int level)
+	{
+		QueueFree();
+		_currentBackground = LevelsFactory.GetBackground(level);
+
+		AddChild(_currentBackground);
+	}
+
 	public void OnGamePaused(bool isPaused)
 	{
-		_currentBackground.PauseBackground(isPaused);
+		((IBackground)_currentBackground).PauseBackground(isPaused);
 	}
 }
