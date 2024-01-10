@@ -1,22 +1,43 @@
 using Godot;
+using Shooter.Source.Dumies.Enemies.EnemiesPart;
+using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using System;
 
 public partial class ConceptPart : CharacterBody2D, IEnemy
 {
 
-	private int _hp = 7;
+	private int _hp = 20;
     private int _speed = -4;
-
-    public override void _Ready()
-    {
-        Position = new Vector2(x: Position.X + GetViewport().GetWindow().Size.X, y: Position.Y);
-    }
+    private int _time = 0;
+    private bool _isShooting;
+    private ProjectileManager _projectiles;
+    private int _shootingCooldown = 0;
 
     public override void _Process(double delta)
 	{
 		MoveEnemy();
+        Shoot();
 	}
+
+    private void Shoot()
+    {
+        if(_time == 70)
+        {
+            _time= 0;
+        
+            _projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		    var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
+
+            _projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * -3, (float)Math.Cos(angle) * -3));
+            _projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle + 0.6) * -3, (float)Math.Cos(angle + 0.6) * -3));
+            _projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle - 0.6) * -3, (float)Math.Cos(angle - 0.6) * -3));
+        }
+        _time++;
+    }
+
 
     private void MoveEnemy()
     {

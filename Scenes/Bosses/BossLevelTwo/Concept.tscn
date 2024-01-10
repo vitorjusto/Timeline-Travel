@@ -8,17 +8,18 @@
 script = ExtResource("1_84uhv")
 
 [node name="ConceptPart" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(328, 136)
+position = Vector2(1896, 161)
 
 [node name="ConceptPart2" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(496, 136)
+position = Vector2(2064, 161)
 
 [node name="ConceptPart3" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(664, 136)
+position = Vector2(2232, 161)
 
 [node name="ConceptHead" parent="." instance=ExtResource("2_7o0lm")]
-position = Vector2(96, 135)
+position = Vector2(1664, 160)
 
+[connection signal="OnActivateHeadShooting" from="." to="ConceptHead" method="OnActivateHeadShooting"]
 [connection signal="OnAllBodyPartDestroyed" from="." to="ConceptHead" method="OnAllBodyPartDestroyed"]
 [connection signal="OnPartDestroyed" from="ConceptPart" to="." method="OnConceptPartOnPartDestroyed"]
 [connection signal="OnPartDestroyed" from="ConceptPart2" to="." method="OnConceptPartOnPartDestroyed"]

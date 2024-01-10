@@ -210,6 +210,8 @@ public partial class EnemySpawner : Node2D
         EmitSignal("EndingLevel");
 		_time = 0;
 
+		GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
+
 		BossApeared = false;
 		_boss = null;
     }

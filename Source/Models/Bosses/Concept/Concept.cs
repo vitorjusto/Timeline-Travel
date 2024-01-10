@@ -43,6 +43,10 @@ public partial class Concept : Node2D, IEnemy
 		if(_hp == 0)
 		{
 			EmitSignal("OnAllBodyPartDestroyed");
+		}else if(_hp == 1)
+		{
+			EmitSignal("OnActivateHeadShooting");
+
 		}
 	}
 
@@ -54,4 +58,7 @@ public partial class Concept : Node2D, IEnemy
 
 	[Signal]
 	public delegate void OnAllBodyPartDestroyedEventHandler();
+	
+	[Signal]
+	public delegate void OnActivateHeadShootingEventHandler();
 }
