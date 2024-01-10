@@ -1,7 +1,7 @@
 using Godot;
-using Shooter.Source.Dumies.Enemies.EnemiesPart;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class ConceptPart : CharacterBody2D, IEnemy
@@ -13,6 +13,15 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
     private bool _isShooting;
     private ProjectileManager _projectiles;
     private int _shootingCooldown = 0;
+    private WaveSpeed _ySpeed;
+
+    [Export]
+    public int StartWaveSpeedCooldown;
+
+    public override void _Ready()
+    {
+        _ySpeed = new WaveSpeed(-2, 10, Position.Y, StartWaveSpeedCooldown);
+    }
 
     public override void _Process(double delta)
 	{
@@ -41,7 +50,7 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-        Position = new Vector2(x: Position.X + _speed, y: Position.Y);
+        Position = new Vector2(x: Position.X + _speed, y: _ySpeed.Update());
 
 		if(Position.X - 64 <= 0 && _speed < 0)
 			_speed *= -1;

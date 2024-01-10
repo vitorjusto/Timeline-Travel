@@ -2,12 +2,14 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class ConceptHead : CharacterBody2D, IEnemy
 {
 
 	private int _hp = 20;
     private int _speed = -4;
+	private WaveSpeed _ySpeed;
 	private bool _forceFieldDestroyed = false;
 	private bool _dashing = false;
     private bool _isDestroyng;
@@ -16,11 +18,21 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
     private EnemySpawner _enemySpawner;
     private ProjectileManager _projectiles;
 
+	public EConceptDashStatus _dashStatus = EConceptDashStatus.NotDashing;
+
+	public enum EConceptDashStatus
+	{
+		NotDashing = 0,
+		Dashing = 1,
+		GoingToOriginalPosition = 2
+	}
 
     public override void _Ready()
     {
 		_projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+		_ySpeed = new WaveSpeed(-2, 10, Position.Y);
     }
     public override void _Process(double delta)
 	{
@@ -40,33 +52,46 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
 		var xSpeed = 0;
-		var ySpeed = 0;
+		float yPosition = 0;
 
-		if(Math.Abs(Position.X - player.Position.X) < 64 || _dashing)
+		if(Math.Abs(Position.X - player.Position.X) < 64 || _dashStatus == EConceptDashStatus.Dashing)
 		{
-			ySpeed = 16;
-			_dashing = true;
+			yPosition = 16 + Position.Y;
+			_dashStatus = EConceptDashStatus.Dashing;
 
-			if(_dashing && Position.Y + 96 >= GetViewport().GetWindow().Size.Y)
+			if(Position.Y + 96 >= GetViewport().GetWindow().Size.Y)
 			{
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y - 96, 0, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X - 96, Position.Y - 96, -3, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X + 96, Position.Y - 96, 3, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X - 48, Position.Y - 96, -1.5f, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X + 48, Position.Y - 96, 1.5f, -3));
-				_dashing = false;
+				_dashStatus = EConceptDashStatus.GoingToOriginalPosition;
 			}
 		}
-		else if(!_dashing && Position.Y > 160)
-			ySpeed = -16;
+		else if(_dashStatus == EConceptDashStatus.GoingToOriginalPosition)
+		{
+			yPosition = -16 + Position.Y;
+
+			if(yPosition <=160)
+			{
+				_dashStatus = EConceptDashStatus.NotDashing;
+				_ySpeed = new WaveSpeed(-6, 30, Position.Y, reverseDirection: true);
+				yPosition = _ySpeed.Update();
+			}
+		}
 		else if(Position.X < player.Position.X)
+		{
 			xSpeed = Math.Abs(_speed) * 2;
+			yPosition = _ySpeed.Update();
+		}
 		else if(Position.X > player.Position.X)
+		{
 			xSpeed = Math.Abs(_speed) * -2;
+			yPosition = _ySpeed.Update();
+		}
 
-
-
-		Position = new Vector2(x: Position.X + xSpeed, y: Position.Y+ ySpeed);
+		Position = new Vector2(x: Position.X + xSpeed, y: yPosition);
     }
 
 
@@ -96,11 +121,11 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-        Position = new Vector2(x: Position.X + _speed, y: Position.Y);
+        Position = new Vector2(x: Position.X + _speed, y: _ySpeed.Update());
 
-		if(Position.X - 96 <= 0 && _speed < 0)
+		if(Position.X - 64 <= 0 && _speed < 0)
 			_speed *= -1;
-		else if(Position.X + 96 >= GetViewport().GetWindow().Size.X && _speed > 0)
+		else if(Position.X + 64 >= GetViewport().GetWindow().Size.X && _speed > 0)
 			_speed *= -1;
     }
 
@@ -127,6 +152,8 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 	public void OnAllBodyPartDestroyed()
 	{
 		_forceFieldDestroyed = true;
+
+		_ySpeed = new WaveSpeed(-6, 30, Position.Y, reverseDirection: true);
 
 		GetNode<Node2D>("ForceField").CallDeferred("queue_free");
 		GetNode<Node2D>("CollisionForceField").CallDeferred("queue_free");

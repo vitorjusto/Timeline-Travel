@@ -32,7 +32,7 @@ public partial class Curver : CharacterBody2D, IEnemy
 
 	public void SetPosition(float x)
 	{
-		_xSpeed = new WaveSpeed(3, -6, 30, x);
+		_xSpeed = new WaveSpeed(-6, 30, x);
 		Position = new Vector2(x, y: -30);
 	}
 
