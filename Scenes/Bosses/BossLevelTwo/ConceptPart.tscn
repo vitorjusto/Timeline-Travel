@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnoag1ab2f13v"]
+
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_iwcol"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/Concept/ConceptPart.cs" id="1_mr0ho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xjpe"]
+size = Vector2(128, 128)
+
+[node name="ConceptPart" type="CharacterBody2D"]
+script = ExtResource("1_mr0ho")
+
+[node name="EnemyPlaceholder2" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_iwcol")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0xjpe")

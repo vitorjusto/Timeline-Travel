@@ -9,7 +9,8 @@ public partial class BackgroundManager : Node2D
 	private Node2D _currentBackground;
 	public override void _Ready()
 	{
-		_currentBackground = LevelsFactory.GetBackground(1);
+		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		_currentBackground = LevelsFactory.GetBackground(enemySpawner.CurrentLevel);
 
 		AddChild(_currentBackground);
 	}

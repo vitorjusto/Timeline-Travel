@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace Shooter.Source.Factories.Bosses
@@ -8,9 +9,19 @@ namespace Shooter.Source.Factories.Bosses
         {
             if(level == 1)
                 return GetBossLevelOne();
+            if(level == 2)
+                return GetBossLevelTwo();
             
             return null;
         }
+
+        private static Node2D GetBossLevelTwo()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelTwo/Concept.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
+
 
         private static Node2D GetBossLevelOne()
         {

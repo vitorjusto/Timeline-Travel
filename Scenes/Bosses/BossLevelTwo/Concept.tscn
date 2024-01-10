@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfoee8oth22k5"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/Concept/Concept.cs" id="1_84uhv"]
+[ext_resource type="PackedScene" uid="uid://t5f6i7rsa16o" path="res://Scenes/Bosses/BossLevelTwo/ConceptHead.tscn" id="2_7o0lm"]
+[ext_resource type="PackedScene" uid="uid://bnoag1ab2f13v" path="res://Scenes/Bosses/BossLevelTwo/ConceptPart.tscn" id="3_5i0ss"]
+
+[node name="Concept" type="Node2D"]
+script = ExtResource("1_84uhv")
+
+[node name="ConceptPart" parent="." instance=ExtResource("3_5i0ss")]
+position = Vector2(328, 136)
+
+[node name="ConceptPart2" parent="." instance=ExtResource("3_5i0ss")]
+position = Vector2(496, 136)
+
+[node name="ConceptPart3" parent="." instance=ExtResource("3_5i0ss")]
+position = Vector2(664, 136)
+
+[node name="ConceptHead" parent="." instance=ExtResource("2_7o0lm")]
+position = Vector2(96, 135)
+
+[connection signal="OnAllBodyPartDestroyed" from="." to="ConceptHead" method="OnAllBodyPartDestroyed"]
+[connection signal="OnPartDestroyed" from="ConceptPart" to="." method="OnConceptPartOnPartDestroyed"]
+[connection signal="OnPartDestroyed" from="ConceptPart2" to="." method="OnConceptPartOnPartDestroyed"]
+[connection signal="OnPartDestroyed" from="ConceptPart3" to="." method="OnConceptPartOnPartDestroyed"]
+[connection signal="OnHeadDestroyed" from="ConceptHead" to="." method="OnHeadDestroyed"]
