@@ -13,7 +13,7 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, false, new DLazer(100)),
+                new EnemySection(50, false, new DCurver(100), new DCurver(200), new DCurver(300)),
             };
 
         }
