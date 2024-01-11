@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
+using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
@@ -18,14 +19,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
     private EnemySpawner _enemySpawner;
     private ProjectileManager _projectiles;
 
-	public EConceptDashStatus _dashStatus = EConceptDashStatus.NotDashing;
-
-	public enum EConceptDashStatus
-	{
-		NotDashing = 0,
-		Dashing = 1,
-		GoingToOriginalPosition = 2
-	}
+	public EDashStatus _dashStatus = EDashStatus.NotDashing;
 
     public override void _Ready()
     {
@@ -54,10 +48,10 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 		var xSpeed = 0;
 		float yPosition = 0;
 
-		if(Math.Abs(Position.X - player.Position.X) < 64 || _dashStatus == EConceptDashStatus.Dashing)
+		if(Math.Abs(Position.X - player.Position.X) < 64 || _dashStatus == EDashStatus.Dashing)
 		{
 			yPosition = 16 + Position.Y;
-			_dashStatus = EConceptDashStatus.Dashing;
+			_dashStatus = EDashStatus.Dashing;
 
 			if(Position.Y + 96 >= GetViewport().GetWindow().Size.Y)
 			{
@@ -66,16 +60,16 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X + 96, Position.Y - 96, 3, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X - 48, Position.Y - 96, -1.5f, -3));
 				_projectiles.AddProjectile(new DNormalProjectile(Position.X + 48, Position.Y - 96, 1.5f, -3));
-				_dashStatus = EConceptDashStatus.GoingToOriginalPosition;
+				_dashStatus = EDashStatus.GoingToOriginalPosition;
 			}
 		}
-		else if(_dashStatus == EConceptDashStatus.GoingToOriginalPosition)
+		else if(_dashStatus == EDashStatus.GoingToOriginalPosition)
 		{
 			yPosition = -16 + Position.Y;
 
 			if(yPosition <=160)
 			{
-				_dashStatus = EConceptDashStatus.NotDashing;
+				_dashStatus = EDashStatus.NotDashing;
 				_ySpeed = new WaveSpeed(-6, 30, Position.Y, reverseDirection: true);
 				yPosition = _ySpeed.Update();
 			}
