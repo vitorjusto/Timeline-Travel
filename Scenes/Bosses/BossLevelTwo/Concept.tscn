@@ -5,22 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://bnoag1ab2f13v" path="res://Scenes/Bosses/BossLevelTwo/ConceptPart.tscn" id="3_5i0ss"]
 
 [node name="Concept" type="Node2D"]
+position = Vector2(-73, 0)
 script = ExtResource("1_84uhv")
 
 [node name="ConceptPart" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(1896, 161)
+position = Vector2(1913, 160)
 StartWaveSpeedCooldown = 5
 
 [node name="ConceptPart2" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(2064, 161)
+position = Vector2(2065, 161)
 StartWaveSpeedCooldown = 10
 
 [node name="ConceptPart3" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(2232, 161)
+position = Vector2(2217, 161)
 StartWaveSpeedCooldown = 20
 
 [node name="ConceptHead" parent="." instance=ExtResource("2_7o0lm")]
-position = Vector2(1664, 160)
+position = Vector2(1679, 160)
 
 [connection signal="OnActivateHeadShooting" from="." to="ConceptHead" method="OnActivateHeadShooting"]
 [connection signal="OnAllBodyPartDestroyed" from="." to="ConceptHead" method="OnAllBodyPartDestroyed"]

@@ -25,6 +25,10 @@ window/size/resizable=false
 
 project/assembly_name="Shooter"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 move_up={

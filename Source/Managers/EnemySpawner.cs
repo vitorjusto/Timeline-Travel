@@ -15,7 +15,7 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
-	public int CurrentLevel = 2;
+	public int CurrentLevel = 1;
 
 	public bool BossApeared = false;
     private bool _endingLevel;
