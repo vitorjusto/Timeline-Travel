@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfs5tc7grqqai"]
+
+[ext_resource type="Texture2D" uid="uid://c4yijghntpn0p" path="res://Assets/Background/LevelThree/LevelThreeBackground.png" id="1_ftluy"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelThree/BackgroundLevelThree.cs" id="1_on8yw"]
+
+[node name="BackgroundLevelThree" type="Node2D"]
+script = ExtResource("1_on8yw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="LevelThreeBackground" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(680, 464)
+scale = Vector2(1.21098, 1.40054)
+texture = ExtResource("1_ftluy")
+
+[node name="LightCotainer" type="Node2D" parent="ParallaxBackground"]

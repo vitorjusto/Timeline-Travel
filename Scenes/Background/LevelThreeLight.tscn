@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcav8g02dwqmb"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelThree/LevelThreeLight.cs" id="1_f28og"]
+[ext_resource type="Texture2D" uid="uid://86xttuutteos" path="res://Assets/Background/LevelThree/LevelThreeLight.png" id="2_hfyc0"]
+
+[node name="LevelThreeLight" type="Node2D"]
+script = ExtResource("1_f28og")
+
+[node name="LevelThreeLight" type="Sprite2D" parent="."]
+texture = ExtResource("2_hfyc0")
