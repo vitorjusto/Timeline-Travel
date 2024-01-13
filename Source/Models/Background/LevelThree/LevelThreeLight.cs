@@ -21,8 +21,6 @@ public partial class LevelThreeLight : Node2D
 
 	public void ShrinkLight()
 	{
-		var light = GetNode<Sprite2D>("LevelThreeLight");
-
-		light.Scale = new Vector2(0.45f, 0.45f);
+		Scale = new Vector2(0.45f, 0.45f);
 	}
 }

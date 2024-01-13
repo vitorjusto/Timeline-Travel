@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgidajwlxftmn"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelThree/StarLevelThree.cs" id="1_ivfto"]
+[ext_resource type="Texture2D" uid="uid://cjdr1b0mw671a" path="res://Assets/Background/LevelThree/StarLevelThree.png" id="1_nmh4o"]
+
+[node name="StarLevelThree" type="Node2D"]
+script = ExtResource("1_ivfto")
+
+[node name="StarLevelThree" type="Sprite2D" parent="."]
+texture = ExtResource("1_nmh4o")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

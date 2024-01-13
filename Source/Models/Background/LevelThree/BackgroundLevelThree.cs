@@ -6,6 +6,8 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 {
     private Node2D _lightContainer;
 
+	private int _time = 0;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -28,8 +30,25 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 		AddLightToEnemies();
 		AddLightToProjectiles();
 
-		GD.Print(_lightContainer.GetChildCount());
+		AddStar();
 	}
+
+    private void AddStar()
+    {
+        if(_time == 10)
+		{
+			var scene = GD.Load<PackedScene>("res://Scenes/Background/StarLevelThree.tscn");
+
+        	var instance = (StarLevelThree)scene.Instantiate();
+
+			AddChild(instance);
+
+			_time = 0;
+		}
+
+		_time++;
+    }
+
 
     private void AddLightToProjectiles()
     {
