@@ -31,7 +31,8 @@ public partial class NormalProjectile : CharacterBody2D, IEnemyProjectile
 
 	public void OnScreenExited()
 	{
-		QueueFree();
+		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+		projectileManager.RemoveProjectile(this);
 	}
 
     public int GetDamage()

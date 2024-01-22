@@ -15,6 +15,7 @@ public partial class LevelThreeLight : Node2D
 
 		}catch
 		{
+			LightOwner = null;
 			QueueFree();
 		}
 	}

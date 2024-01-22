@@ -87,6 +87,7 @@ public partial class EnemySpawner : Node2D
 			EndingLevelAnimation();
 		else
 			VerifyEnemySection();
+
 	}
 
     private void WaitForTimelineLabel()

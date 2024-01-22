@@ -32,7 +32,8 @@ public partial class StrongProjectile : CharacterBody2D, IEnemyProjectile
 
 	public void OnScreenExited()
 	{
-		QueueFree();
+		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+		projectileManager.RemoveProjectile(this);
 	}
 
     public int GetDamage()

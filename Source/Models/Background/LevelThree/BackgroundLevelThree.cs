@@ -31,11 +31,12 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 		AddLightToProjectiles();
 
 		AddStar();
+		
 	}
 
     private void AddStar()
     {
-        if(_time == 10)
+        if(_time == 40)
 		{
 			var scene = GD.Load<PackedScene>("res://Scenes/Background/StarLevelThree.tscn");
 
@@ -56,7 +57,7 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		var lights = _lightContainer.GetChildren().ToList();
 
-		var projectilesWithoutLight = projectileManager.EnemiesProjectiles.Where((x) => !lights.Select((x) => ((LevelThreeLight)x).LightOwner).Contains(x));
+		var projectilesWithoutLight = projectileManager.EnemiesProjectiles.Where((x) => !lights.Select((y) => ((LevelThreeLight)y).LightOwner).Contains(x)).ToList();
 
 		foreach(var projectile in projectilesWithoutLight)
 		{
@@ -67,6 +68,7 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 			instance.ShrinkLight();
 
 			_lightContainer.AddChild(instance);
+
 		}
     }
 
@@ -76,10 +78,14 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		var lights = _lightContainer.GetChildren().ToList();
 
-		var enemiesWithoutLight = enemySpawner.Enemies.Where((x) => !lights.Select((x) => ((LevelThreeLight)x).LightOwner).Contains(x));
+		var enemiesWithoutLight = enemySpawner.Enemies.Where((x) => !lights.Select((y) => ((LevelThreeLight)y).LightOwner).Contains(x));
 
 		foreach(var enemy in enemiesWithoutLight)
 		{
+			GD.Print(enemy);
+			if(enemy is DimentionalStarship)
+				continue;
+
 			var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
 
         	var instance = (LevelThreeLight)scene.Instantiate();

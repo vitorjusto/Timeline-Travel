@@ -23,7 +23,7 @@ public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 		Position = new Vector2(x ,y);
 
 		if(_time > 500)
-			QueueFree();
+			DestroyProjectile();
 
 		_time++;
 	}
@@ -35,7 +35,15 @@ public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 
 	public void OnScreenExited()
 	{
-		QueueFree();
+		DestroyProjectile();
+	}
+
+	public void DestroyProjectile()
+	{
+
+		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+		projectileManager.RemoveProjectile(this);
+
 	}
 
     public int GetDamage()

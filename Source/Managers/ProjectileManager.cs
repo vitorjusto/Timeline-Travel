@@ -52,7 +52,7 @@ public partial class ProjectileManager : Node2D
 
 	}
 
-    private void RemoveProjectile(Node2D node)
+    public void RemoveProjectile(Node2D node)
     {
 		try
 		{
