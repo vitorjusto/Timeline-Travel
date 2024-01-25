@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdp37ekj2jlu"]
+
+[ext_resource type="Script" path="res://Source/Models/Enemies/Waver.cs" id="1_pqua5"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_7o6kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx1ha"]
+size = Vector2(64, 64)
+
+[node name="Waver" type="CharacterBody2D"]
+script = ExtResource("1_pqua5")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+texture = ExtResource("2_7o6kc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qx1ha")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(4, 4)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

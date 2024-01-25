@@ -58,7 +58,7 @@ public partial class ProjectileManager : Node2D
 		{
 			EnemiesProjectiles.Remove(node);
 			node.QueueFree();
-		}catch(Exception ex)
+		}catch(Exception)
 		{
 			
 		}

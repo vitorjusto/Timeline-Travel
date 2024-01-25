@@ -31,6 +31,7 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 		AddLightToProjectiles();
 
 		AddStar();
+
 		
 	}
 

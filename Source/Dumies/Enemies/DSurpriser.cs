@@ -1,7 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 
-namespace Sooter.Source.Dumies.Enemies
+namespace Shooter.Source.Dumies.Enemies
 {
     public class DSurpriser : IEnemyDummy
     {

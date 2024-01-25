@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Models.Levels;
-using Sooter.Source.Dumies.Enemies;
 
 namespace Shooter.Source.Factories.Enemies
 {

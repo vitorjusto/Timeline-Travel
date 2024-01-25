@@ -34,13 +34,12 @@ namespace Shooter.Source.Models.Misc
 
 		    Speed *= _SpeedModifier; 
             Speed += _originalPosition;
-
 		    _time += 0.1f;
 
 		    if(_time > Math.Abs(_distance/_velocity))
 		    {
-			    _time = 0.1f;
-			    _SpeedModifier *= (-1);
+			    _time = 0.0f;
+			    _SpeedModifier *= -1;
 		    }
 
             return Speed;
