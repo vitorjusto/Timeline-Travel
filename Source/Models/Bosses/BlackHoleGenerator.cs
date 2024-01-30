@@ -143,7 +143,6 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
 		if(_hp == 0)
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 			_enemySpawner.RemoveAllEnemies();
 			_isDestroing = true;
 			_time = 0;

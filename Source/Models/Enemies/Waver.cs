@@ -14,7 +14,7 @@ public partial class Waver : CharacterBody2D, IEnemy
 
     public override void _Ready()
 	{
-		_yWaveSpeed = new WaveSpeed(-3, 30, Position.Y, WaveCooldown);
+		_yWaveSpeed = new WaveSpeed(-3, 15, Position.Y, WaveCooldown);
 
 	}
 
@@ -32,7 +32,7 @@ public partial class Waver : CharacterBody2D, IEnemy
 			Position = new Vector2(Position.X, Y_START_POSITION);
 
 			_time = 0;
-			_yWaveSpeed = new WaveSpeed(-3, 30, Position.Y, startCooldown: WaveCooldown);
+			_yWaveSpeed = new WaveSpeed(-3, 20, Position.Y, startCooldown: WaveCooldown);
 		}
 
         Position = new Vector2(Position.X - _speed,_yWaveSpeed.Update() + _time);

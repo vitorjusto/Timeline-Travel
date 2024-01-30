@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgwk50gj7pg7f"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/SpaceshipPredador/SpaceshipPredadorModel.cs" id="1_hyd4f"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_y78a3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohsea"]
+size = Vector2(144, 144)
+
+[node name="SpaceshipPredador" type="CharacterBody2D"]
+script = ExtResource("1_hyd4f")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("2_y78a3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ohsea")
