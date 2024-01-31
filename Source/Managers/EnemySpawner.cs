@@ -15,7 +15,7 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
-	public int CurrentLevel = 4;
+	public int CurrentLevel = 5;
 
 	public bool BossApeared = false;
     private bool _endingLevel;
@@ -54,6 +54,8 @@ public partial class EnemySpawner : Node2D
 			_enemySection = EnemiesLevelThree.GetEnemies();
 		if(CurrentLevel == 4)
 			_enemySection = EnemiesLevelFour.GetEnemies();
+		if(CurrentLevel == 5)
+			_enemySection = EnemiesLevelFive.GetEnemies();
     }
 
 

@@ -78,3 +78,6 @@ pause={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/ssao/quality=3
+environment/ssil/quality=3
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

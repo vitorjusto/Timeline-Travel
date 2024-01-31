@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckbvl8i0aau6y"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelFive/BackgroundLevelFive.cs" id="1_3i48i"]
+[ext_resource type="Texture2D" uid="uid://nk6uxvct63tb" path="res://Assets/Background/LevelFive/BackgroundLevelFive.jpg" id="1_lkirm"]
+
+[sub_resource type="Animation" id="Animation_iqaya"]
+resource_name = "new_animation"
+length = 21.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9, 12, 15, 18, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(1, 0.156863, 0.803922, 1), Color(1, 0.313726, 0.607843, 1), Color(1, 0.470588, 0.411765, 1), Color(1, 0.627451, 0.607843, 1), Color(1, 0.470588, 0.803922, 1), Color(1, 0.313726, 1, 1), Color(1, 0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0pvgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myqvb"]
+_data = {
+"RESET": SubResource("Animation_0pvgo"),
+"new_animation": SubResource("Animation_iqaya")
+}
+
+[node name="BackgroundLevelFive" type="Node2D"]
+script = ExtResource("1_3i48i")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 10869.8)
+
+[node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(72, 4200)
+
+[node name="BackgroundLevelFive3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node2D"]
+position = Vector2(649.955, 3838.73)
+scale = Vector2(0.687357, 0.974455)
+texture = ExtResource("1_lkirm")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="BackgroundLevelFive2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node2D"]
+position = Vector2(652, -1597.5)
+scale = Vector2(0.689076, 0.974014)
+texture = ExtResource("1_lkirm")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer"]
+color = Color(1, 0, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxLayer/CanvasModulate"]
+libraries = {
+"": SubResource("AnimationLibrary_myqvb")
+}
