@@ -195,9 +195,13 @@ public partial class EnemySpawner : Node2D
     public void AddEnemy(IEnemyDummy enemy)
 	{
 		var node = enemy.GetInstance();
-
-		Enemies.Add(node);
+		AddEnemy(node);
 		CallDeferred("add_child", node);
+	}
+
+	public void AddEnemy(Node2D enemy)
+	{
+		Enemies.Add(enemy);
 	}
 
 	public void RemoveAllEnemies()

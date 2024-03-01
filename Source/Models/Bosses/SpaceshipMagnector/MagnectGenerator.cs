@@ -6,6 +6,7 @@ using Shooter.Source.Interfaces;
 public partial class MagnectGenerator : Node2D , IEnemy
 {
 	int _hp = 10;
+	[Export]
 	public int Id = 0;
 	int _time = 0;
 	int _cycles = 0;
@@ -18,6 +19,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		if(_hp > 0)
 			return;
 
+		EmitSignal("OnEnemyDestroyed");
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
         enemySpawner.RemoveEnemy(this);
     }
@@ -30,6 +32,9 @@ public partial class MagnectGenerator : Node2D , IEnemy
     public override void _Ready()
     {
         _cycles = Id * 8;
+
+		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+        enemySpawner.AddEnemy(this);
     }
 
     public override void _Process(double delta)
@@ -38,7 +43,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		{
 			Position = new Vector2(Position.X, Position.Y + 2);
 
-			if(_time > 60)
+			if(Position.Y > 90)
 			{
 				_isEntering = false;
 				_time = 0;
@@ -104,5 +109,8 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		_time = 0;
 		_cycles++;
     }
+
+	[Signal]
+	public delegate void OnEnemyDestroyedEventHandler();
 
 }

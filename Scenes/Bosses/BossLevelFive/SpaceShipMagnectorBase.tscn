@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://pergyuv1yl5e"]
+
+[ext_resource type="PackedScene" uid="uid://mexwwcssgo7w" path="res://Scenes/Bosses/BossLevelFive/SpaceshipMagnector.tscn" id="1_hdhff"]
+[ext_resource type="PackedScene" uid="uid://lte3yxylkrhw" path="res://Scenes/Bosses/BossLevelFive/MagnectGenerator.tscn" id="2_kk7s5"]
+[ext_resource type="PackedScene" uid="uid://efx7lm4jltcc" path="res://Scenes/Bosses/BossLevelFive/MacnectOrbiter.tscn" id="3_yxjdl"]
+
+[node name="SpaceShipMagnectorBase" type="Node2D"]
+
+[node name="SpaceshipMagnector" parent="." instance=ExtResource("1_hdhff")]
+position = Vector2(721, -208)
+
+[node name="magnectGenerator" parent="." instance=ExtResource("2_kk7s5")]
+position = Vector2(240, -270)
+
+[node name="magnectGenerator2" parent="." instance=ExtResource("2_kk7s5")]
+position = Vector2(481, -270)
+Id = 1
+
+[node name="magnectGenerator3" parent="." instance=ExtResource("2_kk7s5")]
+position = Vector2(962, -270)
+Id = 2
+
+[node name="magnectGenerator4" parent="." instance=ExtResource("2_kk7s5")]
+position = Vector2(1203, -270)
+Id = 3
+
+[node name="MacnectOrbiter" parent="." instance=ExtResource("3_yxjdl")]
+position = Vector2(256, -160)
+SpawnPosition = 2
+
+[node name="MacnectOrbiter2" parent="." instance=ExtResource("3_yxjdl")]
+position = Vector2(72, -168)
+SpawnPosition = 1
+
+[node name="MacnectOrbiter3" parent="." instance=ExtResource("3_yxjdl")]
+position = Vector2(-104, -152)
+
+[node name="MacnectOrbiter4" parent="." instance=ExtResource("3_yxjdl")]
+position = Vector2(424, -160)
+SpawnPosition = 3
+
+[connection signal="OnEnemyDestroyed" from="magnectGenerator" to="SpaceshipMagnector" method="OnEnemyDestroyed"]
+[connection signal="OnEnemyDestroyed" from="magnectGenerator2" to="SpaceshipMagnector" method="OnEnemyDestroyed"]
+[connection signal="OnEnemyDestroyed" from="magnectGenerator3" to="SpaceshipMagnector" method="OnEnemyDestroyed"]
+[connection signal="OnEnemyDestroyed" from="magnectGenerator4" to="SpaceshipMagnector" method="OnEnemyDestroyed"]

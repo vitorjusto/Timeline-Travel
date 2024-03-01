@@ -16,7 +16,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States
 
         public IState NextState()
         {
-            return new MagnectorShootingPlayerState(_node);
+            return new MagnectorIdleState(_node);
         }
 
         public bool Process()

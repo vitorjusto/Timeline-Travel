@@ -25,15 +25,15 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States
         public bool Process()
         {
 
-            // if(_time == 40)
-            // {
-            //     ShootProjectile();
-            //     _time = 0;
-            // }
+            if(_time == 40)
+            {
+                ShootProjectile();
+                _time = 0;
+            }
             
-
-            // _node.Position = new Vector2(_node.Position.X + _xspeed, _node.Position.Y + _yspeed);
-            // _time++;
+            _node.Position = new Vector2(_node.Position.X + _xspeed, _node.Position.Y + _yspeed);
+            _time++;
+            
             return false;
         }
 

@@ -51,7 +51,7 @@ namespace Shooter.Source.Factories.Bosses
 
         private static Node2D GetBossLevelFive()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelFive/SpaceshipMagnector.tscn");
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelFive/SpaceshipMagnectorBase.tscn");
 
             return (Node2D)scene.Instantiate();
         }

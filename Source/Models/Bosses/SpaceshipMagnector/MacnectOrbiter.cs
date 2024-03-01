@@ -9,6 +9,7 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 	private int _speed = 10;
 	private bool _isRotating = false;
 
+	[Export]
 	public ESpawnPosition SpawnPosition;
 
 	private int _xspeedModifier = 1;
@@ -22,7 +23,9 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 	public override void _Ready()
 	{
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
+		enemySpawner.AddEnemy(this);
 
 		if(SpawnPosition == ESpawnPosition.Up)
 		{
