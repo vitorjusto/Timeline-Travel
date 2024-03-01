@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://efx7lm4jltcc"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/SpaceshipMagnector/MacnectOrbiter.cs" id="1_3ylnv"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_fcnix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbj3s"]
+size = Vector2(96, 96)
+
+[node name="MacnectOrbiter" type="CharacterBody2D"]
+script = ExtResource("1_3ylnv")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fcnix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fbj3s")

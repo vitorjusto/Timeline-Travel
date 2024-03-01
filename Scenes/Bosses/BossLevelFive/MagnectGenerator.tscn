@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://lte3yxylkrhw"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/SpaceshipMagnector/MagnectGenerator.cs" id="1_4p53e"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_yc03w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gclcc"]
+size = Vector2(64, 64)
+
+[node name="magnectGenerator" type="CharacterBody2D"]
+script = ExtResource("1_4p53e")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+texture = ExtResource("2_yc03w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gclcc")
+
+[node name="AtractingAnimation" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 0, 1)
+self_modulate = Color(0, 1, 1, 1)
+texture = ExtResource("2_yc03w")
