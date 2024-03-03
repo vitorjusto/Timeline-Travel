@@ -27,11 +27,11 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
 
         public bool Process()
         {
-            if(_time == 100)
+            if(_time == 200)
             {
                 _isAtracting = true;
                 _node.StartAtracting();
-            }else if(_time == 160)
+            }else if(_time == 260)
             {
                 _isAtracting = false;
                 _node.StopAtracting();
