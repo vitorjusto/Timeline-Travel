@@ -6,6 +6,8 @@ using Shooter.Source.Dumies.Interfaces;
 using System.Linq;
 using Shooter.Source.Factories.Bosses;
 using Shooter.Source.Factories.Enemies;
+using Godot.Collections;
+using System;
 
 public partial class EnemySpawner : Node2D
 {
@@ -247,12 +249,17 @@ public partial class EnemySpawner : Node2D
 	
 	public void OnGamePaused(bool isPaused)
 	{
-		foreach(var enemy in GetChildren())
-		{
-			enemy.SetProcess(!isPaused);
-		}
-
+		PauseEveryEnemy(GetChildren(), isPaused);
+		
 		SetProcess(!isPaused);
 	}
 
+    private void PauseEveryEnemy(Array<Node> nodes, bool isPaused)
+    {
+        foreach(var enemy in nodes)
+		{
+			enemy.SetProcess(!isPaused);
+			PauseEveryEnemy(enemy.GetChildren(), isPaused);
+		}
+    }
 }

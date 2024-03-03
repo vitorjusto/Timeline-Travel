@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BackgroundLevelFive : Node2D
+public partial class BackgroundLevelFive : Node2D, IBackground
 {
     private ParallaxLayer _parallaxLayer;
     private AnimationPlayer _animationPlayer;
@@ -22,4 +22,10 @@ public partial class BackgroundLevelFive : Node2D
 		);
 
 	}
+
+    public void PauseBackground(bool isPaused)
+    {
+        SetProcess(!isPaused);
+    }
+
 }

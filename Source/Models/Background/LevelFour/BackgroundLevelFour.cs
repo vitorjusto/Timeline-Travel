@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Godot;
 
-public partial class BackgroundLevelFour : Node2D
+public partial class BackgroundLevelFour : Node2D, IBackground
 {
 	private Node2D _shadowContainer;
 	public override void _Ready()
@@ -69,4 +69,8 @@ public partial class BackgroundLevelFour : Node2D
 		}
     }
 
+    public void PauseBackground(bool isPaused)
+    {
+        
+    }
 }

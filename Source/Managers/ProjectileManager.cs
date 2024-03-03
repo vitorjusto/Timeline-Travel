@@ -13,16 +13,20 @@ public partial class ProjectileManager : Node2D
 	}
 
 	public List<Node2D> EnemiesProjectiles;
+    private bool _isPaused = false;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		Shoot();
 	}
 
     private void Shoot()
     {
-        if (Input.IsActionJustPressed("shoot"))
+		if(_isPaused)
+			return;
+			
+        if (Input.IsActionJustPressed("shoot") && !Input.IsActionJustPressed("pause"))
 		{
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
@@ -31,8 +35,8 @@ public partial class ProjectileManager : Node2D
             var instance = (PlayerProjectile)scene.Instantiate();
 
             instance.SetPosition(player.Position.X, player.Position.Y - 32);
-
-			AddChild(instance);
+			
+			CallDeferred("add_child", instance);
 
 		}
     }
@@ -40,7 +44,8 @@ public partial class ProjectileManager : Node2D
 	public void AddProjectile(IProjectileDummy projectile)
 	{
 		var node = projectile.GetInstance();
-
+		
+		node.SetProcess(!_isPaused);
 		EnemiesProjectiles.Add(node);
 		CallDeferred("add_child", node);
 
@@ -75,9 +80,10 @@ public partial class ProjectileManager : Node2D
 
 	public void OnGamePaused(bool isPaused)
 	{
+		_isPaused = isPaused;
 		foreach(var projectiles in GetChildren())
 		{
-			projectiles.SetProcess(!isPaused);
+			projectiles.SetProcess(!_isPaused);
 		}
 	}
 
