@@ -39,6 +39,10 @@ position = Vector2(-104, -152)
 position = Vector2(424, -160)
 SpawnPosition = 3
 
+[connection signal="ShieldDestroyed" from="SpaceshipMagnector" to="MacnectOrbiter" method="OnShieldDestroyed"]
+[connection signal="ShieldDestroyed" from="SpaceshipMagnector" to="MacnectOrbiter2" method="OnShieldDestroyed"]
+[connection signal="ShieldDestroyed" from="SpaceshipMagnector" to="MacnectOrbiter3" method="OnShieldDestroyed"]
+[connection signal="ShieldDestroyed" from="SpaceshipMagnector" to="MacnectOrbiter4" method="OnShieldDestroyed"]
 [connection signal="OnEnemyDestroyed" from="magnectGenerator" to="SpaceshipMagnector" method="OnEnemyDestroyed"]
 [connection signal="OnEnemyDestroyed" from="magnectGenerator2" to="SpaceshipMagnector" method="OnEnemyDestroyed"]
 [connection signal="OnEnemyDestroyed" from="magnectGenerator3" to="SpaceshipMagnector" method="OnEnemyDestroyed"]

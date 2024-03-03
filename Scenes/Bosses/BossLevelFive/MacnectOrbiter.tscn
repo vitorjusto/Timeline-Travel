@@ -15,3 +15,24 @@ texture = ExtResource("2_fcnix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fbj3s")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(56, 0)
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 56)
+
+[node name="VisibleOnScreenNotifier2D3" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-56, 0)
+
+[node name="VisibleOnScreenNotifier2D4" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -56)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="OnScreenEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D2" to="." method="OnScreenEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D2" to="." method="OnScreenExited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D3" to="." method="OnScreenEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D3" to="." method="OnScreenExited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D4" to="." method="OnScreenEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D4" to="." method="OnScreenExited"]

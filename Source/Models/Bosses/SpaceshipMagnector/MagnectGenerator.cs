@@ -5,7 +5,7 @@ using Shooter.Source.Interfaces;
 
 public partial class MagnectGenerator : Node2D , IEnemy
 {
-	int _hp = 10;
+	int _hp = 1;
 	[Export]
 	public int Id = 0;
 	int _time = 0;

@@ -41,12 +41,15 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 		if(_shieldHp == 2)
 			_state = _state.NextState();
 
-		if(_shieldHp == 0)
-		{
-			GetNode<Node2D>("ForceField").QueueFree();
-			GetNode<Node2D>("CollisionShape2D2").QueueFree();
-		}
-			
+		if(_shieldHp > 0)
+			return;
+
+		GetNode<Node2D>("ForceField").QueueFree();
+		GetNode<Node2D>("CollisionShape2D2").QueueFree();
+		EmitSignal("ShieldDestroyed");
 
     }
+
+	[Signal]
+	public delegate void ShieldDestroyedEventHandler();
 }

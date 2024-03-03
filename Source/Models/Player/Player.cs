@@ -30,7 +30,7 @@ public partial class Player : Area2D
     public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-		Hp = 10;
+		Hp = 500;
 
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Hide();
