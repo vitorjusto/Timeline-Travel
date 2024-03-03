@@ -1,15 +1,15 @@
-using System;
 using Godot;
-using Shooter.Source.Dumies.Enemies;
-using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
-using Shooter.Source.Models.Bosses.SpaceshipMagnector.States;
+using Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States;
+using Shooter.Source.Models.Bosses.SpaceshipPredador;
 
 public partial class SpaceshipMagnector : Node2D, IEnemy
 {
     private EnemySpawner _enemySpawner;
 	private IState _state;
 	private int _shieldHp = 4;
+    private bool _isAtracting;
+    private int _hp = 20;
     public override void _Ready()
 	{
 		Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2, y: -1000);
@@ -26,7 +26,13 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 
     public void Destroy()
     {
-        
+        if(_isAtracting || _shieldHp > 0)
+            return;
+
+        _hp--;
+
+        if(_hp == 0)
+            _state = new Exploding(this);
     }
 
     public bool IsImortal()
@@ -48,8 +54,23 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 		GetNode<Node2D>("CollisionShape2D2").QueueFree();
 		EmitSignal("ShieldDestroyed");
 
+		_state = _state.NextState();
+
     }
 
-	[Signal]
+    public void StartAtracting()
+    {
+        GetNode<Node2D>("AtractingAnimation").Visible = true;
+        _isAtracting = true;
+    }
+
+    public void StopAtracting()
+    {
+        GetNode<Node2D>("AtractingAnimation").Visible = false;
+        _isAtracting = false;
+    }
+
+
+    [Signal]
 	public delegate void ShieldDestroyedEventHandler();
 }

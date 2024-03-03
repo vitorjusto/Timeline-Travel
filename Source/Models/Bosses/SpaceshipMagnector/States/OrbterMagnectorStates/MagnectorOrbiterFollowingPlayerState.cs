@@ -3,7 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 
-namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States.OrbterMagnectorStates
+namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagnectorStates
 {
     public class MagnectorOrbiterFollowingPlayerState : IState
     {

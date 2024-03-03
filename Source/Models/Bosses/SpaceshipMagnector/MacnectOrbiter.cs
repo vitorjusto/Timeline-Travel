@@ -1,7 +1,7 @@
 using Godot;
 using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
-using Shooter.Source.Models.Bosses.SpaceshipMagnector.States.OrbterMagnectorStates;
+using Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagnectorStates;
 using Shooter.Source.Models.Misc;
 
 public partial class MacnectOrbiter : CharacterBody2D, IEnemy

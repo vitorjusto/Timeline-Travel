@@ -1,6 +1,6 @@
 using Shooter.Source.Interfaces;
 
-namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States.OrbterMagnectorStates
+namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagnectorStates
 {
     public class MagnectorOrbiterWaitingState : IState
     {

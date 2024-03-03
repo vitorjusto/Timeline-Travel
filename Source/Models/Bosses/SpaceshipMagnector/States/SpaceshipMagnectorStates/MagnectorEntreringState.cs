@@ -1,7 +1,7 @@
 using Godot;
 using Shooter.Source.Interfaces;
 
-namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States
+namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States
 {
     public class MagnectorEntreringState : IState
     {

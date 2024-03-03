@@ -2,8 +2,9 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMagnectorStates;
 
-namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States
+namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States
 {
     public class MagnectorShootingPlayerState : IState
     {
@@ -19,7 +20,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnector.States
 
         public IState NextState()
         {
-            return null;
+            return new MagnectorShootingAndAtractingState(this, _node);
         }
 
         public bool Process()
