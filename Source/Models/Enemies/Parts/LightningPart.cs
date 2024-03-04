@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Shooter.Source.Interfaces;
 
-public partial class LightningPart : CharacterBody2D, IEnemy
+public partial class LightningPart : CharacterBody2D, IEnemy, INonExplodable
 {
 
 	private int _speed = 1;

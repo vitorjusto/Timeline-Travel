@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://85x8whjs32nl"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSix/BackgroundLevelSix.cs" id="1_5acpt"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelFour/LevelFourParallaxLayer.cs" id="1_pd7xt"]
+[ext_resource type="Texture2D" uid="uid://c07mo8wf1ewgm" path="res://Assets/Background/LevelFour/Sem título.png" id="2_4bm5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40isb"]
+bg_color = Color(0.156863, 0.156863, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxagb"]
+bg_color = Color(0.235294, 0.235294, 0.352941, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5acpt")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Panel" type="Panel" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = -72.0
+offset_top = -24.0
+offset_right = 1456.0
+offset_bottom = 936.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_40isb")
+
+[node name="Panel2" type="Panel" parent="ParallaxBackground/ParallaxLayer2"]
+visible = false
+offset_top = -8.0
+offset_right = 1704.0
+offset_bottom = 952.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxagb")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.247059, 0.247059, 0.309804, 1)
+self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
+motion_mirroring = Vector2(0, 3071)
+script = ExtResource("1_pd7xt")
+Speed = 3
+
+[node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1127, 376)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+
+[node name="SemTítulo2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(383, -584)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+flip_h = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.317647, 0.317647, 0.380392, 1)
+self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
+motion_mirroring = Vector2(0, 3071)
+script = ExtResource("1_pd7xt")
+Speed = 6
+
+[node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1281, 248)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+
+[node name="SemTítulo2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(194, -592)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+flip_h = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.392157, 0.392157, 0.454902, 1)
+self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
+motion_mirroring = Vector2(0, 3071)
+script = ExtResource("1_pd7xt")
+Speed = 9
+
+[node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1376, 320)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+
+[node name="SemTítulo2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(56, -536)
+scale = Vector2(12, 12)
+texture = ExtResource("2_4bm5g")
+flip_h = true
+
+[node name="RainDropParallax" type="ParallaxLayer" parent="ParallaxBackground"]

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Shooter.Source.Interfaces;
 
-public partial class Crusader : CharacterBody2D, IEnemy
+public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 {
 	private float _speed = 0;
 

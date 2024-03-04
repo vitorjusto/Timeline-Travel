@@ -8,6 +8,7 @@ using Shooter.Source.Factories.Bosses;
 using Shooter.Source.Factories.Enemies;
 using Godot.Collections;
 using System;
+using Shooter.Source.Interfaces;
 
 public partial class EnemySpawner : Node2D
 {
@@ -17,7 +18,7 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
-	public int CurrentLevel = 5;
+	public int CurrentLevel = 6;
 
 	public bool BossApeared = false;
     private bool _endingLevel;
@@ -58,6 +59,8 @@ public partial class EnemySpawner : Node2D
 			_enemySection = EnemiesLevelFour.GetEnemies();
 		if(CurrentLevel == 5)
 			_enemySection = EnemiesLevelFive.GetEnemies();
+		if(CurrentLevel == 6)
+			_enemySection = EnemiesLevelSix.GetEnemies();
     }
 
 
@@ -157,9 +160,12 @@ public partial class EnemySpawner : Node2D
 
 	public void RemoveEnemy(Node2D node)
 	{
+		var enemy = Enemies.Find((x) => x == node);
+
 		Enemies.Remove(node);
 
-		AddExplosion(node.Position.X, node.Position.Y);
+		if(enemy is not INonExplodable)
+			AddExplosion(node.Position.X, node.Position.Y);
 
 		node.QueueFree();
 

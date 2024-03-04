@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfaur3mouugdl"]
+
+[ext_resource type="Texture2D" uid="uid://chp5fphtaaipw" path="res://Assets/Background/LevelSix/RainDrop.png" id="1_fdtbl"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSix/RainDrop.cs" id="2_gbg44"]
+
+[node name="RainDrop" type="Sprite2D"]
+scale = Vector2(1.0625, 1.0625)
+texture = ExtResource("1_fdtbl")
+script = ExtResource("2_gbg44")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.617647, 0.617647)
+metadata/_edit_lock_ = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

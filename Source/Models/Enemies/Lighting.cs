@@ -1,9 +1,8 @@
 using Godot;
-using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Enemies.EnemiesPart;
 
-public partial class Lighting : Node2D, IEnemy
+public partial class Lighting : Node2D, IEnemy, INonExplodable
 {
 	private int _time = 0;
 	private bool _isWarning = true;

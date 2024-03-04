@@ -21,6 +21,9 @@ namespace Shooter.Source.Factories.Levels
                 return GetLevelFour();
             else if(level == 5)
                 return GetLevelFive();
+            else if(level == 6)
+                return GetLevelSix();
+                
             return null;
         }
         private static Node2D GetLevelOne()
@@ -62,6 +65,15 @@ namespace Shooter.Source.Factories.Levels
         private static Node2D GetLevelFive()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelFive.tscn");
+
+            var instance = (Node2D)scene.Instantiate();
+
+		    return instance;
+        }
+
+        private static Node2D GetLevelSix()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelSix.tscn");
 
             var instance = (Node2D)scene.Instantiate();
 
