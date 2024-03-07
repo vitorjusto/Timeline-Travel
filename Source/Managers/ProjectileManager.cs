@@ -11,13 +11,15 @@ public partial class ProjectileManager : Node2D
 	{
 		EnemiesProjectiles = new List<Node2D>();
 	}
-
+	private int _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
     private bool _isPaused = false;
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+
+
 		Shoot();
 	}
 
@@ -25,23 +27,38 @@ public partial class ProjectileManager : Node2D
     {
 		if(_isPaused)
 			return;
-			
+		
+		if(Input.IsActionPressed("shoot"))
+		{
+			_autoFireCooldown--;
+			if(_autoFireCooldown == 0)
+			{
+				ShootPlayerProjectile();
+				_autoFireCooldown = 10;
+			}
+		}
+
         if (Input.IsActionJustPressed("shoot") && !Input.IsActionJustPressed("pause"))
 		{
-			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-
-			var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
-
-            var instance = (PlayerProjectile)scene.Instantiate();
-
-            instance.SetPosition(player.Position.X, player.Position.Y - 32);
-			
-			CallDeferred("add_child", instance);
-
+			ShootPlayerProjectile();
+			_autoFireCooldown = 10;
 		}
     }
 
-	public void AddProjectile(IProjectileDummy projectile)
+    private void ShootPlayerProjectile()
+    {
+        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+		var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
+
+        var instance = (PlayerProjectile)scene.Instantiate();
+
+        instance.SetPosition(player.Position.X, player.Position.Y - 32);
+			
+		CallDeferred("add_child", instance);
+    }
+
+    public void AddProjectile(IProjectileDummy projectile)
 	{
 		var node = projectile.GetInstance();
 		

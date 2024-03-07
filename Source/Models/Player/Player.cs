@@ -9,7 +9,7 @@ public partial class Player : Area2D
     public int Speed = 12; 
 
 	[Export]
-	public int DashInitialSpeed = 35;
+	public int DashInitialSpeed = 45;
 	private int _dashSpeedBoost = 0;
 
 	private int _iFrame = 0;
