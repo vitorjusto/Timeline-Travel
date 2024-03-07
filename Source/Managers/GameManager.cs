@@ -65,7 +65,7 @@ public partial class GameManager : Node2D
 		projectileManager.RemoveAllProjectiles();
 
 		_time++;
-
+		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
     }
 
 	public void OnLevelPassed()
@@ -94,6 +94,7 @@ public partial class GameManager : Node2D
 		player.HideTarget();
 		
 		_time++;
+		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
 	}
 
 	[Signal]

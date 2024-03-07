@@ -9,11 +9,13 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         public Node2D _node;
         private EnemySpawner _enemySpawner;
         public int _time = 0;
+        private int _size;
 
-        public Exploding(Node2D node)
+        public Exploding(Node2D node, int size = 100)
         {
             _node = node;
             _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+            _size = size;
         }
 
         public IState NextState()
@@ -26,7 +28,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             if(_time == 0)
                 _enemySpawner.RemoveAllEnemies();
 
-            _enemySpawner.AddExplosion(_node.Position.X + (new Random().Next(-100, 100)), _node.Position.Y + (new Random().Next(-100, 100)));
+            _enemySpawner.AddExplosion(_node.Position.X + (new Random().Next(-_size, _size)), _node.Position.Y + (new Random().Next(-_size, _size)));
 
 		    if(_time == 300)
 		    {

@@ -12,7 +12,7 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 	public int NotifiersOffScreen = 4;
 
 	[Export]
-	public ESpawnPosition SpawnPosition;
+	public EDirection SpawnPosition;
 
 	private IState _state;
 

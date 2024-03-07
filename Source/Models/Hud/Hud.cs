@@ -114,4 +114,9 @@ public partial class Hud : Node2D
 		_time = 0;
     }
 
+	public void ShowCustomWarning(string name)
+	{
+		GetNode<AnimatedSprite2D>("AniCustomWarning").Play(name);
+	}
+
 }

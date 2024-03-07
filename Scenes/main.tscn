@@ -30,6 +30,7 @@ position = Vector2(722, 720)
 [node name="BackgroundManager" parent="." instance=ExtResource("4_ureka")]
 
 [node name="Hud" parent="." instance=ExtResource("2_qou5h")]
+position = Vector2(0, 1)
 
 [connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
 [connection signal="LevelEnded" from="EnemySpawner" to="." method="OnLevelPassed"]

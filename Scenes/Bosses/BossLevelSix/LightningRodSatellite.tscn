@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ewormp4o5y0"]
+
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_biqp7"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/LevelSix/LightningRodSatellite.cs" id="1_elosm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68e87"]
+size = Vector2(144, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68wjb"]
+size = Vector2(592, 152)
+
+[node name="LightningRodSatellite" type="CharacterBody2D"]
+script = ExtResource("1_elosm")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(2.3125, 4.1875)
+texture = ExtResource("1_biqp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_68e87")
+
+[node name="SprProtection" type="Sprite2D" parent="."]
+position = Vector2(3.05176e-05, 80)
+scale = Vector2(9.25, 2.375)
+texture = ExtResource("1_biqp7")
+
+[node name="ColProtection" type="CollisionShape2D" parent="."]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_68wjb")

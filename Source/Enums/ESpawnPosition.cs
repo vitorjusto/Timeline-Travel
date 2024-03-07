@@ -1,6 +1,6 @@
 namespace Shooter.Source.Enums
 {
-    public enum ESpawnPosition
+    public enum EDirection
     {
         Up = 0,
         Down = 1,

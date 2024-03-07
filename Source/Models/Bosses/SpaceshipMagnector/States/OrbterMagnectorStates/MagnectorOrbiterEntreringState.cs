@@ -19,25 +19,25 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
             _node = node;
             _player = node.GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-            if(_node.SpawnPosition == ESpawnPosition.Up)
+            if(_node.SpawnPosition == EDirection.Up)
 		    {
                 _xspeedModifier = -1;
 			    _yspeedModifier = -1;
 		    	_node.Position = new Vector2(x: _player.Position.X, y: _player.Position.Y - _playerDistance);
-		    }else if(_node.SpawnPosition == ESpawnPosition.Left)
+		    }else if(_node.SpawnPosition == EDirection.Left)
 		    {
                 _yspeedModifier = -1;
 				_ytime = 0;
 				_time = 3.3f;
 		    	_node.Position = new Vector2(x: _player.Position.X - _playerDistance, y: _player.Position.Y);
 
-		    }else if(_node.SpawnPosition == ESpawnPosition.Right)
+		    }else if(_node.SpawnPosition == EDirection.Right)
 		    {
                 _xspeedModifier = -1;
 				_ytime = 0;
 				_time = 3.3f;
 		    	_node.Position = new Vector2(x: _player.Position.X + _playerDistance, y: _player.Position.Y);
-		    }else if(_node.SpawnPosition == ESpawnPosition.Down)
+		    }else if(_node.SpawnPosition == EDirection.Down)
 		    {
 		    	_node.Position = new Vector2(x: _player.Position.X, y: _player.Position.Y + _playerDistance);
 		    }
@@ -50,7 +50,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 
         public bool Process()
         {
-            if(_node.SpawnPosition == ESpawnPosition.Up)
+            if(_node.SpawnPosition == EDirection.Up)
 			{
 
 				_node.Position = new Vector2(x: _player.Position.X, y: _player.Position.Y - _playerDistance);
@@ -58,21 +58,21 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 				if(_node.Position.Y > _player.Position.Y - 150)
                     return true;
 
-			}else if(_node.SpawnPosition == ESpawnPosition.Down)
+			}else if(_node.SpawnPosition == EDirection.Down)
 			{
 				_node.Position = new Vector2(x: _player.Position.X, y: _player.Position.Y + _playerDistance);
 				
 				if(_node.Position.Y - _player.Position.Y < 150)
                     return true;
 
-			}else if(_node.SpawnPosition == ESpawnPosition.Left)
+			}else if(_node.SpawnPosition == EDirection.Left)
 			{
 				_node.Position = new Vector2(x: _player.Position.X - _playerDistance, y: _player.Position.Y);
 				
 				if(_node.Position.X > _player.Position.X - 150)
                     return true;
 
-			}else if(_node.SpawnPosition == ESpawnPosition.Right)
+			}else if(_node.SpawnPosition == EDirection.Right)
 			{
 				_node.Position = new Vector2(x: _player.Position.X + _playerDistance, y: _player.Position.Y);
 				

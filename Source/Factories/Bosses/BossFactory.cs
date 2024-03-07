@@ -17,6 +17,9 @@ namespace Shooter.Source.Factories.Bosses
                 return GetBossLevelFour();
             if(level == 5)
                 return GetBossLevelFive();  
+            if(level == 6)
+                return GetBossLevelSix();
+            
             return null;
         }
 
@@ -52,6 +55,13 @@ namespace Shooter.Source.Factories.Bosses
         private static Node2D GetBossLevelFive()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelFive/SpaceshipMagnectorBase.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
+
+        private static Node2D GetBossLevelSix()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSix/LightningRodSatellite.tscn");
 
             return (Node2D)scene.Instantiate();
         }
