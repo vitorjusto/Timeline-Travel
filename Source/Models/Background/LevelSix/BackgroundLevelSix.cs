@@ -47,7 +47,7 @@ public partial class BackgroundLevelSix : Node2D
         var scene = GD.Load<PackedScene>("res://Scenes/Background/RainDrop.tscn");
 
         var instance = (Node2D)scene.Instantiate();
-        instance.Position = new Vector2(new Random().Next(100, 1600), -30);
+        instance.Position = new Vector2(new Random().Next(30, 1500), -30);
 
 		_rainDropParallax.AddChild(instance);
 		_rainDropTimer = 0;
