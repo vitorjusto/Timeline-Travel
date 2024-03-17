@@ -1,0 +1,348 @@
+[gd_scene load_steps=25 format=3 uid="uid://dn6km325lq2tu"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/LevelSevenBackground.cs" id="1_bvj81"]
+[ext_resource type="Texture2D" uid="uid://b2kj5474tbki" path="res://Assets/Background/LevelSeven/TreeBranches.png" id="2_c13le"]
+[ext_resource type="Texture2D" uid="uid://bwb7x3b66p4rg" path="res://Assets/Background/LevelSeven/Bushes.png" id="3_vmbmf"]
+[ext_resource type="Texture2D" uid="uid://bt0krk0mn4ubl" path="res://Assets/Background/LevelSeven/BackgroungLevelSeven.png" id="4_6mwdx"]
+[ext_resource type="Texture2D" uid="uid://dqd5ksomiotju" path="res://Assets/Background/LevelSeven/SunReflection.png" id="5_3kswj"]
+
+[sub_resource type="Animation" id="Animation_lk2si"]
+resource_name = "new_animation2"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20, 30, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.227451, 0.854902, 0.415686, 1), Color(0.94902, 0.611765, 0.0705882, 1), Color(1, 1, 1, 1), Color(0.956863, 0.52549, 0.964706, 1), Color(0.227451, 0.854902, 0.415686, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y8geq"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6hux"]
+_data = {
+"RESET": SubResource("Animation_y8geq"),
+"new_animation2": SubResource("Animation_lk2si")
+}
+
+[sub_resource type="Animation" id="Animation_al2gf"]
+resource_name = "novaAnimacao"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 30, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AniFall:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 20, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AniWinter:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10, 20, 30, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AniSpring:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 20, 30, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8acq"]
+_data = {
+"novaAnimacao": SubResource("Animation_al2gf")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ojgy"]
+atlas = ExtResource("4_6mwdx")
+region = Rect2(289, 0, 289, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maxav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ojgy")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gol4g"]
+atlas = ExtResource("4_6mwdx")
+region = Rect2(0, 0, 289, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvt8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gol4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3otlr"]
+atlas = ExtResource("4_6mwdx")
+region = Rect2(0, 180, 289, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f0h1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3otlr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtfq6"]
+atlas = ExtResource("4_6mwdx")
+region = Rect2(289, 180, 289, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxrsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtfq6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3lac"]
+atlas = ExtResource("5_3kswj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4lml"]
+atlas = ExtResource("5_3kswj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2883"]
+atlas = ExtResource("5_3kswj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgu77"]
+atlas = ExtResource("5_3kswj")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxg6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3lac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4lml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2883")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgu77")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piund"]
+bg_color = Color(0.6, 0.85098, 0.917647, 1)
+
+[node name="BackgroundLevelSeven" type="Node2D"]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="CanvasLayer2"]
+layer = -2
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground2"]
+motion_mirroring = Vector2(0, 9180)
+script = ExtResource("1_bvj81")
+
+[node name="TreeBranches" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(1054, -3680)
+scale = Vector2(3, 3)
+texture = ExtResource("2_c13le")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(0, 9180)
+script = ExtResource("1_bvj81")
+
+[node name="Bushes" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1276, -3248)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(180.125, -3693.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1300, -4048)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes4" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1228.12, -4757.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes5" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(156.125, -6101.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes6" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1244.12, -6077.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes7" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1236.12, -6733.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes8" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(212, -7208)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes9" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1236.12, -7781.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes11" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1244.12, -8101.88)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes12" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(180, -2136)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes13" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1220.12, -821.875)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes14" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1228.12, 146.125)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="Bushes15" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1220.12, 410.125)
+scale = Vector2(28.0312, 28.5313)
+texture = ExtResource("3_vmbmf")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+self_modulate = Color(0.227451, 0.854902, 0.415686, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/CanvasModulate"]
+autoplay = "new_animation2"
+libraries = {
+"": SubResource("AnimationLibrary_r6hux")
+}
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="CanvasLayer3"]
+layer = -3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer3/ParallaxBackground3"]
+root_node = NodePath("../AniSummer")
+autoplay = "novaAnimacao"
+libraries = {
+"": SubResource("AnimationLibrary_x8acq")
+}
+
+[node name="AniFall" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(722, 450)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_maxav")
+animation = &"new_animation"
+
+[node name="AniSummer" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+position = Vector2(722, 450)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kvt8s")
+
+[node name="AniWinter" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(722, 450)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_0f0h1")
+
+[node name="AniSpring" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(722, 450)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_dxrsw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+texture_filter = 1
+position = Vector2(1160, 832)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_yxg6h")
+autoplay = "default"
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer4"]
+layer = -4
+
+[node name="Panel" type="Panel" parent="CanvasLayer4/ParallaxBackground"]
+offset_right = 1448.0
+offset_bottom = 904.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_piund")
