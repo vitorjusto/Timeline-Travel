@@ -1,10 +1,20 @@
-[gd_scene load_steps=25 format=3 uid="uid://dn6km325lq2tu"]
+[gd_scene load_steps=33 format=3 uid="uid://dn6km325lq2tu"]
 
 [ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/LevelSevenBackground.cs" id="1_bvj81"]
 [ext_resource type="Texture2D" uid="uid://b2kj5474tbki" path="res://Assets/Background/LevelSeven/TreeBranches.png" id="2_c13le"]
 [ext_resource type="Texture2D" uid="uid://bwb7x3b66p4rg" path="res://Assets/Background/LevelSeven/Bushes.png" id="3_vmbmf"]
 [ext_resource type="Texture2D" uid="uid://bt0krk0mn4ubl" path="res://Assets/Background/LevelSeven/BackgroungLevelSeven.png" id="4_6mwdx"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/FieldBackgroundLevelSeven.cs" id="4_h4tkj"]
 [ext_resource type="Texture2D" uid="uid://dqd5ksomiotju" path="res://Assets/Background/LevelSeven/SunReflection.png" id="5_3kswj"]
+[ext_resource type="Texture2D" uid="uid://cp0ysbnjjyb5k" path="res://Assets/Background/LevelSeven/Sun.png" id="7_ej0ad"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/CloudLayer.cs" id="7_ke5bv"]
+[ext_resource type="Texture2D" uid="uid://bo27bhtn6qehn" path="res://Assets/Background/LevelSeven/CloudsBackground.png" id="8_wug8o"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/SunLayer.cs" id="9_y7d71"]
+[ext_resource type="Texture2D" uid="uid://bij3mvpfa8dlo" path="res://Assets/Background/LevelOne/MainBackground.png" id="10_hwds8"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/SkyLayer.cs" id="10_om8ca"]
+
+[sub_resource type="Animation" id="Animation_y8geq"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_lk2si"]
 resource_name = "new_animation2"
@@ -22,9 +32,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.227451, 0.854902, 0.415686, 1), Color(0.94902, 0.611765, 0.0705882, 1), Color(1, 1, 1, 1), Color(0.956863, 0.52549, 0.964706, 1), Color(0.227451, 0.854902, 0.415686, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_y8geq"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6hux"]
 _data = {
@@ -90,21 +97,6 @@ _data = {
 "novaAnimacao": SubResource("Animation_al2gf")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ojgy"]
-atlas = ExtResource("4_6mwdx")
-region = Rect2(289, 0, 289, 180)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_maxav"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ojgy")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gol4g"]
 atlas = ExtResource("4_6mwdx")
 region = Rect2(0, 0, 289, 180)
@@ -117,6 +109,21 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ojgy"]
+atlas = ExtResource("4_6mwdx")
+region = Rect2(289, 0, 289, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maxav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ojgy")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -186,8 +193,11 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piund"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t1fo"]
 bg_color = Color(0.6, 0.85098, 0.917647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm73y"]
+bg_color = Color(0.286275, 0.584314, 0.658824, 1)
 
 [node name="BackgroundLevelSeven" type="Node2D"]
 
@@ -299,38 +309,47 @@ layer = 2
 [node name="ParallaxBackground3" type="ParallaxBackground" parent="CanvasLayer3"]
 layer = -3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer3/ParallaxBackground3"]
+script = ExtResource("4_h4tkj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 root_node = NodePath("../AniSummer")
 autoplay = "novaAnimacao"
 libraries = {
 "": SubResource("AnimationLibrary_x8acq")
 }
 
-[node name="AniFall" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="AniSummer2" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
+self_modulate = Color(0.541176, 0.54902, 0.556863, 1)
+position = Vector2(722, 450)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kvt8s")
+
+[node name="AniFall" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_maxav")
 animation = &"new_animation"
 
-[node name="AniSummer" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="AniSummer" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kvt8s")
 
-[node name="AniWinter" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="AniWinter" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0f0h1")
 
-[node name="AniSpring" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="AniSpring" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_dxrsw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer3/ParallaxBackground3/ParallaxLayer"]
 texture_filter = 1
 position = Vector2(1160, 832)
 scale = Vector2(5, 5)
@@ -342,7 +361,51 @@ autoplay = "default"
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer4"]
 layer = -4
 
-[node name="Panel" type="Panel" parent="CanvasLayer4/ParallaxBackground"]
-offset_right = 1448.0
-offset_bottom = 904.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_piund")
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer4/ParallaxBackground"]
+motion_mirroring = Vector2(3000, 0)
+script = ExtResource("7_ke5bv")
+
+[node name="CloudsBackground" type="Sprite2D" parent="CanvasLayer4/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1488, -720)
+scale = Vector2(10, 10)
+texture = ExtResource("8_wug8o")
+
+[node name="CanvasLayer5" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer5"]
+layer = -5
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer5/ParallaxBackground"]
+script = ExtResource("9_y7d71")
+
+[node name="Sun" type="Sprite2D" parent="CanvasLayer5/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1160, 200)
+scale = Vector2(5, 5)
+texture = ExtResource("7_ej0ad")
+
+[node name="CanvasLayer6" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer6"]
+layer = -6
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer6/ParallaxBackground"]
+script = ExtResource("10_om8ca")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer6/ParallaxBackground/ParallaxLayer"]
+offset_left = -48.0
+offset_top = -688.0
+offset_right = 1632.0
+offset_bottom = 848.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8t1fo")
+
+[node name="Panel" type="Panel" parent="CanvasLayer6/ParallaxBackground/ParallaxLayer"]
+offset_left = -56.0
+offset_top = -1264.0
+offset_right = 1856.0
+offset_bottom = -584.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sm73y")
+
+[node name="MainBackground" type="Sprite2D" parent="CanvasLayer6/ParallaxBackground/ParallaxLayer"]
+position = Vector2(944, -2024)
+scale = Vector2(1.47992, 1.4096)
+texture = ExtResource("10_hwds8")
