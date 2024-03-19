@@ -5,7 +5,7 @@ using System;
 public partial class Common : CharacterBody2D, IEnemy
 {
 
-	private int _speed = 1;
+	public int Speed = 1;
 
     public override void _Process(double delta)
 	{
@@ -14,7 +14,7 @@ public partial class Common : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-        Position = new Vector2(x: Position.X, y: Position.Y + _speed);
+        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
     }
 
     public void OnScreenExited()

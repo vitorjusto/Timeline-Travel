@@ -6,9 +6,11 @@ namespace Shooter.Source.Dumies.Enemies
     public class DCommon : IEnemyDummy
     {
         private int _x;
-        public DCommon(int x)
+        private int _speed;
+        public DCommon(int x, int speed)
         {
             _x = x;
+            _speed = speed;
         }
 
         public Node2D GetInstance()
@@ -18,6 +20,7 @@ namespace Shooter.Source.Dumies.Enemies
             var instance = (Common)scene.Instantiate();
 
             instance.Position = new Vector2(_x, y: -30);
+            instance.Speed = _speed;
 
             return instance;
         }

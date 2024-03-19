@@ -20,7 +20,7 @@ public partial class GameManager : Node2D
 
 			if(_time > 130)
 			{
-				var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/BlackScreen");
+				var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 				blackScreen.Visible = false;
 				IsBlackScreen = false;
 				_time = 0;
@@ -42,7 +42,7 @@ public partial class GameManager : Node2D
 
     private void RestartLevel()
     {
-        var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/BlackScreen");
+        var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
 
@@ -66,6 +66,9 @@ public partial class GameManager : Node2D
 
 		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
+
+		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
+		backgroundManager.RestartBackgroundAnimation(enemySpawner.CurrentLevel);
     }
 
 	public void OnLevelPassed()
@@ -75,7 +78,7 @@ public partial class GameManager : Node2D
 
 	private void StartNewLevel()
 	{
-		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/BlackScreen");
+		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
 

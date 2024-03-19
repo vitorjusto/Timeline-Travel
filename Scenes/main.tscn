@@ -11,15 +11,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lxf7m")
 
-[node name="BlackScreen" type="Node2D" parent="."]
-visible = false
-top_level = true
-
-[node name="BlackScreenImage" type="Sprite2D" parent="BlackScreen"]
-position = Vector2(684, 472)
-scale = Vector2(1.16575, 1.04811)
-texture = ExtResource("6_f2tug")
-
 [node name="EnemySpawner" parent="." instance=ExtResource("4_36fse")]
 
 [node name="Player" parent="." instance=ExtResource("1_fn8jx")]
@@ -31,6 +22,18 @@ position = Vector2(722, 720)
 
 [node name="Hud" parent="." instance=ExtResource("2_qou5h")]
 position = Vector2(0, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 128
+
+[node name="BlackScreen" type="Node2D" parent="ParallaxBackground"]
+visible = false
+top_level = true
+
+[node name="BlackScreenImage" type="Sprite2D" parent="ParallaxBackground/BlackScreen"]
+position = Vector2(684, 472)
+scale = Vector2(1.16575, 1.04811)
+texture = ExtResource("6_f2tug")
 
 [connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
 [connection signal="LevelEnded" from="EnemySpawner" to="." method="OnLevelPassed"]

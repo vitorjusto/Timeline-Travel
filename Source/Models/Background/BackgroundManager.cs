@@ -32,4 +32,11 @@ public partial class BackgroundManager : Node2D
 	{
 		((IBackground)_currentBackground).PauseBackground(isPaused);
 	}
+
+    internal void RestartBackgroundAnimation(int CurrentLevel)
+    {
+        //Resetable levels: 7
+		if(CurrentLevel == 7)
+			SetNewBackgroundLevel(CurrentLevel);
+    }
 }
