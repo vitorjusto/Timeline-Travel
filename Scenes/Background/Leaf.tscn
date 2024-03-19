@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2b3fvlackjm5"]
+
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/Leaf.cs" id="1_cntys"]
+[ext_resource type="Texture2D" uid="uid://b1d0jncoa82pj" path="res://Assets/Background/LevelSeven/Leaf.png" id="2_cw7jy"]
+
+[node name="Leaf" type="Node2D"]
+script = ExtResource("1_cntys")
+
+[node name="Leaf" type="Sprite2D" parent="."]
+scale = Vector2(4.13125, 4.13125)
+texture = ExtResource("2_cw7jy")

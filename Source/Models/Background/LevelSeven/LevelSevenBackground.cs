@@ -13,7 +13,7 @@ public partial class LevelSevenBackground : ParallaxLayer
 	{
 		this.MotionOffset = new Vector2(
     		x: this.MotionOffset.X,
-    		y: this.MotionOffset.Y + 5
+    		y: this.MotionOffset.Y + 15
 		);
 	}
 }
