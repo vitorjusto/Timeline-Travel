@@ -7,6 +7,8 @@ using System;
 public partial class ProjectileManager : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
+
+	public int PlayerProjectileLevel = 1;
 	public override void _Ready()
 	{
 		EnemiesProjectiles = new List<Node2D>();
@@ -18,8 +20,6 @@ public partial class ProjectileManager : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-
-
 		Shoot();
 	}
 
@@ -47,6 +47,38 @@ public partial class ProjectileManager : Node2D
 
     private void ShootPlayerProjectile()
     {
+		if(PlayerProjectileLevel == 1)
+			AddPlayerProjectile(0, -20);
+		else if(PlayerProjectileLevel == 2)
+		{
+			AddPlayerProjectile(-2, -20);
+			AddPlayerProjectile(2, -20);
+		}
+		else if(PlayerProjectileLevel == 3)
+		{
+			AddPlayerProjectile(-2, -20);
+			AddPlayerProjectile(2, -20);
+			AddPlayerProjectile(0, -20);
+		}
+		else if(PlayerProjectileLevel == 4)
+		{
+			AddPlayerProjectile(-6, -20);
+			AddPlayerProjectile(-2, -20);
+			AddPlayerProjectile(2, -20);
+			AddPlayerProjectile(6, -20);
+		}
+		else
+		{
+			AddPlayerProjectile(-6, -20);
+			AddPlayerProjectile(-3, -20);
+			AddPlayerProjectile(3, -20);
+			AddPlayerProjectile(6, -20);
+			AddPlayerProjectile(0, -20);
+		}
+    }
+
+    private void AddPlayerProjectile(int xSpeed, int ySpeed)
+    {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
 		var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
@@ -54,7 +86,8 @@ public partial class ProjectileManager : Node2D
         var instance = (PlayerProjectile)scene.Instantiate();
 
         instance.SetPosition(player.Position.X, player.Position.Y - 32);
-			
+		
+		instance.SetSpeed(xSpeed, ySpeed);
 		CallDeferred("add_child", instance);
     }
 

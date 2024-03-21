@@ -26,6 +26,7 @@ public partial class Player : Area2D
     public int Hp {get; set;}
 	public int Life = 3;
     private GameManager _gameManager;
+	private int _playerHitTimes = 0;
 
     public override void _Ready()
 	{
@@ -174,6 +175,22 @@ public partial class Player : Area2D
 			EmitSignal("PlayerHitProjectile", node);
 		}
 
+		if(_iFrame == 0)
+		{
+			_playerHitTimes++;
+
+			if(_playerHitTimes == 3)
+			{
+				var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+
+				projectileManager.PlayerProjectileLevel -= 1;
+
+				if(projectileManager.PlayerProjectileLevel < 1)
+					projectileManager.PlayerProjectileLevel = 1;
+				
+				_playerHitTimes = 0;
+			}
+		}
 		if(_iFrame == 0)
 			_iFrame = IFrameTime;
 

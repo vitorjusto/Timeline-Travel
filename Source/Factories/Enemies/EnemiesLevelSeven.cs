@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Levels;
@@ -45,7 +46,50 @@ namespace Shooter.Source.Factories.Enemies
                 new EnemySection(160, false, new DDasher(1100)), 
 
 
-                new EnemySection(10, false, new DGooder(200, true), new DSniper(300, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(300, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(100, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(500, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(600, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(400, EEnemyProjectileType.Light)),                     
+                new EnemySection(40, false, new DGooder(200, true), new DSniper(700, EEnemyProjectileType.Light)),     
+
+                new EnemySection(10, false, new DFollower(100, EEnemyProjectileType.Normal)),                     
+                new EnemySection(10, false, new DFollower(200, EEnemyProjectileType.Normal)),                     
+                new EnemySection(10, false, new DFollower(300, EEnemyProjectileType.Normal)),                     
+                new EnemySection(10, false, new DFollower(400, EEnemyProjectileType.Normal)),                     
+                new EnemySection(10, false, new DFollower(500, EEnemyProjectileType.Normal)),
+
+                new EnemySection(50, false, new DSniper(100, EEnemyProjectileType.Normal), 
+                                            new DSniper(300, EEnemyProjectileType.Normal), 
+                                            new DSniper(500, EEnemyProjectileType.Normal), 
+                                            new DSniper(700, EEnemyProjectileType.Homing),
+                                            new DSniper(900, EEnemyProjectileType.Normal),
+                                            new DSniper(1100, EEnemyProjectileType.Normal),
+                                            new DSniper(1300, EEnemyProjectileType.Normal)),
+                                            
+                new EnemySection(50, false, new DSniper(100, EEnemyProjectileType.Normal), 
+                                            new DSniper(300, EEnemyProjectileType.Normal), 
+                                            new DSniper(500, EEnemyProjectileType.Normal), 
+                                            new DSniper(700, EEnemyProjectileType.Homing),
+                                            new DSniper(900, EEnemyProjectileType.Normal),
+                                            new DSniper(1100, EEnemyProjectileType.Normal),
+                                            new DSniper(1300, EEnemyProjectileType.Normal)),
+                
+                new EnemySection(350, false, new DSniper(100, EEnemyProjectileType.Normal), 
+                                            new DSniper(300, EEnemyProjectileType.Normal), 
+                                            new DSniper(500, EEnemyProjectileType.Normal), 
+                                            new DSniper(700, EEnemyProjectileType.Homing),
+                                            new DSniper(900, EEnemyProjectileType.Normal),
+                                            new DSniper(1100, EEnemyProjectileType.Normal),
+                                            new DSniper(1300, EEnemyProjectileType.Normal)),
+
+                new EnemySection(10, false, new DShoter(100, EEnemyProjectileType.Normal), new DShoter(1300, EEnemyProjectileType.Normal)),
+                new EnemySection(10, false, new DStomper(200)),
+                new EnemySection(10, false, new DStomper(400)),
+                new EnemySection(10, false, new DShoter(300, EEnemyProjectileType.Normal), new DShoter(1100, EEnemyProjectileType.Normal)),
+                new EnemySection(10, false, new DStomper(800)),
+                new EnemySection(10, false, new DStomper(1000)),
+
             };
 
         }        

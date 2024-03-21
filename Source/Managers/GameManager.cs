@@ -63,6 +63,7 @@ public partial class GameManager : Node2D
 		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		projectileManager.RemoveAllProjectiles();
+		projectileManager.PlayerProjectileLevel = 1;
 
 		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");

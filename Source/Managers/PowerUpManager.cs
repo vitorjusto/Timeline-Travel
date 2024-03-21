@@ -6,6 +6,8 @@ public partial class PowerUpManager : Node2D
 {
 	
 	private int _enemiesDefeated = 0;
+	private int _currentCicle = 1;
+	private int _maxCicle = 2;
 
 	public override void _Ready()
 	{
@@ -26,7 +28,16 @@ public partial class PowerUpManager : Node2D
 
     private void AddPowerUp(Vector2 position)
     {
-		CallDeferred("add_child",PowerUpFactory.GetHpUp(position));
+		if(_currentCicle == 1)
+			CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
+		if(_currentCicle == 2)
+			CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
+
+		_currentCicle++;
+
+		if(_currentCicle > _maxCicle)
+			_currentCicle = 1;
+		
 		_enemiesDefeated = 0;
     }
 
