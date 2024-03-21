@@ -30,10 +30,22 @@ namespace Shooter.Source.Factories.Enemies
                                           , new DCrusader(700, 3.4f)
                                           , new DCrusader(900, 4.2f) 
                                           , new DCrusader(1100, 5f)
-                                          , new DCrusader(1300, 5.8f), new DDasher(1400)),
-                new EnemySection(5, false, new DBomber(100), new DBomber(1000)),                                    
-                new EnemySection(10, false, new DStomper(600), new DLazer(500), new DFollower(700, EEnemyProjectileType.Light)),
-                new EnemySection(10, false, new DSpread(100, EEnemyProjectileType.Light), new DSpread(1400, EEnemyProjectileType.Light), new DSpreader(750, EEnemyProjectileType.Normal))                                    
+                                          , new DCrusader(1300, 5.8f)),
+                new EnemySection(30, false, new DBomber(100), new DDasher(1400)),                                    
+                new EnemySection(10, false, new DLazer(500), new DFollower(700, EEnemyProjectileType.Light)),
+                new EnemySection(500, false, new DSpread(100, EEnemyProjectileType.Light), new DSpread(1400, EEnemyProjectileType.Light), new DSpread(750, EEnemyProjectileType.Normal)),                        
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(10, false, new DDasher(1100)),                              
+                new EnemySection(160, false, new DDasher(1100)), 
+
+
+                new EnemySection(10, false, new DGooder(200, true), new DSniper(300, EEnemyProjectileType.Light)),                     
             };
 
         }        

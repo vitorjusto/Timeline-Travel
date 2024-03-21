@@ -14,7 +14,7 @@ script = ExtResource("1_lxf7m")
 [node name="EnemySpawner" parent="." instance=ExtResource("4_36fse")]
 
 [node name="Player" parent="." instance=ExtResource("1_fn8jx")]
-position = Vector2(722, 720)
+position = Vector2(721, 720)
 
 [node name="ProjectileManager" parent="." instance=ExtResource("3_tbo7f")]
 
@@ -38,7 +38,6 @@ texture = ExtResource("6_f2tug")
 [connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
 [connection signal="LevelEnded" from="EnemySpawner" to="." method="OnLevelPassed"]
 [connection signal="PlayerDestroyed" from="Player" to="." method="OnPlayerDestroyed"]
-[connection signal="PlayerHitEnemy" from="Player" to="EnemySpawner" method="PlayerHitEnemy"]
 [connection signal="PlayerHitProjectile" from="Player" to="ProjectileManager" method="PlayerHitProjectile"]
 [connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]
 [connection signal="PlayerLifeUpdated" from="Player" to="Hud" method="onPlayerLifeUpdated"]

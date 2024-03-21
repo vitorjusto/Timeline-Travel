@@ -155,11 +155,6 @@ public partial class EnemySpawner : Node2D
 		BossApeared = true;
 	}
 
-	public void PlayerHitEnemy(Node2D node)
-	{
-		RemoveEnemy(node);
-	}
-
 	public void RemoveEnemy(Node2D node)
 	{
 		var enemy = Enemies.Find((x) => x == node);

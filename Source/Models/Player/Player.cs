@@ -140,8 +140,6 @@ public partial class Player : Area2D
 	public delegate void PlayerHpUpdatedEventHandler(int currentHp);
 
 	[Signal]
-	public delegate void PlayerHitEnemyEventHandler(Node2D node);
-	[Signal]
 	public delegate void PlayerHitProjectileEventHandler(Node2D node);
 
 	public void OnPlayerBodyEntered(Node2D node)
@@ -157,7 +155,7 @@ public partial class Player : Area2D
 			var enemy = (IEnemy)node;
 
 			if(!enemy.IsImortal())
-				EmitSignal("PlayerHitEnemy", node);
+				enemy.Destroy();
 
 		}else if(node is IEnemyProjectile)
 		{
