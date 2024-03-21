@@ -35,7 +35,11 @@ public partial class PlayerProjectile : Area2D
 
 			enemy.Destroy();
 
+			if(!enemy.IsImortal())
+				GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").AddEnemyDefeated(node);
+				
 			QueueFree();
+
 		}
 	}
 }

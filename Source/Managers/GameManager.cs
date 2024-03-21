@@ -69,6 +69,8 @@ public partial class GameManager : Node2D
 
 		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
 		backgroundManager.RestartBackgroundAnimation(enemySpawner.CurrentLevel);
+
+		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
     }
 
 	public void OnLevelPassed()
@@ -98,6 +100,7 @@ public partial class GameManager : Node2D
 		
 		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
+		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
 	}
 
 	[Signal]

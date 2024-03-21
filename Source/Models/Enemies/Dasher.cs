@@ -59,6 +59,7 @@ public partial class Dasher : CharacterBody2D, IEnemy
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+		GetTree().Root.GetNode<Player>("/root/Main/Player").HideTarget();
 	}
 
 	public bool IsImortal()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bujiiauth6no5"]
+[gd_scene load_steps=9 format=3 uid="uid://bujiiauth6no5"]
 
 [ext_resource type="PackedScene" uid="uid://erfmsclpkmsj" path="res://Scenes/Player.tscn" id="1_fn8jx"]
 [ext_resource type="Script" path="res://Source/Managers/GameManager.cs" id="1_lxf7m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4dqr70s7o5ti" path="res://Scenes/enemySpawner.tscn" id="4_36fse"]
 [ext_resource type="PackedScene" uid="uid://lwvwwrmrkoav" path="res://Scenes/Background/background_manager.tscn" id="4_ureka"]
 [ext_resource type="Texture2D" uid="uid://dvcmh0qmrda5e" path="res://Assets/Background/misc/BlackScreen.png" id="6_f2tug"]
+[ext_resource type="PackedScene" uid="uid://06t3g1ip4oix" path="res://Scenes/PowerUpManager.tscn" id="8_krnyg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lxf7m")
@@ -34,6 +35,8 @@ top_level = true
 position = Vector2(684, 472)
 scale = Vector2(1.16575, 1.04811)
 texture = ExtResource("6_f2tug")
+
+[node name="PowerUpManager" parent="." instance=ExtResource("8_krnyg")]
 
 [connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
 [connection signal="LevelEnded" from="EnemySpawner" to="." method="OnLevelPassed"]

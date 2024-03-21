@@ -65,13 +65,13 @@ public partial class Hud : Node2D
 	public void PlayerHpUpdated(int hp)
 	{
 		var lblHp = GetNode<Label>("lblHp");
-		lblHp.Text = $"Hp: {hp}";
+		lblHp.Text = $"{hp}";
 	}
 
 	public void onPlayerLifeUpdated(int life)
 	{
 		var lblHp = GetNode<Label>("lblLife");
-		lblHp.Text = $"Life: {life}";
+		lblHp.Text = $"{life}";
 	}
 
 	public void OnPausePressed()

@@ -147,6 +147,15 @@ public partial class Player : Area2D
 		if(_playerDestroyed)
 			return;
 
+		if(node is IPowerUp)
+		{
+			var powerUp = (IPowerUp)node;
+
+			powerUp.OnPickUp();
+			EmitSignal("PlayerHpUpdated", Hp);
+			return;
+		}
+
 		if(node is IEnemy)
 		{
 			if(_iFrame == 0)
