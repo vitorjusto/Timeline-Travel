@@ -25,7 +25,7 @@ public partial class Shoter : CharacterBody2D, IEnemy
 		{
         	Position = new Vector2(x: Position.X, y: Position.Y + _speed);
 
-		}else if(_time == 120)
+		}else if(_time == 100)
 		{
 			ShootProjectile();
 			_time = 50;

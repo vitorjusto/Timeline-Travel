@@ -51,8 +51,8 @@ public partial class ProjectileManager : Node2D
 			AddPlayerProjectile(0, -20);
 		else if(PlayerProjectileLevel == 2)
 		{
-			AddPlayerProjectile(-2, -20);
-			AddPlayerProjectile(2, -20);
+			AddPlayerProjectile(-1, -20);
+			AddPlayerProjectile(1, -20);
 		}
 		else if(PlayerProjectileLevel == 3)
 		{
@@ -63,8 +63,8 @@ public partial class ProjectileManager : Node2D
 		else if(PlayerProjectileLevel == 4)
 		{
 			AddPlayerProjectile(-6, -20);
-			AddPlayerProjectile(-2, -20);
-			AddPlayerProjectile(2, -20);
+			AddPlayerProjectile(-1, -20);
+			AddPlayerProjectile(1, -20);
 			AddPlayerProjectile(6, -20);
 		}
 		else

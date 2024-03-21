@@ -7,7 +7,7 @@ public partial class HpUp : CharacterBody2D, IPowerUp
     {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-		player.Hp += 3;
+		player.Hp += 5;
 
 		if(player.Hp > 10)
 			player.Hp = 10;
