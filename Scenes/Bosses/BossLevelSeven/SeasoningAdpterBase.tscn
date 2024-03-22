@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4wlgmns3mwc7"]
 
-[ext_resource type="Script" path="res://Source/Models/Bosses/LevelSeven/SeasoningAdpter.cs" id="1_d0icw"]
-[ext_resource type="Texture2D" uid="uid://doucpddssg7df" path="res://Assets/Background/LevelSeven/Cope.png" id="3_0iy1g"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/LevelSeven/SeasoningAdpterBase.cs" id="1_evh1c"]
+[ext_resource type="Texture2D" uid="uid://doucpddssg7df" path="res://Assets/Background/LevelSeven/Cope.png" id="2_lo7nr"]
 
 [sub_resource type="Animation" id="Animation_y8geq"]
 length = 0.001
@@ -30,15 +30,15 @@ _data = {
 }
 
 [node name="SeasoningAdpter" type="Node2D"]
-script = ExtResource("1_d0icw")
+script = ExtResource("1_evh1c")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
 [node name="Cope" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(736, -16)
+position = Vector2(720, -16)
 scale = Vector2(10.1667, 8.34)
-texture = ExtResource("3_0iy1g")
+texture = ExtResource("2_lo7nr")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
 self_modulate = Color(0.227451, 0.854902, 0.415686, 1)

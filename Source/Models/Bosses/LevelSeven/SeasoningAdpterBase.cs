@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class SeasoningAdpter : Node2D
+public partial class SeasoningAdpterBase : Node2D
 {
 	private int _time = 0;
     private BackgroundLevelSeven _background;

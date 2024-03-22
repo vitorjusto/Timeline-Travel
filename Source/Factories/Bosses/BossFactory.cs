@@ -70,7 +70,7 @@ namespace Shooter.Source.Factories.Bosses
 
         private static Node2D GetBossLevelSeven()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSeven/SeasoningAdpter.tscn");
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSeven/SeasoningAdpterBase.tscn");
 
             return (Node2D)scene.Instantiate();
         }
