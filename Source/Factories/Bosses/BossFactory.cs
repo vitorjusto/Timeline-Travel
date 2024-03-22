@@ -19,7 +19,9 @@ namespace Shooter.Source.Factories.Bosses
                 return GetBossLevelFive();  
             if(level == 6)
                 return GetBossLevelSix();
-            
+            if(level == 7)
+                return GetBossLevelSeven();
+                
             return null;
         }
 
@@ -62,6 +64,13 @@ namespace Shooter.Source.Factories.Bosses
         private static Node2D GetBossLevelSix()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSix/LightningRodSatellite.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
+
+        private static Node2D GetBossLevelSeven()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSeven/SeasoningAdpter.tscn");
 
             return (Node2D)scene.Instantiate();
         }

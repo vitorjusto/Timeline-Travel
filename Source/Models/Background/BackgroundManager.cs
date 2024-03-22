@@ -39,4 +39,6 @@ public partial class BackgroundManager : Node2D
 		if(CurrentLevel == 7)
 			SetNewBackgroundLevel(CurrentLevel);
     }
+
+	public Node2D GetBackground() => _currentBackground;
 }

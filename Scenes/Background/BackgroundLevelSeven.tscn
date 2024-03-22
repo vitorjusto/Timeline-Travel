@@ -274,7 +274,7 @@ sprite_frames = SubResource("SpriteFrames_yxg6h")
 autoplay = "default"
 
 [node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
-layer = -1
+layer = -2
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground3" instance=ExtResource("2_m2p2n")]
 YSpeed = 15.0
@@ -359,7 +359,7 @@ libraries = {
 }
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-layer = -2
+layer = -3
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground2" instance=ExtResource("2_m2p2n")]
 YSpeed = 15.0
@@ -412,3 +412,4 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 40.0
+autostart = true

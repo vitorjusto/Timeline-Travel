@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://4wlgmns3mwc7"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/LevelSeven/SeasoningAdpter.cs" id="1_d0icw"]
+[ext_resource type="Texture2D" uid="uid://doucpddssg7df" path="res://Assets/Background/LevelSeven/Cope.png" id="3_0iy1g"]
+
+[sub_resource type="Animation" id="Animation_y8geq"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_lk2si"]
+resource_name = "new_animation2"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20, 30, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.227451, 0.854902, 0.415686, 1), Color(0.94902, 0.611765, 0.0705882, 1), Color(1, 1, 1, 1), Color(0.956863, 0.52549, 0.964706, 1), Color(0.227451, 0.854902, 0.415686, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6hux"]
+_data = {
+"RESET": SubResource("Animation_y8geq"),
+"new_animation2": SubResource("Animation_lk2si")
+}
+
+[node name="SeasoningAdpter" type="Node2D"]
+script = ExtResource("1_d0icw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="Cope" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(736, -16)
+scale = Vector2(10.1667, 8.34)
+texture = ExtResource("3_0iy1g")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+self_modulate = Color(0.227451, 0.854902, 0.415686, 1)
+color = Color(0.227451, 0.854902, 0.415686, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/CanvasModulate"]
+autoplay = "new_animation2"
+libraries = {
+"": SubResource("AnimationLibrary_r6hux")
+}
