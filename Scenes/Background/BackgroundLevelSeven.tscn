@@ -1,17 +1,14 @@
-[gd_scene load_steps=34 format=3 uid="uid://dn6km325lq2tu"]
+[gd_scene load_steps=31 format=3 uid="uid://dn6km325lq2tu"]
 
-[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/LevelSevenBackground.cs" id="1_bvj81"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/BackgroundLevelSeven.cs" id="1_pfrij"]
 [ext_resource type="Texture2D" uid="uid://b2kj5474tbki" path="res://Assets/Background/LevelSeven/TreeBranches.png" id="2_c13le"]
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="2_m2p2n"]
 [ext_resource type="Texture2D" uid="uid://bwb7x3b66p4rg" path="res://Assets/Background/LevelSeven/Bushes.png" id="3_vmbmf"]
 [ext_resource type="Texture2D" uid="uid://bt0krk0mn4ubl" path="res://Assets/Background/LevelSeven/BackgroungLevelSeven.png" id="4_6mwdx"]
-[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/FieldBackgroundLevelSeven.cs" id="4_h4tkj"]
 [ext_resource type="Texture2D" uid="uid://dqd5ksomiotju" path="res://Assets/Background/LevelSeven/SunReflection.png" id="5_3kswj"]
 [ext_resource type="Texture2D" uid="uid://cp0ysbnjjyb5k" path="res://Assets/Background/LevelSeven/Sun.png" id="7_ej0ad"]
-[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/CloudLayer.cs" id="7_ke5bv"]
 [ext_resource type="Texture2D" uid="uid://bo27bhtn6qehn" path="res://Assets/Background/LevelSeven/CloudsBackground.png" id="8_wug8o"]
-[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/SunLayer.cs" id="9_y7d71"]
 [ext_resource type="Texture2D" uid="uid://bij3mvpfa8dlo" path="res://Assets/Background/LevelOne/MainBackground.png" id="10_hwds8"]
-[ext_resource type="Script" path="res://Source/Models/Background/LevelSeven/SkyLayer.cs" id="10_om8ca"]
 [ext_resource type="Script" path="res://Scenes/Background/LeafContainer.cs" id="13_snycn"]
 
 [sub_resource type="Animation" id="Animation_al2gf"]
@@ -201,14 +198,15 @@ bg_color = Color(0.6, 0.85098, 0.917647, 1)
 bg_color = Color(0.286275, 0.584314, 0.658824, 1)
 
 [node name="BackgroundLevelSeven" type="Node2D"]
+script = ExtResource("1_pfrij")
 
 [node name="ParallaxBackground6" type="ParallaxBackground" parent="."]
 layer = -5
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground6"]
-script = ExtResource("9_y7d71")
+[node name="MovingParallaxLayer" parent="ParallaxBackground6" instance=ExtResource("2_m2p2n")]
+YSpeed = 0.01
 
-[node name="Sun" type="Sprite2D" parent="ParallaxBackground6/ParallaxLayer"]
+[node name="Sun" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
 position = Vector2(1160, 200)
 scale = Vector2(5, 5)
 texture = ExtResource("7_ej0ad")
@@ -216,11 +214,11 @@ texture = ExtResource("7_ej0ad")
 [node name="ParallaxBackground5" type="ParallaxBackground" parent="."]
 layer = -4
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground5"]
-motion_mirroring = Vector2(3000, 0)
-script = ExtResource("7_ke5bv")
+[node name="MovingParallaxLayer" parent="ParallaxBackground5" instance=ExtResource("2_m2p2n")]
+XSpeed = -0.3
+YSpeed = 0.3
 
-[node name="CloudsBackground" type="Sprite2D" parent="ParallaxBackground5/ParallaxLayer"]
+[node name="CloudsBackground" type="Sprite2D" parent="ParallaxBackground5/MovingParallaxLayer"]
 position = Vector2(1488, -720)
 scale = Vector2(10, 10)
 texture = ExtResource("8_wug8o")
@@ -228,47 +226,47 @@ texture = ExtResource("8_wug8o")
 [node name="ParallaxBackground4" type="ParallaxBackground" parent="."]
 layer = -3
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground4"]
-script = ExtResource("4_h4tkj")
+[node name="MovingParallaxLayer" parent="ParallaxBackground4" instance=ExtResource("2_m2p2n")]
+YSpeed = 0.3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground4/MovingParallaxLayer"]
 root_node = NodePath("../AniSummer")
 autoplay = "novaAnimacao"
 libraries = {
 "": SubResource("AnimationLibrary_x8acq")
 }
 
-[node name="AniSummer2" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AniSummer2" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 self_modulate = Color(0.541176, 0.54902, 0.556863, 1)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kvt8s")
 
-[node name="AniFall" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AniFall" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_maxav")
 animation = &"new_animation"
 
-[node name="AniSummer" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AniSummer" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kvt8s")
 
-[node name="AniWinter" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AniWinter" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0f0h1")
 
-[node name="AniSpring" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AniSpring" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(722, 450)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_dxrsw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground4/MovingParallaxLayer"]
 texture_filter = 1
 position = Vector2(1160, 832)
 scale = Vector2(5, 5)
@@ -278,84 +276,83 @@ autoplay = "default"
 [node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
 layer = -1
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3"]
-motion_mirroring = Vector2(0, 9180)
-script = ExtResource("1_bvj81")
+[node name="MovingParallaxLayer" parent="ParallaxBackground3" instance=ExtResource("2_m2p2n")]
+YSpeed = 15.0
 
-[node name="Bushes" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1276, -3248)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes2" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes2" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(180.125, -3693.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes3" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes3" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1300, -4048)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes4" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes4" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1228.12, -4757.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes5" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes5" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(156.125, -6101.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes6" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes6" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1244.12, -6077.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes7" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes7" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1236.12, -6733.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes8" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes8" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(212, -7208)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes9" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes9" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1236.12, -7781.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes11" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes11" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1244.12, -8101.88)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes12" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes12" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(180, -2136)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes13" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes13" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1220.12, -821.875)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes14" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes14" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1228.12, 146.125)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="Bushes15" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="Bushes15" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
 position = Vector2(1220.12, 410.125)
 scale = Vector2(28.0312, 28.5313)
 texture = ExtResource("3_vmbmf")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3/MovingParallaxLayer"]
 self_modulate = Color(0.227451, 0.854902, 0.415686, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground3/ParallaxLayer/CanvasModulate"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground3/MovingParallaxLayer/CanvasModulate"]
 autoplay = "new_animation2"
 libraries = {
 "": SubResource("AnimationLibrary_r6hux")
@@ -364,11 +361,10 @@ libraries = {
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = -2
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_mirroring = Vector2(0, 9180)
-script = ExtResource("1_bvj81")
+[node name="MovingParallaxLayer" parent="ParallaxBackground2" instance=ExtResource("2_m2p2n")]
+YSpeed = 15.0
 
-[node name="TreeBranches" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+[node name="TreeBranches" type="Sprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
 position = Vector2(1054, -3680)
 scale = Vector2(3, 3)
 texture = ExtResource("2_c13le")
@@ -376,24 +372,24 @@ texture = ExtResource("2_c13le")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -6
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-script = ExtResource("10_om8ca")
+[node name="MovingParallaxLayer" parent="ParallaxBackground" instance=ExtResource("2_m2p2n")]
+YSpeed = 0.3
 
-[node name="Panel2" type="Panel" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Panel2" type="Panel" parent="ParallaxBackground/MovingParallaxLayer"]
 offset_left = -48.0
 offset_top = -688.0
 offset_right = 1632.0
 offset_bottom = 848.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8t1fo")
 
-[node name="Panel" type="Panel" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Panel" type="Panel" parent="ParallaxBackground/MovingParallaxLayer"]
 offset_left = -56.0
 offset_top = -1264.0
 offset_right = 1856.0
 offset_bottom = -584.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sm73y")
 
-[node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
 position = Vector2(944, -2024)
 scale = Vector2(1.47992, 1.4096)
 texture = ExtResource("10_hwds8")
@@ -406,9 +402,13 @@ script = ExtResource("13_snycn")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground7"]
 self_modulate = Color(0.227451, 0.854902, 0.415686, 1)
+color = Color(0.227451, 0.854902, 0.415686, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground7/CanvasModulate"]
 autoplay = "new_animation2"
 libraries = {
 "": SubResource("AnimationLibrary_r6hux")
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
