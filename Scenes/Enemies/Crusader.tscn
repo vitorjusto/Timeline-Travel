@@ -176,8 +176,8 @@ sprite_frames = SubResource("SpriteFrames_l5vqt")
 speed_scale = 3.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(3.2, 3.2)
+position = Vector2(0.999999, 0.999999)
+scale = Vector2(4.9, 4.9)
 
 [node name="AuxCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gdipc")

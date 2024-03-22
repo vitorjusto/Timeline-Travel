@@ -27,5 +27,7 @@ shape = SubResource("RectangleShape2D_tgfnf")
 sprite_frames = SubResource("SpriteFrames_n755f")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(3.2, 3.2)
+position = Vector2(-6.19888e-06, -6.19888e-06)
+scale = Vector2(4.8, 4.8)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
