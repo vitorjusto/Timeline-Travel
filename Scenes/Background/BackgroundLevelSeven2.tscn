@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcfxp0y4wwt4l"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_qxhhn"]
+[ext_resource type="Texture2D" uid="uid://c2xr8a2qvhatf" path="res://Assets/Background/LevelSeven2/BackgroundLevelSeven.png" id="2_6rre6"]
+
+[node name="LevelSeven2" type="Node2D"]
+
+[node name="ParallaxBackground6" type="ParallaxBackground" parent="."]
+layer = -5
+
+[node name="MovingParallaxLayer" parent="ParallaxBackground6" instance=ExtResource("1_qxhhn")]
+motion_mirroring = Vector2(0, 3550)
+YSpeed = 5.0
+
+[node name="BackgroundLevelSeven" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
+position = Vector2(784, -744)
+texture = ExtResource("2_6rre6")

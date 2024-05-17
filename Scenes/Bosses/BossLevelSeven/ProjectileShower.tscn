@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://3c817qhmmfut"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/ProjectileShower/ProjectileShower.cs" id="1_6xd0t"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_ageqp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wwg3"]
+size = Vector2(45.8906, 45.8906)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iufom"]
+size = Vector2(1360, 241)
+
+[node name="ProjectileShower" type="CharacterBody2D"]
+script = ExtResource("1_6xd0t")
+
+[node name="SmallBoss" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.717079, 0.717125)
+texture = ExtResource("1_ageqp")
+
+[node name="SmallBossCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_1wwg3")
+disabled = true
+
+[node name="BigBoss" type="Sprite2D" parent="."]
+position = Vector2(-3.33786e-05, 1.52588e-05)
+scale = Vector2(21.25, 3.75)
+texture = ExtResource("1_ageqp")
+
+[node name="BigBossCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iufom")

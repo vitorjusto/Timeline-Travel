@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm84ib3uihndq"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/ProjectileShower/ProjectileShowerBase.cs" id="1_48yxx"]
+[ext_resource type="PackedScene" uid="uid://3c817qhmmfut" path="res://Scenes/Bosses/BossLevelSeven/ProjectileShower.tscn" id="1_mq7s2"]
+
+[node name="ProjectileShowerBase" type="Node2D"]
+script = ExtResource("1_48yxx")
+
+[node name="ProjectileShower" parent="." instance=ExtResource("1_mq7s2")]
+position = Vector2(696, -280)

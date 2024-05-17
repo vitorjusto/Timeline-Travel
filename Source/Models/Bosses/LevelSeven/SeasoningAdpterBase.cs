@@ -24,10 +24,13 @@ public partial class SeasoningAdpterBase : Node2D
 
 	public override void _Process(double delta)
 	{
-		if(_time < 20)
+		if(_time < 40)
 			_cope.Position = new Vector2(_cope.Position.X, _cope.Position.Y + 15);
-		else if(_time == 20)
+		else if(_time == 40)
+		{
 			_background.StopBackground();
+			GetNode<SeasoningAdpter>("SeasoningAdpter").StartProcess();
+		}
 		
 		_time++;
 	}

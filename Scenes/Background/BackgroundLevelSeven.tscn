@@ -277,6 +277,7 @@ autoplay = "default"
 layer = -2
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground3" instance=ExtResource("2_m2p2n")]
+motion_mirroring = Vector2(0, 9180)
 YSpeed = 15.0
 
 [node name="Bushes" type="Sprite2D" parent="ParallaxBackground3/MovingParallaxLayer"]
@@ -362,6 +363,7 @@ libraries = {
 layer = -3
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground2" instance=ExtResource("2_m2p2n")]
+motion_mirroring = Vector2(0, 9180)
 YSpeed = 15.0
 
 [node name="TreeBranches" type="Sprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]

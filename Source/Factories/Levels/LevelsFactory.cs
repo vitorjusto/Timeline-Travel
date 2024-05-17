@@ -84,7 +84,7 @@ namespace Shooter.Source.Factories.Levels
 
         private static Node2D GetLevelSeven()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelSeven.tscn");
+            var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelSeven2.tscn");
 
             var instance = (Node2D)scene.Instantiate();
 
