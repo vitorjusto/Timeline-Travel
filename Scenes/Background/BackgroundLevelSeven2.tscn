@@ -9,7 +9,7 @@
 layer = -5
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground6" instance=ExtResource("1_qxhhn")]
-motion_mirroring = Vector2(0, 3550)
+motion_mirroring = Vector2(0, 3570)
 YSpeed = 5.0
 
 [node name="BackgroundLevelSeven" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
