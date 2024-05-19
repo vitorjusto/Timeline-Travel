@@ -1,0 +1,5659 @@
+[gd_scene load_steps=17 format=3 uid="uid://m8pmmair70e6"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_qmmnt"]
+[ext_resource type="Texture2D" uid="uid://rwd7vxwh0uys" path="res://Assets/Background/LevelEight/LevelEightBackground.png" id="2_7r3oa"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelEight/LightPanelModulator.cs" id="3_hftvh"]
+[ext_resource type="Texture2D" uid="uid://bjnnwvc0yohf5" path="res://Assets/Background/LevelOne/Stars.png" id="4_nx2fg"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelEight/ColorModulator.cs" id="5_56r84"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hi0yf"]
+bg_color = Color(0.439216, 0.439216, 0.439216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma4ry"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+anti_aliasing_size = 0.25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luclc"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(0, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dadfi"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(11, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w73fh"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(22, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s8cm"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(33, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqy7u"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(44, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkco"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(55, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyhc6"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(66, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kohv1"]
+atlas = ExtResource("4_nx2fg")
+region = Rect2(77, 11, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ob15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luclc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dadfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w73fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s8cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqy7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyhc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kohv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BackgoundLevelEight" type="Node2D"]
+
+[node name="ParallaxBackground6" type="ParallaxBackground" parent="."]
+layer = -5
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground6"]
+
+[node name="Panel" type="Panel" parent="ParallaxBackground6/ParallaxLayer"]
+offset_right = 1504.0
+offset_bottom = 956.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi0yf")
+script = ExtResource("3_hftvh")
+
+[node name="MovingParallaxLayer3" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
+position = Vector2(1615, 0)
+rotation = 3.14159
+motion_mirroring = Vector2(0, 3479)
+YSpeed = 10.0
+
+[node name="LevelEightBackground" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer3"]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(1122, -709)
+texture = ExtResource("2_7r3oa")
+
+[node name="MovingParallaxLayer4" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
+position = Vector2(1615, 0)
+rotation = 3.14159
+motion_mirroring = Vector2(0, 3480)
+YSpeed = 10.0
+
+[node name="Panel4" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 988.0
+offset_right = 1264.0
+offset_bottom = 1032.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel5" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 927.0
+offset_right = 1264.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel6" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 927.0
+offset_right = 1202.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel7" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 927.0
+offset_right = 1140.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel8" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 867.0
+offset_right = 1140.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel9" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 867.0
+offset_right = 1202.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel10" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 807.0
+offset_right = 1202.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel12" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 807.0
+offset_right = 1140.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel13" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 747.0
+offset_right = 1140.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel14" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 747.0
+offset_right = 1202.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel17" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 687.0
+offset_right = 1202.0
+offset_bottom = 731.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel19" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 627.0
+offset_right = 1202.0
+offset_bottom = 671.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel20" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 567.0
+offset_right = 1202.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel21" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 567.0
+offset_right = 1264.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel22" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 507.0
+offset_right = 1264.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel23" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 507.0
+offset_right = 1202.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel24" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 507.0
+offset_right = 1140.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel25" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 507.0
+offset_right = 1078.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel26" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 447.0
+offset_right = 1078.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel29" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 387.0
+offset_right = 1078.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel30" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 327.0
+offset_right = 1078.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel31" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 327.0
+offset_right = 1140.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel32" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 267.0
+offset_right = 1140.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel34" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 267.0
+offset_right = 1202.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel35" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 267.0
+offset_right = 1264.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel36" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 207.0
+offset_right = 1264.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel37" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 207.0
+offset_right = 1326.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel38" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 147.0
+offset_right = 1326.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel40" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 147.0
+offset_right = 1264.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel41" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 87.0
+offset_right = 1264.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel42" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 87.0
+offset_right = 1326.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel43" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 87.0
+offset_right = 1388.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel44" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 27.0
+offset_right = 1388.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel46" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 27.0
+offset_right = 1326.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel47" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 27.0
+offset_right = 1264.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel45" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = 27.0
+offset_right = 1450.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel48" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -33.0
+offset_right = 1388.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel49" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -33.0
+offset_right = 1326.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel50" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -33.0
+offset_right = 1264.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel51" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -93.0
+offset_right = 1264.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel52" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -93.0
+offset_right = 1326.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel53" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -93.0
+offset_right = 1202.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel54" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -93.0
+offset_right = 1140.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel55" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -153.0
+offset_right = 1140.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel56" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -153.0
+offset_right = 1202.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel57" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -213.0
+offset_right = 1202.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel58" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -213.0
+offset_right = 1140.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel59" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -213.0
+offset_right = 1264.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel60" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -273.0
+offset_right = 1264.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel61" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -273.0
+offset_right = 1202.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel62" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -273.0
+offset_right = 1140.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel63" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -333.0
+offset_right = 1140.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel64" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -333.0
+offset_right = 1202.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel65" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -333.0
+offset_right = 1264.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel66" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -333.0
+offset_right = 1326.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel67" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -393.0
+offset_right = 1326.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel71" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -393.0
+offset_right = 1388.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel72" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -453.0
+offset_right = 1388.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel74" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -453.0
+offset_right = 1326.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel75" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -513.0
+offset_right = 1326.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel76" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -513.0
+offset_right = 1388.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel78" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -573.0
+offset_right = 1388.0
+offset_bottom = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel79" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -573.0
+offset_right = 1326.0
+offset_bottom = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel80" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -633.0
+offset_right = 1326.0
+offset_bottom = -589.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel81" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -633.0
+offset_right = 1388.0
+offset_bottom = -589.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel82" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -693.0
+offset_right = 1388.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel83" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -693.0
+offset_right = 1326.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel84" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -693.0
+offset_right = 1264.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel85" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -693.0
+offset_right = 1202.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel86" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -693.0
+offset_right = 1140.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel87" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -693.0
+offset_right = 1078.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel88" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -753.0
+offset_right = 1078.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel89" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -753.0
+offset_right = 1140.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel93" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -813.0
+offset_right = 1140.0
+offset_bottom = -769.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel94" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -813.0
+offset_right = 1078.0
+offset_bottom = -769.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel95" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -873.0
+offset_right = 1078.0
+offset_bottom = -829.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel96" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -933.0
+offset_right = 1078.0
+offset_bottom = -889.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel97" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -993.0
+offset_right = 1078.0
+offset_bottom = -949.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel98" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -993.0
+offset_right = 1140.0
+offset_bottom = -949.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel99" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -1053.0
+offset_right = 1140.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel101" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1053.0
+offset_right = 1202.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel102" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1053.0
+offset_right = 1264.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel103" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1053.0
+offset_right = 1326.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel104" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1113.0
+offset_right = 1326.0
+offset_bottom = -1069.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel105" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1173.0
+offset_right = 1326.0
+offset_bottom = -1129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel106" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1173.0
+offset_right = 1388.0
+offset_bottom = -1129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel107" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1233.0
+offset_right = 1388.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel109" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1233.0
+offset_right = 1450.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel110" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1293.0
+offset_right = 1450.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel111" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1293.0
+offset_right = 1512.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel112" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1530.0
+offset_top = -1293.0
+offset_right = 1574.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel113" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1530.0
+offset_top = -1353.0
+offset_right = 1574.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel114" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1353.0
+offset_right = 1512.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel115" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1353.0
+offset_right = 1450.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel116" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1353.0
+offset_right = 1388.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel117" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1293.0
+offset_right = 1388.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel118" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1293.0
+offset_right = 1326.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel119" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1353.0
+offset_right = 1326.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel120" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1413.0
+offset_right = 1326.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel121" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1413.0
+offset_right = 1388.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel122" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1413.0
+offset_right = 1450.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel124" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1473.0
+offset_right = 1450.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel125" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1473.0
+offset_right = 1388.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel126" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1473.0
+offset_right = 1326.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel127" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1533.0
+offset_right = 1326.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel129" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1533.0
+offset_right = 1264.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel130" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1533.0
+offset_right = 1202.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel131" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1593.0
+offset_right = 1202.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel132" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1593.0
+offset_right = 1264.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel134" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1653.0
+offset_right = 1202.0
+offset_bottom = -1609.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel136" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1713.0
+offset_right = 1202.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel137" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1713.0
+offset_right = 1264.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel138" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1713.0
+offset_right = 1326.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel139" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1773.0
+offset_right = 1326.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel140" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1773.0
+offset_right = 1388.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel133" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1593.0
+offset_right = 1326.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel135" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1653.0
+offset_right = 1264.0
+offset_bottom = -1609.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel141" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1773.0
+offset_right = 1202.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel142" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1773.0
+offset_right = 1264.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel147" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1953.0
+offset_right = 1264.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel148" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1953.0
+offset_right = 1326.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel150" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2013.0
+offset_right = 1326.0
+offset_bottom = -1969.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel151" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2013.0
+offset_right = 1388.0
+offset_bottom = -1969.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel152" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2073.0
+offset_right = 1326.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel153" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2073.0
+offset_right = 1388.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel154" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2133.0
+offset_right = 1326.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel155" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2133.0
+offset_right = 1388.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel158" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2193.0
+offset_right = 1326.0
+offset_bottom = -2149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel159" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2193.0
+offset_right = 1388.0
+offset_bottom = -2149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel156" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -2073.0
+offset_right = 1450.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel157" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -2133.0
+offset_right = 1450.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel160" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2253.0
+offset_right = 1264.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel161" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2253.0
+offset_right = 1326.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel162" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2313.0
+offset_right = 1264.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel163" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2313.0
+offset_right = 1326.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel164" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2373.0
+offset_right = 1264.0
+offset_bottom = -2329.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel165" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2373.0
+offset_right = 1326.0
+offset_bottom = -2329.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel168" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2433.0
+offset_right = 1264.0
+offset_bottom = -2389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel169" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2433.0
+offset_right = 1326.0
+offset_bottom = -2389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel166" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2253.0
+offset_right = 1388.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel167" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2313.0
+offset_right = 1388.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel149" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1953.0
+offset_right = 1202.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel143" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1833.0
+offset_right = 1202.0
+offset_bottom = -1789.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel144" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1893.0
+offset_right = 1202.0
+offset_bottom = -1849.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel145" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1893.0
+offset_right = 1264.0
+offset_bottom = -1849.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel146" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1833.0
+offset_right = 1264.0
+offset_bottom = -1789.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel128" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1533.0
+offset_right = 1388.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel123" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1413.0
+offset_right = 1512.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel108" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1233.0
+offset_right = 1326.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel100" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -1053.0
+offset_right = 1078.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel90" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -753.0
+offset_right = 1202.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel91" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -753.0
+offset_right = 1264.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel92" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1281.0
+offset_top = -753.0
+offset_right = 1325.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel77" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -513.0
+offset_right = 1450.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel73" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -453.0
+offset_right = 1450.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel68" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -393.0
+offset_right = 1264.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel69" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -393.0
+offset_right = 1202.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel70" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -393.0
+offset_right = 1140.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel39" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 147.0
+offset_right = 1388.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel33" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 267.0
+offset_right = 1078.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel27" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 447.0
+offset_right = 1140.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel28" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 447.0
+offset_right = 1202.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel18" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 687.0
+offset_right = 1264.0
+offset_bottom = 731.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel15" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 747.0
+offset_right = 1264.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel16" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 747.0
+offset_right = 1326.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel11" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 807.0
+offset_right = 1264.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="AnimatedSprite2D65" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1456, 555.004)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D66" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1361, 654.003)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D67" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1450, 797.004)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D68" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1294, 901.003)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D69" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1457, 984.004)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D70" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1336, 379.003)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D71" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1212, 400.003)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D72" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1450, 243.004)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D73" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1483, 397.004)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D74" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1392, -172.996)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D75" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1498, -63.9962)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D76" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1305, -139.997)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D77" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1456, -305.996)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D78" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1532, -418.996)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D79" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1196, -877.997)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D80" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1394, -758.996)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D81" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1488, -613.996)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D82" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1354, -917.997)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D83" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1431, -1041)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D84" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1359, -1624)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D85" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1467, -1562)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D86" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1395, -1875)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D87" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1510.01, -2015)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D88" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1501, -1817)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D89" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1316, -1840)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D90" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1516.01, -2348)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D91" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer4"]
+position = Vector2(1345.01, -2193)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="MovingParallaxLayer" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
+position = Vector2(-222, -5)
+motion_mirroring = Vector2(0, 3479)
+YSpeed = 10.0
+
+[node name="LevelEightBackground" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(1123, -709)
+texture = ExtResource("2_7r3oa")
+
+[node name="MovingParallaxLayer2" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
+position = Vector2(-222, -5)
+motion_mirroring = Vector2(0, 3480)
+YSpeed = 10.0
+
+[node name="Panel4" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 988.0
+offset_right = 1264.0
+offset_bottom = 1032.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel5" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 927.0
+offset_right = 1264.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel6" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 927.0
+offset_right = 1202.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel7" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 927.0
+offset_right = 1140.0
+offset_bottom = 971.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel8" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 867.0
+offset_right = 1140.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel9" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 867.0
+offset_right = 1202.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel10" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 807.0
+offset_right = 1202.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel12" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 807.0
+offset_right = 1140.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel13" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 747.0
+offset_right = 1140.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel14" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 747.0
+offset_right = 1202.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel17" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 687.0
+offset_right = 1202.0
+offset_bottom = 731.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel19" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 627.0
+offset_right = 1202.0
+offset_bottom = 671.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel20" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 567.0
+offset_right = 1202.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel21" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 567.0
+offset_right = 1264.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel22" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 507.0
+offset_right = 1264.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel23" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 507.0
+offset_right = 1202.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel24" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 507.0
+offset_right = 1140.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel25" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 507.0
+offset_right = 1078.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel26" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 447.0
+offset_right = 1078.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel29" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 387.0
+offset_right = 1078.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel30" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 327.0
+offset_right = 1078.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel31" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 327.0
+offset_right = 1140.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel32" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 267.0
+offset_right = 1140.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel34" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 267.0
+offset_right = 1202.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel35" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 267.0
+offset_right = 1264.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel36" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 207.0
+offset_right = 1264.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel37" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 207.0
+offset_right = 1326.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel38" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 147.0
+offset_right = 1326.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel40" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 147.0
+offset_right = 1264.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel41" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 87.0
+offset_right = 1264.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel42" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 87.0
+offset_right = 1326.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel43" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 87.0
+offset_right = 1388.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel44" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 27.0
+offset_right = 1388.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel46" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 27.0
+offset_right = 1326.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel47" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 27.0
+offset_right = 1264.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel45" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = 27.0
+offset_right = 1450.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel48" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -33.0
+offset_right = 1388.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel49" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -33.0
+offset_right = 1326.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel50" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -33.0
+offset_right = 1264.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel51" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -93.0
+offset_right = 1264.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel52" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -93.0
+offset_right = 1326.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel53" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -93.0
+offset_right = 1202.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel54" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -93.0
+offset_right = 1140.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel55" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -153.0
+offset_right = 1140.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel56" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -153.0
+offset_right = 1202.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel57" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -213.0
+offset_right = 1202.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel58" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -213.0
+offset_right = 1140.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel59" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -213.0
+offset_right = 1264.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel60" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -273.0
+offset_right = 1264.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel61" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -273.0
+offset_right = 1202.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel62" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -273.0
+offset_right = 1140.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel63" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -333.0
+offset_right = 1140.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel64" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -333.0
+offset_right = 1202.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel65" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -333.0
+offset_right = 1264.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel66" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -333.0
+offset_right = 1326.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel67" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -393.0
+offset_right = 1326.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel71" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -393.0
+offset_right = 1388.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel72" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -453.0
+offset_right = 1388.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel74" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -453.0
+offset_right = 1326.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel75" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -513.0
+offset_right = 1326.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel76" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -513.0
+offset_right = 1388.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel78" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -573.0
+offset_right = 1388.0
+offset_bottom = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel79" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -573.0
+offset_right = 1326.0
+offset_bottom = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel80" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -633.0
+offset_right = 1326.0
+offset_bottom = -589.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel81" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -633.0
+offset_right = 1388.0
+offset_bottom = -589.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel82" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -693.0
+offset_right = 1388.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel83" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -693.0
+offset_right = 1326.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel84" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -693.0
+offset_right = 1264.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel85" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -693.0
+offset_right = 1202.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel86" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -693.0
+offset_right = 1140.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel87" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -693.0
+offset_right = 1078.0
+offset_bottom = -649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel88" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -753.0
+offset_right = 1078.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel89" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -753.0
+offset_right = 1140.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel93" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -813.0
+offset_right = 1140.0
+offset_bottom = -769.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel94" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -813.0
+offset_right = 1078.0
+offset_bottom = -769.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel95" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -873.0
+offset_right = 1078.0
+offset_bottom = -829.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel96" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -933.0
+offset_right = 1078.0
+offset_bottom = -889.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel97" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -993.0
+offset_right = 1078.0
+offset_bottom = -949.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel98" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -993.0
+offset_right = 1140.0
+offset_bottom = -949.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel99" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -1053.0
+offset_right = 1140.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel101" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1053.0
+offset_right = 1202.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel102" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1053.0
+offset_right = 1264.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel103" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1053.0
+offset_right = 1326.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel104" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1113.0
+offset_right = 1326.0
+offset_bottom = -1069.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel105" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1173.0
+offset_right = 1326.0
+offset_bottom = -1129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel106" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1173.0
+offset_right = 1388.0
+offset_bottom = -1129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel107" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1233.0
+offset_right = 1388.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel109" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1233.0
+offset_right = 1450.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel110" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1293.0
+offset_right = 1450.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel111" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1293.0
+offset_right = 1512.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel112" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1530.0
+offset_top = -1293.0
+offset_right = 1574.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel113" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1530.0
+offset_top = -1353.0
+offset_right = 1574.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel114" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1353.0
+offset_right = 1512.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel115" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1353.0
+offset_right = 1450.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel116" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1353.0
+offset_right = 1388.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel117" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1293.0
+offset_right = 1388.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel118" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1293.0
+offset_right = 1326.0
+offset_bottom = -1249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel119" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1353.0
+offset_right = 1326.0
+offset_bottom = -1309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel120" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1413.0
+offset_right = 1326.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel121" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1413.0
+offset_right = 1388.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel122" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1413.0
+offset_right = 1450.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel124" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -1473.0
+offset_right = 1450.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel125" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1473.0
+offset_right = 1388.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel126" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1473.0
+offset_right = 1326.0
+offset_bottom = -1429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel127" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1533.0
+offset_right = 1326.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel129" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1533.0
+offset_right = 1264.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel130" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1533.0
+offset_right = 1202.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel131" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1593.0
+offset_right = 1202.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel132" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1593.0
+offset_right = 1264.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel134" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1653.0
+offset_right = 1202.0
+offset_bottom = -1609.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel136" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1713.0
+offset_right = 1202.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel137" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1713.0
+offset_right = 1264.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel138" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1713.0
+offset_right = 1326.0
+offset_bottom = -1669.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel139" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1773.0
+offset_right = 1326.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel140" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1773.0
+offset_right = 1388.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel133" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1593.0
+offset_right = 1326.0
+offset_bottom = -1549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel135" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1653.0
+offset_right = 1264.0
+offset_bottom = -1609.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel141" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1773.0
+offset_right = 1202.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel142" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1773.0
+offset_right = 1264.0
+offset_bottom = -1729.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel147" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1953.0
+offset_right = 1264.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel148" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1953.0
+offset_right = 1326.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel150" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2013.0
+offset_right = 1326.0
+offset_bottom = -1969.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel151" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2013.0
+offset_right = 1388.0
+offset_bottom = -1969.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel152" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2073.0
+offset_right = 1326.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel153" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2073.0
+offset_right = 1388.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel154" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2133.0
+offset_right = 1326.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel155" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2133.0
+offset_right = 1388.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel158" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2193.0
+offset_right = 1326.0
+offset_bottom = -2149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel159" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2193.0
+offset_right = 1388.0
+offset_bottom = -2149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel156" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -2073.0
+offset_right = 1450.0
+offset_bottom = -2029.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel157" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -2133.0
+offset_right = 1450.0
+offset_bottom = -2089.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel160" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2253.0
+offset_right = 1264.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel161" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2253.0
+offset_right = 1326.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel162" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2313.0
+offset_right = 1264.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel163" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2313.0
+offset_right = 1326.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel164" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2373.0
+offset_right = 1264.0
+offset_bottom = -2329.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel165" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2373.0
+offset_right = 1326.0
+offset_bottom = -2329.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel168" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -2433.0
+offset_right = 1264.0
+offset_bottom = -2389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel169" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -2433.0
+offset_right = 1326.0
+offset_bottom = -2389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel166" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2253.0
+offset_right = 1388.0
+offset_bottom = -2209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel167" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -2313.0
+offset_right = 1388.0
+offset_bottom = -2269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel149" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1953.0
+offset_right = 1202.0
+offset_bottom = -1909.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel143" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1833.0
+offset_right = 1202.0
+offset_bottom = -1789.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel144" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -1893.0
+offset_right = 1202.0
+offset_bottom = -1849.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel145" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1893.0
+offset_right = 1264.0
+offset_bottom = -1849.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel146" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -1833.0
+offset_right = 1264.0
+offset_bottom = -1789.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel128" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = -1533.0
+offset_right = 1388.0
+offset_bottom = -1489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel123" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1468.0
+offset_top = -1413.0
+offset_right = 1512.0
+offset_bottom = -1369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel108" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = -1233.0
+offset_right = 1326.0
+offset_bottom = -1189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel100" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = -1053.0
+offset_right = 1078.0
+offset_bottom = -1009.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel90" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -753.0
+offset_right = 1202.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel91" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -753.0
+offset_right = 1264.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel92" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1281.0
+offset_top = -753.0
+offset_right = 1325.0
+offset_bottom = -709.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel77" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -513.0
+offset_right = 1450.0
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel73" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = -453.0
+offset_right = 1450.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel68" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = -393.0
+offset_right = 1264.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel69" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = -393.0
+offset_right = 1202.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel70" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = -393.0
+offset_right = 1140.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel39" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1344.0
+offset_top = 147.0
+offset_right = 1388.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel33" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1034.0
+offset_top = 267.0
+offset_right = 1078.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel27" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1096.0
+offset_top = 447.0
+offset_right = 1140.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel28" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1158.0
+offset_top = 447.0
+offset_right = 1202.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel18" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 687.0
+offset_right = 1264.0
+offset_bottom = 731.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel15" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 747.0
+offset_right = 1264.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel16" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1282.0
+offset_top = 747.0
+offset_right = 1326.0
+offset_bottom = 791.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="Panel11" type="Panel" parent="ParallaxBackground6/MovingParallaxLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1220.0
+offset_top = 807.0
+offset_right = 1264.0
+offset_bottom = 851.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ry")
+script = ExtResource("3_hftvh")
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1558, 580)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1249, 649)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1469, 721)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1322, 554)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1166, 404)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1361, 416)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1245, 352)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1494, 324)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1356, 295)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1482, 150)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+modulate = Color(1, 0.984314, 1, 1)
+position = Vector2(1597, 300)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1415, 135)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1586, 49)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1554, 193)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1562, 423)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1405, -90)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1570, -113)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1254, -124)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1371, -249)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1501, -236)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1435, -353)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1522, -403)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1433, -558)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1524, -646)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1369, -737)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1212, -820)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1328, -884)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D40" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1439, -815)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D41" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1108, -879)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D42" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1245, -953)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D43" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1431, -1006)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D44" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1470, -1136)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D45" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1483, -933)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D46" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1523, -1188)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D47" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1552, -1412)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D48" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1435, -1528)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D49" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1337, -1622)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D50" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1433, -1657)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D51" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1511, -1550)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D52" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1508, -1706)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D53" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1446, -1754)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D54" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1310, -1832)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D55" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1470, -1953)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D56" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1406, -1889)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D57" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1540, -2128)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D58" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1432, -2240)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D59" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1380, -2376)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D60" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1524, -2356)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D61" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1322, 866)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D62" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1527, 953)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D63" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1374, 971)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
+
+[node name="AnimatedSprite2D64" type="AnimatedSprite2D" parent="ParallaxBackground6/MovingParallaxLayer2"]
+position = Vector2(1539, 820)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ob15")
+autoplay = "default"
+script = ExtResource("5_56r84")
