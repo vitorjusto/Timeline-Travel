@@ -11,17 +11,6 @@ namespace Shooter.Source.Factories.Enemies
             return new List<EnemySection>()
             {
                 new EnemySection(10, false, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
-                new EnemySection(50, true, new DOrbiter()),
             };
 
         }

@@ -1,0 +1,56 @@
+using System;
+using Godot;
+using Shooter.Source.Dumies.Projectiles;
+using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Bosses.BossLevelEight.States;
+
+public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExplodable
+{
+	private int _hp = 50;
+    private ProjectileManager _projectiles;
+    private int _timer;
+    public BlackholeGeneratorV2 Boss;
+
+    public override void _Ready()
+    {
+        _projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+
+    }
+    public override void _PhysicsProcess(double delta)
+	{
+        if(Boss.State is EnteringState)
+            return;
+            
+        _timer++;
+
+        if(_timer < 70)
+            return;
+
+        var position = Boss.Position + Position;
+
+        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		var angle = Math.Atan2(position.X - player.Position.X, position.Y - player.Position.Y);
+
+		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y + 112, (float)Math.Sin(angle) * (-2), (float)Math.Cos(angle) * (-2)));
+		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y + 112, (float)Math.Sin(angle - 0.5) * (-2), (float)Math.Cos(angle - 0.5) * (-2)));
+		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y + 112, (float)Math.Sin(angle + 0.5) * (-2), (float)Math.Cos(angle + 0.5) * (-2)));
+
+        _timer = 0;
+	}
+	
+	public void Destroy()
+    {
+        _hp--;
+		
+		if(_hp == 0)
+			EmitSignal("PartDestroyed", this);
+    }
+
+	[Signal]
+	public delegate void PartDestroyedEventHandler(Node2D node);
+
+    public bool IsImortal()
+    {
+        return true;
+    }
+}

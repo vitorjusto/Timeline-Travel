@@ -1,0 +1,73 @@
+using Godot;
+using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Bosses.BossLevelEight.States;
+using System;
+
+public partial class BlackholeGeneratorV2 : Node2D, IEnemy
+{
+	public IState State;
+	private int _armHp = 2;
+	private int _hp = 100;
+	public override void _Ready()
+	{
+		this.Position = new Vector2(722, -200);
+		State = new EnteringState(this);
+
+		GetNode<BlackholeGeneratorV2Part>("BlackholeGeneratorV2Part").Boss = this;
+		GetNode<BlackholeGeneratorV2Part>("BlackholeGeneratorV2Part2").Boss = this;
+	}
+    public override void _Process(double delta)
+	{
+		if(State.Process())
+		{
+			State = State.NextState();
+			if(State is null)
+				SetBlackholeState();
+		}
+
+	}
+
+    private void SetBlackholeState()
+    {
+        GetNode<Node2D>("BlackholeAnimation").Visible = true;
+		State = new BlackHoleState(this);
+    }
+
+    public void Destroy()
+    {
+        if(_armHp > 0)
+			return;
+
+		_hp--;
+
+		if(_hp == 0)
+			State.NextState();
+    }
+
+    public bool IsImortal()
+    {
+        return true;
+    }
+	
+	public void OnPartDestroyed(Node2D node)
+	{
+		if(node.Position.X > 0)
+			GetNode<Node2D>("RightArm").CallDeferred("queue_free");
+		else
+			GetNode<Node2D>("LeftArm").CallDeferred("queue_free");
+
+		var enemiesManager = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		enemiesManager.RemoveEnemy(node);
+
+		enemiesManager.AddExplosion(node.Position + this.Position);
+
+		_armHp--;
+
+		if(_armHp == 0)
+		{
+			State = State.NextState();
+			GetNode<Node2D>("ForceField").Visible = false;
+			GetNode<Node2D>("ForceFieldCollision").CallDeferred("queue_free");
+		}
+	}
+}

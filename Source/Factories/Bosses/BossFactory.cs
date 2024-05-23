@@ -21,6 +21,8 @@ namespace Shooter.Source.Factories.Bosses
                 return GetBossLevelSix();
             if(level == 7)
                 return GetBossLevelSeven();
+            if(level == 8)
+                return GetBossLevelEight();
                 
             return null;
         }
@@ -71,6 +73,13 @@ namespace Shooter.Source.Factories.Bosses
         private static Node2D GetBossLevelSeven()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelSeven/ProjectileShowerBase.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
+
+        private static Node2D GetBossLevelEight()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelEight/BlackholeGeneratorV2.tscn");
 
             return (Node2D)scene.Instantiate();
         }

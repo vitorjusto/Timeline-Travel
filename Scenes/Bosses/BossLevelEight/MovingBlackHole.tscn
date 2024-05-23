@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5wmhbo3rfp24"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelEight/MovingBlackHole.cs" id="1_eydu6"]
+[ext_resource type="Texture2D" uid="uid://be17hsv6udoe1" path="res://Assets/Bosses/BlackHole.png" id="2_dew31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr255"]
+atlas = ExtResource("2_dew31")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stl6v"]
+atlas = ExtResource("2_dew31")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt820"]
+atlas = ExtResource("2_dew31")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqau4"]
+atlas = ExtResource("2_dew31")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sx4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stl6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt820")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqau4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7but"]
+radius = 32.0
+
+[node name="MovingBlackHole" type="Node2D"]
+script = ExtResource("1_eydu6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3sx4c")
+autoplay = "default"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o7but")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

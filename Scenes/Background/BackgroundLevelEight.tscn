@@ -95,7 +95,7 @@ script = ExtResource("3_hftvh")
 [node name="MovingParallaxLayer3" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
 position = Vector2(1615, 0)
 rotation = 3.14159
-motion_mirroring = Vector2(0, 3479)
+motion_mirroring = Vector2(0, 3480)
 YSpeed = 10.0
 
 [node name="LevelEightBackground" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer3"]
@@ -2789,8 +2789,9 @@ autoplay = "default"
 script = ExtResource("5_56r84")
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
-position = Vector2(-222, -5)
-motion_mirroring = Vector2(0, 3479)
+position = Vector2(-222, 0)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(0, 3480)
 YSpeed = 10.0
 
 [node name="LevelEightBackground" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
@@ -2799,7 +2800,7 @@ position = Vector2(1123, -709)
 texture = ExtResource("2_7r3oa")
 
 [node name="MovingParallaxLayer2" parent="ParallaxBackground6" instance=ExtResource("1_qmmnt")]
-position = Vector2(-222, -5)
+position = Vector2(-222, 0)
 motion_mirroring = Vector2(0, 3480)
 YSpeed = 10.0
 

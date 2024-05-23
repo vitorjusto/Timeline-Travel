@@ -11,7 +11,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy
   private CollisionShape2D _collisionBox;
     private bool _destroing;
 
-    public override void _Ready()
+  public override void _Ready()
   {
     _enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
     _collisionBox = GetNode<CollisionShape2D>("CollisionShape2D");

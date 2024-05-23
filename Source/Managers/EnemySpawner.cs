@@ -163,7 +163,7 @@ public partial class EnemySpawner : Node2D
 
 		Enemies.Remove(node);
 
-		if(enemy is not INonExplodable)
+		if(node is not INonExplodable)
 			AddExplosion(node.Position.X, node.Position.Y);
 
 		node.QueueFree();
@@ -198,6 +198,11 @@ public partial class EnemySpawner : Node2D
 
 		CallDeferred("add_child", instance);
     }
+
+	public void AddExplosion(Vector2 position)
+	{
+		AddExplosion(position.X, position.Y);
+	}
 
     public void AddEnemy(IEnemyDummy enemy)
 	{

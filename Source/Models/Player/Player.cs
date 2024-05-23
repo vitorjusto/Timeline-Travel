@@ -27,6 +27,8 @@ public partial class Player : Area2D
 	public int Life = 3;
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
+	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
+	private bool _playerImortal = false;
 
     public override void _Ready()
 	{
@@ -145,7 +147,7 @@ public partial class Player : Area2D
 
 	public void OnPlayerBodyEntered(Node2D node)
 	{
-		if(_playerDestroyed)
+		if(_playerDestroyed || _playerImortal)
 			return;
 
 		if(node is IPowerUp)
