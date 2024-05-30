@@ -1,0 +1,1295 @@
+[gd_scene load_steps=17 format=3 uid="uid://c242wjf4udo6"]
+
+[ext_resource type="Texture2D" uid="uid://dbgxyj610i5uf" path="res://Assets/Background/LevelNine/BackgroundLevelNine.png" id="1_hllhe"]
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_hybxr"]
+[ext_resource type="Texture2D" uid="uid://bjnnwvc0yohf5" path="res://Assets/Background/LevelOne/Stars.png" id="3_eo1x6"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelNine/TimeRuptureGeneratorBackground.cs" id="4_bl5jg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d47mn"]
+bg_color = Color(0.835294, 0.333333, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ydsft"]
+resource_name = "new_animation"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 15, 25, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.32549, 0.32549, 0.32549, 1), Color(0.32549, 0.32549, 0.32549, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvfnp"]
+_data = {
+"new_animation": SubResource("Animation_ydsft")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luclc"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(0, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dadfi"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(11, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w73fh"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(22, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s8cm"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(33, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqy7u"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(44, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkco"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(55, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyhc6"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(66, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kohv1"]
+atlas = ExtResource("3_eo1x6")
+region = Rect2(77, 11, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_py06o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luclc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dadfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w73fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s8cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqy7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyhc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kohv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BackgroundLevelNine" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Panel" type="Panel" parent="ParallaxBackground"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 1496.0
+offset_bottom = 944.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d47mn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Panel"]
+autoplay = "new_animation"
+speed_scale = 2.89
+libraries = {
+"": SubResource("AnimationLibrary_nvfnp")
+}
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="MovingParallaxLayer" parent="ParallaxBackground2" instance=ExtResource("1_hybxr")]
+position = Vector2(-222, 0)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(0, 3480)
+YSpeed = 7.0
+
+[node name="BackgroundLevelNine" type="Sprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+visible = false
+position = Vector2(1006, -304)
+scale = Vector2(1.65097, 2.40094)
+texture = ExtResource("1_hllhe")
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1358, 888)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1478, 1000)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1382, 992)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1142, 1032)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(702, 1216)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D73" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(566, 1368)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D74" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(798, 1520)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D75" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1038, 1424)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D76" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(566, 1536)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D77" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(798, 1680)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D78" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(606, 1808)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D79" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1086, 1560)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D80" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1142, 1792)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D81" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(982, 1952)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D82" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1270, 1664)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D83" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(990, 1824)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D84" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1374, 1960)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D85" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1374, 1960)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D86" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1132, 2110)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D87" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(940, 2067)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D88" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(815, 2219)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D89" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(556, 2241)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D91" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1000, 2415)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D92" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(791, 2613)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D93" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1360, 2662)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D94" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(919, 2753)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D95" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1304, 2445)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D96" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(563, 2766)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D97" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(970, 3029)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D98" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(676, 3139)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D99" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1384, 3209)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D100" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1252, 2946)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D101" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1611, 3102)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D102" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1145, 3284)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D103" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(808, 3543)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D104" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(468, 3422)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D105" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1197, 3532)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D106" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(880, 3376)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D107" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1504, 3452)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D90" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(771, 2368)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(942, 1152)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1110, 1208)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D40" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1006, 944)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D41" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(846, 992)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D42" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(798, 928)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D43" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(886, 888)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D44" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(622, 952)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D45" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(622, 800)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D46" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(790, 688)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D47" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(550, 752)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D48" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(686, 624)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D49" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(454, 592)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D50" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(726, 440)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D51" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(574, 376)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D108" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(320, 55)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D109" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(803, 134)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D110" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(402, 255)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D111" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(578, 89)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D112" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(804, 349)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D113" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(585, 213)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D114" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(436, 422)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D115" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(968, 276)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D116" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1164, 120)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D117" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1465, 292)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D118" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1171, 285)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D119" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1439, 410)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D120" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1358, 156)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D121" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1516, 98)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D122" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1327, 329)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D123" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1557, 411)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D124" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1280, 464)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D125" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1504, 570)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D126" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1138, 631)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D127" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1404, 674)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D128" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1267, 664)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D129" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1520, 809)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D130" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1393, 798)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D131" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1565, 957)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D132" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1292, 1031)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D133" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1532, 1170)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D134" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1329, 1293)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D135" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1577, 1378)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D136" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1308, 1397)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D137" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1050, 1313)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D138" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(827, 1315)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D139" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(570, 1146)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D140" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(709, 1128)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D141" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(364, 1034)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D142" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(385, 1228)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D143" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(607, 1298)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D144" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(430, 1404)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D145" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(672, 1510)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D146" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(417, 1642)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D147" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(638, 1714)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D148" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(946, 1625)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D149" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1213, 1675)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D150" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1169, 1529)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D151" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1399, 1582)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D152" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1532, 1739)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D153" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1366, 1779)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D154" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1559, 1591)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D155" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1474, 1895)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D156" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1186, 1991)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D157" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1249, 1888)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D158" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1333, 2126)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D159" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1459, 2044)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D160" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1437, 2209)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D161" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1232, 2284)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D162" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1021, 2217)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D163" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(898, 2433)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D164" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1163, 2590)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D165" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1124, 2433)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D166" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(664, 2195)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D167" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(746, 2005)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D168" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(506, 1984)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D169" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(782, 1885)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D170" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(443, 1867)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D171" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(449, 2174)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D172" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(434, 2406)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D173" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(528, 2544)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D174" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(634, 2442)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D175" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(478, 2646)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D176" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(791, 2786)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D177" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(596, 2951)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D178" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(448, 2835)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D179" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(780, 2964)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D180" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(996, 2850)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D181" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(972, 2633)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D182" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1186, 2781)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D183" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1434, 2891)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D184" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1482, 2667)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D185" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1409, 2543)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D186" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1328, 3148)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D187" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1154, 3022)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D188" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(962, 3188)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D189" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(781, 3100)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D190" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(508, 3172)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D191" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(391, 3290)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D192" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(641, 3384)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D193" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(764, 3249)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D194" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1029, 3348)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D195" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1275, 3384)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D196" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.27451, 0.109804, 0, 1)
+position = Vector2(1134, 3162)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D52" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(382, 512)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D53" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(942, 384)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D54" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(974, 472)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D55" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(982, 592)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D56" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(806, 576)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D57" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(934, 712)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D58" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1086, 472)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D59" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(934, 768)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D60" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1062, 808)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D61" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1110, 760)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D62" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1198, 880)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D63" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1198, 944)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D64" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1262, 792)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D65" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1222, 736)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D66" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1046, 376)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D67" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1078, 216)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D68" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1326, 536)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D69" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1174, 360)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D70" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1238, 200)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D71" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(902, 168)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D72" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(726, 208)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1238, 1160)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="ParallaxBackground2/MovingParallaxLayer"]
+modulate = Color(0.835294, 0.333333, 0, 1)
+position = Vector2(1422, 1184)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_py06o")
+autoplay = "default"
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="ParallaxBackground3"]
+modulate = Color(0.588235, 0.588235, 0.588235, 1)
+script = ExtResource("4_bl5jg")
