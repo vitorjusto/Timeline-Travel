@@ -91,5 +91,6 @@ namespace Shooter.Source.Factories.Bosses
 
             return (Node2D)scene.Instantiate();
         }
+
     }
 }

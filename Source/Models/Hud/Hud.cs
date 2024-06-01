@@ -103,6 +103,8 @@ public partial class Hud : Node2D
 		
 		if(currentLevel == 1)
 			lblTimeline.Text = $"Our Timeline";
+		else if(currentLevel == 10)
+			lblTimeline.Text = $"Their Timeline";
 		else
 			lblTimeline.Text = $"Timeline {currentLevel}";
 
