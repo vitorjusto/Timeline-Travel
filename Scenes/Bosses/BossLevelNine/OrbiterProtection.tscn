@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://n1d5vj6mocpd"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelNine/OrbiterProtection.cs" id="1_av3w8"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_byw1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwyg"]
+size = Vector2(64, 64)
+
+[node name="OrbiterProtection" type="CharacterBody2D"]
+script = ExtResource("1_av3w8")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+texture = ExtResource("1_byw1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wtwyg")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://3qp2bxxlr4vh"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelNine/FourDWarMachineBase.cs" id="1_bgdko"]
+[ext_resource type="Texture2D" uid="uid://cr3m25hls8wiu" path="res://Assets/Bosses/4DWarMachine/BossEntreringAnimation.png" id="2_sel26"]
+[ext_resource type="PackedScene" uid="uid://cqiwpsohydsvk" path="res://Scenes/Bosses/BossLevelNine/4DWarMachine.tscn" id="3_xpwkm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g8pa"]
+atlas = ExtResource("2_sel26")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk46"]
+atlas = ExtResource("2_sel26")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdhmu"]
+atlas = ExtResource("2_sel26")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpdr1"]
+atlas = ExtResource("2_sel26")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0i4qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g8pa")
+}],
+"loop": true,
+"name": &"EntranceAnimation1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk46")
+}],
+"loop": true,
+"name": &"EntranceAnimation2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdhmu")
+}],
+"loop": true,
+"name": &"EntranceAnimation3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpdr1")
+}],
+"loop": true,
+"name": &"EntranceAnimation4",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}]
+
+[node name="4DWarMachine3" type="Node2D"]
+script = ExtResource("1_bgdko")
+
+[node name="aniEntreringPortal" type="AnimatedSprite2D" parent="."]
+position = Vector2(673, 131)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_0i4qi")
+animation = &"none"
+autoplay = "none"
+
+[node name="4DWarMachine" parent="." instance=ExtResource("3_xpwkm")]
+visible = false
+position = Vector2(673, 209)
