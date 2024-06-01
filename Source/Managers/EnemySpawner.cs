@@ -65,6 +65,8 @@ public partial class EnemySpawner : Node2D
 			_enemySection = EnemiesLevelEight.GetEnemies();
 		if(CurrentLevel == 9)
 			_enemySection = EnemiesLevelNine.GetEnemies();
+		if(CurrentLevel == 10)
+			_enemySection = EnemiesLevelTen.GetEnemies();
     }
 
 

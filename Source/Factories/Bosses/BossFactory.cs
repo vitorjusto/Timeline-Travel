@@ -25,6 +25,9 @@ namespace Shooter.Source.Factories.Bosses
                 return GetBossLevelEight();
             if(level == 9)
                 return GetBossLevelNine();
+            if(level == 10)
+                return GetBossLevelTen();
+
             return null;
         }
 
@@ -92,5 +95,11 @@ namespace Shooter.Source.Factories.Bosses
             return (Node2D)scene.Instantiate();
         }
 
+        private static Node2D GetBossLevelTen()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelTen/FirstClassEnemy.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
     }
 }
