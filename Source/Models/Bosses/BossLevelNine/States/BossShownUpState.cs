@@ -12,6 +12,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             _boss = boss;
             _boss.Visible = true;
             _boss.SetProcess(true);
+            _boss.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
             _boss.EmitSignal("OnActivated");
         }
 

@@ -88,6 +88,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 	public void OnActivated()
 	{
 		SetProcess(true);
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
 	public void ChangeShooting(bool state)
