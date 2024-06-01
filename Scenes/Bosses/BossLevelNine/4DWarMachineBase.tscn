@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3qp2bxxlr4vh"]
+[gd_scene load_steps=10 format=3 uid="uid://3qp2bxxlr4vh"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelNine/FourDWarMachineBase.cs" id="1_bgdko"]
 [ext_resource type="Texture2D" uid="uid://cr3m25hls8wiu" path="res://Assets/Bosses/4DWarMachine/BossEntreringAnimation.png" id="2_sel26"]
@@ -60,6 +60,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jngq"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="4DWarMachine3" type="Node2D"]
 script = ExtResource("1_bgdko")
 
@@ -73,3 +76,24 @@ autoplay = "none"
 [node name="4DWarMachine" parent="." instance=ExtResource("3_xpwkm")]
 visible = false
 position = Vector2(673, 209)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 3
+
+[node name="Panel" type="Panel" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 1457.0
+offset_bottom = 919.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jngq")
+
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection2" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection3" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection4" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection5" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection6" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection7" method="OnActivated" flags=18]
+[connection signal="OnActivated" from="4DWarMachine" to="4DWarMachine/OrbiterProtection8" method="OnActivated" flags=18]
+[connection signal="OnHalfHealth" from="4DWarMachine" to="." method="OnHalfHealth"]

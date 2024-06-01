@@ -21,4 +21,9 @@ public partial class FourDWarMachineBase : Node2D
 			_state = _state.NextState();
 		}
 	}
+
+	public void OnHalfHealth()
+	{
+		_state = new BackInTimeTransitionState(_aniEntreringPortal, _boss, GetNode<Panel>("ParallaxBackground/Panel"));
+	}
 }

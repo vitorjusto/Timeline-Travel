@@ -10,7 +10,9 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, false, new DCommon(100, 1))
+                new EnemySection(50, true, new DCommon(100, 1)),
+                new EnemySection(50, true, new DCommon(100, 1)),
+                new EnemySection(50, false, new DCommon(100, 1)),
             };
 
         }

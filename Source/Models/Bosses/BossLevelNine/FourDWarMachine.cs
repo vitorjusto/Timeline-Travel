@@ -8,11 +8,12 @@ public partial class FourDWarMachine : Node2D, IEnemy
 {
 	private IState _state;
 	private int _hp = 200;
+	private int _orbiters = 8;
+	private bool _HalfHealthEventTrigered = false;
 	public override void _Ready()
 	{
-		SetProcess(false);
 		_state = new MovingState(this);
-
+		SetProcess(false);
 	}
 
 	public override void _Process(double delta)
@@ -25,10 +26,23 @@ public partial class FourDWarMachine : Node2D, IEnemy
 	{
 		GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").AddExplosion(node.Position + Position);
 		node.CallDeferred("queue_free");
+		_orbiters--;
 
+		if(_orbiters == 0)
+			EmitHalfHealthEvent();
 	}
 
-	public void OnOrbiterShoot(Node2D node)
+    private void EmitHalfHealthEvent()
+    {
+		if(_HalfHealthEventTrigered)
+			return;
+
+        EmitSignal("OnHalfHealth");
+		EmitSignal("ChangeShootingState", false);
+		_HalfHealthEventTrigered = true;
+    }
+
+    public void OnOrbiterShoot(Node2D node)
 	{
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X + node.Position.X - player.Position.X, Position.Y + node.Position.Y - player.Position.Y);
@@ -44,6 +58,24 @@ public partial class FourDWarMachine : Node2D, IEnemy
     public void Destroy()
     {
         _hp--;
+
+		if(_hp == 100)
+		{
+			EmitHalfHealthEvent();
+		}
+
+		if(_hp == 0)
+		{
+			_state = _state.NextState();
+
+			foreach(Node2D node in GetChildren())
+			{
+				if(node is not OrbiterProtection)
+					continue;
+					
+				OnOrbiterDestroyed(node);
+			}
+		}
     }
 
     public bool IsImortal()
@@ -53,4 +85,12 @@ public partial class FourDWarMachine : Node2D, IEnemy
 
 	[Signal]
 	public delegate void OnActivatedEventHandler();
+	[Signal]
+	public delegate void OnHalfHealthEventHandler();
+	[Signal]
+	public delegate void ChangeShootingStateEventHandler(bool state);
+	public void TransitionEnded()
+	{
+		_state = _state.NextState();
+	}
 }

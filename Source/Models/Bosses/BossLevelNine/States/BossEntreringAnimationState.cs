@@ -27,9 +27,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             if(_timer > 50)
                 AnimationNextFrame();
 
-            //TODO: descomentar
             return _currentAnimationFrame == 4;
-            return true;
         }
 
         private void AnimationNextFrame()

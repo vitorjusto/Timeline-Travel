@@ -1,6 +1,4 @@
-using System;
 using Godot;
-using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 
 public partial class OrbiterProtection : Node2D, IEnemy
@@ -14,8 +12,9 @@ public partial class OrbiterProtection : Node2D, IEnemy
 	[Export]
     public int _yspeedModifier = 1;
 	public int _shootingCooldown = 100;
+	private bool _allowShoot = true;
 
-	public int _hp = 10;
+	public int _hp = 20;
 	public override void _Ready()
 	{
 		SetProcess(false);
@@ -66,7 +65,8 @@ public partial class OrbiterProtection : Node2D, IEnemy
     {
         _shootingCooldown = 100;
 
-		EmitSignal("OnShooting", this);
+		if(_allowShoot)
+			EmitSignal("OnShooting", this);
 	}
 
     public void Destroy()
@@ -88,5 +88,10 @@ public partial class OrbiterProtection : Node2D, IEnemy
 	public void OnActivated()
 	{
 		SetProcess(true);
+	}
+
+	public void ChangeShooting(bool state)
+	{
+		_allowShoot = state;
 	}
 }

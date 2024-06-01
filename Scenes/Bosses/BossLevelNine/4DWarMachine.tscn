@@ -71,14 +71,14 @@ _xspeedModifier = -1
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_hypw3")
 
-[connection signal="OnActivated" from="." to="OrbiterProtection" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection2" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection3" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection4" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection5" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection6" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection7" method="OnActivated"]
-[connection signal="OnActivated" from="." to="OrbiterProtection8" method="OnActivated"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection2" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection3" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection4" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection5" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection6" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection7" method="ChangeShooting"]
+[connection signal="ChangeShootingState" from="." to="OrbiterProtection8" method="ChangeShooting"]
 [connection signal="OnOrbiterDestroyed" from="OrbiterProtection" to="." method="OnOrbiterDestroyed"]
 [connection signal="OnShooting" from="OrbiterProtection" to="." method="OnOrbiterShoot"]
 [connection signal="OnOrbiterDestroyed" from="OrbiterProtection2" to="." method="OnOrbiterDestroyed"]

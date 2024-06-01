@@ -17,7 +17,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         public IState NextState()
         {
-            return null;
+            return new MovingBackInTimeState(_boss);
         }
 
         public bool Process()
