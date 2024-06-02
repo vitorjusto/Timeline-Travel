@@ -19,4 +19,5 @@ public partial class BulletUp : CharacterBody2D, IPowerUp
 	{
 		Position = new Vector2(Position.X, Position.Y + 2);
 	}
+
 }

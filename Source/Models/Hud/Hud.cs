@@ -7,6 +7,7 @@ public partial class Hud : Node2D
     private bool _showingTimelineLabel;
 	private bool _showingWarningBoss;
 	private int _time = 0;
+	public bool IsShowingTimelineLabel => _showingTimelineLabel;
 
 
     public override void _Ready()
@@ -105,6 +106,8 @@ public partial class Hud : Node2D
 			lblTimeline.Text = $"Our Timeline";
 		else if(currentLevel == 10)
 			lblTimeline.Text = $"Their Timeline";
+		else if(currentLevel == 11)
+			lblTimeline.Text = $"Final Boss";
 		else
 			lblTimeline.Text = $"Timeline {currentLevel}";
 

@@ -17,8 +17,7 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
-	public int CurrentLevel = 10;
-
+	public int CurrentLevel = 11;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -29,8 +28,9 @@ public partial class EnemySpawner : Node2D
     public override void _Ready()
 	{
 		Enemies = new List<Node2D>();
+		_enemySection = new List<EnemySection>();
+		
 		StartLevel();
-
 		_gameManager = GetTree().Root.GetNode<GameManager>("/root/Main");
 	}
 
@@ -67,6 +67,8 @@ public partial class EnemySpawner : Node2D
 			_enemySection = EnemiesLevelNine.GetEnemies();
 		if(CurrentLevel == 10)
 			_enemySection = EnemiesLevelTen.GetEnemies();
+		if(CurrentLevel == 11)
+			GetBoss();
     }
 
 

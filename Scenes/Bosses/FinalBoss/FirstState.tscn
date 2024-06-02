@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhmtiqixlsj56"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_koq25"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FirstState.cs" id="1_oognb"]
+[ext_resource type="Texture2D" uid="uid://cbylme65y6rb5" path="res://Assets/Background/LevelEleven/StartingHallway.png" id="2_qasl2"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_2wni4"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalPowerUp.cs" id="5_ejc5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d541i"]
+size = Vector2(562, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08jay"]
+size = Vector2(63.75, 64)
+
+[node name="FirstState" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MovingParallaxLayer3" parent="ParallaxBackground" instance=ExtResource("1_koq25")]
+rotation = 3.14159
+motion_mirroring = Vector2(0, 1144)
+YSpeed = 10.0
+
+[node name="StartingHallway" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer3"]
+position = Vector2(-723.999, -572.002)
+rotation = -3.14159
+texture = ExtResource("2_qasl2")
+metadata/_edit_lock_ = true
+
+[node name="TheWall" type="CharacterBody2D" parent="."]
+position = Vector2(703, -72)
+script = ExtResource("1_oognb")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="TheWall"]
+position = Vector2(6.10352e-05, 0)
+scale = Vector2(8.78125, 1.78125)
+texture = ExtResource("4_2wni4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheWall"]
+shape = SubResource("RectangleShape2D_d541i")
+
+[node name="ShootAnchor1" type="Node2D" parent="TheWall"]
+position = Vector2(-244, 53)
+
+[node name="ShootAnchor2" type="Node2D" parent="TheWall"]
+position = Vector2(235, 52)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(704, 148)
+script = ExtResource("5_ejc5g")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("4_2wni4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.125, 0)
+shape = SubResource("RectangleShape2D_08jay")
+metadata/_edit_lock_ = true
+
+[connection signal="OnDestroyed" from="TheWall" to="CharacterBody2D" method="OnBossDestroyed"]

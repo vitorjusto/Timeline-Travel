@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 namespace Shooter.Source.Factories.Bosses
@@ -27,6 +26,8 @@ namespace Shooter.Source.Factories.Bosses
                 return GetBossLevelNine();
             if(level == 10)
                 return GetBossLevelTen();
+            if(level == 11)
+                return GetFinalBoss();
 
             return null;
         }
@@ -98,6 +99,13 @@ namespace Shooter.Source.Factories.Bosses
         private static Node2D GetBossLevelTen()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelTen/FirstClassEnemy.tscn");
+
+            return (Node2D)scene.Instantiate();
+        }
+
+        private static Node2D GetFinalBoss()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/FinalBoss/FinalBoss.tscn");
 
             return (Node2D)scene.Instantiate();
         }

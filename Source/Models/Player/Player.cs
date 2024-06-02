@@ -11,7 +11,6 @@ public partial class Player : Area2D
 	[Export]
 	public int DashInitialSpeed = 45;
 	private int _dashSpeedBoost = 0;
-
 	private int _iFrame = 0;
 	
 	[Export]
@@ -29,10 +28,13 @@ public partial class Player : Area2D
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
 	private bool _playerImortal = false;
+    private int _minLimit = 5;
+    private int _maxLimit;
 
     public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
+		_maxLimit = (int)ScreenSize.X - 5;
 		Hp = 10;
 
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
@@ -60,7 +62,6 @@ public partial class Player : Area2D
 			return;
 
 		}
-
 
 		MovePlayer();
 		AnimateIFrame();
@@ -116,7 +117,7 @@ public partial class Player : Area2D
     	}
 
 		Position = new Vector2(
-    		x: Mathf.Clamp(Position.X + velocity.X, 5, ScreenSize.X - 5),
+    		x: Mathf.Clamp(Position.X + velocity.X, _minLimit, _maxLimit),
     		y: Mathf.Clamp(Position.Y + velocity.Y, 5, ScreenSize.Y - 5)
 		);
 
@@ -222,6 +223,18 @@ public partial class Player : Area2D
     		x: Mathf.Clamp(Position.X + xspeed, limit, ScreenSize.X - limit),
     		y: Mathf.Clamp(Position.Y + yspeed, limit, ScreenSize.Y - limit)
 		);
+	}
+
+	public void SetSizeLimit(int min, int max)
+	{
+		_minLimit = min;
+		_maxLimit = max;
+	}
+
+	public void SetDefaultLimit()
+	{
+		_minLimit = 5;
+		_maxLimit = (int)ScreenSize.X - 5;;
 	}
 
 	public void ShowTarget()

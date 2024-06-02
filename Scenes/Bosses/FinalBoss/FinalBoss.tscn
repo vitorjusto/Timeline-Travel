@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b83tcux8dkpvy"]
+
+[ext_resource type="PackedScene" uid="uid://bhmtiqixlsj56" path="res://Scenes/Bosses/FinalBoss/FirstState.tscn" id="1_uvane"]
+
+[node name="FinalBossBase" type="Node2D"]
+
+[node name="FirstState" parent="." instance=ExtResource("1_uvane")]
