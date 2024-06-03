@@ -5,9 +5,17 @@ using Shooter.Source.Models.Misc;
 public partial class FinalPowerUp : CharacterBody2D, IPowerUp
 {
 	public WaveSpeed _yspeed;
+
     public void OnPickUp()
     {
-        return;
+		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		player.GetFinalPowerUp = true;
+
+		player.Hp = 100;
+
+		EmitSignal("OnGetPowerUp");
+		QueueFree();
+		
     }
 	
 	public override void _Ready()
@@ -20,7 +28,6 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
     public override void _Process(double delta)
 	{
 		Position = new Vector2(Position.X, _yspeed.Update());
-		GD.Print(GetNode<CollisionShape2D>("CollisionShape2D").Disabled);
 	}
 	public void OnBossDestroyed()
 	{
@@ -28,4 +35,7 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
 		Visible = true;
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
+
+	[Signal]
+	public delegate void OnGetPowerUpEventHandler();
 }

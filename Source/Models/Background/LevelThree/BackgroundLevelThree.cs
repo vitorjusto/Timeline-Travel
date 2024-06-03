@@ -83,7 +83,6 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		foreach(var enemy in enemiesWithoutLight)
 		{
-			GD.Print(enemy);
 			if(enemy is DimentionalStarship)
 				continue;
 

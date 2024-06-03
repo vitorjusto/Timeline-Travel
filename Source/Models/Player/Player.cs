@@ -23,7 +23,9 @@ public partial class Player : Area2D
     private bool _playerDestroyed;
 	private int _time = 0;
     public int Hp {get; set;}
-	public int Life = 3;
+    public bool GetFinalPowerUp { get; internal set; }
+
+    public int Life = 3;
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhmtiqixlsj56"]
+[gd_scene load_steps=9 format=3 uid="uid://bhmtiqixlsj56"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_koq25"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FirstStateBase.cs" id="1_nonx2"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FirstState.cs" id="1_oognb"]
 [ext_resource type="Texture2D" uid="uid://cbylme65y6rb5" path="res://Assets/Background/LevelEleven/StartingHallway.png" id="2_qasl2"]
 [ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_2wni4"]
@@ -13,6 +14,7 @@ size = Vector2(562, 114)
 size = Vector2(63.75, 64)
 
 [node name="FirstState" type="Node2D"]
+script = ExtResource("1_nonx2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -60,3 +62,4 @@ shape = SubResource("RectangleShape2D_08jay")
 metadata/_edit_lock_ = true
 
 [connection signal="OnDestroyed" from="TheWall" to="CharacterBody2D" method="OnBossDestroyed"]
+[connection signal="OnGetPowerUp" from="CharacterBody2D" to="." method="OnFinalPowerUpGet"]

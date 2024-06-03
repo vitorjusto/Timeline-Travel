@@ -42,7 +42,6 @@ public partial class ProjectileShower : Node2D, IEnemy
 			return;
 
         Hp--;
-		GD.Print(Hp);
 
 		if(Hp == 30)
 			_state = new Exploding(this, 500, removeEnemy: false);

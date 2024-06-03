@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cav7yasi24bq"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_ggno3"]
+[ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_m54kp"]
+
+[node name="MotherShipCore1" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MovingParallaxLayer3" parent="ParallaxBackground" instance=ExtResource("1_ggno3")]
+rotation = 3.14159
+motion_mirroring = Vector2(0, 1576)
+YSpeed = 10.0
+
+[node name="CoreBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer3"]
+position = Vector2(-723.998, -788.002)
+rotation = -3.14159
+texture = ExtResource("2_m54kp")
