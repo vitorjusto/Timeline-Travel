@@ -30,3 +30,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_doo4o")
 
 [connection signal="OnFinishedState" from="FirstState" to="." method="OnNextState"]
 [connection signal="OnNextState" from="MotherShipCore1" to="." method="OnNextState"]
+[connection signal="OnNextState" from="TimelineEightFinalBoss" to="." method="OnNextState"]

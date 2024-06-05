@@ -17,6 +17,8 @@ public partial class EnemySpawner : Node2D
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
 	private List<EnemySection> _enemySection;
+
+	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
 	public int CurrentLevel = 11;
 	public bool BossApeared = false;
     private bool _endingLevel;
@@ -43,6 +45,11 @@ public partial class EnemySpawner : Node2D
 		hud.ShowTimelineLabel(CurrentLevel);
 
 		GetEnemyLevel();
+	}
+
+	public void AddEnemySection(List<EnemySection> enemies)
+	{
+		_enemySection.AddRange(enemies);
 	}
 
     private void GetEnemyLevel()
@@ -133,7 +140,7 @@ public partial class EnemySpawner : Node2D
 		_time++;
 	}
 
-	private void GetNextSection()
+	public void GetNextSection()
 	{
 		if(!_enemySection.Any())
 		{
