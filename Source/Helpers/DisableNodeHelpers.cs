@@ -1,4 +1,5 @@
 using Godot;
+using Shooter.Source.Interfaces;
 
 namespace Shooter.Source.Helpers
 {
@@ -11,10 +12,18 @@ namespace Shooter.Source.Helpers
                 DisableNodeIncludingChildren(child);
             }
 
-            if(node is Node2D node2D)
+            if(node is IDisableNotifier notify)
+                notify.OnDisable();
+
+            if(node is CollisionShape2D collision)
+            {
+                collision.Disabled = true;
+            }
+            else if(node is Node2D node2D)
             {
                 node2D.Visible = false;
             }
+            
             node.SetProcess(false);
         }
 
@@ -24,12 +33,15 @@ namespace Shooter.Source.Helpers
             {
                 EnableNodeIncludingChildren(child);
             }
-
-            if(node is Node2D node2D)
+            
+            if(node is CollisionShape2D collision)
+            {
+                collision.Disabled = false;
+            }else if(node is Node2D node2D)
             {
                 node2D.Visible = true;
             }
-            
+
             node.SetProcess(true);
         }
     }

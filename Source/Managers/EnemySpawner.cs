@@ -203,6 +203,15 @@ public partial class EnemySpawner : Node2D
 		CallDeferred("add_child", instance);
     }
 
+	public void RemoveAllExplosions()
+    {
+		foreach(var node in GetChildren())
+		{
+			if(node is Explosion explosion)
+				explosion.QueueFree();
+		}
+    }
+
 	public void AddExplosion(Vector2 position)
 	{
 		AddExplosion(position.X, position.Y);

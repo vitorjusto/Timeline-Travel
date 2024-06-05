@@ -4,6 +4,8 @@ namespace Shooter.Source.Enums
     {
         TheWall = 1,
         FinalPowerUpGetTransition = 2,
-        MothershipCore = 3 
+        MothershipCore = 3,
+        TransitionToTimelineEight = 4,
+        TimelineEight = 5,
     }
 }

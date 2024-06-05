@@ -12,6 +12,7 @@ public partial class FinalBoss : Node2D
 	public override void _Ready()
 	{
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("MotherShipCore1"));
+		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
 	}
 
 	public override void _Process(double delta)
@@ -32,14 +33,22 @@ public partial class FinalBoss : Node2D
 	{
 		_bossLevelState += 1;
 
-		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition)
-			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("PanelContainer"));
+		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight)
+			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
 		if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
 			GetNode("FirstState").QueueFree();
 			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("MotherShipCore1"));
 			GetNode<Node2D>("MotherShipCore1").Visible = true;
-			GetNode<Panel>("PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+
+		}if(_bossLevelState == EFinalBossState.TimelineEight)
+		{
+			DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("MotherShipCore1"));
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
+			
+			GetNode<Node2D>("TimelineEightFinalBoss").Visible = true;
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 		}
 	}
 }

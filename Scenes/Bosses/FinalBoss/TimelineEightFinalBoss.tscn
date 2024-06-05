@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clj66ailvb4fm"]
+
+[ext_resource type="PackedScene" uid="uid://m8pmmair70e6" path="res://Scenes/Background/BackgroundLevelEight.tscn" id="1_tn0nc"]
+
+[node name="TimelineEightFinalBoss" type="Node2D"]
+
+[node name="BackgoundLevelEight" parent="." instance=ExtResource("1_tn0nc")]

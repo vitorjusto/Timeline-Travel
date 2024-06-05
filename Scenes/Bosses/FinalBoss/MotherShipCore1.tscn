@@ -1,9 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cav7yasi24bq"]
+[gd_scene load_steps=13 format=3 uid="uid://cav7yasi24bq"]
 
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_7ueac"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_ggno3"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MotherShipCore1Base.cs" id="1_ha2ii"]
 [ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_m54kp"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCore1.cs" id="3_kucr4"]
+[ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="4_6814i"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCorePuncher.cs" id="6_ueqpb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ly3pr"]
+radius = 153.639
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nn3hs"]
+radius = 60.1332
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhv88"]
+radius = 58.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdway"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfc1d"]
+size = Vector2(64, 65)
 
 [node name="MotherShipCore1" type="Node2D"]
+script = ExtResource("1_ha2ii")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -16,3 +37,97 @@ YSpeed = 10.0
 position = Vector2(-723.998, -788.002)
 rotation = -3.14159
 texture = ExtResource("2_m54kp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(675, -173)
+script = ExtResource("3_kucr4")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(2.65625, 2.57813)
+texture = ExtResource("1_7ueac")
+metadata/_edit_lock_ = true
+
+[node name="ForceField" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-0.999939, 0)
+scale = Vector2(5.03125, 4.88281)
+texture = ExtResource("4_6814i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_ly3pr")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(907, -164)
+script = ExtResource("3_kucr4")
+FinalPosition = 300
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(0.248002, 0.248017)
+scale = Vector2(1.0235, 1.0235)
+texture = ExtResource("1_7ueac")
+metadata/_edit_lock_ = true
+
+[node name="ForceField3" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(1.72853e-06, 1.72853e-06)
+scale = Vector2(1.96875, 1.96875)
+texture = ExtResource("4_6814i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("CircleShape2D_nn3hs")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(444, -163)
+script = ExtResource("3_kucr4")
+FinalPosition = 300
+
+[node name="EnemyPlaceholder2" type="Sprite2D" parent="CharacterBody2D3"]
+texture = ExtResource("1_7ueac")
+metadata/_edit_lock_ = true
+
+[node name="ForceField2" type="Sprite2D" parent="CharacterBody2D3"]
+scale = Vector2(1.953, 1.953)
+texture = ExtResource("4_6814i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+shape = SubResource("CircleShape2D_rhv88")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D4" type="CharacterBody2D" parent="."]
+position = Vector2(268, -260)
+script = ExtResource("6_ueqpb")
+
+[node name="EnemyPlaceholder2" type="Sprite2D" parent="CharacterBody2D4"]
+texture = ExtResource("1_7ueac")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D4"]
+shape = SubResource("RectangleShape2D_mdway")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="."]
+position = Vector2(1049, -260)
+script = ExtResource("6_ueqpb")
+
+[node name="EnemyPlaceholder2" type="Sprite2D" parent="CharacterBody2D5"]
+texture = ExtResource("1_7ueac")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D5"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pfc1d")
+metadata/_edit_lock_ = true
+
+[connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="." method="OnPuncherDestroing"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D2" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D3" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D5" method="OnOtherPuncherDestroing"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D5" to="." method="OnPuncherDestroing"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D5" to="CharacterBody2D" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D5" to="CharacterBody2D2" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D5" to="CharacterBody2D3" method="OnPuncherDestroyed"]
+[connection signal="OnPuncherDestroing" from="CharacterBody2D5" to="CharacterBody2D4" method="OnOtherPuncherDestroing"]

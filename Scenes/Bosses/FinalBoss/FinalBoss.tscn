@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b83tcux8dkpvy"]
+[gd_scene load_steps=6 format=3 uid="uid://b83tcux8dkpvy"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalBoss.cs" id="1_b6frb"]
 [ext_resource type="PackedScene" uid="uid://bhmtiqixlsj56" path="res://Scenes/Bosses/FinalBoss/FirstState.tscn" id="1_uvane"]
 [ext_resource type="PackedScene" uid="uid://cav7yasi24bq" path="res://Scenes/Bosses/FinalBoss/MotherShipCore1.tscn" id="3_2poc8"]
+[ext_resource type="PackedScene" uid="uid://clj66ailvb4fm" path="res://Scenes/Bosses/FinalBoss/TimelineEightFinalBoss.tscn" id="4_cgju8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_doo4o"]
 bg_color = Color(1, 1, 1, 1)
@@ -14,7 +15,12 @@ script = ExtResource("1_b6frb")
 
 [node name="MotherShipCore1" parent="." instance=ExtResource("3_2poc8")]
 
-[node name="PanelContainer" type="Panel" parent="."]
+[node name="TimelineEightFinalBoss" parent="." instance=ExtResource("4_cgju8")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 128
+
+[node name="PanelContainer" type="Panel" parent="ParallaxBackground"]
 modulate = Color(1, 1, 1, 0)
 offset_left = -2.0
 offset_top = -3.0
@@ -22,10 +28,5 @@ offset_right = 1464.0
 offset_bottom = 914.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_doo4o")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -3
-
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-layer = -2
-
 [connection signal="OnFinishedState" from="FirstState" to="." method="OnNextState"]
+[connection signal="OnNextState" from="MotherShipCore1" to="." method="OnNextState"]

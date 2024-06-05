@@ -24,7 +24,7 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
         {
             if(_opacity < 255)
             {
-                _opacity += 5;
+                _opacity += 1;
                 _transitionPanel.Modulate = Color.Color8(255, 255, 255, _opacity);
             }else
             {
