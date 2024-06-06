@@ -15,6 +15,8 @@ public partial class Concept : Node2D, IEnemy
 
     private EnemySpawner _enemySpawner;
 
+	[Export]
+	public bool AutoEndLevel = true;
     public override void _Ready()
 	{
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
@@ -52,8 +54,14 @@ public partial class Concept : Node2D, IEnemy
 
 	public void OnHeadDestroyed()
 	{
-		_enemySpawner.EndLevel();
-		_enemySpawner.RemoveEnemy(this);
+		EmitSignal("OnConceptDestroyed");
+		
+		if(AutoEndLevel)
+		{
+			_enemySpawner.EndLevel();
+			_enemySpawner.RemoveEnemy(this);
+		}
+
 	}
 
 	[Signal]
@@ -61,4 +69,7 @@ public partial class Concept : Node2D, IEnemy
 	
 	[Signal]
 	public delegate void OnActivateHeadShootingEventHandler();
+
+	[Signal]
+	public delegate void OnConceptDestroyedEventHandler();
 }

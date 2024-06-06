@@ -34,6 +34,9 @@ namespace Shooter.Source.Helpers
                 EnableNodeIncludingChildren(child);
             }
             
+            if(node is IEnableNotifier notify)
+                notify.OnEnable();
+
             if(node is CollisionShape2D collision)
             {
                 collision.Disabled = false;

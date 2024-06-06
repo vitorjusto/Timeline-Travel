@@ -55,11 +55,6 @@ public partial class TimelineEightFinalBoss : Node2D
 		_enemyManager.GetNextSection();
     }
 
-    public void Activate()
-	{
-
-		Visible = true;
-	}
 
 	[Signal]
 	public delegate void OnNextStateEventHandler();

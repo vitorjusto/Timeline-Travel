@@ -22,9 +22,9 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
 
         public bool Process()
         {
-            if(_opacity < 255)
+            if(_opacity < 254)
             {
-                _opacity += 1;
+                _opacity += 2;
                 _transitionPanel.Modulate = Color.Color8(255, 255, 255, _opacity);
             }else
             {

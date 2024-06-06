@@ -9,5 +9,9 @@ namespace Shooter.Source.Enums
         TimelineEight = 5,
         TransitionToMothershipCore2 = 6,
         MothershipCore2 = 7,
+        TransitionToTimelineTwoFour = 8,
+        TimelineTwoFour = 9,
+        TransitionToAngryCore = 10,
+        AngryCore = 11,
     }
 }

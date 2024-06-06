@@ -3,7 +3,7 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
-public partial class MothershipCorePuncher : Node2D, IEnemy
+public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 {
     private WaveSpeed _idleySpeed;
     private float _ySpeed;
@@ -17,7 +17,7 @@ public partial class MothershipCorePuncher : Node2D, IEnemy
 
     private Player _player;
 	private bool _dashing;
-	private int _hp = 100;
+	private int _hp = 70;
     private bool _damageDisabled;
 
     public override void _Ready()
@@ -109,6 +109,11 @@ public partial class MothershipCorePuncher : Node2D, IEnemy
 		_damageDisabled = true;
 	}
 
-	[Signal]
+    public void OnEnable()
+    {
+        _damageDisabled = false;
+    }
+
+    [Signal]
 	public delegate void OnPuncherDestroingEventHandler(Node2D node);
 }
