@@ -1,24 +1,27 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddctoyk3npe81"]
+[gd_scene load_steps=14 format=3 uid="uid://ddctoyk3npe81"]
 
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/angryCoreBase.cs" id="1_gjyg8"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_kk7b0"]
 [ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_hf4le"]
 [ext_resource type="Script" path="res://Source/Models/Misc/NodeModulatorRedWhite.cs" id="3_es4fh"]
 [ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_kbaab"]
-[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/AngryCore.cs" id="4_wy8xc"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCore1.cs" id="5_uhm8c"]
 [ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="6_8oq5b"]
+[ext_resource type="Script" path="res://Scenes/Bosses/FinalBoss/CoreProtector.cs" id="6_iy5fe"]
 [ext_resource type="PackedScene" uid="uid://ddhqdn4kgj7qm" path="res://Scenes/Bosses/FinalBoss/ChequerActack.tscn" id="7_0jmni"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/ChequerActackContainer.cs" id="7_7n8h2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u2qh"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_88abq"]
-size = Vector2(178, 165)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiahg"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88abq"]
+size = Vector2(178, 165)
+
 [node name="AngryMotherShipCore" type="Node2D"]
+script = ExtResource("1_gjyg8")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -424,9 +427,592 @@ offset_right = 1247.99
 offset_bottom = 1278.01
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
 
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(490, 239)
+script = ExtResource("6_iy5fe")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D2"]
+texture = ExtResource("4_kbaab")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_eiahg")
+metadata/_edit_lock_ = true
+
+[node name="ChequerAtackContainer" type="Node2D" parent="CharacterBody2D2"]
+script = ExtResource("7_7n8h2")
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 128)
+column = 2
+row = 2
+
+[node name="Node2D3" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 128)
+column = 1
+row = 2
+
+[node name="Node2D4" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 192)
+column = 2
+row = 3
+
+[node name="Node2D5" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 192)
+column = 3
+row = 3
+
+[node name="Node2D6" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 256)
+column = 3
+row = 4
+
+[node name="Node2D7" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 320)
+column = 4
+row = 5
+
+[node name="Node2D8" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 256)
+column = 4
+row = 4
+
+[node name="Node2D9" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 320)
+column = 5
+row = 5
+
+[node name="Node2D10" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 384)
+column = 5
+row = 6
+
+[node name="Node2D11" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 448)
+column = 6
+row = 7
+
+[node name="Node2D12" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 384)
+column = 6
+row = 6
+
+[node name="Node2D13" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 448)
+column = 7
+row = 7
+
+[node name="Node2D14" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 512)
+column = 7
+row = 8
+
+[node name="Node2D15" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 576)
+column = 8
+row = 9
+
+[node name="Node2D16" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 512)
+column = 8
+row = 8
+
+[node name="Node2D17" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(512, 576)
+column = 9
+row = 9
+
+[node name="Node2D18" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 640)
+column = 9
+row = 10
+
+[node name="Node2D20" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(576, 639)
+column = 10
+row = 10
+
+[node name="MainNode" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 64)
+column = 1
+row = 1
+
+[node name="Node2D19" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 256)
+column = 2
+row = 4
+
+[node name="Node2D21" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 320)
+column = 3
+row = 5
+
+[node name="Node2D22" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 384)
+column = 4
+row = 6
+
+[node name="Node2D23" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 448)
+column = 5
+row = 7
+
+[node name="Node2D24" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 512)
+column = 6
+row = 8
+
+[node name="Node2D25" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 576)
+column = 7
+row = 9
+
+[node name="Node2D26" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 640)
+column = 8
+row = 10
+
+[node name="Node2D28" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 256)
+column = 1
+row = 4
+
+[node name="Node2D29" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 192)
+column = 1
+row = 3
+
+[node name="Node2D30" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 384)
+column = 3
+row = 6
+
+[node name="Node2D31" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 448)
+column = 4
+row = 7
+
+[node name="Node2D32" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 512)
+column = 5
+row = 8
+
+[node name="Node2D33" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 576)
+column = 6
+row = 9
+
+[node name="Node2D34" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 640)
+column = 7
+row = 10
+
+[node name="Node2D35" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 320)
+column = 1
+row = 5
+
+[node name="Node2D36" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 384)
+column = 2
+row = 6
+
+[node name="Node2D37" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 448)
+column = 3
+row = 7
+
+[node name="Node2D38" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 511)
+column = 4
+row = 8
+
+[node name="Node2D40" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 575)
+column = 5
+row = 9
+
+[node name="Node2D41" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 639)
+column = 6
+row = 10
+
+[node name="Node2D42" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 384)
+column = 1
+row = 6
+
+[node name="Node2D43" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 448)
+column = 2
+row = 7
+
+[node name="Node2D44" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 512)
+column = 3
+row = 8
+
+[node name="Node2D45" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 575)
+column = 4
+row = 9
+
+[node name="Node2D46" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 639)
+column = 5
+row = 10
+
+[node name="Node2D48" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 448)
+column = 1
+row = 7
+
+[node name="Node2D49" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 512)
+column = 2
+row = 8
+
+[node name="Node2D50" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 576)
+column = 3
+row = 9
+
+[node name="Node2D51" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 639)
+column = 4
+row = 10
+
+[node name="Node2D52" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 512)
+column = 1
+row = 8
+
+[node name="Node2D56" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-512, 576)
+column = 1
+row = 9
+
+[node name="Node2D53" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 576)
+column = 2
+row = 9
+
+[node name="Node2D54" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 640)
+column = 3
+row = 10
+
+[node name="Node2D55" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 640)
+column = 2
+row = 10
+
+[node name="Node2D57" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-567, 640)
+column = 1
+row = 10
+
+[node name="Node2D39" parent="CharacterBody2D2/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 320)
+column = 2
+row = 5
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(874, 239)
+script = ExtResource("6_iy5fe")
+
+[node name="ChequerAtackContainer" type="Node2D" parent="CharacterBody2D3"]
+script = ExtResource("7_7n8h2")
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 128)
+column = 2
+row = 2
+
+[node name="Node2D3" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 128)
+column = 1
+row = 2
+
+[node name="Node2D4" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 192)
+column = 2
+row = 3
+
+[node name="Node2D5" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 192)
+column = 3
+row = 3
+
+[node name="Node2D6" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 256)
+column = 3
+row = 4
+
+[node name="Node2D7" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 320)
+column = 4
+row = 5
+
+[node name="Node2D8" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 256)
+column = 4
+row = 4
+
+[node name="Node2D9" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 320)
+column = 5
+row = 5
+
+[node name="Node2D10" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 384)
+column = 5
+row = 6
+
+[node name="Node2D11" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 448)
+column = 6
+row = 7
+
+[node name="Node2D12" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 384)
+column = 6
+row = 6
+
+[node name="Node2D13" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 448)
+column = 7
+row = 7
+
+[node name="Node2D14" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 512)
+column = 7
+row = 8
+
+[node name="Node2D15" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 576)
+column = 8
+row = 9
+
+[node name="Node2D16" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 512)
+column = 8
+row = 8
+
+[node name="Node2D17" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(512, 576)
+column = 9
+row = 9
+
+[node name="Node2D18" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 640)
+column = 9
+row = 10
+
+[node name="Node2D20" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(576, 639)
+column = 10
+row = 10
+
+[node name="MainNode" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 64)
+column = 1
+row = 1
+
+[node name="Node2D19" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 256)
+column = 2
+row = 4
+
+[node name="Node2D21" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 320)
+column = 3
+row = 5
+
+[node name="Node2D22" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 384)
+column = 4
+row = 6
+
+[node name="Node2D23" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 448)
+column = 5
+row = 7
+
+[node name="Node2D24" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 512)
+column = 6
+row = 8
+
+[node name="Node2D25" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 576)
+column = 7
+row = 9
+
+[node name="Node2D26" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 640)
+column = 8
+row = 10
+
+[node name="Node2D28" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 256)
+column = 1
+row = 4
+
+[node name="Node2D29" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 192)
+column = 1
+row = 3
+
+[node name="Node2D30" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 384)
+column = 3
+row = 6
+
+[node name="Node2D31" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 448)
+column = 4
+row = 7
+
+[node name="Node2D32" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 512)
+column = 5
+row = 8
+
+[node name="Node2D33" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 576)
+column = 6
+row = 9
+
+[node name="Node2D34" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 640)
+column = 7
+row = 10
+
+[node name="Node2D35" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 320)
+column = 1
+row = 5
+
+[node name="Node2D36" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 384)
+column = 2
+row = 6
+
+[node name="Node2D37" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 448)
+column = 3
+row = 7
+
+[node name="Node2D38" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 511)
+column = 4
+row = 8
+
+[node name="Node2D40" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 575)
+column = 5
+row = 9
+
+[node name="Node2D41" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 639)
+column = 6
+row = 10
+
+[node name="Node2D42" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 384)
+column = 1
+row = 6
+
+[node name="Node2D43" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 448)
+column = 2
+row = 7
+
+[node name="Node2D44" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 512)
+column = 3
+row = 8
+
+[node name="Node2D45" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 575)
+column = 4
+row = 9
+
+[node name="Node2D46" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 639)
+column = 5
+row = 10
+
+[node name="Node2D48" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 448)
+column = 1
+row = 7
+
+[node name="Node2D49" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 512)
+column = 2
+row = 8
+
+[node name="Node2D50" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 576)
+column = 3
+row = 9
+
+[node name="Node2D51" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 639)
+column = 4
+row = 10
+
+[node name="Node2D52" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 512)
+column = 1
+row = 8
+
+[node name="Node2D53" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 576)
+column = 2
+row = 9
+
+[node name="Node2D56" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-513, 576)
+column = 1
+row = 9
+
+[node name="Node2D57" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-575, 642)
+column = 1
+row = 10
+
+[node name="Node2D54" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 640)
+column = 3
+row = 10
+
+[node name="Node2D55" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 640)
+column = 2
+row = 10
+
+[node name="Node2D39" parent="CharacterBody2D3/ChequerAtackContainer" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 320)
+column = 2
+row = 5
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D3"]
+texture = ExtResource("4_kbaab")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+shape = SubResource("RectangleShape2D_eiahg")
+metadata/_edit_lock_ = true
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(679, 136)
-script = ExtResource("4_wy8xc")
+script = ExtResource("5_uhm8c")
+EntreringStage = false
 
 [node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(2.78125, 2.60938)
@@ -442,582 +1028,7 @@ texture = ExtResource("6_8oq5b")
 shape = SubResource("RectangleShape2D_88abq")
 metadata/_edit_lock_ = true
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-position = Vector2(490, 239)
-
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D2"]
-texture = ExtResource("4_kbaab")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
-shape = SubResource("RectangleShape2D_eiahg")
-metadata/_edit_lock_ = true
-
-[node name="Node2D" type="Node2D" parent="CharacterBody2D2"]
-script = ExtResource("7_7n8h2")
-metadata/_edit_lock_ = true
-
-[node name="Node2D2" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 128)
-column = 2
-row = 2
-
-[node name="Node2D3" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 128)
-column = 1
-row = 2
-
-[node name="Node2D4" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 192)
-column = 2
-row = 3
-
-[node name="Node2D5" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 192)
-column = 3
-row = 3
-
-[node name="Node2D6" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 256)
-column = 3
-row = 4
-
-[node name="Node2D7" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 320)
-column = 4
-row = 5
-
-[node name="Node2D8" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 256)
-column = 4
-row = 4
-
-[node name="Node2D9" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 320)
-column = 5
-row = 5
-
-[node name="Node2D10" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 384)
-column = 5
-row = 6
-
-[node name="Node2D11" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 448)
-column = 6
-row = 7
-
-[node name="Node2D12" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 384)
-column = 6
-row = 6
-
-[node name="Node2D13" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(384, 448)
-column = 7
-row = 7
-
-[node name="Node2D14" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 512)
-column = 7
-row = 8
-
-[node name="Node2D15" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(384, 576)
-column = 8
-row = 9
-
-[node name="Node2D16" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(448, 512)
-column = 8
-row = 8
-
-[node name="Node2D17" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(512, 576)
-column = 9
-row = 9
-
-[node name="Node2D18" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(448, 640)
-column = 9
-row = 10
-
-[node name="Node2D20" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(576, 639)
-column = 10
-row = 10
-
-[node name="MainNode" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 64)
-column = 1
-row = 1
-
-[node name="Node2D19" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 256)
-column = 2
-row = 4
-
-[node name="Node2D21" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 320)
-column = 3
-row = 5
-
-[node name="Node2D22" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 384)
-column = 4
-row = 6
-
-[node name="Node2D23" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 448)
-column = 5
-row = 7
-
-[node name="Node2D24" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 512)
-column = 6
-row = 8
-
-[node name="Node2D25" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 576)
-column = 7
-row = 9
-
-[node name="Node2D26" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 640)
-column = 8
-row = 10
-
-[node name="Node2D28" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 256)
-column = 1
-row = 4
-
-[node name="Node2D29" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 192)
-column = 1
-row = 3
-
-[node name="Node2D30" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 384)
-column = 3
-row = 6
-
-[node name="Node2D31" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 448)
-column = 4
-row = 7
-
-[node name="Node2D32" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 512)
-column = 5
-row = 8
-
-[node name="Node2D33" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 576)
-column = 6
-row = 9
-
-[node name="Node2D34" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 640)
-column = 7
-row = 10
-
-[node name="Node2D35" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 320)
-column = 1
-row = 5
-
-[node name="Node2D36" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 384)
-column = 2
-row = 6
-
-[node name="Node2D37" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 448)
-column = 3
-row = 7
-
-[node name="Node2D38" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 511)
-column = 4
-row = 8
-
-[node name="Node2D40" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 575)
-column = 5
-row = 9
-
-[node name="Node2D41" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 639)
-column = 6
-row = 10
-
-[node name="Node2D42" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 384)
-column = 1
-row = 6
-
-[node name="Node2D43" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 448)
-column = 2
-row = 7
-
-[node name="Node2D44" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 512)
-column = 3
-row = 8
-
-[node name="Node2D45" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 575)
-column = 4
-row = 9
-
-[node name="Node2D46" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 639)
-column = 5
-row = 10
-
-[node name="Node2D48" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-384, 448)
-column = 1
-row = 7
-
-[node name="Node2D49" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 512)
-column = 2
-row = 8
-
-[node name="Node2D50" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 576)
-column = 3
-row = 9
-
-[node name="Node2D51" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 639)
-column = 4
-row = 10
-
-[node name="Node2D52" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-448, 512)
-column = 1
-row = 8
-
-[node name="Node2D56" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-512, 576)
-column = 1
-row = 9
-
-[node name="Node2D53" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-384, 576)
-column = 2
-row = 9
-
-[node name="Node2D54" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 640)
-column = 3
-row = 10
-
-[node name="Node2D55" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-448, 640)
-column = 2
-row = 10
-
-[node name="Node2D57" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-567, 640)
-column = 1
-row = 10
-
-[node name="Node2D39" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 320)
-column = 2
-row = 5
-
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
-position = Vector2(874, 239)
-
-[node name="Node2D2" type="Node2D" parent="CharacterBody2D3"]
-script = ExtResource("7_7n8h2")
-metadata/_edit_lock_ = true
-
-[node name="Node2D2" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 128)
-column = 2
-row = 2
-
-[node name="Node2D3" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 128)
-column = 1
-row = 2
-
-[node name="Node2D4" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 192)
-column = 2
-row = 3
-
-[node name="Node2D5" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 192)
-column = 3
-row = 3
-
-[node name="Node2D6" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 256)
-column = 3
-row = 4
-
-[node name="Node2D7" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 320)
-column = 4
-row = 5
-
-[node name="Node2D8" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 256)
-column = 4
-row = 4
-
-[node name="Node2D9" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 320)
-column = 5
-row = 5
-
-[node name="Node2D10" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 384)
-column = 5
-row = 6
-
-[node name="Node2D11" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 448)
-column = 6
-row = 7
-
-[node name="Node2D12" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 384)
-column = 6
-row = 6
-
-[node name="Node2D13" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(384, 448)
-column = 7
-row = 7
-
-[node name="Node2D14" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 512)
-column = 7
-row = 8
-
-[node name="Node2D15" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(384, 576)
-column = 8
-row = 9
-
-[node name="Node2D16" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(448, 512)
-column = 8
-row = 8
-
-[node name="Node2D17" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(512, 576)
-column = 9
-row = 9
-
-[node name="Node2D18" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(448, 640)
-column = 9
-row = 10
-
-[node name="Node2D20" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(576, 639)
-column = 10
-row = 10
-
-[node name="MainNode" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 64)
-column = 1
-row = 1
-
-[node name="Node2D19" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 256)
-column = 2
-row = 4
-
-[node name="Node2D21" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 320)
-column = 3
-row = 5
-
-[node name="Node2D22" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 384)
-column = 4
-row = 6
-
-[node name="Node2D23" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 448)
-column = 5
-row = 7
-
-[node name="Node2D24" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 512)
-column = 6
-row = 8
-
-[node name="Node2D25" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(256, 576)
-column = 7
-row = 9
-
-[node name="Node2D26" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(320, 640)
-column = 8
-row = 10
-
-[node name="Node2D28" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 256)
-column = 1
-row = 4
-
-[node name="Node2D29" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 192)
-column = 1
-row = 3
-
-[node name="Node2D30" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 384)
-column = 3
-row = 6
-
-[node name="Node2D31" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 448)
-column = 4
-row = 7
-
-[node name="Node2D32" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 512)
-column = 5
-row = 8
-
-[node name="Node2D33" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(128, 576)
-column = 6
-row = 9
-
-[node name="Node2D34" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(192, 640)
-column = 7
-row = 10
-
-[node name="Node2D35" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 320)
-column = 1
-row = 5
-
-[node name="Node2D36" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 384)
-column = 2
-row = 6
-
-[node name="Node2D37" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 448)
-column = 3
-row = 7
-
-[node name="Node2D38" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 511)
-column = 4
-row = 8
-
-[node name="Node2D40" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(0, 575)
-column = 5
-row = 9
-
-[node name="Node2D41" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(64, 639)
-column = 6
-row = 10
-
-[node name="Node2D42" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 384)
-column = 1
-row = 6
-
-[node name="Node2D43" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 448)
-column = 2
-row = 7
-
-[node name="Node2D44" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 512)
-column = 3
-row = 8
-
-[node name="Node2D45" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 575)
-column = 4
-row = 9
-
-[node name="Node2D46" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-64, 639)
-column = 5
-row = 10
-
-[node name="Node2D48" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-384, 448)
-column = 1
-row = 7
-
-[node name="Node2D49" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 512)
-column = 2
-row = 8
-
-[node name="Node2D50" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-256, 576)
-column = 3
-row = 9
-
-[node name="Node2D51" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-192, 639)
-column = 4
-row = 10
-
-[node name="Node2D52" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-448, 512)
-column = 1
-row = 8
-
-[node name="Node2D53" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-384, 576)
-column = 2
-row = 9
-
-[node name="Node2D56" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-513, 576)
-column = 1
-row = 9
-
-[node name="Node2D57" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-575, 642)
-column = 1
-row = 10
-
-[node name="Node2D54" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-320, 640)
-column = 3
-row = 10
-
-[node name="Node2D55" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-448, 640)
-column = 2
-row = 10
-
-[node name="Node2D39" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
-position = Vector2(-128, 320)
-column = 2
-row = 5
-
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D3"]
-texture = ExtResource("4_kbaab")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
-shape = SubResource("RectangleShape2D_eiahg")
-metadata/_edit_lock_ = true
+[connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="." method="OnProtectorDestoyed"]
+[connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="CharacterBody2D3" method="OnOtherProtectorDestroyed"]
+[connection signal="OnProtectorDestoyed" from="CharacterBody2D3" to="." method="OnProtectorDestoyed"]
+[connection signal="OnProtectorDestoyed" from="CharacterBody2D3" to="CharacterBody2D2" method="OnOtherProtectorDestroyed"]

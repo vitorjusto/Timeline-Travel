@@ -9,16 +9,18 @@ public partial class MothershipCore1 : Node2D, IEnemy
     [Export]
     public int FinalPosition = 175;
     private WaveSpeed _ySpeed;
-	private bool _entreringStage = true;
+	[Export]
+	public bool EntreringStage = true;
 	private int _timer;
 
     public override void _Ready()
 	{
-		
+		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
 	}
+	
 	public override void _Process(double delta)
 	{
-		if(_entreringStage)
+		if(EntreringStage)
 			MoveBoss();
 		else
 		{
@@ -54,7 +56,7 @@ public partial class MothershipCore1 : Node2D, IEnemy
 			return;
 		
 		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
-		_entreringStage = false;
+		EntreringStage = false;
     }
 
 	public void OnPuncherDestroyed(Node2D node)
