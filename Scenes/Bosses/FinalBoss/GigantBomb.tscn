@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqjryn65iaye0"]
+
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_331f4"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/GigantBomb.cs" id="1_fth75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plyav"]
+size = Vector2(64, 64)
+
+[node name="GigantBomb" type="CharacterBody2D"]
+script = ExtResource("1_fth75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_plyav")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+texture = ExtResource("1_331f4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4, 1.90735e-06)
+scale = Vector2(6, 7.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

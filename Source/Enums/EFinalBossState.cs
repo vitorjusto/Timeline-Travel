@@ -15,5 +15,7 @@ namespace Shooter.Source.Enums
         AngryCore = 11,
         TransitionToTimeLineEleven = 12,
         TimeLineEleven = 13,
+        TransitionToAngryCore2 = 14,
+        AngryCore2 = 15
     }
 }

@@ -6,7 +6,7 @@ using Shooter.Source.Models.Bosses.FinalBoss.States;
 
 public partial class FinalBoss : Node2D
 {
-	private EFinalBossState _bossLevelState = EFinalBossState.TheWall;
+	private EFinalBossState _bossLevelState = EFinalBossState.AngryCore;
 	private IState _state;
 
 	public override void _Ready()
@@ -15,6 +15,7 @@ public partial class FinalBoss : Node2D
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineTwoFourBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
+		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEleven"));
 	}
 
 	public override void _Process(double delta)
@@ -35,7 +36,7 @@ public partial class FinalBoss : Node2D
 	{
 		_bossLevelState += 1;
 
-		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven)
+		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2)
 			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
 		if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
@@ -75,7 +76,18 @@ public partial class FinalBoss : Node2D
 
 		}else if(_bossLevelState == EFinalBossState.TimeLineEleven)
 		{
-			GD.Print("teste");
+			DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("TimelineEleven"));
+			
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+		}else if(_bossLevelState == EFinalBossState.AngryCore2)
+		{
+			GetNode("TimelineEleven").QueueFree();
+
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
+			GetNode<Node2D>("AngryMotherShipCore").Visible = true;
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+
 		}
 	}
 }

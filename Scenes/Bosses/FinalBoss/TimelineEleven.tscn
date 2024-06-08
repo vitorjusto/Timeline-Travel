@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx4ub5nnajut4"]
+
+[ext_resource type="PackedScene" uid="uid://dn6km325lq2tu" path="res://Scenes/Background/BackgroundLevelTimelineEleven.tscn" id="1_opg3o"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/TimelinesStates/TimelineEleven.cs" id="1_pvd04"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_mmb2s"]
+[ext_resource type="Script" path="res://Scenes/Bosses/FinalBoss/BombThrower.cs" id="2_pucnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54w2n"]
+size = Vector2(176, 176)
+
+[node name="TimelineEleven" type="Node2D"]
+script = ExtResource("1_pvd04")
+
+[node name="BackgroundLevelSeven" parent="." instance=ExtResource("1_opg3o")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(728, 224)
+script = ExtResource("2_pucnp")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-1.78814e-06, 1.43051e-06)
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("2_mmb2s")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_54w2n")
+metadata/_edit_lock_ = true
+
+[connection signal="OnDestroyed" from="CharacterBody2D" to="." method="OnBossDestroyed"]
