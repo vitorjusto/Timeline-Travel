@@ -1,0 +1,1023 @@
+[gd_scene load_steps=12 format=3 uid="uid://ddctoyk3npe81"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_kk7b0"]
+[ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_hf4le"]
+[ext_resource type="Script" path="res://Source/Models/Misc/NodeModulatorRedWhite.cs" id="3_es4fh"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_kbaab"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/AngryCore.cs" id="4_wy8xc"]
+[ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="6_8oq5b"]
+[ext_resource type="PackedScene" uid="uid://ddhqdn4kgj7qm" path="res://Scenes/Bosses/FinalBoss/ChequerActack.tscn" id="7_0jmni"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/ChequerActackContainer.cs" id="7_7n8h2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u2qh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88abq"]
+size = Vector2(178, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiahg"]
+size = Vector2(64, 64)
+
+[node name="AngryMotherShipCore" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MovingParallaxLayer3" parent="ParallaxBackground" instance=ExtResource("1_kk7b0")]
+rotation = 3.14159
+motion_mirroring = Vector2(0, 1576)
+YSpeed = 10.0
+
+[node name="CoreBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer3"]
+position = Vector2(-723.998, -788.002)
+rotation = -3.14159
+texture = ExtResource("2_hf4le")
+metadata/_edit_lock_ = true
+
+[node name="MovingParallaxLayer4" parent="ParallaxBackground" instance=ExtResource("1_kk7b0")]
+motion_mirroring = Vector2(0, 1576)
+YSpeed = 10.0
+
+[node name="Node2D" type="Node2D" parent="ParallaxBackground/MovingParallaxLayer4"]
+script = ExtResource("3_es4fh")
+
+[node name="Panel" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 66.9995
+offset_top = 93.0003
+offset_right = 84.9995
+offset_bottom = 111.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel2" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 65.9997
+offset_top = 55.0003
+offset_right = 83.9997
+offset_bottom = 73.0003
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel3" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 106.0
+offset_top = 65.0005
+offset_right = 124.0
+offset_bottom = 83.0005
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel4" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 170.0
+offset_top = 64.0009
+offset_right = 188.0
+offset_bottom = 82.0009
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel5" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 170.0
+offset_top = 30.0009
+offset_right = 188.0
+offset_bottom = 48.0009
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel6" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 105.0
+offset_top = 29.0005
+offset_right = 123.0
+offset_bottom = 47.0005
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel7" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 65.9988
+offset_top = 245.0
+offset_right = 83.9988
+offset_bottom = 263.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel8" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 208.999
+offset_top = 183.001
+offset_right = 226.999
+offset_bottom = 201.001
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel9" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 208.0
+offset_top = 39.0011
+offset_right = 226.0
+offset_bottom = 57.0011
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel10" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 288.0
+offset_top = 38.0015
+offset_right = 306.0
+offset_bottom = 56.0015
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel11" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 332.0
+offset_top = 74.0017
+offset_right = 350.0
+offset_bottom = 92.0017
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel12" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 507.0
+offset_top = 73.0026
+offset_right = 525.0
+offset_bottom = 91.0026
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel13" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 555.0
+offset_top = 72.0028
+offset_right = 573.0
+offset_bottom = 90.0028
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel14" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 479.999
+offset_top = 114.002
+offset_right = 497.999
+offset_bottom = 132.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel15" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 523.0
+offset_top = 113.003
+offset_right = 541.0
+offset_bottom = 131.003
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+metadata/_edit_lock_ = true
+
+[node name="Panel16" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 477.998
+offset_top = 333.002
+offset_right = 495.998
+offset_bottom = 351.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+metadata/_edit_lock_ = true
+
+[node name="Panel17" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 477.998
+offset_top = 377.002
+offset_right = 495.998
+offset_bottom = 395.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+metadata/_edit_lock_ = true
+
+[node name="Panel18" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 377.998
+offset_top = 377.002
+offset_right = 395.998
+offset_bottom = 395.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+metadata/_edit_lock_ = true
+
+[node name="Panel19" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 361.998
+offset_top = 335.002
+offset_right = 379.998
+offset_bottom = 353.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+metadata/_edit_lock_ = true
+
+[node name="Panel20" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 312.999
+offset_top = 227.002
+offset_right = 330.999
+offset_bottom = 245.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel21" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 375.997
+offset_top = 504.002
+offset_right = 393.997
+offset_bottom = 522.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel22" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 351.997
+offset_top = 550.002
+offset_right = 369.997
+offset_bottom = 568.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel23" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 298.997
+offset_top = 552.002
+offset_right = 316.997
+offset_bottom = 570.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel24" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 526.997
+offset_top = 518.003
+offset_right = 544.997
+offset_bottom = 536.003
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel25" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 772.998
+offset_top = 319.004
+offset_right = 790.998
+offset_bottom = 337.004
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel26" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 978.998
+offset_top = 320.005
+offset_right = 996.998
+offset_bottom = 338.005
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel27" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 979.999
+offset_top = 265.005
+offset_right = 997.999
+offset_bottom = 283.005
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel28" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1239.0
+offset_top = 175.006
+offset_right = 1257.0
+offset_bottom = 193.006
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel29" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1240.0
+offset_top = 222.006
+offset_right = 1258.0
+offset_bottom = 240.006
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel30" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1189.0
+offset_top = 585.006
+offset_right = 1207.0
+offset_bottom = 603.006
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel31" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 726.997
+offset_top = 570.004
+offset_right = 744.997
+offset_bottom = 588.004
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel32" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 732.996
+offset_top = 815.004
+offset_right = 750.996
+offset_bottom = 833.004
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel33" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 775.996
+offset_top = 814.004
+offset_right = 793.996
+offset_bottom = 832.004
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel34" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 733.996
+offset_top = 775.004
+offset_right = 751.996
+offset_bottom = 793.004
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel35" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 474.996
+offset_top = 892.002
+offset_right = 492.996
+offset_bottom = 910.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel36" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 403.995
+offset_top = 893.002
+offset_right = 421.995
+offset_bottom = 911.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel37" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 403.995
+offset_top = 928.002
+offset_right = 421.995
+offset_bottom = 946.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel38" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 363.996
+offset_top = 858.002
+offset_right = 381.996
+offset_bottom = 876.002
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel39" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 257.996
+offset_top = 816.001
+offset_right = 275.996
+offset_bottom = 834.001
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel40" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 213.996
+offset_top = 815.001
+offset_right = 231.996
+offset_bottom = 833.001
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel41" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 304.997
+offset_top = 658.001
+offset_right = 322.997
+offset_bottom = 676.001
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel42" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 110.994
+offset_top = 1151.0
+offset_right = 128.994
+offset_bottom = 1169.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel43" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 109.994
+offset_top = 1196.0
+offset_right = 127.994
+offset_bottom = 1214.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel44" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 108.994
+offset_top = 1277.0
+offset_right = 126.994
+offset_bottom = 1295.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel45" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 108.993
+offset_top = 1319.0
+offset_right = 126.993
+offset_bottom = 1337.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel46" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 408.993
+offset_top = 1395.0
+offset_right = 426.993
+offset_bottom = 1413.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel47" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 409.994
+offset_top = 1134.0
+offset_right = 427.994
+offset_bottom = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel48" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 408.994
+offset_top = 1176.0
+offset_right = 426.994
+offset_bottom = 1194.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel49" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 700.994
+offset_top = 1134.0
+offset_right = 718.994
+offset_bottom = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel50" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 651.994
+offset_top = 1133.0
+offset_right = 669.994
+offset_bottom = 1151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel51" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1183.99
+offset_top = 1177.01
+offset_right = 1201.99
+offset_bottom = 1195.01
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel52" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1182.99
+offset_top = 1330.01
+offset_right = 1200.99
+offset_bottom = 1348.01
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel53" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1228.99
+offset_top = 1306.01
+offset_right = 1246.99
+offset_bottom = 1324.01
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="Panel54" type="Panel" parent="ParallaxBackground/MovingParallaxLayer4/Node2D"]
+offset_left = 1229.99
+offset_top = 1260.01
+offset_right = 1247.99
+offset_bottom = 1278.01
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(679, 136)
+script = ExtResource("4_wy8xc")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(2.78125, 2.60938)
+texture = ExtResource("4_kbaab")
+metadata/_edit_lock_ = true
+
+[node name="ForceField" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -7.62939e-06)
+scale = Vector2(4.84375, 4.84375)
+texture = ExtResource("6_8oq5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_88abq")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(490, 239)
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D2"]
+texture = ExtResource("4_kbaab")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_eiahg")
+metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Node2D" parent="CharacterBody2D2"]
+script = ExtResource("7_7n8h2")
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 128)
+column = 2
+row = 2
+
+[node name="Node2D3" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 128)
+column = 1
+row = 2
+
+[node name="Node2D4" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 192)
+column = 2
+row = 3
+
+[node name="Node2D5" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 192)
+column = 3
+row = 3
+
+[node name="Node2D6" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 256)
+column = 3
+row = 4
+
+[node name="Node2D7" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 320)
+column = 4
+row = 5
+
+[node name="Node2D8" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 256)
+column = 4
+row = 4
+
+[node name="Node2D9" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 320)
+column = 5
+row = 5
+
+[node name="Node2D10" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 384)
+column = 5
+row = 6
+
+[node name="Node2D11" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 448)
+column = 6
+row = 7
+
+[node name="Node2D12" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 384)
+column = 6
+row = 6
+
+[node name="Node2D13" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 448)
+column = 7
+row = 7
+
+[node name="Node2D14" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 512)
+column = 7
+row = 8
+
+[node name="Node2D15" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 576)
+column = 8
+row = 9
+
+[node name="Node2D16" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 512)
+column = 8
+row = 8
+
+[node name="Node2D17" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(512, 576)
+column = 9
+row = 9
+
+[node name="Node2D18" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 640)
+column = 9
+row = 10
+
+[node name="Node2D20" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(576, 639)
+column = 10
+row = 10
+
+[node name="MainNode" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 64)
+column = 1
+row = 1
+
+[node name="Node2D19" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 256)
+column = 2
+row = 4
+
+[node name="Node2D21" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 320)
+column = 3
+row = 5
+
+[node name="Node2D22" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 384)
+column = 4
+row = 6
+
+[node name="Node2D23" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 448)
+column = 5
+row = 7
+
+[node name="Node2D24" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 512)
+column = 6
+row = 8
+
+[node name="Node2D25" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 576)
+column = 7
+row = 9
+
+[node name="Node2D26" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 640)
+column = 8
+row = 10
+
+[node name="Node2D28" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 256)
+column = 1
+row = 4
+
+[node name="Node2D29" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 192)
+column = 1
+row = 3
+
+[node name="Node2D30" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 384)
+column = 3
+row = 6
+
+[node name="Node2D31" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 448)
+column = 4
+row = 7
+
+[node name="Node2D32" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 512)
+column = 5
+row = 8
+
+[node name="Node2D33" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 576)
+column = 6
+row = 9
+
+[node name="Node2D34" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 640)
+column = 7
+row = 10
+
+[node name="Node2D35" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 320)
+column = 1
+row = 5
+
+[node name="Node2D36" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 384)
+column = 2
+row = 6
+
+[node name="Node2D37" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 448)
+column = 3
+row = 7
+
+[node name="Node2D38" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 511)
+column = 4
+row = 8
+
+[node name="Node2D40" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 575)
+column = 5
+row = 9
+
+[node name="Node2D41" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 639)
+column = 6
+row = 10
+
+[node name="Node2D42" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 384)
+column = 1
+row = 6
+
+[node name="Node2D43" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 448)
+column = 2
+row = 7
+
+[node name="Node2D44" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 512)
+column = 3
+row = 8
+
+[node name="Node2D45" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 575)
+column = 4
+row = 9
+
+[node name="Node2D46" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 639)
+column = 5
+row = 10
+
+[node name="Node2D48" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 448)
+column = 1
+row = 7
+
+[node name="Node2D49" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 512)
+column = 2
+row = 8
+
+[node name="Node2D50" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 576)
+column = 3
+row = 9
+
+[node name="Node2D51" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 639)
+column = 4
+row = 10
+
+[node name="Node2D52" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 512)
+column = 1
+row = 8
+
+[node name="Node2D56" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-512, 576)
+column = 1
+row = 9
+
+[node name="Node2D53" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 576)
+column = 2
+row = 9
+
+[node name="Node2D54" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 640)
+column = 3
+row = 10
+
+[node name="Node2D55" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 640)
+column = 2
+row = 10
+
+[node name="Node2D57" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-567, 640)
+column = 1
+row = 10
+
+[node name="Node2D39" parent="CharacterBody2D2/Node2D" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 320)
+column = 2
+row = 5
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(874, 239)
+
+[node name="Node2D2" type="Node2D" parent="CharacterBody2D3"]
+script = ExtResource("7_7n8h2")
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 128)
+column = 2
+row = 2
+
+[node name="Node2D3" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 128)
+column = 1
+row = 2
+
+[node name="Node2D4" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 192)
+column = 2
+row = 3
+
+[node name="Node2D5" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 192)
+column = 3
+row = 3
+
+[node name="Node2D6" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 256)
+column = 3
+row = 4
+
+[node name="Node2D7" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 320)
+column = 4
+row = 5
+
+[node name="Node2D8" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 256)
+column = 4
+row = 4
+
+[node name="Node2D9" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 320)
+column = 5
+row = 5
+
+[node name="Node2D10" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 384)
+column = 5
+row = 6
+
+[node name="Node2D11" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 448)
+column = 6
+row = 7
+
+[node name="Node2D12" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 384)
+column = 6
+row = 6
+
+[node name="Node2D13" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 448)
+column = 7
+row = 7
+
+[node name="Node2D14" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 512)
+column = 7
+row = 8
+
+[node name="Node2D15" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(384, 576)
+column = 8
+row = 9
+
+[node name="Node2D16" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 512)
+column = 8
+row = 8
+
+[node name="Node2D17" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(512, 576)
+column = 9
+row = 9
+
+[node name="Node2D18" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(448, 640)
+column = 9
+row = 10
+
+[node name="Node2D20" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(576, 639)
+column = 10
+row = 10
+
+[node name="MainNode" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 64)
+column = 1
+row = 1
+
+[node name="Node2D19" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 256)
+column = 2
+row = 4
+
+[node name="Node2D21" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 320)
+column = 3
+row = 5
+
+[node name="Node2D22" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 384)
+column = 4
+row = 6
+
+[node name="Node2D23" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 448)
+column = 5
+row = 7
+
+[node name="Node2D24" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 512)
+column = 6
+row = 8
+
+[node name="Node2D25" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(256, 576)
+column = 7
+row = 9
+
+[node name="Node2D26" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(320, 640)
+column = 8
+row = 10
+
+[node name="Node2D28" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 256)
+column = 1
+row = 4
+
+[node name="Node2D29" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 192)
+column = 1
+row = 3
+
+[node name="Node2D30" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 384)
+column = 3
+row = 6
+
+[node name="Node2D31" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 448)
+column = 4
+row = 7
+
+[node name="Node2D32" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 512)
+column = 5
+row = 8
+
+[node name="Node2D33" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(128, 576)
+column = 6
+row = 9
+
+[node name="Node2D34" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(192, 640)
+column = 7
+row = 10
+
+[node name="Node2D35" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 320)
+column = 1
+row = 5
+
+[node name="Node2D36" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 384)
+column = 2
+row = 6
+
+[node name="Node2D37" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 448)
+column = 3
+row = 7
+
+[node name="Node2D38" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 511)
+column = 4
+row = 8
+
+[node name="Node2D40" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(0, 575)
+column = 5
+row = 9
+
+[node name="Node2D41" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(64, 639)
+column = 6
+row = 10
+
+[node name="Node2D42" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 384)
+column = 1
+row = 6
+
+[node name="Node2D43" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 448)
+column = 2
+row = 7
+
+[node name="Node2D44" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 512)
+column = 3
+row = 8
+
+[node name="Node2D45" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 575)
+column = 4
+row = 9
+
+[node name="Node2D46" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-64, 639)
+column = 5
+row = 10
+
+[node name="Node2D48" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 448)
+column = 1
+row = 7
+
+[node name="Node2D49" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 512)
+column = 2
+row = 8
+
+[node name="Node2D50" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-256, 576)
+column = 3
+row = 9
+
+[node name="Node2D51" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-192, 639)
+column = 4
+row = 10
+
+[node name="Node2D52" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 512)
+column = 1
+row = 8
+
+[node name="Node2D53" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-384, 576)
+column = 2
+row = 9
+
+[node name="Node2D56" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-513, 576)
+column = 1
+row = 9
+
+[node name="Node2D57" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-575, 642)
+column = 1
+row = 10
+
+[node name="Node2D54" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-320, 640)
+column = 3
+row = 10
+
+[node name="Node2D55" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-448, 640)
+column = 2
+row = 10
+
+[node name="Node2D39" parent="CharacterBody2D3/Node2D2" instance=ExtResource("7_0jmni")]
+position = Vector2(-128, 320)
+column = 2
+row = 5
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D3"]
+texture = ExtResource("4_kbaab")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+shape = SubResource("RectangleShape2D_eiahg")
+metadata/_edit_lock_ = true

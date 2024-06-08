@@ -6,7 +6,7 @@ using Shooter.Source.Models.Bosses.FinalBoss.States;
 
 public partial class FinalBoss : Node2D
 {
-	private EFinalBossState _bossLevelState = EFinalBossState.MothershipCore2;
+	private EFinalBossState _bossLevelState = EFinalBossState.TimelineTwoFour;
 	private IState _state;
 
 	public override void _Ready()
@@ -14,6 +14,7 @@ public partial class FinalBoss : Node2D
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("MotherShipCore1"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineTwoFourBoss"));
+		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
 	}
 
 	public override void _Process(double delta)
@@ -68,8 +69,8 @@ public partial class FinalBoss : Node2D
 		{
 			GetNode("TimelineTwoFourBoss").QueueFree();
 
-			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("MotherShipCore1"));
-			GetNode<Node2D>("MotherShipCore1").Visible = true;
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
+			GetNode<Node2D>("AngryMotherShipCore").Visible = true;
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 
 		}

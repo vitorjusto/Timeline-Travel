@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddhqdn4kgj7qm"]
+
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/ChequerActack.cs" id="1_8wpl5"]
+[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_nphrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7xe6"]
+size = Vector2(64, 64)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_8wpl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_b7xe6")
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+texture = ExtResource("1_nphrf")
