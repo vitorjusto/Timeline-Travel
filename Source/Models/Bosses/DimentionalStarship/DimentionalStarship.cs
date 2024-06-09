@@ -3,13 +3,15 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 
-public partial class DimentionalStarship : CharacterBody2D, IEnemy
+public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotifier
 {
 	private int _time;
   private int _hp = 50;
   private EnemySpawner _enemySpawner;
   private CollisionShape2D _collisionBox;
-    private bool _destroing;
+  private bool _destroing;
+  [Export]
+  public bool EndLevel = true;
 
   public override void _Ready()
   {
@@ -58,7 +60,9 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy
 
 		  if(_time == 300)
 		  {
-		    _enemySpawner.EndLevel();
+        if(EndLevel)
+		      _enemySpawner.EndLevel();
+
 		    _enemySpawner.RemoveEnemy(this);
 		  }
 
@@ -114,4 +118,13 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy
     return true;
   }
 
+  public void OnEnable()
+  {
+    MakeInvisible();
+  }
+
+  public void OnFinalBossDestroyed(Node2D node)
+  {
+    _destroing = true;
+  }
 }

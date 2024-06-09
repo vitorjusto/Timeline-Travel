@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://due3kaah4881a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ukyp"]
+font_size = 64
+
+[node name="FinalCutscene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 666.0
+offset_top = 411.0
+offset_right = 1403.0
+offset_bottom = 723.0
+text = "you are winner"
+label_settings = SubResource("LabelSettings_2ukyp")

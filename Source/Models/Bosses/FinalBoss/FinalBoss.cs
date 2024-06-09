@@ -1,4 +1,5 @@
 using Godot;
+using shooter.Source.Models.Bosses.FinalBoss.States;
 using Shooter.Source.Enums;
 using Shooter.Source.Helpers;
 using Shooter.Source.Interfaces;
@@ -6,7 +7,7 @@ using Shooter.Source.Models.Bosses.FinalBoss.States;
 
 public partial class FinalBoss : Node2D
 {
-	private EFinalBossState _bossLevelState = EFinalBossState.AngryCore;
+	private EFinalBossState _bossLevelState = EFinalBossState.AngryCore2;
 	private IState _state;
 
 	public override void _Ready()
@@ -16,6 +17,8 @@ public partial class FinalBoss : Node2D
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineTwoFourBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("AngryMotherShipCore"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEleven"));
+		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("Timelinethree"));
+		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("FinalStage"));
 	}
 
 	public override void _Process(double delta)
@@ -36,7 +39,7 @@ public partial class FinalBoss : Node2D
 	{
 		_bossLevelState += 1;
 
-		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2)
+		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineThree || _bossLevelState == EFinalBossState.TransitionToFinalStage)
 			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
 		if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
@@ -88,6 +91,19 @@ public partial class FinalBoss : Node2D
 			GetNode<Node2D>("AngryMotherShipCore").Visible = true;
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 
+		}else if(_bossLevelState == EFinalBossState.TimelineThree)
+		{
+			GetNode("AngryMotherShipCore").QueueFree();
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("Timelinethree"));
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+		}else if(_bossLevelState == EFinalBossState.FinalStage)
+		{
+			GetNode("Timelinethree").QueueFree();
+			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("FinalStage"));
+			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
+		}else if(_bossLevelState == EFinalBossState.EndingTransition)
+		{
+			_state = new FinalTransitionState(GetTree().Root.GetNode<Player>("/root/Main/Player"), GetNode<Panel>("ParallaxBackground/PanelContainer"));
 		}
 	}
 }

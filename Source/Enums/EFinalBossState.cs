@@ -16,6 +16,11 @@ namespace Shooter.Source.Enums
         TransitionToTimeLineEleven = 12,
         TimeLineEleven = 13,
         TransitionToAngryCore2 = 14,
-        AngryCore2 = 15
+        AngryCore2 = 15,
+        TransitionToTimelineThree = 16,
+        TimelineThree = 17,
+        TransitionToFinalStage = 18,
+        FinalStage = 19,
+        EndingTransition = 20,
     }
 }
