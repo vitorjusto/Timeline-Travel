@@ -155,6 +155,9 @@ public partial class Player : Area2D
 
 		if(node is IPowerUp)
 		{
+			if(GetFinalPowerUp)
+				return;
+				
 			var powerUp = (IPowerUp)node;
 
 			powerUp.OnPickUp();

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using shooter.Source.Models.Bosses.FinalBoss.States;
 using Shooter.Source.Enums;
@@ -7,11 +8,12 @@ using Shooter.Source.Models.Bosses.FinalBoss.States;
 
 public partial class FinalBoss : Node2D
 {
-	private EFinalBossState _bossLevelState = EFinalBossState.AngryCore2;
+	private EFinalBossState _bossLevelState = EFinalBossState.TheWall;
 	private IState _state;
 
 	public override void _Ready()
 	{
+
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("MotherShipCore1"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineTwoFourBoss"));
@@ -19,9 +21,24 @@ public partial class FinalBoss : Node2D
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEleven"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("Timelinethree"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("FinalStage"));
+
+        VerifyFinalPowerUp();
 	}
 
-	public override void _Process(double delta)
+    private void VerifyFinalPowerUp()
+    {
+		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+        if(!player.GetFinalPowerUp)
+			return;
+
+		_bossLevelState = EFinalBossState.FinalPowerUpGetTransition;
+		FinalPowerUp.GiveFinalPowerUpStatus(player);
+		player.EmitSignal("PlayerHpUpdated", player.Hp);
+		OnNextState();
+    }
+
+    public override void _Process(double delta)
 	{
 		if(_state is null)
 			return;
@@ -41,7 +58,7 @@ public partial class FinalBoss : Node2D
 
 		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineThree || _bossLevelState == EFinalBossState.TransitionToFinalStage)
 			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
-		if(_bossLevelState == EFinalBossState.MothershipCore)
+		else if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
 			GetNode("FirstState").QueueFree();
 			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("MotherShipCore1"));

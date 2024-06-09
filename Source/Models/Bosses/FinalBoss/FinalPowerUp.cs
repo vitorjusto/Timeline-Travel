@@ -9,14 +9,20 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
     public void OnPickUp()
     {
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		player.GetFinalPowerUp = true;
 
-		player.Hp = 100;
+		GiveFinalPowerUpStatus(player);
 
 		EmitSignal("OnGetPowerUp");
 		QueueFree();
 		
     }
+
+	public static void GiveFinalPowerUpStatus(Player player)
+	{
+		player.GetFinalPowerUp = true;
+
+		player.Hp = 100;
+	}
 	
 	public override void _Ready()
 	{
