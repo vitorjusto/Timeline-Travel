@@ -6,8 +6,6 @@ using System;
 
 public partial class ProjectileManager : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-
 	public int PlayerProjectileLevel = 1;
 	public override void _Ready()
 	{
@@ -15,9 +13,7 @@ public partial class ProjectileManager : Node2D
 	}
 	private int _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
-    private bool _isPaused = false;
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
 		Shoot();
@@ -25,9 +21,6 @@ public partial class ProjectileManager : Node2D
 
     private void Shoot()
     {
-		if(_isPaused)
-			return;
-		
 		if(Input.IsActionPressed("shoot"))
 		{
 			_autoFireCooldown--;
@@ -95,7 +88,6 @@ public partial class ProjectileManager : Node2D
 	{
 		var node = projectile.GetInstance();
 		
-		node.SetProcess(!_isPaused);
 		EnemiesProjectiles.Add(node);
 		CallDeferred("add_child", node);
 
@@ -113,6 +105,7 @@ public partial class ProjectileManager : Node2D
 		{
 			EnemiesProjectiles.Remove(node);
 			node.QueueFree();
+
 		}catch(Exception)
 		{
 			
@@ -127,14 +120,5 @@ public partial class ProjectileManager : Node2D
 			RemoveProjectile(EnemiesProjectiles[0]);
 		}
     }
-
-	public void OnGamePaused(bool isPaused)
-	{
-		_isPaused = isPaused;
-		foreach(var projectiles in GetChildren())
-		{
-			projectiles.SetProcess(!_isPaused);
-		}
-	}
 
 }

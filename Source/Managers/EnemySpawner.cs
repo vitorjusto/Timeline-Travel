@@ -97,7 +97,6 @@ public partial class EnemySpawner : Node2D
 	[Signal]
 	public delegate void LevelEndedEventHandler();
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
 		if(_gameManager.IsBlackScreen)
@@ -275,21 +274,5 @@ public partial class EnemySpawner : Node2D
 			BossApeared = false;
 		}
 
-    }
-	
-	public void OnGamePaused(bool isPaused)
-	{
-		PauseEveryEnemy(GetChildren(), isPaused);
-		
-		SetProcess(!isPaused);
-	}
-
-    private void PauseEveryEnemy(Array<Node> nodes, bool isPaused)
-    {
-        foreach(var enemy in nodes)
-		{
-			enemy.SetProcess(!isPaused);
-			PauseEveryEnemy(enemy.GetChildren(), isPaused);
-		}
     }
 }

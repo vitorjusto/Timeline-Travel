@@ -44,7 +44,3 @@ texture = ExtResource("6_f2tug")
 [connection signal="PlayerHitProjectile" from="Player" to="ProjectileManager" method="PlayerHitProjectile"]
 [connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]
 [connection signal="PlayerLifeUpdated" from="Player" to="Hud" method="onPlayerLifeUpdated"]
-[connection signal="GamePaused" from="Hud" to="EnemySpawner" method="OnGamePaused"]
-[connection signal="GamePaused" from="Hud" to="Player" method="OnGamePaused"]
-[connection signal="GamePaused" from="Hud" to="ProjectileManager" method="OnGamePaused"]
-[connection signal="GamePaused" from="Hud" to="BackgroundManager" method="OnGamePaused"]

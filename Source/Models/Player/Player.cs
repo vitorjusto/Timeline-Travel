@@ -257,18 +257,8 @@ public partial class Player : Area2D
 	}
 
 	public void OnEndingLevel()
-	{
-		_unableToMove = true;
-	}
+		=> _unableToMove = true;
 
 	public void EnablePlayerToMove()
-	{
-		_unableToMove = false;
-
-	}
-
-	public void OnGamePaused(bool isPaused)
-	{
-		SetProcess(!isPaused);
-	}
+		=> _unableToMove = false;
 }

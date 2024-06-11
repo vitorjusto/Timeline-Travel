@@ -1,17 +1,10 @@
 using Godot;
-using System;
 
 public partial class GameManager : Node2D
 {
 	private int _time = 0;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
 	public bool IsBlackScreen = false;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(_time > 0)
@@ -67,9 +60,6 @@ public partial class GameManager : Node2D
 
 		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
-
-		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
-		backgroundManager.RestartBackgroundAnimation(enemySpawner.CurrentLevel);
 
 		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
     }
