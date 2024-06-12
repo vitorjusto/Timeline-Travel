@@ -48,9 +48,11 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_736oi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_lmfok")
 
 [node name="AniTarget" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cx2eh")
