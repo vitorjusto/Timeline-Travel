@@ -185,19 +185,13 @@ public partial class Player : Area2D
 
 		if(_iFrame == 0)
 		{
-			_playerHitTimes++;
+			var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
-			if(_playerHitTimes == 3)
-			{
-				var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+			projectileManager.PlayerProjectileLevel -= 1;
 
-				projectileManager.PlayerProjectileLevel -= 1;
-
-				if(projectileManager.PlayerProjectileLevel < 1)
-					projectileManager.PlayerProjectileLevel = 1;
+			if(projectileManager.PlayerProjectileLevel < 1)
+				projectileManager.PlayerProjectileLevel = 1;
 				
-				_playerHitTimes = 0;
-			}
 		}
 		if(_iFrame == 0)
 			_iFrame = IFrameTime;

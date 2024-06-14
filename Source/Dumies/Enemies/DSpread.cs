@@ -8,10 +8,13 @@ namespace Shooter.Source.Dumies.Enemies
     {
         private int _x;
         private EEnemyProjectileType _projectileType;
-        public DSpread(int x, EEnemyProjectileType projectileType)
+        private int _speed;
+
+        public DSpread(int x, EEnemyProjectileType projectileType, int speed =  2)
         {
             _x = x;
             _projectileType = projectileType;
+            _speed = speed;
         }
 
         public Node2D GetInstance()
@@ -23,7 +26,7 @@ namespace Shooter.Source.Dumies.Enemies
             instance.Position = new Vector2(_x, y: -30);
 
             instance.ProjectileType = _projectileType;
-
+            instance.Speed = _speed;
             return instance;
         }
     }

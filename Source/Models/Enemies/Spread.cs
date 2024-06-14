@@ -6,7 +6,7 @@ using Shooter.Source.Enums;
 
 public partial class Spread : CharacterBody2D, IEnemy
 {
-	private int _speed = 2;
+	public int Speed;
 	private int _time = 0;
 	public EEnemyProjectileType ProjectileType;
     public override void _Process(double delta)
@@ -17,7 +17,7 @@ public partial class Spread : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-        Position = new Vector2(x: Position.X, y: Position.Y + _speed);
+        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
 
 		_time += 1;
         

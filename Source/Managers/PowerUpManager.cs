@@ -11,16 +11,16 @@ public partial class PowerUpManager : Node2D
 	{
 		_enemiesDefeated++;
 
-		if(_enemiesDefeated == 10)
+		if(_enemiesDefeated == 20)
 			AddPowerUp(node.Position);
 	}
 
     private void AddPowerUp(Vector2 position)
     {
 		if(_currentCicle == 1)
-			CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
-		if(_currentCicle == 2)
 			CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
+		if(_currentCicle == 2)
+			CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
 
 		_currentCicle++;
 
