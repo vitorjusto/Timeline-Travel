@@ -1,11 +1,8 @@
 using Godot;
 using System;
-using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
-using Shooter.Source.Dumies.Enemies;
-using System.Threading;
-
+using Shooter.Source.Models.Bosses.LevelOne.Entities;
 public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 {
 
@@ -13,24 +10,17 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
     private bool _isDestroing = false;
     private int _time = 0;
 	private bool _walking = false;
-
 	private int _hp = 2;
-
 	public EEnemyProjectileType ProjectileType;
 
-	private int _damageAnimation = 0;
-
-	private BlackHoleGeneratorPart _arm1;
-	private BlackHoleGeneratorPart _arm2;
     private EnemySpawner _enemySpawner;
+	private BlackholeManager _blackholeManager;
 
     public override void _Ready()
 	{
-		_arm1 = GetNode<BlackHoleGeneratorPart>("Arm1");
-		_arm1.InvertArm();
-
-		_arm2 = GetNode<BlackHoleGeneratorPart>("Arm2");
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+		_blackholeManager = new(this, GetNode<BlackHoleGeneratorPart>("BlackholePartLeft"), GetNode<BlackHoleGeneratorPart>("BlackholePartRight"));
 	}
 
     public override void _Process(double delta)
@@ -39,7 +29,10 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		if(_isDestroing)
 			DestroyAnimation();
 		else if(_walking)
+		{
 			WalkEnemy();
+			_blackholeManager.Update();
+		}
 		else
 			MoveEnemy();
 
@@ -65,51 +58,6 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
 		if(Position.X > 1212 || Position.X < 232)
 			_speed *= -1;
-
-		if(_time == 100)
-		{
-			var number = new Random().Next(1, 3);
-
-			if(number == 1)
-			{
-				_arm1.ShowBlackHole = true;
-			}else
-			{
-				_arm2.ShowBlackHole = true;
-			}
-
-		}else if(_time == 300)
-		{
-			_arm1.ShowBlackHole = false;
-
-			_arm2.ShowBlackHole = false;
-
-			_time = 0;
-		}
-
-		_arm1.RelativeX = Position.X;
-		_arm1.RelativeY = Position.Y;
-
-		_arm2.RelativeX = Position.X;
-		_arm2.RelativeY = Position.Y;
-
-		if(_damageAnimation > 0)
-		{
-			_damageAnimation--;
-
-			if(_damageAnimation == 0)
-			{
-				var animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-				animation.Play("Idle");
-			}
-		}
-
-		if(_enemySpawner.Enemies.Count == 0)
-		{
-			_enemySpawner.AddEnemy(new DShoter(100, EEnemyProjectileType.Normal));
-			_enemySpawner.AddEnemy(new DShoter(1000, EEnemyProjectileType.Normal));
-
-		}
 
 	}
 
@@ -137,9 +85,11 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		return true;
 	}
 
-	public void OnDestroyArm()
+	public void OnDestroyArm(BlackHoleGeneratorPart part)
 	{
 		_hp--;
+
+		_blackholeManager.RemovePart(part);
 
 		if(_hp == 0)
 		{
@@ -147,6 +97,6 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 			_isDestroing = true;
 			_time = 0;
 		}
-	}
 
+	}
 }

@@ -1,47 +1,29 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1rs3r8dxj7kq"]
+[gd_scene load_steps=14 format=3 uid="uid://c1rs3r8dxj7kq"]
 
-[ext_resource type="Texture2D" uid="uid://byw71lvmxu4sf" path="res://Assets/Bosses/BlackHoleGenerator.png" id="1_pg6dj"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/BlackHoleGeneratorPart.cs" id="1_ujkkc"]
 [ext_resource type="Texture2D" uid="uid://be17hsv6udoe1" path="res://Assets/Bosses/BlackHole.png" id="2_1ibuk"]
+[ext_resource type="Texture2D" uid="uid://ddow7umk7yr27" path="res://Assets/Bosses/BlackHoleGenerator/BlackHoleGenerator.png" id="2_qq5xy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wd4kw"]
-atlas = ExtResource("1_pg6dj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qicc"]
+atlas = ExtResource("2_qq5xy")
 region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_eylqt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wd4kw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g221x"]
-size = Vector2(80, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_218mo"]
-atlas = ExtResource("1_pg6dj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlm4d"]
+atlas = ExtResource("2_qq5xy")
 region = Rect2(128, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_falx4"]
-atlas = ExtResource("1_pg6dj")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxsmy"]
-atlas = ExtResource("1_pg6dj")
-region = Rect2(128, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1teah"]
+atlas = ExtResource("2_qq5xy")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwft4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_218mo")
+"texture": SubResource("AtlasTexture_6qicc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_falx4")
+"texture": SubResource("AtlasTexture_jlm4d")
 }],
 "loop": true,
 "name": &"Damage",
@@ -49,12 +31,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sxsmy")
+"texture": SubResource("AtlasTexture_1teah")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hexy7"]
+radius = 47.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05xm8"]
 atlas = ExtResource("2_1ibuk")
@@ -95,22 +80,18 @@ animations = [{
 [node name="Node2D" type="CharacterBody2D"]
 script = ExtResource("1_ujkkc")
 
-[node name="AniArm" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_eylqt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, 44)
-shape = SubResource("RectangleShape2D_g221x")
-
 [node name="AniHand" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 40)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cwft4")
 animation = &"Damage"
 speed_scale = 10.0
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_hexy7")
+
 [node name="AniBlackHole" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(32, 48)
-scale = Vector2(1.6875, 1.75)
+scale = Vector2(1.96875, 2.01562)
 sprite_frames = SubResource("SpriteFrames_rayho")

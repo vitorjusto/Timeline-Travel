@@ -1,37 +1,33 @@
 [gd_scene load_steps=9 format=3 uid="uid://sri6vqy6btuv"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BlackHoleGenerator.cs" id="1_i3g44"]
-[ext_resource type="Texture2D" uid="uid://byw71lvmxu4sf" path="res://Assets/Bosses/BlackHoleGenerator.png" id="2_fp48v"]
 [ext_resource type="PackedScene" uid="uid://c1rs3r8dxj7kq" path="res://Scenes/Bosses/BlackHoleGeneratorPart.tscn" id="2_icrl8"]
+[ext_resource type="Texture2D" uid="uid://ddow7umk7yr27" path="res://Assets/Bosses/BlackHoleGenerator/BlackHoleGenerator.png" id="3_lo3cq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bht6"]
-atlas = ExtResource("2_fp48v")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbdv4"]
-atlas = ExtResource("2_fp48v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq0y1"]
+atlas = ExtResource("3_lo3cq")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8cyq"]
-atlas = ExtResource("2_fp48v")
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8abj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq0y1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w4or"]
+atlas = ExtResource("3_lo3cq")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ktcg3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2bht6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbdv4")
-}],
-"loop": true,
-"name": &"Damage",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8cyq")
+"texture": SubResource("AtlasTexture_2w4or")
 }],
 "loop": true,
 "name": &"Idle",
@@ -45,18 +41,31 @@ size = Vector2(144, 144)
 position = Vector2(-272, -140)
 script = ExtResource("1_i3g44")
 
-[node name="Arm1" parent="." instance=ExtResource("2_icrl8")]
-position = Vector2(-120, 64)
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-156, 32)
+rotation = 3.14159
+scale = Vector2(3, -3)
+sprite_frames = SubResource("SpriteFrames_f8abj")
+metadata/_edit_lock_ = true
 
-[node name="Arm2" parent="." instance=ExtResource("2_icrl8")]
-position = Vector2(120, 64)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(155, 32)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_f8abj")
+metadata/_edit_lock_ = true
+
+[node name="BlackholePartLeft" parent="." instance=ExtResource("2_icrl8")]
+position = Vector2(-232, 125)
+
+[node name="BlackholePartRight" parent="." instance=ExtResource("2_icrl8")]
+position = Vector2(233, 130)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 8)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ktcg3")
-animation = &"Damage"
+animation = &"Idle"
 speed_scale = 10.0
 metadata/_edit_lock_ = true
 
@@ -64,5 +73,5 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_s488j")
 
-[connection signal="DestroyArm" from="Arm1" to="." method="OnDestroyArm"]
-[connection signal="DestroyArm" from="Arm2" to="." method="OnDestroyArm"]
+[connection signal="DestroyArm" from="BlackholePartLeft" to="." method="OnDestroyArm"]
+[connection signal="DestroyArm" from="BlackholePartRight" to="." method="OnDestroyArm"]
