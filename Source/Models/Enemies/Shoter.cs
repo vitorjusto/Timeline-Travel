@@ -21,7 +21,7 @@ public partial class Shoter : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-		if(_timeShooted == 10)
+		if(_timeShooted == 15)
 		{
 			Position = new Vector2(x: Position.X, y: Position.Y - _speed);
 			return;
