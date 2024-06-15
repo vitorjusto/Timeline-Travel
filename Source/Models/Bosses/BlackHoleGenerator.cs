@@ -20,7 +20,11 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 	{
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
-		_blackholeManager = new(this, GetNode<BlackHoleGeneratorPart>("BlackholePartLeft"), GetNode<BlackHoleGeneratorPart>("BlackholePartRight"));
+		_blackholeManager = new(this,
+								GetNode<BlackHoleGeneratorPart>("BlackholePartLeft"),
+								GetNode<BlackHoleGeneratorPart>("BlackholePartRight"),
+								GetNode<Node2D>("LeftArm"),
+								GetNode<Node2D>("RightArm"));
 	}
 
     public override void _Process(double delta)

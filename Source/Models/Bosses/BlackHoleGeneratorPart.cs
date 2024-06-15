@@ -1,15 +1,19 @@
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Bosses.LevelOne.Enums;
 
 public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 {
 
 	public bool ShowBlackHole = false;
-	public int _hp = 40;
+	public int _hp = 50;
 	public int _damageAnimation = 0;
 	public int _blackholeTimer = 0;
 	public BlackHoleGenerator Boss;
+
+	[Export]
+	public EPartSide PartSide;
 
 	public override void _Process(double delta)
 	{
@@ -47,8 +51,10 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 
 	public void Destroy()
 	{
-		if(_damageAnimation > 0 || ShowBlackHole)
-			_hp--;
+		if(ShowBlackHole)
+			return;
+
+		_hp--;
 
 		if(_hp == 0)
 		{
@@ -59,7 +65,7 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 		var animation = GetNode<AnimatedSprite2D>("AniHand");
 		animation.Play("Damage");
 
-		_damageAnimation = 50;
+		_damageAnimation = 10;
 	}
 
 	public bool IsImortal()

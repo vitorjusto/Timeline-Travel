@@ -41,14 +41,14 @@ size = Vector2(144, 144)
 position = Vector2(-272, -140)
 script = ExtResource("1_i3g44")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+[node name="LeftArm" type="AnimatedSprite2D" parent="."]
 position = Vector2(-156, 32)
 rotation = 3.14159
 scale = Vector2(3, -3)
 sprite_frames = SubResource("SpriteFrames_f8abj")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="RightArm" type="AnimatedSprite2D" parent="."]
 position = Vector2(155, 32)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_f8abj")
@@ -59,6 +59,7 @@ position = Vector2(-232, 125)
 
 [node name="BlackholePartRight" parent="." instance=ExtResource("2_icrl8")]
 position = Vector2(233, 130)
+PartSide = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
