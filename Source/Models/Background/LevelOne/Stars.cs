@@ -38,9 +38,4 @@ public partial class Stars : AnimatedSprite2D
 		else
 			Play();
 	}
-
-	public void OnScreenExited()
-	{
-		QueueFree();
-	}
 }

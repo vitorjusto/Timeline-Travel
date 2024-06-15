@@ -38,7 +38,7 @@ namespace Shooter.Source.Factories.Levels
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelOne.tscn");
 
-            var instance = (BackgroundLevelOne)scene.Instantiate();
+            var instance = (Node2D)scene.Instantiate();
 
 		    return instance;
         }

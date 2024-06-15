@@ -338,8 +338,3 @@ scale = Vector2(1.95455, 1.95455)
 sprite_frames = SubResource("SpriteFrames_lvkp6")
 animation = &"Green2"
 script = ExtResource("2_twqbj")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-texture_filter = 2
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
