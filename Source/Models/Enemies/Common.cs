@@ -1,10 +1,8 @@
 using Godot;
 using Shooter.Source.Interfaces;
-using System;
 
 public partial class Common : CharacterBody2D, IEnemy
 {
-
 	public int Speed = 1;
 
     public override void _Process(double delta)
@@ -20,7 +18,6 @@ public partial class Common : CharacterBody2D, IEnemy
     public void OnScreenExited()
     {
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
         enemySpawner.RemoveEnemy(this);
     }
 
@@ -28,7 +25,6 @@ public partial class Common : CharacterBody2D, IEnemy
 	{
 		return false;
 	}
-
 
     public void Destroy()
     {

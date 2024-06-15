@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
@@ -40,7 +39,6 @@ public partial class Spread : CharacterBody2D, IEnemy
             ShootProjectile(1, 0);
         else if(_time % 80 == 70)
             ShootProjectile(1, 1);
-		
     }
 
 	private void ShootProjectile(float xspeed, float yspeed)
@@ -48,11 +46,11 @@ public partial class Spread : CharacterBody2D, IEnemy
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		if(ProjectileType == EEnemyProjectileType.Normal)
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, xspeed * (4), yspeed * (4)));
+			projectiles.AddProjectile(new DNormalProjectile(Position.X + (xspeed * 30), Position.Y + (yspeed * 30), xspeed * (4), yspeed * (4)));
 		else if(ProjectileType == EEnemyProjectileType.Light)
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, xspeed * (6), yspeed * (6)));
+			projectiles.AddProjectile(new DLightProjectile(Position.X + (xspeed * 30), Position.Y + (yspeed * 30), xspeed * (6), yspeed * (6)));
 		else if(ProjectileType == EEnemyProjectileType.Strong)
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, xspeed * (3), yspeed * (3)));		
+			projectiles.AddProjectile(new DStrongProjectile(Position.X + (xspeed * 30), Position.Y + (yspeed * 30), xspeed * (3), yspeed * (3)));		
 		
 
 	}

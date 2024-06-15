@@ -11,7 +11,7 @@ public partial class PowerUpManager : Node2D
 	{
 		_enemiesDefeated++;
 
-		if(_enemiesDefeated == 20)
+		if(_enemiesDefeated == 15)
 			AddPowerUp(node.Position);
 	}
 
