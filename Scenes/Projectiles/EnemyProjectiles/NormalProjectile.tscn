@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cgechy41qd3g3" path="res://Assets/Projectiles/PlayerProjectile.png" id="1_d2usa"]
 [ext_resource type="Script" path="res://Source/Models/Projectiles/EnemiesProjectiles/NormalProjectile.cs" id="1_yfo7m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qbkpf"]
-radius = 11.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhure"]
 animations = [{
 "frames": [{
@@ -17,15 +14,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df4f2"]
+size = Vector2(16, 16)
+
 [node name="NormalProjectile" type="CharacterBody2D"]
 script = ExtResource("1_yfo7m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qbkpf")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xhure")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_df4f2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
