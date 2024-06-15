@@ -1,33 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://befa6wwgdflrx"]
+[gd_scene load_steps=4 format=3 uid="uid://befa6wwgdflrx"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Sniper.cs" id="1_7qfiw"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_g4nqv"]
+[ext_resource type="Texture2D" uid="uid://dwtyp7dsutdfm" path="res://Assets/Enemies/Sniper.png" id="2_uki0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgwa3"]
-size = Vector2(64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iuudm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_g4nqv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(93, 81)
 
 [node name="Sniper" type="CharacterBody2D"]
 script = ExtResource("1_7qfiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -4.5)
 shape = SubResource("RectangleShape2D_tgwa3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_iuudm")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-4, -6.19888e-06)
-scale = Vector2(4.4, 4.8)
+position = Vector2(3.5, -6.19888e-06)
+scale = Vector2(5.45, 4.8)
+
+[node name="Sniper" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_uki0g")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

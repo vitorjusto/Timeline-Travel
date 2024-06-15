@@ -13,8 +13,8 @@ script = ExtResource("1_ultsn")
 shape = SubResource("RectangleShape2D_esxkp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-6.19888e-06, 1.5)
-scale = Vector2(4.8, 4.65)
+position = Vector2(-6.19888e-06, -0.999999)
+scale = Vector2(4.8, 4.9)
 
 [node name="Spread" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

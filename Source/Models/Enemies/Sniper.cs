@@ -7,7 +7,7 @@ using Shooter.Source.Enums;
 public partial class Sniper : CharacterBody2D, IEnemy
 {
 
-	private int _speed = 3;
+	private int _speed = 9;
 
 	private int _time = 0;
 
@@ -21,15 +21,15 @@ public partial class Sniper : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-		if(_time < 50)
+		if(_time < 15)
 		{
         	Position = new Vector2(x: Position.X, y: Position.Y + _speed);
 
-		}else if(_time == 90)
+		}else if(_time == 35)
 		{
 			ShootProjectile();
 		}
-		else if(_time > 120)
+		else if(_time > 50)
 		{
 			Position = new Vector2(x: Position.X, y: Position.Y - _speed);
 		}
@@ -42,13 +42,13 @@ public partial class Sniper : CharacterBody2D, IEnemy
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		if(ProjectileType == EEnemyProjectileType.Normal)
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
 		else if(ProjectileType == EEnemyProjectileType.Light)
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
 		else if(ProjectileType == EEnemyProjectileType.Strong)
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));		
+			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));		
 		else if(ProjectileType == EEnemyProjectileType.Homing)
-			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y));		
+			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y + 41));		
 
 	}
 
