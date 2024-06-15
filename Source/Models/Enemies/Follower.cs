@@ -9,7 +9,7 @@ public partial class Follower : CharacterBody2D, IEnemy
 
 	private float _xspeed = 1;
 	private float _yspeed = 1;
-	private int _speed = 6;
+	private int _speed = 10;
 	private int _time = 0;
 	public EEnemyProjectileType ProjectileType;
 	public int _cicle = 1;
@@ -29,14 +29,14 @@ public partial class Follower : CharacterBody2D, IEnemy
 		if(_time == 0)
 		{
 			FollowPlayer();
-		}else if(_time == 80)
+		}else if(_time == 70)
 		{
 			_xspeed = 0;
 			_yspeed = 0;
-		}else if(_time == 90)
+		}else if(_time == 80)
 		{
 			ShootProjectile();
-		}else if(_time == 99)
+		}else if(_time == 89)
 		{
 			_cicle++;
 			_time = -1;
@@ -64,13 +64,13 @@ public partial class Follower : CharacterBody2D, IEnemy
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		if(ProjectileType == EEnemyProjectileType.Normal)
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 10, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
 		else if(ProjectileType == EEnemyProjectileType.Light)
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y + 10, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
 		else if(ProjectileType == EEnemyProjectileType.Strong)
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));		
+			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y + 10, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));		
 		else if(ProjectileType == EEnemyProjectileType.Homing)
-			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y));		
+			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y + 10));		
 
 	}
 
