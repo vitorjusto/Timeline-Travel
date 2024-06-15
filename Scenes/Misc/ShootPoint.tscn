@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ta0sneowshf"]
+
+[ext_resource type="Script" path="res://Source/Models/Misc/ShootPoint.cs" id="1_5fjwm"]
+
+[node name="ShootPoint" type="Node2D"]
+script = ExtResource("1_5fjwm")

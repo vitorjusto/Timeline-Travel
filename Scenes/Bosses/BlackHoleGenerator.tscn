@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://sri6vqy6btuv"]
+[gd_scene load_steps=10 format=3 uid="uid://sri6vqy6btuv"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BlackHoleGenerator.cs" id="1_i3g44"]
 [ext_resource type="PackedScene" uid="uid://c1rs3r8dxj7kq" path="res://Scenes/Bosses/BlackHoleGeneratorPart.tscn" id="2_icrl8"]
 [ext_resource type="Texture2D" uid="uid://ddow7umk7yr27" path="res://Assets/Bosses/BlackHoleGenerator/BlackHoleGenerator.png" id="3_lo3cq"]
+[ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="4_6vwpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oq0y1"]
 atlas = ExtResource("3_lo3cq")
@@ -73,6 +74,40 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_s488j")
+
+[node name="ShootPoint" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(-35, 111)
+NodeOrigin = NodePath("..")
+Timer = 100
+
+[node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(-35, 111)
+NodeOrigin = NodePath("..")
+Timer = 100
+ExtraAngle = -0.5
+
+[node name="ShootPoint4" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(-35, 111)
+NodeOrigin = NodePath("..")
+Timer = 100
+ExtraAngle = 0.5
+
+[node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(34, 112)
+NodeOrigin = NodePath("..")
+Timer = 100
+
+[node name="ShootPoint5" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(34, 112)
+NodeOrigin = NodePath("..")
+Timer = 100
+ExtraAngle = -0.5
+
+[node name="ShootPoint6" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
+position = Vector2(34, 112)
+NodeOrigin = NodePath("..")
+Timer = 100
+ExtraAngle = 0.5
 
 [connection signal="DestroyArm" from="BlackholePartLeft" to="." method="OnDestroyArm"]
 [connection signal="DestroyArm" from="BlackholePartRight" to="." method="OnDestroyArm"]

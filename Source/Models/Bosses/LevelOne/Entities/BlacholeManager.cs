@@ -29,7 +29,6 @@ namespace Shooter.Source.Models.Bosses.LevelOne.Entities
 
             _leftArm = leftArm;
             _rightArm = rightArm;
-
         }
 
         public void Update()
