@@ -1,33 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://x82iiu432pcl"]
+[gd_scene load_steps=4 format=3 uid="uid://x82iiu432pcl"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Curver.cs" id="1_ssrsu"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_cyngh"]
+[ext_resource type="Texture2D" uid="uid://dg2i0ox52av0i" path="res://Assets/Enemies/Curver.png" id="2_lblq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2taj"]
-size = Vector2(64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lyilh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_cyngh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(96, 75)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_ssrsu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_d2taj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_lyilh")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(4.76837e-06, 4.76837e-06)
-scale = Vector2(4.8, 4.8)
+position = Vector2(-2, 4)
+scale = Vector2(5.8, 4.8)
+
+[node name="Curver" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_lblq2")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]
