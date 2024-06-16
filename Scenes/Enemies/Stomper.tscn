@@ -1,21 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnhek885n24kx"]
+[gd_scene load_steps=5 format=3 uid="uid://cnhek885n24kx"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Stomper.cs" id="1_vhukm"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_kb5cp"]
+[ext_resource type="Texture2D" uid="uid://bu52revkdgh21" path="res://Assets/Enemies/Stomper.png" id="2_8afls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obad7"]
-size = Vector2(64, 64)
+size = Vector2(96, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ap2l"]
+size = Vector2(30, 30)
 
 [node name="Stomper" type="CharacterBody2D"]
 script = ExtResource("1_vhukm")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("2_kb5cp")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_obad7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(4, 4)
+position = Vector2(-1.5, -10)
+scale = Vector2(6.25, 6)
+
+[node name="Stomper" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("2_8afls")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -41)
+shape = SubResource("RectangleShape2D_4ap2l")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

@@ -14,10 +14,10 @@ public partial class PowerUpManager : Node2D
 		_bulletPoints += boundy.BulletPoints;
 		_hpPoints += boundy.HpUpPoints;
 
-		if(_bulletPoints > 20)
+		if(_bulletPoints > 15)
 			AddBulletUp(boundy.Position);
 
-		if(_hpPoints > 50)
+		if(_hpPoints > 40)
 			AddHpUp(boundy.Position);
 	}
 
