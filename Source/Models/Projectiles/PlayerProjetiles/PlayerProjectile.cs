@@ -5,8 +5,11 @@ public partial class PlayerProjectile : Area2D
 {
 	private int _ySpeed = -20;
 	private int _xSpeed = 0;
-	public override void _Ready()
+    private Player _player;
+
+    public override void _Ready()
 	{
+		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 	}
 
 	public override void _Process(double delta)
@@ -38,7 +41,7 @@ public partial class PlayerProjectile : Area2D
 
 			enemy.Destroy();
 
-			if(!enemy.IsImortal())
+			if(!enemy.IsImortal() && !_player.GetFinalPowerUp)
 				GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").AddEnemyDefeated(enemy);
 				
 			QueueFree();
