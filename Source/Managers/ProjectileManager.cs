@@ -16,7 +16,6 @@ public partial class ProjectileManager : Node2D
 
     public override void _Process(double delta)
 	{
-		GD.Print(this.GetChildCount());
 		Shoot();
 	}
 

@@ -13,7 +13,8 @@ public partial class BackgroundLevelTwo : Node2D, IBackground
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		GD.Print(this.GetChildCount());
+		
 		var paralax = GetNode<ParallaxLayer>("ParallaxBackground/ParallaxLayer3");
 
 		paralax.MotionOffset = new Vector2(
