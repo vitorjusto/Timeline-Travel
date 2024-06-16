@@ -29,14 +29,14 @@ public partial class Follower : CharacterBody2D, IEnemy
 		if(_time == 0)
 		{
 			FollowPlayer();
-		}else if(_time == 70)
+		}else if(_time == 50)
 		{
 			_xspeed = 0;
 			_yspeed = 0;
-		}else if(_time == 80)
+		}else if(_time == 60)
 		{
 			ShootProjectile();
-		}else if(_time == 89)
+		}else if(_time == 69)
 		{
 			_cicle++;
 			_time = -1;
