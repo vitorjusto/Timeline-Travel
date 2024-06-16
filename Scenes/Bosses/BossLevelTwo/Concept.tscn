@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bnoag1ab2f13v" path="res://Scenes/Bosses/BossLevelTwo/ConceptPart.tscn" id="3_5i0ss"]
 
 [node name="Concept" type="Node2D"]
-position = Vector2(-73, 0)
 script = ExtResource("1_84uhv")
 
 [node name="ConceptPart" parent="." instance=ExtResource("3_5i0ss")]

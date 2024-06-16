@@ -1,17 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnoag1ab2f13v"]
+[gd_scene load_steps=8 format=3 uid="uid://bnoag1ab2f13v"]
 
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_iwcol"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/Concept/ConceptPart.cs" id="1_mr0ho"]
+[ext_resource type="Texture2D" uid="uid://bb5s40rjb1de2" path="res://Assets/Bosses/Concept/ConceptPart.png" id="2_r8vlw"]
+[ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="3_x6xd0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4g82"]
+atlas = ExtResource("2_r8vlw")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6mgi"]
+atlas = ExtResource("2_r8vlw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye6qu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4g82")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6mgi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xjpe"]
-size = Vector2(128, 128)
+size = Vector2(138, 138)
 
 [node name="ConceptPart" type="CharacterBody2D"]
 script = ExtResource("1_mr0ho")
 
-[node name="EnemyPlaceholder2" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_iwcol")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ye6qu")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0xjpe")
+
+[node name="ShootPoint" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
+position = Vector2(0, 70)
+NodeOrigin = NodePath("..")
+Timer = 60
+
+[node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
+position = Vector2(-31, 70)
+NodeOrigin = NodePath("..")
+Timer = 60
+ExtraAngle = -0.3
+
+[node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
+position = Vector2(31, 70)
+NodeOrigin = NodePath("..")
+Timer = 60
+ExtraAngle = 0.3
+
+[node name="ShootPoint4" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
+position = Vector2(-59, 59)
+NodeOrigin = NodePath("..")
+Timer = 60
+ExtraAngle = -0.6
+
+[node name="ShootPoint5" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
+position = Vector2(58, 58)
+NodeOrigin = NodePath("..")
+Timer = 60
+ExtraAngle = 0.6
