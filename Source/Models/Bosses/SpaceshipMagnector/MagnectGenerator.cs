@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class MagnectGenerator : Node2D , IEnemy
 {
@@ -110,7 +111,12 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		_cycles++;
     }
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void OnEnemyDestroyedEventHandler();
 
 }

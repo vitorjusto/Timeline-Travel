@@ -30,6 +30,11 @@ public partial class FinalAngryCore : Node2D, IEnemy
         return true;
     }
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void OnDestroyedEventHandler(Node2D node);
 }

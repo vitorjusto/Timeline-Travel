@@ -114,6 +114,11 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
         _damageDisabled = false;
     }
 
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
     [Signal]
 	public delegate void OnPuncherDestroingEventHandler(Node2D node);
 }

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Projectiles;
+using Shooter.Source.Models.Misc;
 
 public partial class Gooder : CharacterBody2D, IEnemy
 {
@@ -104,5 +105,10 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		_isAngry = true;
 		_time = 0;
 		
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
     }
 }

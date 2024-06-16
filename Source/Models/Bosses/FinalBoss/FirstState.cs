@@ -4,6 +4,7 @@ using Shooter.Source.Dumies.Enemies.EnemiesPart;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 public partial class FirstState : Node2D, IEnemy
 {
@@ -122,6 +123,11 @@ public partial class FirstState : Node2D, IEnemy
         return true;
     }
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void OnDestroyedEventHandler();
 }

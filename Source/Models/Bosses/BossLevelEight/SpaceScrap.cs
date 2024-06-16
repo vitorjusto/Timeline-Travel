@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class SpaceScrap : CharacterBody2D, IEnemy
 {
@@ -25,5 +26,10 @@ public partial class SpaceScrap : CharacterBody2D, IEnemy
     public bool IsImortal()
     {
         return false;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(1, 0, Position);
     }
 }

@@ -1,7 +1,6 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using System.Collections.Generic;
-using Shooter.Source.Models.Levels;
 using System;
 
 public partial class ProjectileManager : Node2D

@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class Concept : Node2D, IEnemy
@@ -64,7 +65,12 @@ public partial class Concept : Node2D, IEnemy
 
 	}
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new(); 
+    }
+
+    [Signal]
 	public delegate void OnAllBodyPartDestroyedEventHandler();
 	
 	[Signal]

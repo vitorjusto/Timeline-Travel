@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class CoreProtector : CharacterBody2D, IEnemy
 {
@@ -32,6 +33,11 @@ public partial class CoreProtector : CharacterBody2D, IEnemy
 		_canTakeDamage = false;
 	}
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void OnProtectorDestoyedEventHandler(Node2D node);
 }

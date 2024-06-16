@@ -1,8 +1,8 @@
-using System.Text.RegularExpressions;
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Enemies.EnemiesPart;
+using Shooter.Source.Models.Misc;
 
 public partial class Lazer : CharacterBody2D, IEnemy
 {
@@ -79,5 +79,10 @@ public partial class Lazer : CharacterBody2D, IEnemy
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class LightningPart : CharacterBody2D, IEnemy, INonExplodable
 {
@@ -35,5 +36,10 @@ public partial class LightningPart : CharacterBody2D, IEnemy, INonExplodable
     public void Destroy()
     {
         
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 }

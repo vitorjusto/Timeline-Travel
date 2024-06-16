@@ -1,7 +1,7 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.BossLevelEight.States;
-using System;
+using Shooter.Source.Models.Misc;
 
 public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 {
@@ -70,4 +70,9 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 			GetNode<Node2D>("ForceFieldCollision").CallDeferred("queue_free");
 		}
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

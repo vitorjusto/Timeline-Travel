@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.LevelOne.Enums;
+using Shooter.Source.Models.Misc;
 
 public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 {
@@ -79,6 +80,11 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 		_blackholeTimer = 0;
 	}
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void DestroyArmEventHandler(BlackHoleGeneratorPart part);
 }

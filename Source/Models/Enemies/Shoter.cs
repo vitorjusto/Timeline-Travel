@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
+using Shooter.Source.Models.Misc;
 
 public partial class Shoter : CharacterBody2D, IEnemy
 {
@@ -92,4 +93,9 @@ public partial class Shoter : CharacterBody2D, IEnemy
 	{
 		return false;
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(3, 2, Position);
+    }
 }

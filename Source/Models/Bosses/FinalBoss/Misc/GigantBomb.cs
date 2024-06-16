@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class GigantBomb : CharacterBody2D, IEnemy
 {
@@ -65,4 +66,9 @@ public partial class GigantBomb : CharacterBody2D, IEnemy
 
         enemySpawner.RemoveEnemy(this);
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

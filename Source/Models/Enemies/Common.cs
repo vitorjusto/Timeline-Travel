@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class Common : CharacterBody2D, IEnemy
 {
@@ -31,5 +32,10 @@ public partial class Common : CharacterBody2D, IEnemy
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(1, 0, Position);
     }
 }

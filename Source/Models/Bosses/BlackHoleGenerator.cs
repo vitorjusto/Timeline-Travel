@@ -3,6 +3,8 @@ using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Bosses.LevelOne.Entities;
+using Shooter.Source.Models.Misc;
+
 public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 {
 
@@ -117,4 +119,9 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		}
 
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

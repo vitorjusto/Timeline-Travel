@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class Surpriser : CharacterBody2D, IEnemy
@@ -71,4 +72,8 @@ public partial class Surpriser : CharacterBody2D, IEnemy
         return false;
     }
 
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
+    }
 }

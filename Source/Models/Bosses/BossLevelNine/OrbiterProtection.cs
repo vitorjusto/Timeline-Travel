@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class OrbiterProtection : Node2D, IEnemy
 {
@@ -95,4 +96,9 @@ public partial class OrbiterProtection : Node2D, IEnemy
 	{
 		_allowShoot = state;
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

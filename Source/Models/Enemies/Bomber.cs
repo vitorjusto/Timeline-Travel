@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Projectiles;
+using Shooter.Source.Models.Misc;
 
 public partial class Bomber : CharacterBody2D, IEnemy
 {
@@ -73,4 +74,9 @@ public partial class Bomber : CharacterBody2D, IEnemy
 
         enemySpawner.RemoveEnemy(this);
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -74,6 +74,11 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
         return true;
     }
 
-	[Signal]
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
+
+    [Signal]
 	public delegate void OnPartDestroyedEventHandler();
 }

@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class MovingBlackHole : Node2D, IEnemy
@@ -36,4 +37,9 @@ public partial class MovingBlackHole : Node2D, IEnemy
 		var enemiesManager = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 		enemiesManager.RemoveEnemy(this);
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

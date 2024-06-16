@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.BossLevelEight.States;
+using Shooter.Source.Models.Misc;
 
 public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExplodable
 {
@@ -52,5 +53,10 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
     public bool IsImortal()
     {
         return true;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 }

@@ -42,4 +42,9 @@ public partial class Curver : CharacterBody2D, IEnemy
 
         enemySpawner.RemoveEnemy(this);
     }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(1, 0, Position);
+    }
 }

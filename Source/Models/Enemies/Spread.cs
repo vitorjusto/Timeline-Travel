@@ -2,6 +2,7 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
+using Shooter.Source.Models.Misc;
 
 public partial class Spread : CharacterBody2D, IEnemy
 {
@@ -74,4 +75,8 @@ public partial class Spread : CharacterBody2D, IEnemy
 		return false;
 	}
 
+    public EnemyBoundy GetBoundy()
+    {
+        return new(2, 2, Position);
+    }
 }

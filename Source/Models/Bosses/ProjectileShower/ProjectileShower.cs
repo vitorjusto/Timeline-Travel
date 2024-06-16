@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.ProjectileShowerState;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 public partial class ProjectileShower : Node2D, IEnemy
 {
@@ -52,5 +53,10 @@ public partial class ProjectileShower : Node2D, IEnemy
     public bool IsImortal()
     {
         return true;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 }

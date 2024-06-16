@@ -68,4 +68,9 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 	{
 		_state = _state.NextState();
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

@@ -2,6 +2,7 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 public partial class SpaceshipMagnector : Node2D, IEnemy
 {
@@ -70,6 +71,10 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
         _isAtracting = false;
     }
 
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 
     [Signal]
 	public delegate void ShieldDestroyedEventHandler();

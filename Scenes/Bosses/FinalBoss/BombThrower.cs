@@ -2,6 +2,7 @@ using Godot;
 using Shooter.Source.Dumies.Enemies.FinalBoss;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 public partial class BombThrower : Node2D, IEnemy
 {
@@ -67,6 +68,11 @@ public partial class BombThrower : Node2D, IEnemy
             _timer = 0;
         }
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 
     [Signal]
     public delegate void OnDestroyedEventHandler();

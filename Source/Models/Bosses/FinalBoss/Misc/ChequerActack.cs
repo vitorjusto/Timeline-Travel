@@ -1,6 +1,6 @@
-using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 {
@@ -65,6 +65,11 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
         Visible = false;
 		_activated = false;
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 
     [Signal]

@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
 {
@@ -32,4 +33,8 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
         return true;
     }
 
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

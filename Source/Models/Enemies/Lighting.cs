@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Enemies.EnemiesPart;
+using Shooter.Source.Models.Misc;
 
 public partial class Lighting : Node2D, IEnemy, INonExplodable
 {
@@ -63,5 +64,10 @@ public partial class Lighting : Node2D, IEnemy, INonExplodable
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 }

@@ -159,4 +159,9 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 	{
 		_shooting = true;
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

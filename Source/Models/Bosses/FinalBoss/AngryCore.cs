@@ -48,4 +48,9 @@ public partial class AngryCore : Node2D, IEnemy
     {
         return false;
     }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

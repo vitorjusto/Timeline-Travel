@@ -1,33 +1,36 @@
 using Godot;
 using Shooter.Source.Factories;
+using Shooter.Source.Interfaces;
 
 public partial class PowerUpManager : Node2D
 {
-	private int _enemiesDefeated = 0;
-	private int _currentCicle = 1;
-	private int _maxCicle = 2;
+	private int _hpPoints = 0;
+	private int _bulletPoints = 0;
 
-	public void AddEnemyDefeated(Node2D node)
+	public void AddEnemyDefeated(IEnemy node)
 	{
-		_enemiesDefeated++;
+		var boundy = node.GetBoundy();
 
-		if(_enemiesDefeated == 15)
-			AddPowerUp(node.Position);
+		_bulletPoints += boundy.BulletPoints;
+		_hpPoints += boundy.HpUpPoints;
+
+		if(_bulletPoints > 20)
+			AddBulletUp(boundy.Position);
+
+		if(_hpPoints > 50)
+			AddHpUp(boundy.Position);
 	}
 
-    private void AddPowerUp(Vector2 position)
+    private void AddHpUp(Vector2 position)
     {
-		if(_currentCicle == 1)
-			CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
-		if(_currentCicle == 2)
-			CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
+        CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
+		_hpPoints = 0;
+    }
 
-		_currentCicle++;
-
-		if(_currentCicle > _maxCicle)
-			_currentCicle = 1;
-		
-		_enemiesDefeated = 0;
+    private void AddBulletUp(Vector2 position)
+    {
+        CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
+		_bulletPoints = 0;
     }
 
 	public void ClearAllChild()

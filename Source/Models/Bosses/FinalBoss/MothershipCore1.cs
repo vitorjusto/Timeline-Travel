@@ -73,4 +73,9 @@ public partial class MothershipCore1 : Node2D, IEnemy
     {
         return true;
     }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class Dasher : CharacterBody2D, IEnemy
 {
@@ -66,4 +67,9 @@ public partial class Dasher : CharacterBody2D, IEnemy
 	{
 		return false;
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
+    }
 }

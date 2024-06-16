@@ -3,6 +3,7 @@ using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.LevelSix.States;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class LightningRodSatellite : CharacterBody2D, IEnemy
@@ -52,6 +53,11 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
     public bool IsImortal()
     {
         return true;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
     }
 }
 

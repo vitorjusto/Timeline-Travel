@@ -3,6 +3,7 @@ using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
 using Shooter.Source.Dumies.Projectiles;
+using Shooter.Source.Models.Misc;
 
 public partial class Follower : CharacterBody2D, IEnemy
 {
@@ -92,5 +93,10 @@ public partial class Follower : CharacterBody2D, IEnemy
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(1, 1, Position);
     }
 }

@@ -43,7 +43,6 @@ public partial class Waver : CharacterBody2D, IEnemy
 
     }
 
-
     public void Destroy()
     {
 		
@@ -56,4 +55,8 @@ public partial class Waver : CharacterBody2D, IEnemy
 
 	public int GetStartPosition() => Y_START_POSITION;
 
+    public EnemyBoundy GetBoundy()
+    {
+        return new EnemyBoundy();
+    }
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 {
@@ -67,5 +68,10 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
     {
 		if(!_isExplosing)
 			_time = 150;
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        throw new NotImplementedException();
     }
 }

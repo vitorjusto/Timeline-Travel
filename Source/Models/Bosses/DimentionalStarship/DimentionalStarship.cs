@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotifier
 {
@@ -127,4 +128,9 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
   {
     _destroing = true;
   }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }

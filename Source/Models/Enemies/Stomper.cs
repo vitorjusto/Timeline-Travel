@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class Stomper : CharacterBody2D, IEnemy
@@ -89,5 +90,10 @@ public partial class Stomper : CharacterBody2D, IEnemy
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
+    }
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new(2, 0, Position);
     }
 }

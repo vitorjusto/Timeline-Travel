@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.BossLevelNine.States;
+using Shooter.Source.Models.Misc;
 
 public partial class FourDWarMachine : Node2D, IEnemy
 {
@@ -93,4 +94,9 @@ public partial class FourDWarMachine : Node2D, IEnemy
 	{
 		_state = _state.NextState();
 	}
+
+    public EnemyBoundy GetBoundy()
+    {
+        return new();
+    }
 }
