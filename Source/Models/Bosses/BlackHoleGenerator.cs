@@ -47,6 +47,13 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
     {
 		_enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
 
+		GetNode<ShootPoint>("ShootPoint").Active = false;
+		GetNode<ShootPoint>("ShootPoint2").Active = false;
+		GetNode<ShootPoint>("ShootPoint3").Active = false;
+		GetNode<ShootPoint>("ShootPoint4").Active = false;
+		GetNode<ShootPoint>("ShootPoint5").Active = false;
+		GetNode<ShootPoint>("ShootPoint6").Active = false;
+
 		if(_time == 300)
 		{
 			_enemySpawner.EndLevel();
@@ -73,6 +80,13 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
 		}else
 		{
+			GetNode<ShootPoint>("ShootPoint").Active = true;
+			GetNode<ShootPoint>("ShootPoint2").Active = true;
+			GetNode<ShootPoint>("ShootPoint3").Active = true;
+			GetNode<ShootPoint>("ShootPoint4").Active = true;
+			GetNode<ShootPoint>("ShootPoint5").Active = true;
+			GetNode<ShootPoint>("ShootPoint6").Active = true;
+
 			_walking = true;
 			_time = 0;
 		}

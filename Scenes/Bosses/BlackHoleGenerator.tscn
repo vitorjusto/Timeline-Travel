@@ -79,35 +79,41 @@ shape = SubResource("RectangleShape2D_s488j")
 position = Vector2(-35, 111)
 NodeOrigin = NodePath("..")
 Timer = 100
+Active = false
 
 [node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
 position = Vector2(-35, 111)
 NodeOrigin = NodePath("..")
 Timer = 100
 ExtraAngle = -0.5
+Active = false
 
 [node name="ShootPoint4" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
 position = Vector2(-35, 111)
 NodeOrigin = NodePath("..")
 Timer = 100
 ExtraAngle = 0.5
+Active = false
 
 [node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
 position = Vector2(34, 112)
 NodeOrigin = NodePath("..")
 Timer = 100
+Active = false
 
 [node name="ShootPoint5" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
 position = Vector2(34, 112)
 NodeOrigin = NodePath("..")
 Timer = 100
 ExtraAngle = -0.5
+Active = false
 
 [node name="ShootPoint6" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_6vwpo")]
 position = Vector2(34, 112)
 NodeOrigin = NodePath("..")
 Timer = 100
 ExtraAngle = 0.5
+Active = false
 
 [connection signal="DestroyArm" from="BlackholePartLeft" to="." method="OnDestroyArm"]
 [connection signal="DestroyArm" from="BlackholePartRight" to="." method="OnDestroyArm"]
