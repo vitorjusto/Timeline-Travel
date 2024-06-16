@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://f6ty08fs2p0r"]
+[gd_scene load_steps=5 format=3 uid="uid://f6ty08fs2p0r"]
 
 [ext_resource type="Script" path="res://Source/Models/Background/LevelOne/BackgroundLevelTwo.cs" id="1_wy2ip"]
 [ext_resource type="Texture2D" uid="uid://bkmu6tmaou4sn" path="res://Assets/Background/LevelTwo/LevelTwo.png" id="2_lmucq"]
+
+[sub_resource type="Animation" id="Animation_wptpv"]
+resource_name = "BackgroundLightModulator"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer3/LevelTwo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.701961, 0.701961, 0.701961, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xhsw"]
+_data = {
+"BackgroundLightModulator": SubResource("Animation_wptpv")
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wy2ip")
@@ -15,3 +37,9 @@ motion_mirroring = Vector2(5085.9, 3670.99)
 position = Vector2(2537, 1835)
 scale = Vector2(16.9533, 19.3211)
 texture = ExtResource("2_lmucq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "BackgroundLightModulator"
+libraries = {
+"": SubResource("AnimationLibrary_7xhsw")
+}
