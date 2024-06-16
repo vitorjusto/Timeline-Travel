@@ -12,6 +12,11 @@ namespace Shooter.Source.Factories.Enemies
             return new List<EnemySection>()
             {
                 new(50, true, new DStomper(100)),
+            };
+
+            return new List<EnemySection>()
+            {
+                new(50, true, new DStomper(100)),
 
                 new(20, false, new DSniper(400, EEnemyProjectileType.Homing)),
 
