@@ -42,10 +42,12 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 		    var xSpeed = 0;
 		    float yPosition = 0;
 
-		    if(Math.Abs(_node.Position.X - _player.Position.X) < 64 || _dashStatus == EDashStatus.Dashing)
+			if(Math.Abs(_node.Position.X - _player.Position.X) < 64 && _dashStatus == EDashStatus.NotDashing)
+				_dashStatus = EDashStatus.Dashing;
+
+		    if(_dashStatus == EDashStatus.Dashing)
 		    {
 		    	yPosition = 16 + _node.Position.Y;
-		    	_dashStatus = EDashStatus.Dashing;
 
 		    	if(_node.Position.Y + 96 >= _node.GetViewport().GetWindow().Size.Y)
 		    	{
