@@ -16,6 +16,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 	public int _time = 0;
     private ProjectileManager _projectiles;
 	private IState _state;
+	
 
 	public EDashStatus _dashStatus = EDashStatus.NotDashing;
 
