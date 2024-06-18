@@ -8,19 +8,19 @@
 script = ExtResource("1_84uhv")
 
 [node name="ConceptPart" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(1913, 160)
+position = Vector2(2067, 160)
 StartWaveSpeedCooldown = 5
 
 [node name="ConceptPart2" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(2065, 161)
+position = Vector2(2218, 161)
 StartWaveSpeedCooldown = 10
 
 [node name="ConceptPart3" parent="." instance=ExtResource("3_5i0ss")]
-position = Vector2(2217, 161)
+position = Vector2(2370, 161)
 StartWaveSpeedCooldown = 20
 
 [node name="ConceptHead" parent="." instance=ExtResource("2_7o0lm")]
-position = Vector2(1679, 160)
+position = Vector2(1696, 160)
 
 [connection signal="OnActivateHeadShooting" from="." to="ConceptHead" method="OnActivateHeadShooting"]
 [connection signal="OnAllBodyPartDestroyed" from="." to="ConceptHead" method="OnAllBodyPartDestroyed"]

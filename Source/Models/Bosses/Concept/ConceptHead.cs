@@ -16,20 +16,24 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 	public int _time = 0;
     private ProjectileManager _projectiles;
 	private IState _state;
-	
-
-	public EDashStatus _dashStatus = EDashStatus.NotDashing;
+    private DamageAnimationPlayer _damageAnimator;
+    private AnimatedSprite2D _headSprite;
+    public EDashStatus _dashStatus = EDashStatus.NotDashing;
 
     public override void _Ready()
     {
 		_projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		_state = new ConceptMovingState(this);
+
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("HeadSprite"));
     }
     public override void _Process(double delta)
 	{
 		if(_state.Process())
 			EmitSignal("OnHeadDestroyed");
+
+		_damageAnimator.Process();
 
 		if(_shooting && _state is not Exploding)
 			Shoot();
@@ -48,14 +52,15 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 
 	public void Destroy()
     {
-		if(_forceFieldDestroyed)
-			_hp--;
-		GD.Print(_hp);
+		if(!_forceFieldDestroyed)
+			return;
+		
+		_hp--;
+		_damageAnimator.PlayDamageAnimation();
 		
 		if(_hp == 0)
 		{
 			_state = new Exploding(this, removeEnemy: false);
-			_time = 0;
 		}
     }
 

@@ -1,33 +1,29 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
-using System;
 
 public partial class ConceptPart : CharacterBody2D, IEnemy
 {
 
-	private int _hp = 20;
+	private int _hp = 40;
     private int _speed = -4;
     private ProjectileManager _projectiles;
     private WaveSpeed _ySpeed;
     private AnimatedSprite2D _aniSprite;
     [Export]
     public int StartWaveSpeedCooldown;
-    public int _animationTime = 0;
+    private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
     {
         _ySpeed = new WaveSpeed(-2, 10, Position.Y, StartWaveSpeedCooldown);
-        _aniSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+        _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
     }
 
     public override void _Process(double delta)
 	{
-        if(_animationTime == 0)
-            _aniSprite.Play("default");
-        else
-            _animationTime--;
-
+        _damageAnimator.Process();
 		MoveEnemy();
 	}
 
@@ -44,8 +40,7 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
 	public void Destroy()
     {
         _hp--;
-        _aniSprite.Play("damage");
-        _animationTime = 3;
+        _damageAnimator.PlayDamageAnimation();
 
 		if(_hp == 0)
 		{

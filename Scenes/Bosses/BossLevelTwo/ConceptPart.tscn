@@ -19,7 +19,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_u4g82")
 }],
 "loop": true,
-"name": &"damage",
+"name": &"Damage",
 "speed": 5.0
 }, {
 "frames": [{
@@ -40,6 +40,7 @@ script = ExtResource("1_mr0ho")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ye6qu")
+animation = &"Damage"
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0xjpe")
@@ -47,28 +48,28 @@ shape = SubResource("RectangleShape2D_0xjpe")
 [node name="ShootPoint" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
 position = Vector2(0, 70)
 NodeOrigin = NodePath("..")
-Timer = 60
+Timer = 100
 
 [node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
 position = Vector2(-31, 70)
 NodeOrigin = NodePath("..")
-Timer = 60
+Timer = 100
 ExtraAngle = -0.3
 
 [node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
 position = Vector2(31, 70)
 NodeOrigin = NodePath("..")
-Timer = 60
+Timer = 100
 ExtraAngle = 0.3
 
 [node name="ShootPoint4" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
 position = Vector2(-59, 59)
 NodeOrigin = NodePath("..")
-Timer = 60
+Timer = 100
 ExtraAngle = -0.6
 
 [node name="ShootPoint5" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_x6xd0")]
 position = Vector2(58, 58)
 NodeOrigin = NodePath("..")
-Timer = 60
+Timer = 100
 ExtraAngle = 0.6
