@@ -3,7 +3,7 @@ using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 using System;
 
-public partial class Concept : Node2D, IEnemy
+public partial class Concept : Node2D, IEnemy, INonExplodable
 {
 	
 	private int _speed = -3;

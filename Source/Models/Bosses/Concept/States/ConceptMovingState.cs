@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
@@ -11,12 +12,12 @@ namespace Shooter.Source.Models.Bosses.Concept.States
         private int _speed = -4;
         private WaveSpeed _ySpeed;
         private AnimatedSprite2D _sprite;
-
         public ConceptMovingState(Node2D node)
         {
             _node = node;
             _ySpeed = new WaveSpeed(-2, 10, _node.Position.Y);
             _sprite = _node.GetNode<AnimatedSprite2D>("HeadSprite");
+
         }
 
         public IState NextState()
