@@ -9,10 +9,6 @@ namespace Shooter.Source.Factories.Enemies
     {
         public static List<EnemySection> GetEnemies()
         {
-            return new List<EnemySection>()
-            {
-                new(50, true, new DStomper(100)),
-            };
 
             return new List<EnemySection>()
             {
