@@ -4,7 +4,7 @@ using Shooter.Source.Interfaces;
 
 public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 {	
-	private float _speedModifier = 5;
+	private float _speedModifier = 3;
 
 	private int _time = 0;
 

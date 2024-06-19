@@ -81,6 +81,7 @@ public partial class ProjectileManager : Node2D
         instance.SetPosition(player.Position.X, player.Position.Y - 32);
 		
 		instance.SetSpeed(xSpeed, ySpeed);
+
 		CallDeferred("add_child", instance);
     }
 

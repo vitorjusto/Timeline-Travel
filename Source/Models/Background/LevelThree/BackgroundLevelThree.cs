@@ -58,9 +58,9 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		var lights = _lightContainer.GetChildren().ToList();
 
-		var projectilesWithoutLight = projectileManager.EnemiesProjectiles.Where((x) => !lights.Select((y) => ((LevelThreeLight)y).LightOwner).Contains(x)).ToList();
+		var projectilesWithoutLight = projectileManager.GetChildren().Where((x) => !lights.Select((y) => ((LevelThreeLight)y).LightOwner).Contains(x)).ToList();
 
-		foreach(var projectile in projectilesWithoutLight)
+		foreach(Node2D projectile in projectilesWithoutLight)
 		{
 			var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
 
@@ -93,11 +93,6 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 			_lightContainer.AddChild(instance);
 		}
-    }
-
-    public void PauseBackground(bool isPaused)
-    {
-
     }
 
 }
