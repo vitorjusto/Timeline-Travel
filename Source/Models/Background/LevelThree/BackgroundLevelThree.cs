@@ -83,7 +83,7 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		foreach(var enemy in enemiesWithoutLight)
 		{
-			if(enemy is DimentionalStarship)
+			if(enemy is DimentionalStarship  || enemy is Surpriser)
 				continue;
 
 			var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");

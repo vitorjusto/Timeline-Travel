@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvepv258gskpe"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Surpriser.cs" id="1_s3ao5"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_wiyo5"]
+[ext_resource type="Texture2D" uid="uid://86xttuutteos" path="res://Assets/Background/LevelThree/LevelThreeLight.png" id="2_fkn2b"]
+[ext_resource type="Texture2D" uid="uid://br4wcen1clai2" path="res://Assets/Enemies/Surpriser.png" id="2_lpjh2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceq8x"]
-size = Vector2(64, 64)
-
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_s3ao5")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("2_wiyo5")
+[node name="LevelThreeLight" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(6, 6)
+texture = ExtResource("2_fkn2b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ceq8x")
+[node name="Surpriser" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_lpjh2")
