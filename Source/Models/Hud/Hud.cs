@@ -120,13 +120,13 @@ public partial class Hud : Node2D
 		var lblTimeline = GetNode<Label>("lblTimeline");
 		
 		if(currentLevel == 1)
-			lblTimeline.Text = $"Our Timeline";
+			lblTimeline.Text = $"OUR TIMELINE";
 		else if(currentLevel == 10)
-			lblTimeline.Text = $"Their Timeline";
+			lblTimeline.Text = $"THEIR TIMELINE";
 		else if(currentLevel == 11)
-			lblTimeline.Text = $"Final Boss";
+			lblTimeline.Text = $"FINAL BOSS";
 		else
-			lblTimeline.Text = $"Timeline {currentLevel}";
+			lblTimeline.Text = $"TIMELINE {currentLevel}";
 
 	}
 

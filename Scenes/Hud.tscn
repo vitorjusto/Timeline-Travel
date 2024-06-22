@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm27is2hj0xno"]
+[gd_scene load_steps=19 format=3 uid="uid://bm27is2hj0xno"]
 
 [ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
 [ext_resource type="Texture2D" uid="uid://nwwt2vhp6t4v" path="res://Assets/Misc/PauseButton.png" id="2_skput"]
+[ext_resource type="SystemFont" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="3_r2m58"]
 [ext_resource type="Texture2D" uid="uid://cn0e101jleiev" path="res://Assets/Enemies/Warning.png" id="3_xy2mw"]
 [ext_resource type="Texture2D" uid="uid://c6788527pwv1s" path="res://Assets/Enemies/DirectionWarning.png" id="4_rcc7s"]
 [ext_resource type="Texture2D" uid="uid://c5c4e0sjl6pmm" path="res://Assets/Misc/HpHeart.png" id="5_vhthy"]
@@ -26,8 +27,28 @@ cache/0/50/0/scale = 1.0
 cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_c2lr6"]
+font = ExtResource("3_r2m58")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_767yk"]
+font = ExtResource("3_r2m58")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqi1k"]
+font = ExtResource("3_r2m58")
+font_size = 60
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmi7a"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8q50"]
+font = ExtResource("3_r2m58")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_ur8oy"]
+font = ExtResource("3_r2m58")
+font_size = 60
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_buh6u"]
 atlas = ExtResource("4_rcc7s")
@@ -73,30 +94,33 @@ script = ExtResource("1_sofgy")
 
 [node name="lblPause" type="Label" parent="."]
 visible = false
-offset_left = 648.0
+offset_left = 610.0
 offset_top = 448.0
-offset_right = 778.0
-offset_bottom = 518.0
+offset_right = 798.0
+offset_bottom = 534.0
 theme_override_fonts/font = SubResource("FontFile_885gs")
 theme_override_font_sizes/font_size = 50
-text = "pause"
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_c2lr6")
 
 [node name="lblHp" type="Label" parent="."]
 offset_left = 343.0
-offset_top = 32.0
+offset_top = 45.0
 offset_right = 497.0
-offset_bottom = 104.0
+offset_bottom = 131.0
 theme_override_font_sizes/font_size = 50
 text = "10"
+label_settings = SubResource("LabelSettings_767yk")
 
 [node name="lblLife" type="Label" parent="."]
 offset_left = 136.0
-offset_top = 32.0
+offset_top = 45.0
 offset_right = 182.0
-offset_bottom = 102.0
+offset_bottom = 131.0
 theme_override_fonts/font = SubResource("FontFile_885gs")
 theme_override_font_sizes/font_size = 50
 text = "3"
+label_settings = SubResource("LabelSettings_xqi1k")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1297.0
@@ -112,8 +136,10 @@ icon_alignment = 1
 [node name="lblTimeline" type="Label" parent="."]
 offset_right = 1400.0
 offset_bottom = 904.0
+theme_override_fonts/font = ExtResource("3_r2m58")
 theme_override_font_sizes/font_size = 50
-text = "Timeline 1"
+text = "TIMELINE 1"
+label_settings = SubResource("LabelSettings_m8q50")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -121,20 +147,21 @@ vertical_alignment = 1
 visible = false
 
 [node name="Warning2" type="Sprite2D" parent="BossWarning"]
-position = Vector2(464, 456)
+position = Vector2(398, 450)
 texture = ExtResource("3_xy2mw")
 
 [node name="Label" type="Label" parent="BossWarning"]
 offset_right = 1400.0
 offset_bottom = 904.0
 theme_override_font_sizes/font_size = 50
-text = "Boss Incoming !!"
+text = "BOSS INCOMING !!"
+label_settings = SubResource("LabelSettings_ur8oy")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="Warning" type="Sprite2D" parent="BossWarning"]
-position = Vector2(940, 451)
+position = Vector2(1005, 450)
 texture = ExtResource("3_xy2mw")
 
 [node name="AniCustomWarning" type="AnimatedSprite2D" parent="."]
