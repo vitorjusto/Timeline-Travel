@@ -13,8 +13,6 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
 
     public override void _Ready()
     {
-        Position = new Vector2(-300, -300);
-
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
         _state = new DimentionalStarshipGoingInvisibleState(this);
     }
@@ -38,7 +36,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
         _hp--;
 
         if(_hp == 0)
-            _state = new Exploding(this, removeEnemy: EndLevel);
+            _state = new Exploding(this, 300, removeEnemy: EndLevel, positionOffSet: new Vector2(0, 200));
         else if(_hp > 0)
             _damageAnimator.PlayDamageAnimation();
     }

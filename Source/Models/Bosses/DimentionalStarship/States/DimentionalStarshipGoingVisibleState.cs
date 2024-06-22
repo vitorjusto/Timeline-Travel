@@ -7,10 +7,12 @@ public class DimentionalStarshipGoingVisibleState : IState
     private Node2D _node;
     private Player _player;
     private bool _playerOnRight => _node.Position.X - _player.Position.X < 0;
+    private byte _opacity;
     public DimentionalStarshipGoingVisibleState(Node2D node)
     {
         _node = node;
         _player = _node.GetTree().Root.GetNode<Player>("/root/Main/Player");
+        MakeBossVisible();
     }
 
     public IState NextState()
@@ -21,19 +23,33 @@ public class DimentionalStarshipGoingVisibleState : IState
     public bool Process()
     {
         var animatedSprite = _node.GetNode<Node2D>("AnimatedSprite2D");
+        animatedSprite.Modulate = Color.Color8(255, 255, 255, _opacity);
+        
+        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
+
+        _opacity += 10;
+
+        return _opacity == 250;
+    }
+
+    private void MakeBossVisible()
+    {
+        var animatedSprite = _node.GetNode<Node2D>("AnimatedSprite2D");
 
         animatedSprite.Visible = true;
+        animatedSprite.Modulate = Color.Color8(255, 255, 255, 0);
 
         animatedSprite.Scale = GetValuePlayerSide(animatedSprite.Scale);
         animatedSprite.Position = GetValuePlayerSide(animatedSprite.Position);
+
+        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
+        _node.GetNode<Node2D>("LevelThreeLight").Position = GetValuePlayerSide(_node.GetNode<Node2D>("LevelThreeLight").Position);
 
         EnableCollision(_node.GetNode<CollisionShape2D>("CollisionShape2D"));
         EnableCollision(_node.GetNode<CollisionShape2D>("CollisionShape2D2"));
         EnableCollision(_node.GetNode<CollisionShape2D>("CollisionShape2D3"));
 
         PositionShootingPoint();
-
-        return true;
     }
 
     private void PositionShootingPoint()
