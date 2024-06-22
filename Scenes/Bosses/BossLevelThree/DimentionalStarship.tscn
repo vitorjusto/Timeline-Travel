@@ -1,18 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfvw876betv86"]
+[gd_scene load_steps=9 format=3 uid="uid://dfvw876betv86"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/DimentionalStarship/DimentionalStarship.cs" id="1_dxljl"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_cqsl6"]
+[ext_resource type="Texture2D" uid="uid://72ltg1dg56k7" path="res://Assets/Bosses/DimentionalStarship/DimentionalStarship.png" id="2_7a8ug"]
+[ext_resource type="Texture2D" uid="uid://xw16tjp2bw5b" path="res://Assets/Bosses/DimentionalStarship/DimentionalStarshipGem.png" id="3_fiuyh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43w4v"]
+atlas = ExtResource("2_7a8ug")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lsf6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43w4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6httf"]
-size = Vector2(128, 128)
+size = Vector2(227, 229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phb0v"]
+size = Vector2(59.5, 275.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8m7v"]
+size = Vector2(42.5, 240)
 
 [node name="Node2D" type="CharacterBody2D"]
 script = ExtResource("1_dxljl")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, -1.90735e-06)
-scale = Vector2(2, 2)
-texture = ExtResource("2_cqsl6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(144, 173)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_0lsf6")
+metadata/_edit_lock_ = true
+
+[node name="DimentionalStarshipGem" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+scale = Vector2(6, 6)
+texture = ExtResource("3_fiuyh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(84.5, 197.5)
 shape = SubResource("RectangleShape2D_6httf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(305.25, 196.25)
+shape = SubResource("RectangleShape2D_phb0v")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(253.25, 194)
+shape = SubResource("RectangleShape2D_o8m7v")

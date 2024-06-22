@@ -15,6 +15,13 @@ namespace Shooter.Source.Factories.Enemies
                 new(50, true, new DShoter(100, EEnemyProjectileType.Light),
                               new DShoter(700, EEnemyProjectileType.Normal),
                               new DShoter(1300, EEnemyProjectileType.Light)),
+            };
+
+            return new List<EnemySection>()
+            {
+                new(50, true, new DShoter(100, EEnemyProjectileType.Light),
+                              new DShoter(700, EEnemyProjectileType.Normal),
+                              new DShoter(1300, EEnemyProjectileType.Light)),
 
                 new(20, false, new DSniper(100, Enums.EEnemyProjectileType.Light), new DSniper(1300, Enums.EEnemyProjectileType.Light)),
                 new(20, false, new DSniper(100, Enums.EEnemyProjectileType.Light), new DSniper(1300, Enums.EEnemyProjectileType.Light)),
