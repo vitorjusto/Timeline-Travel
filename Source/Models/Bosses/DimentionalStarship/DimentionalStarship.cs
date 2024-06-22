@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
@@ -6,20 +5,18 @@ using Shooter.Source.Models.Misc;
 
 public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotifier
 {
-	  private int _time;
-    private int _hp = 50;
-    private EnemySpawner _enemySpawner;
-    private bool _destroing;
+    private int _hp = 60;
     [Export]
     public bool EndLevel = true;
-
+    private DamageAnimationPlayer _damageAnimator;
     public IState _state;
 
     public override void _Ready()
     {
-      _enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+        Position = new Vector2(-300, -300);
 
-      _state = new DimentionalStarshipGoingInvisibleState(this);
+        _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
+        _state = new DimentionalStarshipGoingInvisibleState(this);
     }
 
     public override void _Process(double delta)
@@ -32,21 +29,8 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
 
       if(_state.Process())
         _state = _state.NextState();
-    }
-
-    private void DestroingAnimation()
-    {
-	  	  _enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
-
-	  	  if(_time == 300)
-	  	  {
-          if(EndLevel)
-	  	      _enemySpawner.EndLevel();
-
-	  	    _enemySpawner.RemoveEnemy(this);
-	  	  }
-
-	  	  _time++;
+    
+        _damageAnimator.Process();
     }
 
     public void Destroy()
@@ -54,11 +38,9 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
         _hp--;
 
         if(_hp == 0)
-        {
             _state = new Exploding(this, removeEnemy: EndLevel);
-            _time = 0;
-        }
-
+        else if(_hp > 0)
+            _damageAnimator.PlayDamageAnimation();
     }
 
     public bool IsImortal()
@@ -73,7 +55,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
 
     public void OnFinalBossDestroyed(Node2D node)
     {
-        _destroing = true;
+        _state = new DimentionalStarshipGoingInvisibleState(this);
     }
 
     public EnemyBoundy GetBoundy()

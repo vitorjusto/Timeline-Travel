@@ -25,7 +25,8 @@ public class DimentionalStarshipGoingInvisibleState : IState
 
     private void MakeInvisible()
     {
-        _node.Visible = false;
+        _node.GetNode<Node2D>("AnimatedSprite2D").Visible = false;
+
         _node.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         _node.GetNode<CollisionShape2D>("CollisionShape2D2").Disabled = true;
         _node.GetNode<CollisionShape2D>("CollisionShape2D3").Disabled = true;

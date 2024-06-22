@@ -6,16 +6,20 @@ public class DimantionalStarshipMovingState : IState
 {
 
     private Node2D _node;
-    private int _viewPortHeight => (int)ProjectSettings.GetSetting("display/window/size/viewport_height") - 100;
-    private int _viewPortWidth => (int)ProjectSettings.GetSetting("display/window/size/viewport_width") - 100;
-    private Player _player;
-    private int _time;
+    private int _viewPortHeight => (int)ProjectSettings.GetSetting("display/window/size/viewport_height") - 400;
+    private int _viewPortWidth => (int)ProjectSettings.GetSetting("display/window/size/viewport_width") - 300;
+
+    private Vector2 _goToPosition;
+    private Vector2 _speed;
 
     public DimantionalStarshipMovingState(Node2D node)
     {
         _node = node;
-        _player = _node.GetTree().Root.GetNode<Player>("/root/Main/Player");
+        _goToPosition = new Vector2(new Random().Next(200, _viewPortWidth), new Random().Next(100, _viewPortHeight));
 
+        var angle = Math.Atan2(_node.Position.X - _goToPosition.X, _node.Position.Y - _goToPosition.Y);
+
+        _speed = new Vector2((float)Math.Sin(angle) * (-6), (float)Math.Cos(angle) * (-6));
     }
 
     public IState NextState()
@@ -25,28 +29,9 @@ public class DimantionalStarshipMovingState : IState
 
     public bool Process()
     {
-        Move();
-        _time++;
+        _node.Position += _speed;
 
-        return _time > 100;
-    }
-
-    private void Move()
-    {
-        while(true)
-        {
-	        var height = new Random().Next(100, _viewPortHeight);
-	        var width = new Random().Next(100, _viewPortWidth);
-
-            var diference = Math.Abs(_player.Position.X - width) + Math.Abs(_player.Position.Y - height);
-
-            if(diference > 200)
-            {
-	            _node.Position = new Vector2(width, height);
-                break;
-            }
-        }
-
+        return Math.Abs(_goToPosition.X - _node.Position.X) < 12 && (Math.Abs(_goToPosition.Y- _node.Position.Y) < 12);
     }
 
 }

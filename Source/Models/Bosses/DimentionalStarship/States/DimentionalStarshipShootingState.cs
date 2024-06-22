@@ -25,24 +25,21 @@ public class DimentionalStarshipShootingState : IState
 
     public bool Process()
     {
-        if(_time == 0)
+        if(_time % 33 == 0)
             Shoot();
 
         _time++;
 
-        return _time > 100;
+        return _time == 99;
     }
 
     private void Shoot()
     {
-		var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
-
-       
-		_projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-		_projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle + 0.6) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-		_projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle - 0.6) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-		_projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-		_projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
-		
+        _node.GetNode<ShootPoint>("ShootPoint").Shoot();
+        _node.GetNode<ShootPoint>("ShootPoint2").Shoot();
+        _node.GetNode<ShootPoint>("ShootPoint3").Shoot();
+        _node.GetNode<ShootPoint>("ShootPoint4").Shoot();
+        _node.GetNode<ShootPoint>("ShootPoint5").Shoot();
+        _node.GetNode<ShootPoint>("ShootPoint6").Shoot();
     }
 }

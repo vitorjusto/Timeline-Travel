@@ -34,7 +34,7 @@ public partial class ShootPoint : Node2D
 			Shoot();
 	}
 
-	private void Shoot()
+	public void Shoot()
 	{
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X + NodeOrigin.Position.X - player.Position.X, Position.Y + NodeOrigin.Position.Y - player.Position.Y);
