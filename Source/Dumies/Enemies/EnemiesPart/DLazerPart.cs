@@ -7,10 +7,12 @@ namespace Shooter.Source.Dumies.Enemies.EnemiesPart
     {
         private float _x;
         private float _y;
-        public DLazerPart(float x, float y)
+        private int _maxTimer;
+        public DLazerPart(float x, float y, int maxTimer)
         {
             _x = x;
             _y = y;
+            _maxTimer = maxTimer;
         }
 
         public Node2D GetInstance()
@@ -20,6 +22,7 @@ namespace Shooter.Source.Dumies.Enemies.EnemiesPart
             var instance = (LazerPart)scene.Instantiate();
 
             instance.Position = new Vector2(_x, _y);
+            instance.MaxTimer = _maxTimer;
 
             return instance;
         }

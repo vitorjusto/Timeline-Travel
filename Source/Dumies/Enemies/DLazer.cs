@@ -6,9 +6,12 @@ namespace Shooter.Source.Dumies.Enemies
     public class DLazer : IEnemyDummy
     {
         private int _x;
-        public DLazer(int x)
+        private int _maxTimer;
+
+        public DLazer(int x, int maxTimer)
         {
             _x = x;
+            _maxTimer = maxTimer;
         }
 
         public Node2D GetInstance()
@@ -18,6 +21,7 @@ namespace Shooter.Source.Dumies.Enemies
             var instance = (Lazer)scene.Instantiate();
 
             instance.Position = new Vector2(_x, y: -30);
+            instance.MaxTime = _maxTimer;
 
             return instance;
         }

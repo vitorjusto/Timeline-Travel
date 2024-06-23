@@ -7,10 +7,10 @@ public partial class LazerPart : CharacterBody2D, IEnemy, INonExplodable
 	private int _speed = 1;
 
 	private int _time = 0;
-
+	public int MaxTimer = 200; 
     public override void _Process(double delta)
 	{
-		if(_time > 200)
+		if(_time > MaxTimer)
 		{
 			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 

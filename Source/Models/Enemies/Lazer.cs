@@ -1,16 +1,14 @@
 using Godot;
-using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Dumies.Enemies.EnemiesPart;
 using Shooter.Source.Models.Misc;
 
 public partial class Lazer : CharacterBody2D, IEnemy
 {
-
-	private int _xspeed = 1;
-	private int _yspeed = 2;
+	private int _yspeed = 8;
 	private float _time = 0;
 	private bool _isShooting = false;
+	public int MaxTime = 201;
     public override void _Process(double delta)
 	{
 		if(_isShooting )
@@ -21,24 +19,14 @@ public partial class Lazer : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-		if(_time < 50)
+		if(_time < 10)
 		{
         	Position = new Vector2(x: Position.X, y: Position.Y + _yspeed);
 
-		}else if(_time > 300)
+		}else
 		{
 			_isShooting = true;
 			_time = 0;
-		}else
-		{
-
-			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-
-			_xspeed = Position.X > player.Position.X? -5: 5;
-
-			if(Math.Abs(Position.X - player.Position.X) > 5)
-				Position = new Vector2(x: Position.X + _xspeed, y: Position.Y);
-
 		}
 
 		_time++;
@@ -48,17 +36,21 @@ public partial class Lazer : CharacterBody2D, IEnemy
 	{
 		_time++;
 
-		if(_time < 50)
-		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        	enemySpawner.AddEnemy(new DLazerPart(Position.X, Position.Y + (20 * _time)));
-
-		}else if(_time > 201)
+		if(_time > MaxTime)
 		{
 			Position = new Vector2(x: Position.X, y: Position.Y - _yspeed);
+		}else
+		{
+			var y = Position.Y + (20 * _time);
+
+			if(y > 900)
+				return;
+				
+			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+
+        	enemySpawner.AddEnemy(new DLazerPart(Position.X, y, MaxTime));
 		}
-
-
 	}
 
     public void OnScreenExited()
@@ -76,13 +68,18 @@ public partial class Lazer : CharacterBody2D, IEnemy
 
     public void Destroy()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		if(_isShooting)
+			return;
 
+        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
         enemySpawner.RemoveEnemy(this);
     }
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+		if(_isShooting)
+			return new();
+			
+        return new(1, 1, Position);
     }
 }

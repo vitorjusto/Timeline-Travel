@@ -70,6 +70,6 @@ public partial class Dasher : CharacterBody2D, IEnemy
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new(1, 0, Position);
     }
 }

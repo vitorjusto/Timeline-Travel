@@ -83,9 +83,9 @@ public partial class FirstState : Node2D, IEnemy
     {
 		_time++;
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * _time)));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 20 + (20 * _time)));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 20 + (20 * _time)));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * _time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 20 + (20 * _time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 20 + (20 * _time), 200));
 
 		if(_time > 100)
 		{

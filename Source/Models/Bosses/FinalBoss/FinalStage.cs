@@ -171,9 +171,9 @@ public partial class FinalStage : Node2D
 		{
 			enemies = new List<EnemySection>()
             {
-                new EnemySection(50, false, new DLazer(500)),
-                new EnemySection(50, false, new DLazer(500)),
-                new EnemySection(50, false, new DLazer(500))
+                new EnemySection(50, false, new DLazer(500, 100)),
+                new EnemySection(50, false, new DLazer(400, 100)),
+                new EnemySection(50, false, new DLazer(600, 100))
             };
 		}else if(enemySection == 8)
 		{
