@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://85x8whjs32nl"]
 
 [ext_resource type="Script" path="res://Source/Models/Background/LevelSix/BackgroundLevelSix.cs" id="1_5acpt"]
-[ext_resource type="Script" path="res://Source/Models/Background/LevelFour/LevelFourParallaxLayer.cs" id="1_pd7xt"]
 [ext_resource type="Texture2D" uid="uid://c07mo8wf1ewgm" path="res://Assets/Background/LevelFour/Sem título.png" id="2_4bm5g"]
+[ext_resource type="Script" path="res://Source/Models/Misc/MovingParallaxLayer.cs" id="2_vdpr7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40isb"]
 bg_color = Color(0.156863, 0.156863, 0.176471, 1)
@@ -35,8 +35,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jxagb")
 modulate = Color(0.247059, 0.247059, 0.309804, 1)
 self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
 motion_mirroring = Vector2(0, 3071)
-script = ExtResource("1_pd7xt")
-Speed = 3
+script = ExtResource("2_vdpr7")
+YSpeed = 2.0
 
 [node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(1127, 376)
@@ -53,8 +53,8 @@ flip_h = true
 modulate = Color(0.317647, 0.317647, 0.380392, 1)
 self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
 motion_mirroring = Vector2(0, 3071)
-script = ExtResource("1_pd7xt")
-Speed = 6
+script = ExtResource("2_vdpr7")
+YSpeed = 4.0
 
 [node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(1281, 248)
@@ -71,8 +71,8 @@ flip_h = true
 modulate = Color(0.392157, 0.392157, 0.454902, 1)
 self_modulate = Color(0.337255, 0.337255, 0.337255, 1)
 motion_mirroring = Vector2(0, 3071)
-script = ExtResource("1_pd7xt")
-Speed = 9
+script = ExtResource("2_vdpr7")
+YSpeed = 6.0
 
 [node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(1376, 320)
