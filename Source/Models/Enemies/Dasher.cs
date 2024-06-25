@@ -30,6 +30,10 @@ public partial class Dasher : CharacterBody2D, IEnemy
 		{
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 			player.ShowTarget();
+
+		}else if(_time < 139)
+		{
+			Animate();
 		}
 		else if(_time == 139)
 		{
@@ -47,6 +51,15 @@ public partial class Dasher : CharacterBody2D, IEnemy
 		}
     }
 
+    private void Animate()
+    {
+        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
+		var speed = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
+
+		GetNode<Node2D>("Dasher").Rotation = 90;
+		Rotation = speed.Angle();
+    }
 
     public void OnScreenExited()
     {
