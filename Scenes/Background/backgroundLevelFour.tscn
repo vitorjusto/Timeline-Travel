@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c07mo8wf1ewgm" path="res://Assets/Background/LevelFour/Sem título.png" id="2_qolbf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obq2h"]
-bg_color = Color(0, 0.34902, 1, 1)
+bg_color = Color(0, 0.396078, 1, 1)
 
 [node name="BackgroundLevelFour" type="Node2D"]
 
@@ -20,7 +20,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_obq2h")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(0, 3071)
 script = ExtResource("1_w4olk")
-YSpeed = 2.0
+YSpeed = 5.0
 
 [node name="SemTítulo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(1328, 240)
