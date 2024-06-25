@@ -7,17 +7,21 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
 {
     private IState _currentState;
     public int Hp = 100;
-
+    private DamageAnimationPlayer _damageAnimator;
     public override void _Ready()
     {
         Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2, -100);
 
         _currentState = new EnteringScreen(this);
+
+        _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
     }
     public override void _Process(double delta)
     {
         if(_currentState.Process())
             _currentState = _currentState.NextState();
+
+        _damageAnimator.Process();
     }
 
     public void Destroy()
@@ -25,7 +29,12 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
         Hp--;
 
         if(Hp == 0)
+        {
             _currentState = new Exploding(this);
+            GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpeedScale = 0;
+        }
+        else if(Hp > 0)
+            _damageAnimator.PlayDamageAnimation();
     }
 
     public bool IsImortal()

@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 {
@@ -9,7 +10,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
     {
         private Node2D _node;
         private int _speed = 5;
-
+        private WaveSpeed _yspeed;
         private int _time = 383;
         private int _enemiesSpawned = 0;
         private EnemySpawner _enemySpawner;
@@ -18,6 +19,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         {
             _node = node;
             _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+            _yspeed = new WaveSpeed(-1, 7, _node.Position.Y);
         }
 
         public IState NextState()
@@ -27,7 +29,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 
         public bool Process()
         {
-            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _node.Position.Y);
+            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _yspeed.Update());
 
 			if(_node.Position.X > 1412 || _node.Position.X < 32)
 				_speed *= -1;
