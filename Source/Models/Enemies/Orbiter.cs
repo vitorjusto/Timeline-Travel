@@ -6,14 +6,14 @@ using Shooter.Source.Models.Misc;
 public partial class Orbiter : CharacterBody2D, IEnemy
 {
 
-	private int _speed = 5;
+	private int _speed = 10;
 	private bool _isRotating = false;
 
 	private int _xspeedModifier = 1;
 	private int _yspeedModifier = 1;
 
 	private float _time = 0;
-	private float _ytime = 3.333f;
+	private float _ytime = 2f;
 
 	private int _semiRotation = 0;
 	private bool _selfDestructing = false;
@@ -53,23 +53,23 @@ public partial class Orbiter : CharacterBody2D, IEnemy
 	{
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-		float xspeed = (-15 * (_time * _time)) + (_time * 100f);
+		float xspeed = (-30 * (_time * _time)) + (_time * 120f);
 		xspeed *= _xspeedModifier; 
 		_time += 0.1f;
 
 		//Caso altere o A ou o B, faça |B/A| e coloca aqui
-		if(_time > 6.666)
+		if(_time > 4)
 		{
 			_time = 0;
 			_xspeedModifier *= (-1);
 			_semiRotation++;
 		}
 
-		float yspeed = (-15 * (_ytime * _ytime)) + (_ytime * 100f);
+		float yspeed = (-30 * (_ytime * _ytime)) + (_ytime * 120f);
 		yspeed *= _yspeedModifier; 
 		_ytime += 0.1f;
 
-		if(_ytime > 6.666)
+		if(_ytime > 4)
 		{
 			_ytime = 0;
 			_yspeedModifier *= (-1);
@@ -102,6 +102,6 @@ public partial class Orbiter : CharacterBody2D, IEnemy
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new(2, 0, Position);
     }
 }

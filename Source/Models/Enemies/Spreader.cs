@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
@@ -7,7 +6,7 @@ using Shooter.Source.Models.Misc;
 
 public partial class Spreader : CharacterBody2D, IEnemy
 {
-	private int _speed = 1;
+	public int Speed = 1;
 	private int _time = 0;
 	public EEnemyProjectileType ProjectileType;
     public override void _Process(double delta)
@@ -18,25 +17,24 @@ public partial class Spreader : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-        Position = new Vector2(x: Position.X, y: Position.Y + _speed);
+        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
 
 		_time += 1;
         
-        if(_time % 30 == 0)
+        if(_time % 50 == 0)
         {
-            ShootProjectile(0, 1);
-			ShootProjectile(-1, 1);
-            ShootProjectile(-1, 0);
-            ShootProjectile(-1, -1);
-           	ShootProjectile(0, -1);
-            ShootProjectile(1, -1);
-            ShootProjectile(1, 0);
-            ShootProjectile(1, 1);
+            ShootProjectile(0, Speed);
+			ShootProjectile(-Speed, Speed);
+            ShootProjectile(-Speed, 0);
+            ShootProjectile(-Speed, -Speed);
+           	ShootProjectile(0, -Speed);
+            ShootProjectile(Speed, -Speed);
+            ShootProjectile(Speed, 0);
+            ShootProjectile(Speed, Speed);
 
             _time = 0;
         }
 
-		
     }
 
 	private void ShootProjectile(float xspeed, float yspeed)
@@ -44,11 +42,11 @@ public partial class Spreader : CharacterBody2D, IEnemy
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		if(ProjectileType == EEnemyProjectileType.Normal)
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, xspeed * (4.5f), yspeed * (4.5f)));
+			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, xspeed, yspeed));
 		else if(ProjectileType == EEnemyProjectileType.Light)
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, xspeed * (5), yspeed * (5)));
+			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, xspeed, yspeed));
 		else if(ProjectileType == EEnemyProjectileType.Strong)
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, xspeed * (4), yspeed * (4)));		
+			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, xspeed * (2), yspeed * (2)));		
 		
 
 	}
@@ -74,6 +72,6 @@ public partial class Spreader : CharacterBody2D, IEnemy
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new(2, 3, Position);
     }
 }
