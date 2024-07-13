@@ -13,13 +13,23 @@ public partial class RegularShootPoint : Node2D
 	[Export]
 	public Vector2 Speed;
 
-	public override void _Ready()
-	{
-	}
-
+	[Export]
+	public int Timer = 0;
+	private int _time = 0;
 	
 	public override void _Process(double delta)
 	{
+		if(Timer == 0)
+			return;
+
+		_time++;
+
+		if(_time == Timer)
+		{
+			Shoot();
+			_time = 0;
+		}
+		
 	}
 
 	public void Shoot()

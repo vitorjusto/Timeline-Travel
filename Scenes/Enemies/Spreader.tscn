@@ -1,33 +1,64 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn8gfdr8rj6kj"]
 
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_8nnyg"]
 [ext_resource type="Script" path="res://Source/Models/Enemies/Spreader.cs" id="1_hhx3i"]
+[ext_resource type="Texture2D" uid="uid://ddt1hl0ooc2qd" path="res://Assets/Enemies/Spreader.png" id="2_53lh7"]
+[ext_resource type="PackedScene" uid="uid://ct61kpiv1kam1" path="res://Scenes/Misc/RegularShootPoint.tscn" id="3_3wf0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k285o"]
-size = Vector2(64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_n2v1u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_8nnyg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(72, 72)
 
 [node name="Spreader" type="CharacterBody2D"]
 script = ExtResource("1_hhx3i")
 
+[node name="Spreader" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_53lh7")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k285o")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_n2v1u")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-6.19888e-06, -6.19888e-06)
 scale = Vector2(4.8, 4.8)
+
+[node name="RegularShootPoint" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(-34, 0)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint2" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(-33, 32)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint3" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(0, 36)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint4" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(34, 32)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint5" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(36, 0)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint6" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(33, -33)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint7" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(0, -36)
+Parent = NodePath("..")
+Timer = 50
+
+[node name="RegularShootPoint8" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_3wf0s")]
+position = Vector2(-33, -33)
+Parent = NodePath("..")
+Timer = 50
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

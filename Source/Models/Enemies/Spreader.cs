@@ -9,6 +9,41 @@ public partial class Spreader : CharacterBody2D, IEnemy
 	public int Speed = 1;
 	private int _time = 0;
 	public EEnemyProjectileType ProjectileType;
+
+	public override void _Ready()
+	{
+		GetNode<RegularShootPoint>("RegularShootPoint").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint2").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint3").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint4").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint5").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint6").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint7").ProjectileType = ProjectileType;
+		GetNode<RegularShootPoint>("RegularShootPoint8").ProjectileType = ProjectileType;
+
+		GetNode<RegularShootPoint>("RegularShootPoint").Speed = new Vector2(-Speed, 0);
+		GetNode<RegularShootPoint>("RegularShootPoint2").Speed = new Vector2(-Speed, Speed);
+		GetNode<RegularShootPoint>("RegularShootPoint3").Speed = new Vector2(0, Speed);
+		GetNode<RegularShootPoint>("RegularShootPoint4").Speed = new Vector2(Speed, Speed);
+		GetNode<RegularShootPoint>("RegularShootPoint5").Speed = new Vector2(Speed, 0);
+		GetNode<RegularShootPoint>("RegularShootPoint6").Speed = new Vector2(Speed, -Speed);
+		GetNode<RegularShootPoint>("RegularShootPoint7").Speed = new Vector2(0, -Speed);
+		GetNode<RegularShootPoint>("RegularShootPoint8").Speed = new Vector2(-Speed, -Speed);
+
+
+		if(ProjectileType == EEnemyProjectileType.Strong)
+		{
+			GetNode<RegularShootPoint>("RegularShootPoint").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint2").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint3").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint4").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint5").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint6").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint7").Speed *= 2;
+			GetNode<RegularShootPoint>("RegularShootPoint8").Speed *= 2;
+		}
+	}
+
     public override void _Process(double delta)
 	{
 		MoveEnemy();
@@ -18,23 +53,6 @@ public partial class Spreader : CharacterBody2D, IEnemy
     private void MoveEnemy()
     {
         Position = new Vector2(x: Position.X, y: Position.Y + Speed);
-
-		_time += 1;
-        
-        if(_time % 50 == 0)
-        {
-            ShootProjectile(0, Speed);
-			ShootProjectile(-Speed, Speed);
-            ShootProjectile(-Speed, 0);
-            ShootProjectile(-Speed, -Speed);
-           	ShootProjectile(0, -Speed);
-            ShootProjectile(Speed, -Speed);
-            ShootProjectile(Speed, 0);
-            ShootProjectile(Speed, Speed);
-
-            _time = 0;
-        }
-
     }
 
 	private void ShootProjectile(float xspeed, float yspeed)
