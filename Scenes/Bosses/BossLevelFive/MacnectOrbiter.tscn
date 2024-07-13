@@ -1,32 +1,33 @@
 [gd_scene load_steps=4 format=3 uid="uid://efx7lm4jltcc"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/SpaceshipMagnector/MacnectOrbiter.cs" id="1_3ylnv"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_fcnix"]
+[ext_resource type="Texture2D" uid="uid://cf8j5qpj2vmk0" path="res://Assets/Bosses/SpaceshipMagnector/MagnectOrbiter.png" id="2_edf5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbj3s"]
-size = Vector2(96, 96)
+size = Vector2(96, 80)
 
 [node name="MacnectOrbiter" type="CharacterBody2D"]
 script = ExtResource("1_3ylnv")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_fcnix")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_fbj3s")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(56, 0)
 
 [node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 56)
+position = Vector2(0, 34)
 
 [node name="VisibleOnScreenNotifier2D3" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-56, 0)
 
 [node name="VisibleOnScreenNotifier2D4" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -56)
+
+[node name="MagnectOrbiter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_edf5i")
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="OnScreenEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

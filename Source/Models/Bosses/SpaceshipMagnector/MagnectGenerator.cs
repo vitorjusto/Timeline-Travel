@@ -1,21 +1,24 @@
 using System;
 using Godot;
-using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
 public partial class MagnectGenerator : Node2D , IEnemy
 {
-	int _hp = 5;
+	int _hp = 10;
 	[Export]
 	public int Id = 0;
 	int _time = 0;
 	int _cycles = 0;
 	bool _isEntering = true;
 	bool _isAtracting = false;
+	private DamageAnimationPlayer _damageAnimator;
+    private ShootPoint _shootingPoint;
+
     public void Destroy()
     {
         _hp--;
+		_damageAnimator.PlayDamageAnimation();
 
 		if(_hp > 0)
 			return;
@@ -36,6 +39,9 @@ public partial class MagnectGenerator : Node2D , IEnemy
 
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
         enemySpawner.AddEnemy(this);
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
+
+		_shootingPoint = GetNode<ShootPoint>("ShootPoint");
     }
 
     public override void _Process(double delta)
@@ -73,6 +79,9 @@ public partial class MagnectGenerator : Node2D , IEnemy
 			Shoot();
 		}
 
+		if(!_isAtracting)
+            _damageAnimator.Process();
+
 		_time++;
 	}
 
@@ -82,30 +91,25 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		_cycles = 0;
 		_isAtracting = false;
 
-		GetNode<Node2D>("AtractingAnimation").Visible = false;
        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	   GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
     }
 
 
     private void StartAtracting()
     {
-       GetNode<Node2D>("AtractingAnimation").Visible = true;
        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+	   GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Atracting");
 
 	   _isAtracting = true;
     }
-
 
     private void Shoot()
     {
         if(_time < 50)
 			return;
 
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
-		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
-
-		projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+		_shootingPoint.Shoot();
 
 		_time = 0;
 		_cycles++;

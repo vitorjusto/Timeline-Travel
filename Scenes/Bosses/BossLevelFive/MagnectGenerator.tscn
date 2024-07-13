@@ -1,22 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://lte3yxylkrhw"]
+[gd_scene load_steps=10 format=3 uid="uid://lte3yxylkrhw"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/SpaceshipMagnector/MagnectGenerator.cs" id="1_4p53e"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_yc03w"]
+[ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="3_6dukh"]
+[ext_resource type="Texture2D" uid="uid://bwbk7pj44exc0" path="res://Assets/Bosses/SpaceshipMagnector/MagnectGenerator.png" id="3_f5rix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gclcc"]
-size = Vector2(64, 64)
+size = Vector2(72, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrl5j"]
+atlas = ExtResource("3_f5rix")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts720"]
+atlas = ExtResource("3_f5rix")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g3vn"]
+atlas = ExtResource("3_f5rix")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mnt0"]
+atlas = ExtResource("3_f5rix")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u638j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrl5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts720")
+}],
+"loop": true,
+"name": &"Atracting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g3vn")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mnt0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="magnectGenerator" type="CharacterBody2D"]
 script = ExtResource("1_4p53e")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("2_yc03w")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gclcc")
 
-[node name="AtractingAnimation" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 0, 1)
-self_modulate = Color(0, 1, 1, 1)
-texture = ExtResource("2_yc03w")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u638j")
+
+[node name="ShootPoint" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_6dukh")]
+position = Vector2(0, 35)
+NodeOrigin = NodePath("..")
+Active = false

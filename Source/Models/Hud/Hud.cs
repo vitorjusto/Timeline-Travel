@@ -10,11 +10,6 @@ public partial class Hud : Node2D
 	public bool IsShowingTimelineLabel => _showingTimelineLabel;
 	private bool _isGamePaused;
 
-    public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(_showingTimelineLabel)

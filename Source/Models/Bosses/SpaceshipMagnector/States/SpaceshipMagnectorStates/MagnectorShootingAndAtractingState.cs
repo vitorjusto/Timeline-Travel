@@ -7,17 +7,19 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
 {
     public class MagnectorShootingAndAtractingState : IState
     {
-        private MagnectorShootingPlayerState _shootingState;
         private SpaceshipMagnector _node;
         private Player _player;
+        private IState _idleState;
         private int _time;
         private bool _isAtracting;
-        public MagnectorShootingAndAtractingState(MagnectorShootingPlayerState shootingState, Node2D node)
+        public MagnectorShootingAndAtractingState(Node2D node, IState idleState )
         {
-            _shootingState = shootingState;
             _node = (SpaceshipMagnector)node;
 
             _player = _node.GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+            _idleState = idleState;
+
         }
 
         public IState NextState()
@@ -37,13 +39,13 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
                 _node.StopAtracting();
                 _time = 0;
 
-            }else if(!_isAtracting)
-            {
-                _shootingState.Process();
-            }else
+            }else if(_isAtracting)
             {
 			    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
 			    _player.SetSpeed((float)Math.Sin(angle) * (7), (float)Math.Cos(angle) * (7) );
+            }else
+            {
+                _idleState.Process();
             }
 
             _time++;

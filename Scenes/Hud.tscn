@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bm27is2hj0xno"]
+[gd_scene load_steps=22 format=3 uid="uid://bm27is2hj0xno"]
 
 [ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
 [ext_resource type="Texture2D" uid="uid://nwwt2vhp6t4v" path="res://Assets/Misc/PauseButton.png" id="2_skput"]
-[ext_resource type="SystemFont" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="3_r2m58"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="3_r2m58"]
 [ext_resource type="Texture2D" uid="uid://cn0e101jleiev" path="res://Assets/Enemies/Warning.png" id="3_xy2mw"]
 [ext_resource type="Texture2D" uid="uid://c6788527pwv1s" path="res://Assets/Enemies/DirectionWarning.png" id="4_rcc7s"]
 [ext_resource type="Texture2D" uid="uid://c5c4e0sjl6pmm" path="res://Assets/Misc/HpHeart.png" id="5_vhthy"]
 [ext_resource type="Texture2D" uid="uid://d0tmatv34hhbj" path="res://Assets/Player/spaceship.png" id="6_6jbvm"]
+[ext_resource type="Texture2D" uid="uid://cwxt5hbcb5cdv" path="res://Assets/Bosses/SpaceshipMagnector/NoDash.png" id="6_vv4tk"]
 
 [sub_resource type="FontFile" id="FontFile_885gs"]
 subpixel_positioning = 0
@@ -54,6 +55,14 @@ font_size = 60
 atlas = ExtResource("4_rcc7s")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kndy"]
+atlas = ExtResource("6_vv4tk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsdtr"]
+atlas = ExtResource("6_vv4tk")
+region = Rect2(20, 54, 10, 9)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fnox"]
 atlas = ExtResource("4_rcc7s")
 region = Rect2(0, 64, 32, 32)
@@ -70,7 +79,18 @@ animations = [{
 }],
 "loop": true,
 "name": &"LeftWarning",
-"speed": 3.0
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kndy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsdtr")
+}],
+"loop": true,
+"name": &"NoDash",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,7 +98,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"None",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
