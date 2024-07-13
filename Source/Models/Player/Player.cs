@@ -32,6 +32,7 @@ public partial class Player : Area2D
 	private bool _playerImortal = false;
     private int _minLimit = 5;
     private int _maxLimit;
+    private int _targetCount;
 
     public override void _Ready()
 	{
@@ -241,10 +242,25 @@ public partial class Player : Area2D
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Show();
 		animation.Play("default");
+		_targetCount++;
 	}
 
 	public void HideTarget()
 	{
+		_targetCount--;
+
+		if(_targetCount > 0)
+			return;
+
+		var animation = GetNode<AnimatedSprite2D>("AniTarget");
+		animation.Hide();
+		animation.Stop();
+	}
+
+	public void ResetTargetCount()
+	{
+		_targetCount = 0;
+		
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Hide();
 		animation.Stop();

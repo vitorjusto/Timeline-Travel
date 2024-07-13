@@ -47,7 +47,7 @@ public partial class GameManager : Node2D
 
 		player.EmitSignal("PlayerHpUpdated", player.Hp);
 		player.EmitSignal("PlayerLifeUpdated", player.Life);
-		player.HideTarget();
+		player.ResetTargetCount();
 
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
@@ -87,7 +87,7 @@ public partial class GameManager : Node2D
 
 		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
 		backgroundManager.SetNewBackgroundLevel(enemySpawner.CurrentLevel);
-		player.HideTarget();
+		player.ResetTargetCount();
 		
 		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
