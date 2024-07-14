@@ -9,7 +9,7 @@ public partial class Dasher : CharacterBody2D, IEnemy
 	private int _speed = 3;
 	private float _xspeed = 0;
 	private float _yspeed = 0;
-
+	private bool _targetHid;
 
 	private int _time = 0;
 
@@ -44,6 +44,7 @@ public partial class Dasher : CharacterBody2D, IEnemy
 			_yspeed = (float)Math.Cos(angle) * (-20);
 			
 			player.HideTarget();
+			_targetHid = true;
 		}
 		else if(_time > 140)
 		{
@@ -73,7 +74,8 @@ public partial class Dasher : CharacterBody2D, IEnemy
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
         enemySpawner.RemoveEnemy(this);
-		GetTree().Root.GetNode<Player>("/root/Main/Player").HideTarget();
+		if(!_targetHid)
+			GetTree().Root.GetNode<Player>("/root/Main/Player").HideTarget();
 	}
 
 	public bool IsImortal()
