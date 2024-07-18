@@ -72,6 +72,6 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new();
     }
 }
