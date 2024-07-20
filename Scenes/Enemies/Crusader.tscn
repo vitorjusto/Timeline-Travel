@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Crusader.cs" id="1_wtt10"]
 [ext_resource type="Texture2D" uid="uid://c6yuxrser4mrg" path="res://Assets/Projectiles/RayLazer.png" id="2_3mg5y"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="3_8e1xe"]
+[ext_resource type="Texture2D" uid="uid://c40amv0qd4g0w" path="res://Assets/Enemies/Crusader.png" id="3_kn54s"]
 [ext_resource type="Texture2D" uid="uid://qyh0ai8ff5im" path="res://Assets/Projectiles/RayLazerHorizontal.png" id="4_ict3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5ofj"]
@@ -78,10 +78,7 @@ animations = [{
 "name": &"RayLazer",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_8e1xe")
-}],
+"frames": [],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -176,8 +173,8 @@ sprite_frames = SubResource("SpriteFrames_l5vqt")
 speed_scale = 3.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0.999999, 0.999999)
-scale = Vector2(4.9, 4.9)
+position = Vector2(0.999999, -8)
+scale = Vector2(4.9, 4)
 
 [node name="AuxCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gdipc")
@@ -186,4 +183,9 @@ shape = SubResource("RectangleShape2D_gdipc")
 sprite_frames = SubResource("SpriteFrames_6q0jt")
 speed_scale = 3.0
 
+[node name="Crusader" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_kn54s")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="OnScreenEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

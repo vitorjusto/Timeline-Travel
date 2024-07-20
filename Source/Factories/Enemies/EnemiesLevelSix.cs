@@ -447,7 +447,6 @@ namespace Shooter.Source.Factories.Enemies
                 new(15, false, new DSpread(100, EEnemyProjectileType.Normal,5), new DSpread(200, EEnemyProjectileType.Light, 5)),
                 new(100, false, new DSpread(100, EEnemyProjectileType.Normal,5), new DSpread(200, EEnemyProjectileType.Light, 5)),
 
-
                 new(10, false, new DLighting(300)
                             , new DLighting(400)
                             , new DLighting(500)

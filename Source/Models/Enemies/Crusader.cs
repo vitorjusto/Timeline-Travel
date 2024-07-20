@@ -11,6 +11,11 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 
 	private bool _isExplosing = false;
 
+	public override void _Ready()
+	{
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+	}
+
     public override void _Process(double delta)
 	{
 		MoveEnemy();
@@ -36,6 +41,9 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 
 			collision = GetNode<CollisionShape2D>("AuxCollision");
 			collision.ApplyScale(new Vector2(x: 1444, y: 1));
+			
+			GetNode<Sprite2D>("Crusader").Visible = false;
+
 		}else if(_time == 185)
 		{
 			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
@@ -74,4 +82,9 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
     {
         return new();
     }
+
+	public void OnScreenEntered()
+	{
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	}
 }
