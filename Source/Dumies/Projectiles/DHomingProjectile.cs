@@ -7,11 +7,13 @@ namespace Shooter.Source.Dumies.Projectiles
     {
         public float X;
         public float Y;
+        private float _speedModifier;
 
-        public DHomingProjectile(float x, float y)
+        public DHomingProjectile(float x, float y, float speedModifier = 3)
         {
             X = x;
             Y = y;
+            _speedModifier = speedModifier;
         }
 
         public Node2D GetInstance()
@@ -21,7 +23,8 @@ namespace Shooter.Source.Dumies.Projectiles
             var instance = (HomingProjectile)scene.Instantiate();
 
             instance.SetPosition(X, Y);
-
+            instance.SpeedModifier = _speedModifier;
+            
             return instance;
         }
     }

@@ -2,22 +2,28 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.LevelSix.States
 {
     public class LightningRodSatelliteShootingState : IState
     {
-        private Node2D _node;
+        private LightningRodSatellite _node;
         private ProjectileManager _projectileManager;
         private Player _player;
         private int _time = 0;
         private int _homingProjectileCowldown = 100;
+        private WaveSpeed _ySpeed;
 
-        public LightningRodSatelliteShootingState(Node2D node)
+        public LightningRodSatelliteShootingState(LightningRodSatellite node)
         {
             _node = node;
             _projectileManager = _node.GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
             _player = _node.GetTree().Root.GetNode<Player>("/root/Main/Player");
+            _node.StartShooting();
+
+            _ySpeed = new WaveSpeed(-1, 2, _node.Position.Y);
+
         }
 
         public IState NextState()
@@ -27,10 +33,9 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 
         public bool Process()
         {
-            if(_time == 20)
-                Shoot();
-            
             PunishPlayer();
+
+            _node.Position = new Vector2(x: _node.Position.X, y: _ySpeed.Update());
 
             _time++;
             return false;
@@ -50,25 +55,9 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
                 return;
             }
 
-            _projectileManager.AddProjectile(new DHomingProjectile(_node.Position.X, _node.Position.Y));
+            _projectileManager.AddProjectile(new DHomingProjectile(_node.Position.X, _node.Position.Y -175, 5));
 
             _homingProjectileCowldown = 100;
-        }
-
-        private void Shoot()
-        {
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X + 120, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X + 160, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X + 200, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X + 240, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X + 280, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X - 120, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X - 160, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X - 200, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X - 240, _node.Position.Y + 100, 0, 3));
-            _projectileManager.AddProjectile(new DNormalProjectile(_node.Position.X - 280, _node.Position.Y + 100, 0, 3));
-
-            _time = 0;
         }
     }
 }

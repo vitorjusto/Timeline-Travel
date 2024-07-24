@@ -12,13 +12,17 @@ public partial class RegularShootPoint : Node2D
 	public Node2D Parent;
 	[Export]
 	public Vector2 Speed;
-
+	[Export]
+	public bool Active = true;
 	[Export]
 	public int Timer = 0;
 	private int _time = 0;
 	
 	public override void _Process(double delta)
 	{
+		if(!Active)
+			return;
+			
 		if(Timer == 0)
 			return;
 

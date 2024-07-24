@@ -5,9 +5,9 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 {
     public class LightningRodSatelliteEnteringState : IState
     {
-        private Node2D _node;
+        private LightningRodSatellite _node;
 
-        public LightningRodSatelliteEnteringState(Node2D node)
+        public LightningRodSatelliteEnteringState(LightningRodSatellite node)
         {
             _node = node;
         }
@@ -21,7 +21,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
         {
             _node.Position = new Vector2(_node.Position.X, _node.Position.Y + 5);
 
-            return _node.Position.Y > 150;
+            return _node.Position.Y > 200;
         }
     }
 }

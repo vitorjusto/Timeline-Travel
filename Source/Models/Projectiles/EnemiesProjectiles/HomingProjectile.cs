@@ -4,7 +4,7 @@ using Shooter.Source.Interfaces;
 
 public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 {	
-	private float _speedModifier = 3;
+	public float SpeedModifier = 3;
 
 	private int _time = 0;
 
@@ -18,8 +18,8 @@ public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 
-		var x = Position.X + (float)Math.Sin(angle) * -_speedModifier;
-		var y = Position.Y + (float)Math.Cos(angle) * -_speedModifier;
+		var x = Position.X + (float)Math.Sin(angle) * -SpeedModifier;
+		var y = Position.Y + (float)Math.Cos(angle) * -SpeedModifier;
 		Position = new Vector2(x ,y);
 
 		if(_time > 500)

@@ -1,31 +1,124 @@
-[gd_scene load_steps=5 format=3 uid="uid://6ewormp4o5y0"]
+[gd_scene load_steps=9 format=3 uid="uid://6ewormp4o5y0"]
 
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_biqp7"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/LevelSix/LightningRodSatellite.cs" id="1_elosm"]
+[ext_resource type="Texture2D" uid="uid://cd2y7bgnal004" path="res://Assets/Bosses/LightningRodSatellite/LightningRodSatellite.png" id="2_hq8uv"]
+[ext_resource type="PackedScene" uid="uid://ct61kpiv1kam1" path="res://Scenes/Misc/RegularShootPoint.tscn" id="3_qob1i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ptpx"]
+atlas = ExtResource("2_hq8uv")
+region = Rect2(0, 75, 150, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbwoi"]
+atlas = ExtResource("2_hq8uv")
+region = Rect2(0, 0, 150, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ie4jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ptpx")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbwoi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68e87"]
-size = Vector2(144, 272)
+size = Vector2(145, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68wjb"]
-size = Vector2(592, 152)
+size = Vector2(634, 242)
 
 [node name="LightningRodSatellite" type="CharacterBody2D"]
 script = ExtResource("1_elosm")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-self_modulate = Color(0, 1, 1, 1)
-position = Vector2(-9.53674e-07, 0)
-scale = Vector2(2.3125, 4.1875)
-texture = ExtResource("1_biqp7")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ie4jr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -50)
 shape = SubResource("RectangleShape2D_68e87")
 
-[node name="SprProtection" type="Sprite2D" parent="."]
-position = Vector2(3.05176e-05, 80)
-scale = Vector2(9.25, 2.375)
-texture = ExtResource("1_biqp7")
-
 [node name="ColProtection" type="CollisionShape2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(-4, 28)
 shape = SubResource("RectangleShape2D_68wjb")
+
+[node name="RegularShootPoint" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(-283, 149)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint2" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(-243, 148)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint3" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(-202, 148)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint4" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(-163, 148)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint5" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(-122, 148)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint6" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(117, 147)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint7" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(158, 149)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint8" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(198, 148)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint9" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(238, 150)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20
+
+[node name="RegularShootPoint10" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("3_qob1i")]
+position = Vector2(278, 149)
+Parent = NodePath("..")
+Speed = Vector2(0, 3)
+Active = false
+Timer = 20

@@ -2,14 +2,14 @@ using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.LevelSix.States;
-using Shooter.Source.Models.Bosses.SpaceshipPredador;
 using Shooter.Source.Models.Misc;
 using System;
 
 public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 {
 	public IState _state;
-    public int _hp = 200;
+    public int _hp = 300;
+    private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
     {
@@ -29,25 +29,65 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
         enemySpawner.AddEnemy(new DLighting(1300));
         enemySpawner.AddEnemy(new DLighting(1400));
         _state = new LightningRodSatelliteEnteringState(this);
+
+        _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
     }
     public override void _PhysicsProcess(double delta)
 	{
         if(_state.Process())
             _state = _state.NextState();
+        
+        _damageAnimator.Process();
 	}
 
 	public void Destroy()
     {
+        if(_hp < 0)
+            return;
+
+        _damageAnimator.PlayDamageAnimation();
+
         _hp--;
 
-        if(_hp == 190)
+        if(_hp == 290)
             _state = _state.NextState();
-        if(_hp == 100)
+        if(_hp == 150)
             _state = _state.NextState();
         
         if(_hp == 0)
+        {
+            StopShooting();
             _state = _state.NextState();
+        }
         
+    }
+
+    public void StartShooting()
+    {
+        GetNode<RegularShootPoint>("RegularShootPoint").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint2").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint3").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint4").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint5").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint6").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint7").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint8").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint9").Active = true;
+        GetNode<RegularShootPoint>("RegularShootPoint10").Active = true;
+    }
+
+    public void StopShooting()
+    {
+        GetNode<RegularShootPoint>("RegularShootPoint").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint2").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint3").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint4").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint5").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint6").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint7").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint8").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint9").Active = false;
+        GetNode<RegularShootPoint>("RegularShootPoint10").Active = false;
     }
 
     public bool IsImortal()
