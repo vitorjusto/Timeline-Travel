@@ -7,7 +7,7 @@ using Shooter.Source.Models.Misc;
 public partial class Bomber : CharacterBody2D, IEnemy
 {
 
-	private int _speed = 6;
+	private int _speed = 12;
 	private int _time = 0;
 
 
@@ -18,7 +18,7 @@ public partial class Bomber : CharacterBody2D, IEnemy
 
     private void MoveEnemy()
     {
-		if(_time < 100)
+		if(_time < 70)
 		{
         	var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 			var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
@@ -77,6 +77,6 @@ public partial class Bomber : CharacterBody2D, IEnemy
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new();
     }
 }

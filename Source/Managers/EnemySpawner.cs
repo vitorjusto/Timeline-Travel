@@ -18,7 +18,7 @@ public partial class EnemySpawner : Node2D
 	private List<EnemySection> _enemySection;
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
-	public int CurrentLevel = 6;
+	public int CurrentLevel = 7;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -266,12 +266,10 @@ public partial class EnemySpawner : Node2D
 			Enemies.RemoveAt(0);
 		}
 		
-		if(BossApeared)
-		{
-			_boss.QueueFree();
-			_boss = null;
-			BossApeared = false;
-		}
-
+		_boss?.QueueFree();
+		_boss = null;
+		
+		_showingWarningBoss = false;
+		BossApeared = false;
     }
 }
