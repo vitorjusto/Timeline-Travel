@@ -1,33 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://yc22er0gssq2"]
+[gd_scene load_steps=4 format=3 uid="uid://yc22er0gssq2"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Bomber.cs" id="1_cfhca"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_61l42"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j5kq0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_61l42")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://b7173fys8wui1" path="res://Assets/Enemies/Bomber.png" id="2_a8r8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2dgn"]
-size = Vector2(64, 64)
+size = Vector2(80, 80)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_cfhca")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_j5kq0")
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(6.4, 6.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_b2dgn")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(6.4, 6.4)
+[node name="Bomber" type="Sprite2D" parent="."]
+position = Vector2(-8, -8)
+scale = Vector2(4, 4)
+texture = ExtResource("2_a8r8n")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

@@ -7,10 +7,13 @@ namespace Shooter.Source.Dumies.Enemies
     {
         private int _x;
         private bool _walk;
-        public DGooder(int x, bool walk)
+        private int _maxTimer;
+
+        public DGooder(int x, bool walk, int maxTimer = 900)
         {
             _x = x;
             _walk = walk;
+            _maxTimer = maxTimer;
         }
 
         public Node2D GetInstance()
@@ -21,7 +24,7 @@ namespace Shooter.Source.Dumies.Enemies
 
             instance.Position = new Vector2(_x, y: -30);
             instance.Walk = _walk;
-
+            instance.MaxTimer = _maxTimer;
             return instance;
         }
     }

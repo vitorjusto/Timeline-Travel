@@ -30,14 +30,14 @@ public partial class Player : Area2D
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
 	private bool _playerImortal = false;
-    private int _minLimit = 5;
+    private int _minLimit = 32;
     private int _maxLimit;
     private int _targetCount;
 
     public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-		_maxLimit = (int)ScreenSize.X - 5;
+		_maxLimit = (int)ScreenSize.X - 32;
 		Hp = 10;
 
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");

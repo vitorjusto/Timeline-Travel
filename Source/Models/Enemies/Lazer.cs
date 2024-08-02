@@ -62,17 +62,13 @@ public partial class Lazer : CharacterBody2D, IEnemy
 
 	public bool IsImortal()
 	{
-		return _isShooting && _time < 201;
+		return true;
 	}
 
 
     public void Destroy()
     {
-		if(_isShooting)
-			return;
-
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        enemySpawner.RemoveEnemy(this);
+		return;
     }
 
     public EnemyBoundy GetBoundy()

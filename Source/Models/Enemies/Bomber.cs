@@ -26,6 +26,9 @@ public partial class Bomber : CharacterBody2D, IEnemy
 			var x = Position.X + (float)Math.Sin(angle) * _speed * -1;
 			var y = Position.Y + (float)Math.Cos(angle) * _speed * -1;
 			Position = new Vector2(x ,y );
+
+			Scale = new Vector2(Math.Abs(Scale.X), Scale.Y);
+			Scale *= new Vector2(Position.X - player.Position.X < 0? 1: -1, 1);
 		}else
 		{
 			Destroy();

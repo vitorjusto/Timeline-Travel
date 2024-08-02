@@ -6,13 +6,13 @@ using Shooter.Source.Models.Misc;
 
 public partial class Gooder : CharacterBody2D, IEnemy
 {
-
 	private int _yspeed = 2;
 	private int _xspeed = 6;
 	private int _time = 0;
 	private bool _isAngry = false;
 	public bool Walk = false;
-
+	private float _speedModifier = 5;
+	public int MaxTimer = 900;
     public override void _Process(double delta)
 	{
 		MoveEnemy();
@@ -34,7 +34,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		{
         	Position = new Vector2(x: Position.X, y: Position.Y + _yspeed);
 
-		}else if(_time > 900)
+		}else if(_time > MaxTimer)
 		{
 			Position = new Vector2(x: Position.X, y: Position.Y - _yspeed);
 		}else if(Walk)
@@ -78,8 +78,8 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 			
-		var xspeed = (float)Math.Sin(angle) * (-5);
-		var yspeed = (float)Math.Cos(angle) * (-5);
+		var xspeed = (float)Math.Sin(angle) * (-_speedModifier);
+		var yspeed = (float)Math.Cos(angle) * (-_speedModifier);
 
 		Position = new Vector2(x: Position.X + xspeed, y: Position.Y + yspeed);
 	}
@@ -96,11 +96,14 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		return false;
 	}
 
-
     public void Destroy()
     {
 		if(_isAngry)
+		{
+			_time -= 10;
+			_speedModifier+= 0.5f;
 			return;
+		}
 
 		_isAngry = true;
 		_time = 0;
@@ -109,6 +112,6 @@ public partial class Gooder : CharacterBody2D, IEnemy
 
     public EnemyBoundy GetBoundy()
     {
-        throw new NotImplementedException();
+        return new(2, 2, Position);
     }
 }
