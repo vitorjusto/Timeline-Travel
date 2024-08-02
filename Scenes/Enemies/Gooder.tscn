@@ -1,33 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqcettv3p4vrn"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcettv3p4vrn"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Gooder.cs" id="1_3yycp"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_ftn2s"]
+[ext_resource type="Texture2D" uid="uid://car6vpl64mcsb" path="res://Assets/Enemies/Gooder.png" id="2_m0e8k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucj1a"]
-size = Vector2(64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yivqo"]
+atlas = ExtResource("2_m0e8k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cihqw"]
+atlas = ExtResource("2_m0e8k")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f7ygr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ftn2s")
+"texture": SubResource("AtlasTexture_yivqo")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cihqw")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucj1a"]
+size = Vector2(90, 96)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_3yycp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ucj1a")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_f7ygr")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-6.19888e-06, -6.19888e-06)
 scale = Vector2(4.8, 4.8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.53674e-07, -8.34465e-07)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_f7ygr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ucj1a")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

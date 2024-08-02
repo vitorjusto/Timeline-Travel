@@ -70,7 +70,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 				
-		projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-5), (float)Math.Cos(angle) * (-5)));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + 2, Position.Y + 26, (float)Math.Sin(angle) * (-5), (float)Math.Cos(angle) * (-5)));
 	}
 
 	private void FollowPlayer()
@@ -106,6 +106,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 		}
 
 		_isAngry = true;
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Angry");
 		_time = 0;
 		
     }
