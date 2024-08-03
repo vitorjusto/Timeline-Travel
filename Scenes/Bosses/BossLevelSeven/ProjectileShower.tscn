@@ -1,32 +1,89 @@
-[gd_scene load_steps=5 format=3 uid="uid://3c817qhmmfut"]
+[gd_scene load_steps=12 format=3 uid="uid://3c817qhmmfut"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/ProjectileShower/ProjectileShower.cs" id="1_6xd0t"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_ageqp"]
+[ext_resource type="Texture2D" uid="uid://bsp3di5fbh13v" path="res://Assets/Bosses/ProjectilesShower/ProjectilesShowerSmall.png" id="2_1ubvq"]
+[ext_resource type="Texture2D" uid="uid://66k7r0r436ad" path="res://Assets/Bosses/ProjectilesShower/ProjectilesShower.png" id="3_31nsp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai1f5"]
+atlas = ExtResource("2_1ubvq")
+region = Rect2(0, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfnxc"]
+atlas = ExtResource("2_1ubvq")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_km56m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai1f5")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfnxc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wwg3"]
-size = Vector2(45.8906, 45.8906)
+size = Vector2(52, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_412f0"]
+atlas = ExtResource("3_31nsp")
+region = Rect2(0, 200, 466, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2irxe"]
+atlas = ExtResource("3_31nsp")
+region = Rect2(0, 0, 466, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1o2xo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_412f0")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2irxe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iufom"]
-size = Vector2(1360, 241)
+size = Vector2(1340, 356)
 
 [node name="ProjectileShower" type="CharacterBody2D"]
 script = ExtResource("1_6xd0t")
 
-[node name="SmallBoss" type="Sprite2D" parent="."]
+[node name="SmallBoss" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(1.19209e-07, 0)
-scale = Vector2(0.717079, 0.717125)
-texture = ExtResource("1_ageqp")
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_km56m")
 
 [node name="SmallBossCollision" type="CollisionShape2D" parent="."]
 visible = false
+position = Vector2(9.53674e-07, -2)
 shape = SubResource("RectangleShape2D_1wwg3")
 disabled = true
 
-[node name="BigBoss" type="Sprite2D" parent="."]
-position = Vector2(-3.33786e-05, 1.52588e-05)
-scale = Vector2(21.25, 3.75)
-texture = ExtResource("1_ageqp")
+[node name="BigBoss" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.76837e-07, 160)
+scale = Vector2(2.9, 2.9)
+sprite_frames = SubResource("SpriteFrames_1o2xo")
 
 [node name="BigBossCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 48)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_iufom")

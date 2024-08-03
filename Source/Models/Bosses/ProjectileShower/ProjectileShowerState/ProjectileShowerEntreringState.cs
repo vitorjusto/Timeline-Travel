@@ -23,7 +23,7 @@ namespace Shooter.Source.Models.Bosses.ProjectileShowerState
         {
             _node.Position = new Vector2(_node.Position.X, _node.Position.Y + _speed);
 
-            return _node.Position.Y > 100;
+            return _node.Position.Y > 90;
         }
     }
 }

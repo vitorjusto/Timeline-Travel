@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
@@ -13,7 +12,7 @@ namespace shooter.Source.Models.Bosses.ProjectileShowerState
         public ProjectileShowerStandState(ProjectileShower node)
         {
             _node = node;
-            _speed = new WaveSpeed(-1, 6, _node.Position.Y);
+            _speed = new WaveSpeed(-1, 3, _node.Position.Y);
         }
 
         public IState NextState()
@@ -23,6 +22,7 @@ namespace shooter.Source.Models.Bosses.ProjectileShowerState
 
         public bool Process()
         {
+            _node.Position = new Vector2(_node.Position.X, _speed.Update());
             return false;
         }
     }

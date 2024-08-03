@@ -32,6 +32,11 @@ public partial class ProjectileShowerBase : Node2D
 
 		_projectiles.AddProjectile(new DLightProjectile(new Random().Next(100, 1700) , -32, -2, 4));
 
+		if(_boss.Hp < 150)
+		{
+			_projectiles.AddProjectile(new DLightProjectile(new Random().Next(100, 1700) , -32, -2, 4));
+		}
+
 		if(_boss.Hp < 100)
 		{
 			_projectiles.AddProjectile(new DLightProjectile(new Random().Next(100, 1700) , -32, -2, 4));
