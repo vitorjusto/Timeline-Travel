@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1rs3r8dxj7kq"]
+[gd_scene load_steps=9 format=3 uid="uid://c1rs3r8dxj7kq"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BlackHoleGeneratorPart.cs" id="1_ujkkc"]
-[ext_resource type="Texture2D" uid="uid://be17hsv6udoe1" path="res://Assets/Bosses/BlackHole.png" id="2_1ibuk"]
 [ext_resource type="Texture2D" uid="uid://ddow7umk7yr27" path="res://Assets/Bosses/BlackHoleGenerator/BlackHoleGenerator.png" id="2_qq5xy"]
+[ext_resource type="PackedScene" uid="uid://cfbn128ienohs" path="res://Scenes/Misc/BlackHoleAnimation.tscn" id="3_76yiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qicc"]
 atlas = ExtResource("2_qq5xy")
@@ -41,42 +41,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hexy7"]
 radius = 47.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_05xm8"]
-atlas = ExtResource("2_1ibuk")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujnhr"]
-atlas = ExtResource("2_1ibuk")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xw3o6"]
-atlas = ExtResource("2_1ibuk")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26wr4"]
-atlas = ExtResource("2_1ibuk")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rayho"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_05xm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ujnhr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xw3o6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26wr4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Node2D" type="CharacterBody2D"]
 script = ExtResource("1_ujkkc")
 
@@ -90,7 +54,6 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_hexy7")
 
-[node name="AniBlackHole" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(1.96875, 2.01562)
-sprite_frames = SubResource("SpriteFrames_rayho")
+[node name="AniBlackHole" parent="." instance=ExtResource("3_76yiv")]
+position = Vector2(0, -2)
+scale = Vector2(1.7, 1.7)

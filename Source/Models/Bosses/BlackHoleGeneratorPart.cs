@@ -20,9 +20,8 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 	{
 		if(ShowBlackHole)
 		{
-			var blackHole = GetNode<AnimatedSprite2D>("AniBlackHole");
-			blackHole.Play("default");
-			blackHole.Show();
+			var blackHole = GetNode<Node2D>("AniBlackHole");
+			blackHole.Visible = true;
 
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 			var angle = Math.Atan2(Boss.Position.X + Position.X - player.Position.X, Boss.Position.Y + Position.Y + blackHole.Position.Y - player.Position.Y);
@@ -34,8 +33,8 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 				ShowBlackHole = false;
 		}else
 		{
-			var blackHole = GetNode<AnimatedSprite2D>("AniBlackHole");
-			blackHole.Hide();
+			var blackHole = GetNode<Node2D>("AniBlackHole");
+			blackHole.Visible = false;
 		}
 
 		if(_damageAnimation > 0)
