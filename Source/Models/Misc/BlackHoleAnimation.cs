@@ -7,14 +7,19 @@ public partial class BlackHoleAnimation : Node2D
 	public bool IsWhiteHole = false;
 	public override void _Ready()
 	{
-		if(IsWhiteHole)
-		{
-			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("WhiteHole");
-			GetNode<AnimationPlayer>("AnimationPlayer").Play("WhiteHole");
-		}
+		UpdateAnimation(IsWhiteHole);
 	}
 
 	public override void _Process(double delta)
 	{
+	}
+
+	public void UpdateAnimation(bool isWhiteHole)
+	{
+		if(isWhiteHole)
+		{
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Whitehole");
+			GetNode<AnimationPlayer>("AnimationPlayer").Play("Whitehole");
+		}
 	}
 }

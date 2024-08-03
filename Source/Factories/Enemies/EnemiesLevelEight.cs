@@ -10,7 +10,8 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(10, false, new DOrbiter()),
+                new EnemySection(10, true, new DBlackHole(700, false)),
+                new EnemySection(10, false, new DBlackHole(700, true)),
             };
 
         }
