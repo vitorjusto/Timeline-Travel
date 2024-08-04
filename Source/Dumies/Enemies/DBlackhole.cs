@@ -6,11 +6,20 @@ namespace Shooter.Source.Dumies.Enemies
     public class DBlackHole : IEnemyDummy
     {
         private int _x;
+        private int _y;
         private bool _isWhiteHole;
 
         public DBlackHole(int x, bool isWhiteHole)
         {
             _x = x;
+            _y = -30;
+            _isWhiteHole = isWhiteHole;
+        }
+
+        public DBlackHole(int x, int y, bool isWhiteHole)
+        {
+            _x = x;
+            _y = y;
             _isWhiteHole = isWhiteHole;
         }
 
@@ -20,7 +29,7 @@ namespace Shooter.Source.Dumies.Enemies
 
             var instance = (Blackhole)scene.Instantiate();
 
-            instance.Position = new Vector2(_x, y: -30);
+            instance.Position = new Vector2(_x, _y);
             instance.SetBlackholeType(_isWhiteHole);
             
             return instance;

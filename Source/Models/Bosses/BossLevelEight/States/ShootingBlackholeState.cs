@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Interfaces;
@@ -31,7 +32,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
             if(_timer == 200)
             {
-                _enemiesManager.AddEnemy(new DMovingBlackhole((int)_node.Position.X, (int)_node.Position.Y));
+                _enemiesManager.AddEnemy(new DBlackHole((int)_node.Position.X, (int)_node.Position.Y, new Random().Next(0, 2) == 1));
 
                 _timer = 0;
             }
