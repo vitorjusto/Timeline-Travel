@@ -22,8 +22,14 @@ texture_filter = 1
 script = ExtResource("1_tmijl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
+modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_4bxnp")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(3.57628e-07, 3.57628e-07)
+scale = Vector2(0.6875, 0.6875)
 sprite_frames = SubResource("SpriteFrames_4bxnp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

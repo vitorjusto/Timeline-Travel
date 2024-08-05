@@ -20,9 +20,15 @@ size = Vector2(16, 16)
 [node name="NormalProjectile" type="CharacterBody2D"]
 script = ExtResource("1_yfo7m")
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xhure")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.5, 0.5)
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(0.4375, 0.4375)
 sprite_frames = SubResource("SpriteFrames_xhure")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
