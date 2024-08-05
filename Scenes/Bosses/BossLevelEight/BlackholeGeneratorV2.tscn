@@ -1,91 +1,114 @@
-[gd_scene load_steps=13 format=3 uid="uid://htchvwq2hfax"]
+[gd_scene load_steps=15 format=3 uid="uid://htchvwq2hfax"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelEight/BlackholeGeneratorV2.cs" id="1_d8brl"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_wgibd"]
+[ext_resource type="Texture2D" uid="uid://3wpsdsxlnrs2" path="res://Assets/Bosses/BlackHoleGeneratorV2/BlackHoleGeneratorV2.png" id="2_j8w63"]
 [ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="3_y4k41"]
 [ext_resource type="PackedScene" uid="uid://bkr2psk0onteu" path="res://Scenes/Bosses/BossLevelEight/BlackholeGeneratorV2Part.tscn" id="4_0tfo3"]
-[ext_resource type="Texture2D" uid="uid://be17hsv6udoe1" path="res://Assets/Bosses/BlackHole.png" id="5_jdb1t"]
+[ext_resource type="PackedScene" uid="uid://cfbn128ienohs" path="res://Scenes/Misc/BlackHoleAnimation.tscn" id="5_83lcx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ejns"]
-size = Vector2(160, 160)
+[sub_resource type="AtlasTexture" id="AtlasTexture_otfxu"]
+atlas = ExtResource("2_j8w63")
+region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k6uq8"]
-radius = 128.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ybee"]
-atlas = ExtResource("5_jdb1t")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m607l"]
-atlas = ExtResource("5_jdb1t")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkky7"]
-atlas = ExtResource("5_jdb1t")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xekr3"]
-atlas = ExtResource("5_jdb1t")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_806tr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsqnl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ybee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m607l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkky7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xekr3")
+"texture": SubResource("AtlasTexture_otfxu")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgm0c"]
+atlas = ExtResource("2_j8w63")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqnf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgm0c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kesy1"]
+atlas = ExtResource("2_j8w63")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hmu5"]
+atlas = ExtResource("2_j8w63")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e36j2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kesy1")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hmu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ejns"]
+size = Vector2(122, 138)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6uq8"]
+radius = 128.0
+
 [node name="Node2D" type="CharacterBody2D"]
+position = Vector2(-300, 0)
 script = ExtResource("1_d8brl")
 
+[node name="LeftArm" type="AnimatedSprite2D" parent="."]
+position = Vector2(-141, 32)
+rotation = 3.14159
+scale = Vector2(3, -3)
+sprite_frames = SubResource("SpriteFrames_qsqnl")
+
+[node name="RightArm" type="AnimatedSprite2D" parent="."]
+position = Vector2(135, 32)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oqnf5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7.62939e-06)
+scale = Vector2(2.775, 3)
+sprite_frames = SubResource("SpriteFrames_e36j2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_7ejns")
-
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 2.375)
-texture = ExtResource("2_wgibd")
-
-[node name="LeftArm" type="Sprite2D" parent="."]
-position = Vector2(-120, 0)
-scale = Vector2(1.75, 0.5)
-texture = ExtResource("2_wgibd")
-
-[node name="RightArm" type="Sprite2D" parent="."]
-position = Vector2(136, 0)
-scale = Vector2(1.75, 0.5)
-texture = ExtResource("2_wgibd")
 
 [node name="ForceField" type="Sprite2D" parent="."]
 scale = Vector2(4.125, 4)
 texture = ExtResource("3_y4k41")
 
 [node name="BlackholeGeneratorV2Part" parent="." instance=ExtResource("4_0tfo3")]
-position = Vector2(184, 0)
+position = Vector2(211, 209)
 
 [node name="BlackholeGeneratorV2Part2" parent="." instance=ExtResource("4_0tfo3")]
-position = Vector2(-176, 0)
+position = Vector2(-215, 209)
 
 [node name="ForceFieldCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k6uq8")
 
-[node name="BlackholeAnimation" type="AnimatedSprite2D" parent="."]
+[node name="BlackholeAnimation" parent="." instance=ExtResource("5_83lcx")]
 visible = false
-scale = Vector2(24.4531, 23.3438)
-sprite_frames = SubResource("SpriteFrames_806tr")
-autoplay = "default"
+scale = Vector2(15, 15)
 
 [connection signal="PartDestroyed" from="BlackholeGeneratorV2Part" to="." method="OnPartDestroyed"]
 [connection signal="PartDestroyed" from="BlackholeGeneratorV2Part2" to="." method="OnPartDestroyed"]

@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Enums;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -8,12 +9,14 @@ namespace Shooter.Source.Dumies.Enemies
         private float _xSpeed;
         private float _ySpeed;
         private int _xPosition;
+        public ESpaceScrapType SpaceScrapType;
 
-        public DSpaceScrap(float xSpeed, float ySpeed, int xPosition)
+        public DSpaceScrap(float xSpeed, float ySpeed, int xPosition, ESpaceScrapType spaceScrapType)
         {
             _xSpeed = xSpeed;
             _ySpeed = ySpeed;
             _xPosition = xPosition;
+            SpaceScrapType = spaceScrapType;
         }
 
         public Node2D GetInstance()
@@ -26,6 +29,8 @@ namespace Shooter.Source.Dumies.Enemies
             instance.YSpeed = _ySpeed;
 
             instance.Position = new Vector2(_xPosition, -32);
+
+            instance.UpdateType(SpaceScrapType);
 
             return instance;
         }

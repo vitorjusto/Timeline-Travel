@@ -8,6 +8,7 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 	public IState State;
 	private int _armHp = 2;
 	private int _hp = 100;
+	private DamageAnimationPlayer _damageAnimator;
 	public override void _Ready()
 	{
 		this.Position = new Vector2(722, -200);
@@ -15,6 +16,8 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 
 		GetNode<BlackholeGeneratorV2Part>("BlackholeGeneratorV2Part").Boss = this;
 		GetNode<BlackholeGeneratorV2Part>("BlackholeGeneratorV2Part2").Boss = this;
+
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
     public override void _Process(double delta)
 	{
@@ -24,6 +27,8 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 			if(State is null)
 				SetBlackholeState();
 		}
+
+		_damageAnimator.Process();
 
 	}
 
@@ -39,9 +44,11 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 			return;
 
 		_hp--;
-
 		if(_hp == 0)
 			State.NextState();
+		else
+			_damageAnimator.PlayDamageAnimation();	
+
     }
 
     public bool IsImortal()

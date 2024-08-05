@@ -47,6 +47,7 @@ size = Vector2(146, 130)
 size = Vector2(141, 116)
 
 [node name="SpaceshipPredador" type="CharacterBody2D"]
+position = Vector2(-300, 0)
 script = ExtResource("1_hyd4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

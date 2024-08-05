@@ -37,16 +37,16 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
             _timer++;
 
-            if(_timer < 50)
+            if(_timer < 150)
                 return false;
             
 		    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
 
-            _projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle) * (-2), (float)Math.Cos(angle) * (-2)));
-		    _projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle - 0.3) * (-2), (float)Math.Cos(angle - 0.3) * (-2)));
-		    _projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle + 0.3) * (-2), (float)Math.Cos(angle + 0.3) * (-2)));
-		    _projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle + 0.6) * (-2), (float)Math.Cos(angle + 0.6) * (-2)));
-		    _projectiles.AddProjectile(new DLightProjectile(_node.Position.X, _node.Position.Y, (float)Math.Sin(angle - 0.6) * (-2), (float)Math.Cos(angle - 0.6) * (-2)));
+            _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle) * (-2), (float)Math.Cos(angle) * (-2)));
+		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle - 0.3) * (-2), (float)Math.Cos(angle - 0.3) * (-2)));
+		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle + 0.3) * (-2), (float)Math.Cos(angle + 0.3) * (-2)));
+		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle + 0.6) * (-2), (float)Math.Cos(angle + 0.6) * (-2)));
+		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle - 0.6) * (-2), (float)Math.Cos(angle - 0.6) * (-2)));
 
             _timer = 0;
 

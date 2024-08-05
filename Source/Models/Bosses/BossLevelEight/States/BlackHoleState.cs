@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Dumies.Enemies;
+using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
 
 namespace Shooter.Source.Models.Bosses.BossLevelEight.States
@@ -46,7 +47,15 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
             var angle = Math.Atan2(_node.Position.X - xPosition, _node.Position.Y + 32);
 
-		    enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition));
+            var number = new Random().Next(0, 100);
+
+
+            if(number % 25 == 0)
+		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Bomber));
+            else if(number % 10 == 0)
+		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Sniper));
+            else
+		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Common));
 
             _timer = 0;
         }

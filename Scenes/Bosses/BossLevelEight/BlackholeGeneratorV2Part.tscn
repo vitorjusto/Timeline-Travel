@@ -1,34 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkr2psk0onteu"]
+[gd_scene load_steps=7 format=3 uid="uid://bkr2psk0onteu"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelEight/BlackholeGeneratorV2Part.cs" id="1_3gve8"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_sy36d"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbrqv"]
-size = Vector2(32, 108)
+[ext_resource type="Texture2D" uid="uid://3wpsdsxlnrs2" path="res://Assets/Bosses/BlackHoleGeneratorV2/BlackHoleGeneratorV2.png" id="2_6f1ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7dw"]
-size = Vector2(64, 28)
+size = Vector2(64, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imv43"]
+atlas = ExtResource("2_6f1ss")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dup0m"]
+atlas = ExtResource("2_6f1ss")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1514d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imv43")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dup0m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BlackholeGeneratorV2Part" type="CharacterBody2D"]
 script = ExtResource("1_3gve8")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-position = Vector2(0, 56)
-scale = Vector2(0.5, 1.75)
-texture = ExtResource("1_sy36d")
-
-[node name="EnemyPlaceholder2" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, 110)
-scale = Vector2(1, 0.4375)
-texture = ExtResource("1_sy36d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 52)
-shape = SubResource("RectangleShape2D_vbrqv")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 110)
+position = Vector2(0, -43)
 shape = SubResource("RectangleShape2D_8a7dw")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, 112)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1514d")
+metadata/_edit_lock_ = true
