@@ -15,6 +15,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         {
             _boss = boss;
             _ySpeed = new WaveSpeed(-4, 20, _boss.Position.Y);
+            _boss.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
         }
 
         public IState NextState()

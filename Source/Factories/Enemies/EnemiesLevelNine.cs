@@ -1303,7 +1303,6 @@ namespace Shooter.Source.Factories.Enemies
                              , new DReinforcedCommon(100, 3)
                              , new DReinforcedCommon(1300, 3)
                              , new DReinforcedCommon(1380, 3)
-                             , new DBomber(200)
                 ),   
                 
                 new(30, false, new DReinforcedCommon(20, 3)
@@ -1458,7 +1457,6 @@ namespace Shooter.Source.Factories.Enemies
                              , new DReinforcedCommon(100, 3)
                              , new DReinforcedCommon(1300, 3)
                              , new DReinforcedCommon(1380, 3)
-                             , new DBomber(1200)
                 ),   
 
                 new(100, false, new DReinforcedCommon(20, 4)

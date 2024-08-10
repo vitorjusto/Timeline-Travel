@@ -8,19 +8,33 @@ using Shooter.Source.Models.Misc;
 public partial class FourDWarMachine : Node2D, IEnemy
 {
 	private IState _state;
-	private int _hp = 200;
+	private int _hp = 300;
 	private int _orbiters = 8;
 	private bool _HalfHealthEventTrigered = false;
+	public bool DestroingPlayer = false;
+
+    private DamageAnimationPlayer _damageAnimator;
+
 	public override void _Ready()
 	{
 		_state = new MovingState(this);
 		SetProcess(false);
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
 
 	public override void _Process(double delta)
 	{
 		if(_state.Process())
 			_state = _state.NextState();
+		
+		if(!IsTimeTravelTransition() && !DestroingPlayer)
+			_damageAnimator.Process();
+
+		if(_hp > 0 && !DestroingPlayer && _HalfHealthEventTrigered && !IsTimeTravelTransition() && GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").EnemiesSectionEmpty)
+		{
+			DestroingPlayer = true;
+			_state = new StartCruchingPlayerState(this);
+		}
 	}
 
 	public void OnOrbiterDestroyed(Node2D node)
@@ -38,6 +52,7 @@ public partial class FourDWarMachine : Node2D, IEnemy
 		if(_HalfHealthEventTrigered)
 			return;
 
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("BreakingFourthDimention");
         EmitSignal("OnHalfHealth");
 		EmitSignal("ChangeShootingState", false);
 		_HalfHealthEventTrigered = true;
@@ -58,16 +73,27 @@ public partial class FourDWarMachine : Node2D, IEnemy
 
     public void Destroy()
     {
-        _hp--;
+		if(_hp < 0)
+			return;
 
-		if(_hp == 100)
+		if(IsTimeTravelTransition())
+			return;
+
+		if(DestroingPlayer)
+			return;
+
+        _hp--;
+		GD.Print(_hp);
+
+		if(_hp == 150)
 		{
 			EmitHalfHealthEvent();
 		}
 
-		if(_hp == 0)
+		else if(_hp == 0)
 		{
 			_state = _state.NextState();
+			GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").ClearEnemySection();
 
 			foreach(Node2D node in GetChildren())
 			{
@@ -76,8 +102,14 @@ public partial class FourDWarMachine : Node2D, IEnemy
 					
 				OnOrbiterDestroyed(node);
 			}
+		}else
+		{
+			_damageAnimator.PlayDamageAnimation();
 		}
     }
+
+    private bool IsTimeTravelTransition()
+    	=> _HalfHealthEventTrigered && _state is MovingState;
 
     public bool IsImortal()
     {

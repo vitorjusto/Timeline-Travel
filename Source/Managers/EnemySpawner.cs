@@ -272,4 +272,8 @@ public partial class EnemySpawner : Node2D
 		_showingWarningBoss = false;
 		BossApeared = false;
     }
+
+	public void ClearEnemySection()
+		=> _enemySection.Clear();
+	
 }

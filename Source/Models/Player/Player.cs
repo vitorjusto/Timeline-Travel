@@ -199,20 +199,27 @@ public partial class Player : Area2D
 
 		if(Hp <= 0)
 		{
-			Hp = 0;
-
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-			enemySpawner.AddExplosion(Position.X, Position.Y);
-			Visible = false;
-
-			_playerDestroyed = true;
+			DestroyPlayer();
 		}
 
 		EmitSignal("PlayerHpUpdated", Hp);//Não pode colocar eventhandler (mesmo que o delegate obriga a por no nome)
 
 	}
 
-	[Signal]
+    public void DestroyPlayer()
+    {
+        Hp = 0;
+
+		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		enemySpawner.AddExplosion(Position.X, Position.Y);
+		Visible = false;
+
+		_playerDestroyed = true;
+
+		EmitSignal("PlayerHpUpdated", Hp);
+    }
+
+    [Signal]
 	public delegate void PlayerDestroyedEventHandler();	
 	[Signal]
 	public delegate void PlayerLifeUpdatedEventHandler(int life);
@@ -268,8 +275,11 @@ public partial class Player : Area2D
 	}
 
 	public void OnEndingLevel()
-		=> _unableToMove = true;
+		=> DisablePlayerToMove();
 
 	public void EnablePlayerToMove()
 		=> _unableToMove = false;
+
+	public void DisablePlayerToMove()
+		=> _unableToMove = true;
 }

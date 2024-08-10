@@ -23,7 +23,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
 	public override void _Process(double delta)
 	{
-		if(_hp == 0)
+		if(_hp <= 0)
 		{
 			EmitSignal("OnOrbiterDestroyed", this);
 		}
