@@ -169,7 +169,7 @@ public partial class Player : Area2D
 		if(node is IEnemy)
 		{
 			if(_iFrame == 0)
-				Hp -= 3;
+				Hp -= 2;
 
 			var enemy = (IEnemy)node;
 

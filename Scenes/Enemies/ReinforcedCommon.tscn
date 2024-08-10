@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bgj2yuytebu36" path="res://Assets/Enemies/ReiforcedCommon.png" id="2_v6lqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn7p2"]
-size = Vector2(60, 84)
+size = Vector2(60, 63)
 
 [node name="Common" type="CharacterBody2D"]
 script = ExtResource("1_stifv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_vn7p2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
