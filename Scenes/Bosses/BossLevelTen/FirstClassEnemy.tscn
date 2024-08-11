@@ -1,16 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://uhm56lt7s72x"]
+[gd_scene load_steps=6 format=3 uid="uid://uhm56lt7s72x"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelTen/FirstClassEnemy.cs" id="1_jfvi7"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_l80im"]
+[ext_resource type="Texture2D" uid="uid://63vfgmcjayh2" path="res://Assets/Bosses/FirstClassEnemy/FirstClassEnemy.png" id="2_hewlb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8lk6"]
-size = Vector2(64, 64)
+size = Vector2(24, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsa4s"]
+size = Vector2(27, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4km2k"]
+size = Vector2(27, 19)
 
 [node name="FirstClassEnemy" type="CharacterBody2D"]
 script = ExtResource("1_jfvi7")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("1_l80im")
+[node name="FirstClassEnemy" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_hewlb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_a8lk6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-26.5, -5.5)
+shape = SubResource("RectangleShape2D_xsa4s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(26.5, -5.5)
+shape = SubResource("RectangleShape2D_4km2k")

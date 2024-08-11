@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://erfmsclpkmsj"]
+[gd_scene load_steps=11 format=3 uid="uid://erfmsclpkmsj"]
 
 [ext_resource type="Script" path="res://Source/Models/Player/Player.cs" id="1_xfqv4"]
 [ext_resource type="Texture2D" uid="uid://d0tmatv34hhbj" path="res://Assets/Player/spaceship.png" id="1_ygnq1"]
@@ -16,7 +16,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfok"]
-size = Vector2(64, 64)
+size = Vector2(24, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epmsr"]
+size = Vector2(27, 19.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4eox"]
+size = Vector2(27, 19.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyrs6"]
 atlas = ExtResource("3_har2w")
@@ -45,11 +51,20 @@ script = ExtResource("1_xfqv4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_736oi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_lmfok")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-26, 5.25)
+shape = SubResource("RectangleShape2D_epmsr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(26, 5.25)
+shape = SubResource("RectangleShape2D_g4eox")
 
 [node name="AniTarget" type="AnimatedSprite2D" parent="."]
 visible = false
