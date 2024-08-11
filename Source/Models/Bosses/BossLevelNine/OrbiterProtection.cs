@@ -14,11 +14,13 @@ public partial class OrbiterProtection : Node2D, IEnemy
     public int _yspeedModifier = 1;
 	public int _shootingCooldown = 100;
 	private bool _allowShoot = true;
+    private DamageAnimationPlayer _damageAnimator;
 
 	public int _hp = 20;
 	public override void _Ready()
 	{
 		SetProcess(false);
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
 
 	public override void _Process(double delta)
@@ -34,6 +36,8 @@ public partial class OrbiterProtection : Node2D, IEnemy
 			Shoot();
 
 		Move();
+
+		_damageAnimator.Process();
 
 	}
 
@@ -72,6 +76,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
     public void Destroy()
     {
+		_damageAnimator.PlayDamageAnimation();
         _hp--;
     }
 

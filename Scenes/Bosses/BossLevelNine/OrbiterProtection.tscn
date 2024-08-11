@@ -1,16 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://n1d5vj6mocpd"]
+[gd_scene load_steps=7 format=3 uid="uid://n1d5vj6mocpd"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelNine/OrbiterProtection.cs" id="1_av3w8"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_byw1a"]
+[ext_resource type="Texture2D" uid="uid://dvbp50akqt7gc" path="res://Assets/Bosses/4DWarMachine/4DWarMachineProtector.png" id="2_vjvwe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbphh"]
+atlas = ExtResource("2_vjvwe")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2uah"]
+atlas = ExtResource("2_vjvwe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5sg4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbphh")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2uah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwyg"]
-size = Vector2(64, 64)
+size = Vector2(70, 56)
 
 [node name="OrbiterProtection" type="CharacterBody2D"]
 script = ExtResource("1_av3w8")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("1_byw1a")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_5sg4y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wtwyg")

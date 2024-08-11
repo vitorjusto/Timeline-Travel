@@ -32,6 +32,14 @@ public partial class FourDWarMachine : Node2D, IEnemy
 
 		if(_hp > 0 && !DestroingPlayer && _HalfHealthEventTrigered && !IsTimeTravelTransition() && GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").EnemiesSectionEmpty)
 		{
+			foreach(Node2D node in GetChildren())
+			{
+				if(node is not OrbiterProtection)
+					continue;
+					
+				OnOrbiterDestroyed(node);
+			}
+
 			DestroingPlayer = true;
 			_state = new StartCruchingPlayerState(this);
 		}
@@ -43,9 +51,34 @@ public partial class FourDWarMachine : Node2D, IEnemy
 		node.CallDeferred("queue_free");
 		_orbiters--;
 
+		ExplodeOrbiter(node);
+		
 		if(_orbiters == 0)
 			EmitHalfHealthEvent();
 	}
+
+    private void ExplodeOrbiter(Node2D node)
+    {
+		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3,-3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 0, -3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, -3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, 0));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, 3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 0, 3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3, 3));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3, 0));
+
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3,-3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 0, -3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, -3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, 0));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 3, 3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, 0, 3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3, 3));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, -3, 0));
+    }
 
     private void EmitHalfHealthEvent()
     {
@@ -64,11 +97,11 @@ public partial class FourDWarMachine : Node2D, IEnemy
 		var angle = Math.Atan2(Position.X + node.Position.X - player.Position.X, Position.Y + node.Position.Y - player.Position.Y);
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
-		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, (float)Math.Sin(angle + 0.7) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, (float)Math.Sin(angle - 0.7) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X, Position.Y + node.Position.Y + 28, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X + 29, Position.Y + node.Position.Y + 19, (float)Math.Sin(angle + 0.7) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
+		projectiles.AddProjectile(new DLightProjectile(Position.X + node.Position.X - 29, Position.Y + node.Position.Y + 19, (float)Math.Sin(angle - 0.7) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X + 17, Position.Y + node.Position.Y + 28, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
+		projectiles.AddProjectile(new DNormalProjectile(Position.X + node.Position.X - 17, Position.Y + node.Position.Y + 28, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
 	}
 
     public void Destroy()

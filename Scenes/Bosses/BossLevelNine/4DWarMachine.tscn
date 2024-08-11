@@ -264,44 +264,37 @@ speed_scale = 2.0
 metadata/_edit_lock_ = true
 
 [node name="OrbiterProtection" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(0, 150)
 
 [node name="OrbiterProtection2" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(0, -150)
 _xspeedModifier = -1
 _yspeedModifier = -1
 
 [node name="OrbiterProtection3" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(150, 0)
 _time = 3.3
 _ytime = 0.0
 _xspeedModifier = -1
 
 [node name="OrbiterProtection4" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(-150, 0)
 _time = 3.3
 _ytime = 0.0
 _yspeedModifier = -1
 
 [node name="OrbiterProtection5" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(75, 75)
 _time = 1.666
 _ytime = 4.999
 
 [node name="OrbiterProtection6" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(-75, 75)
 _time = 4.999
 _ytime = 1.666
 _yspeedModifier = -1
 
 [node name="OrbiterProtection7" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(-75, -75)
 _time = 1.666
 _ytime = 4.999
@@ -309,7 +302,6 @@ _xspeedModifier = -1
 _yspeedModifier = -1
 
 [node name="OrbiterProtection8" parent="." instance=ExtResource("3_njqwn")]
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
 position = Vector2(75, -75)
 _time = 4.999
 _ytime = 1.666
