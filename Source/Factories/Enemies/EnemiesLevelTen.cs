@@ -419,7 +419,7 @@ namespace Shooter.Source.Factories.Enemies
                 new(10, false, new DCommon(400, 4)),
                 new(10, false, new DCommon(300, 4)),
                 new(10, false, new DCommon(200, 4)),
-                new(10, false,  new DCommon(100, 4)),
+                new(50, false,  new DCommon(100, 4)),
 
                 new(10, false, new DCommon(100, 4)),
                 new(10, false, new DCommon(200, 4)),
@@ -434,8 +434,6 @@ namespace Shooter.Source.Factories.Enemies
                 new(10, false, new DCommon(1100, 4)),
                 new(10, false, new DCommon(1200, 4)),
                 new(50, false, new DCommon(1300, 4)),
-
-
             };
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
@@ -12,6 +13,11 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 	private int _timer;
     private Player _player;
     private bool _showingIFrameAnimation;
+	public bool Enable;
+	private bool _followingPlayer;
+
+	private float _yPosition;
+	private float _ySpeed;
 
     public override void _Ready()
 	{
@@ -19,22 +25,24 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 		Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width")/2, -100);
 
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+		_yPosition = new Random().Next(200, 450);
+		_ySpeed = new Random().Next(1, 5);
 	}
 
     public override void _Process(double delta)
 	{
+		if(!Enable)
+			return;
 
-		if(Position.Y < 100)
+		if(_followingPlayer)
+			FollowPlayer();
+		else
 		{
 			Position += new Vector2(0, 12);
+
+			_followingPlayer = Position.Y > 100;
 			return;
-		}
-		if(Position.X < _player.Position.X - 5)
-		{
-			Position += new Vector2(10, 0);
-		}else if(Position.X > _player.Position.X + 5)
-		{
-			Position -= new Vector2(10, 0);
 		}
 
 		if(_Iframe > 0)
@@ -54,6 +62,28 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 			Shoot();
 	}
 
+    private void FollowPlayer()
+    {
+		var xspeed = 0;
+		if(Position.X < _player.Position.X - 5)
+		{
+			xspeed = 6;
+		}else if(Position.X > _player.Position.X + 5)
+		{
+			xspeed = -6;
+		}
+
+		Position += new Vector2(xspeed, _ySpeed);
+
+		if(Math.Abs(_yPosition - Position.Y) < 8)
+		{
+			_yPosition = new Random().Next(100, 450);
+			_ySpeed = new Random().Next(4, 7);
+
+			_ySpeed *= _yPosition > Position.Y ? 1: -1;
+		}
+    }
+
     private void Shoot()
     {
         _timer = 0;
@@ -72,10 +102,14 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 		if(_hp == 0)
 		{
 			GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").RemoveEnemy(this);
-			GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").EndLevel();
-
-		}
+			_projectiles.RemoveAllProjectiles();
+			
+			EmitSignal("BossDefeated");
+		}	
     }
+
+	[Signal]
+	public delegate void BossDefeatedEventHandler();
 
     public bool IsImortal()
     {

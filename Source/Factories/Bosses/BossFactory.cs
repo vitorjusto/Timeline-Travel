@@ -98,7 +98,7 @@ namespace Shooter.Source.Factories.Bosses
 
         private static Node2D GetBossLevelTen()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelTen/FirstClassEnemy.tscn");
+            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/BossLevelTen/FirstClassEnemyBase.tscn");
 
             return (Node2D)scene.Instantiate();
         }
