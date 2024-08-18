@@ -23,8 +23,14 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
     }
     public override void _Process(double delta)
 	{
+		if(_state is null)
+			return;
+			
 		if(_state.Process())
+		{
 			EmitSignal("OnHeadDestroyed");
+			_state = null;
+		}
 
 		_damageAnimator.Process();
 	}

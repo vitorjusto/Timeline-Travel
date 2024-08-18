@@ -47,6 +47,8 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 
     public void StopProcess()
     {
+		GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
+
         GetNode<MothershipCoreFirstState>("CharacterBody2D").Disable();
         GetNode<MothershipCore1>("CharacterBody2D2").Disable();
         GetNode<MothershipCore1>("CharacterBody2D3").Disable();
