@@ -13,7 +13,6 @@ public partial class FinalBoss : Node2D
 
 	public override void _Ready()
 	{
-
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("MotherShipCore1"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineEightFinalBoss"));
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("TimelineTwoFourBoss"));
@@ -30,7 +29,10 @@ public partial class FinalBoss : Node2D
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
         if(!player.GetFinalPowerUp)
+		{
+			player.SetSizeLimit(462, 944);
 			return;
+		}
 
 		_bossLevelState = EFinalBossState.FinalPowerUpGetTransition;
 		FinalPowerUp.GiveFinalPowerUpStatus(player);
@@ -57,7 +59,10 @@ public partial class FinalBoss : Node2D
 		_bossLevelState += 1;
 
 		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineThree || _bossLevelState == EFinalBossState.TransitionToFinalStage)
+		{
 			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
+			GetNode<MotherShipCore1Base>("MotherShipCore1").StopProcess();
+		}
 		else if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
 			GetNode("FirstState").QueueFree();
@@ -74,6 +79,7 @@ public partial class FinalBoss : Node2D
 
 		}else if(_bossLevelState == EFinalBossState.MothershipCore2)
 		{
+			GetNode<MotherShipCore1Base>("MotherShipCore1").StartProcess();
 			GetNode("TimelineEightFinalBoss").QueueFree();
 
 			DisableNodeHelpers.EnableNodeIncludingChildren(GetNode("MotherShipCore1"));

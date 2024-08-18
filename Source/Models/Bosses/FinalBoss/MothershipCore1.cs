@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
@@ -11,7 +10,6 @@ public partial class MothershipCore1 : Node2D, IEnemy
     private WaveSpeed _ySpeed;
 	[Export]
 	public bool EntreringStage = true;
-	private int _timer;
 
     public override void _Ready()
 	{
@@ -23,30 +21,9 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		if(EntreringStage)
 			MoveBoss();
 		else
-		{
 			Position = new Vector2(Position.X, _ySpeed.Update());
-			_timer++;
-
-			if(_timer > 50)
-				Shoot();
-		}
+		
 	}
-
-    private void Shoot()
-    {
-        _timer = 0;
-
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
-		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
-
-		projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle + 0.6) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle - 0.6) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-		projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
-
-    }
 
     private void MoveBoss()
     {
@@ -57,6 +34,13 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		
 		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
 		EntreringStage = false;
+
+		GetNode<ShootPoint>("ShootPoint").Active = true;
+		GetNode<ShootPoint>("ShootPoint2").Active = true;
+		GetNode<ShootPoint>("ShootPoint3").Active = true;
+		GetNode<ShootPoint>("ShootPoint4").Active = true;
+		GetNode<ShootPoint>("ShootPoint5").Active = true;
+		GetNode<ShootPoint>("ShootPoint6").Active = true;
     }
 
 	public void OnPuncherDestroyed(Node2D node)
@@ -64,18 +48,31 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		this.SetProcess(false);
 	}
 
-    public void Destroy()
-    {
-        return;
-    }
+	public void Disable()
+	{
+		GetNode<ShootPoint>("ShootPoint").Active = false;
+		GetNode<ShootPoint>("ShootPoint2").Active = false;
+		GetNode<ShootPoint>("ShootPoint3").Active = false;
+		GetNode<ShootPoint>("ShootPoint4").Active = false;
+		GetNode<ShootPoint>("ShootPoint5").Active = false;
+		GetNode<ShootPoint>("ShootPoint6").Active = false;
+	}
+
+    public void Destroy(){ }
 
     public bool IsImortal()
-    {
-        return true;
-    }
+    	=> true;
 
     public EnemyBoundy GetBoundy()
+    	=> new();
+
+    internal void Enable()
     {
-        return new();
+        GetNode<ShootPoint>("ShootPoint").Active = true;
+		GetNode<ShootPoint>("ShootPoint2").Active = true;
+		GetNode<ShootPoint>("ShootPoint3").Active = true;
+		GetNode<ShootPoint>("ShootPoint4").Active = true;
+		GetNode<ShootPoint>("ShootPoint5").Active = true;
+		GetNode<ShootPoint>("ShootPoint6").Active = true;
     }
 }

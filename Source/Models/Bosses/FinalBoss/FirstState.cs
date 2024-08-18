@@ -10,7 +10,7 @@ public partial class FirstState : Node2D, IEnemy
 {
 	private Player _player;
 	private bool _isEntrering = true;
-	private int _hp = 30;
+	private int _hp = 100;
     private int _time;
     private int _lazerCooldown;
 	private int _lazerPosition1 = 0;
@@ -23,7 +23,6 @@ public partial class FirstState : Node2D, IEnemy
     public override void _Ready()
 	{
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		_player.SetSizeLimit(454, 952);
 
 		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
