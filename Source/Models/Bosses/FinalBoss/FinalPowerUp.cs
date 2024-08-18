@@ -21,6 +21,11 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
 	{
 		player.GetFinalPowerUp = true;
 
+		player.GetNode<Sprite2D>("SpaceshipUpgrade").Visible = true;
+		player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Visible = false;
+
+		player.GetNode<CollisionShape2D>("SpaceshipUpgradeColision").SetDeferred("disable", false);
+
 		player.Hp = 100;
 	}
 	

@@ -19,4 +19,9 @@ public partial class FirstStateBase : Node2D
 	{
 		EmitSignal("OnFinishedState");
 	}
+
+	public void OnWallEntered()
+	{
+		GetNode<MovingParallaxLayer>("ParallaxBackground/MovingParallaxLayer3").YSpeed = 0;
+	}
 }

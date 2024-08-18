@@ -18,12 +18,14 @@ public partial class FirstState : Node2D, IEnemy
 	private int _lazerPosition3 = -50;
 	private int _shootingCooldown = 0;
 	private IState _exploding;
+    private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
 	{
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		_player.SetSizeLimit(454, 952);
 
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
 
 	public override void _Process(double delta)
@@ -51,6 +53,8 @@ public partial class FirstState : Node2D, IEnemy
 			ShootProjectile();
 		else
 			_shootingCooldown--;
+
+		_damageAnimator.Process();
 	}
 
     private void EndPhase()
@@ -65,7 +69,6 @@ public partial class FirstState : Node2D, IEnemy
 		ShootFromAnchor(GetNode<Node2D>("ShootAnchor2").Position + Position);
 
 		_shootingCooldown = 100;
-		
     }
 
     private void ShootFromAnchor(Vector2 position)
@@ -107,7 +110,11 @@ public partial class FirstState : Node2D, IEnemy
 
         Position += new Vector2(0, 10);
 
-		_isEntrering = Position.Y < 50;
+		if(Position.Y > 50)
+		{
+			_isEntrering = false;
+			EmitSignal("OnWallEntered");
+		}
     }
 
     public void Destroy()
@@ -116,6 +123,8 @@ public partial class FirstState : Node2D, IEnemy
 
 		if(_hp == 0)
 			_exploding = new Exploding(this, removeEnemy: false);
+		else if(_hp > 0)
+			_damageAnimator.PlayDamageAnimation();
     }
 
     public bool IsImortal()
@@ -130,4 +139,7 @@ public partial class FirstState : Node2D, IEnemy
 
     [Signal]
 	public delegate void OnDestroyedEventHandler();
+	
+    [Signal]
+	public delegate void OnWallEnteredEventHandler();
 }

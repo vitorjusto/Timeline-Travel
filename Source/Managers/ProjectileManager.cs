@@ -9,9 +9,11 @@ public partial class ProjectileManager : Node2D
 	public override void _Ready()
 	{
 		EnemiesProjectiles = new List<Node2D>();
+		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 	}
 	private int _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
+    private Player _player;
 
     public override void _Process(double delta)
 	{
@@ -25,16 +27,34 @@ public partial class ProjectileManager : Node2D
 			_autoFireCooldown--;
 			if(_autoFireCooldown == 0)
 			{
-				ShootPlayerProjectile();
+				if(_player.GetFinalPowerUp)
+					ShootPlayerProjectileFinalPowerUp();
+				else
+					ShootPlayerProjectile();
+
 				_autoFireCooldown = 10;
 			}
 		}
 
         if (Input.IsActionJustPressed("shoot") && !Input.IsActionJustPressed("pause"))
 		{
-			ShootPlayerProjectile();
+			if(_player.GetFinalPowerUp)
+				ShootPlayerProjectileFinalPowerUp();
+			else
+				ShootPlayerProjectile();
+
 			_autoFireCooldown = 10;
 		}
+    }
+
+    private void ShootPlayerProjectileFinalPowerUp()
+    {
+		AddPlayerProjectile(0, -20, -10);
+		AddPlayerProjectile(0, -20, 10);
+
+		AddPlayerProjectile(0, -20, -32);
+
+		AddPlayerProjectile(0, -20, 32);
     }
 
     private void ShootPlayerProjectile()
@@ -69,15 +89,13 @@ public partial class ProjectileManager : Node2D
 		}
     }
 
-    private void AddPlayerProjectile(int xSpeed, int ySpeed)
+    private void AddPlayerProjectile(int xSpeed, int ySpeed, int xOffSet = 0)
     {
-        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-
 		var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
 
         var instance = (PlayerProjectile)scene.Instantiate();
 
-        instance.SetPosition(player.Position.X, player.Position.Y - 32);
+        instance.SetPosition(_player.Position.X + xOffSet, _player.Position.Y - 32);
 		
 		instance.SetSpeed(xSpeed, ySpeed);
 

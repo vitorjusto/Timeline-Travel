@@ -9,7 +9,8 @@ public partial class BackgroundManager : Node2D
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 		_currentBackground = LevelsFactory.GetBackground(enemySpawner.CurrentLevel);
 
-		AddChild(_currentBackground);
+		if(_currentBackground is not null)
+			AddChild(_currentBackground);
 	}
 
 	public void SetNewBackgroundLevel(int level)
