@@ -17,15 +17,19 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 
     private Player _player;
 	private bool _dashing;
-	private int _hp = 70;
+	private int _hp = 180;
     private bool _damageDisabled;
+    private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
 	{
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AniPuncher"));
 	}
 	public override void _Process(double delta)
 	{
+		_damageAnimator.Process();
+
 		if(_entreringStage)
 			MoveBoss();
 		else if(_dashing)
@@ -41,13 +45,29 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		}
 	}
 
+    private void Animate()
+    {
+		var angle = Math.Atan2(Position.X - _player.Position.X, Position.Y - _player.Position.Y);
+		var speed = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
+
+		GetNode<Node2D>("AniPuncher").Rotation = 1.5708f;
+		Rotation = speed.Angle();
+    }
+
     private void Dash()
     {
 		_timerDashing++;
 		
-        if(_timerDashing < 20)
+        if(_timerDashing == 1)
+		{
 			_player.ShowTarget();
-		else if(_timerDashing == 20)
+			Animate();
+		}
+		else if(_timerDashing < 50)
+		{
+			Animate();
+		}
+		else if(_timerDashing == 50)
 		{
 			_player.HideTarget();
 			var angle = Math.Atan2(Position.X - _player.Position.X, Position.Y - _player.Position.Y);
@@ -55,14 +75,15 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 			_xSpeed = (float)Math.Sin(angle) * (-20);
 			_ySpeed = (float)Math.Cos(angle) * (-20);
 
-		}else if(_timerDashing == 70)
+		}else if(_timerDashing == 100)
 		{
 			var angle = Math.Atan2(Position.X - _idlePosition.X, Position.Y - _idlePosition.Y);
 
 			_xSpeed = (float)Math.Sin(angle) * (-20);
 			_ySpeed = (float)Math.Cos(angle) * (-20);
 
-		}else if(_timerDashing == 120)
+		}
+		else if(_timerDashing == 150)
 		{
 			_xSpeed = 0;
 			_ySpeed = 0;
@@ -96,7 +117,14 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		_hp--;
 
 		if(_hp == 0)
+		{
+			_player.HideTarget();
+			_damageAnimator.PlayDefaultAnimation();
 			EmitSignal("OnPuncherDestroing", this);
+		}
+		else if(_hp > 0)
+			_damageAnimator.PlayDamageAnimation();
+
     }
 
     public bool IsImortal()

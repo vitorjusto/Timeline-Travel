@@ -24,4 +24,10 @@ public class DamageAnimationPlayer
         _sprite.Play("Damage");
         _animationFrames = MAX_ANIMATION_FRAME;
     }
+
+    public void PlayDefaultAnimation()
+    {
+        _sprite.Play("default");
+        _animationFrames = 0;
+    }
 }

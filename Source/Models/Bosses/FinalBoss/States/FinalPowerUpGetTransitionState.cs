@@ -13,6 +13,7 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
         {
             _transitionPanel = transitionPanel;
             _player = _transitionPanel.GetTree().Root.GetNode<Player>("/root/Main/Player");
+            _player.ResetTargetCount();
         }
 
         public IState NextState()

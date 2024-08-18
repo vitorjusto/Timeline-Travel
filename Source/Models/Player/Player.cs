@@ -259,6 +259,7 @@ public partial class Player : Area2D
 		if(_targetCount > 0)
 			return;
 
+
 		var animation = GetNode<AnimatedSprite2D>("AniTarget");
 		animation.Hide();
 		animation.Stop();
