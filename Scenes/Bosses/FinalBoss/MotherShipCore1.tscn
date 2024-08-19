@@ -1,16 +1,31 @@
-[gd_scene load_steps=20 format=3 uid="uid://cav7yasi24bq"]
+[gd_scene load_steps=22 format=3 uid="uid://cav7yasi24bq"]
 
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_7ueac"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_ggno3"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MotherShipCore1Base.cs" id="1_ha2ii"]
 [ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_m54kp"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCore1.cs" id="3_kucr4"]
 [ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="4_6814i"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCoreFirstState.cs" id="4_tspwf"]
+[ext_resource type="Texture2D" uid="uid://dyopnjb4wdvb5" path="res://Assets/Bosses/FinalBoss/MothershipCore/MothershipCore.png" id="5_e4p4u"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCorePuncher.cs" id="6_ueqpb"]
 [ext_resource type="Texture2D" uid="uid://dlx3ytaldx2t6" path="res://Assets/Bosses/FinalBoss/MothershipCore/CoreProtector.png" id="7_1lxiv"]
 [ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="7_7cboa"]
 [ext_resource type="Texture2D" uid="uid://46o2u6o85e1d" path="res://Assets/Bosses/FinalBoss/MothershipCore/Puncher.png" id="8_532b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo5aq"]
+atlas = ExtResource("5_e4p4u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mptv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo5aq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ly3pr"]
 radius = 153.639
@@ -82,9 +97,49 @@ texture = ExtResource("2_m54kp")
 position = Vector2(700, -173)
 script = ExtResource("4_tspwf")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(2.65625, 2.57813)
-texture = ExtResource("1_7ueac")
+[node name="ShootPoint" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("7_7cboa")]
+position = Vector2(0, 94)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 50
+Active = false
+
+[node name="ShootPoint2" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("7_7cboa")]
+position = Vector2(44, 92)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 50
+ExtraAngle = 0.3
+Active = false
+
+[node name="ShootPoint3" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("7_7cboa")]
+position = Vector2(74, 77)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 50
+ExtraAngle = 0.5
+Active = false
+
+[node name="ShootPoint4" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("7_7cboa")]
+position = Vector2(-44, 92)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 50
+ExtraAngle = -0.3
+Active = false
+
+[node name="ShootPoint5" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("7_7cboa")]
+position = Vector2(-74, 77)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 50
+ExtraAngle = -0.5
+Active = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -24)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mptv6")
 metadata/_edit_lock_ = true
 
 [node name="ForceField" type="Sprite2D" parent="CharacterBody2D"]
