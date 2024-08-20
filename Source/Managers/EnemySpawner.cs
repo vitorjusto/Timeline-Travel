@@ -240,6 +240,9 @@ public partial class EnemySpawner : Node2D
 		{
 			RemoveEnemy(Enemies[0]);
 		}
+
+		ClearEnemySection();
+		GetTree().Root.GetNode<Player>("/root/Main/Player").ResetTargetCount();
 	}
 
 	[Signal]

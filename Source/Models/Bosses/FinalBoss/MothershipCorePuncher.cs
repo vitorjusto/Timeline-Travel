@@ -26,6 +26,7 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AniPuncher"));
 	}
+	
 	public override void _Process(double delta)
 	{
 		_damageAnimator.Process();

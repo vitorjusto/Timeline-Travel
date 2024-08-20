@@ -1,18 +1,70 @@
-[gd_scene load_steps=10 format=3 uid="uid://c50narwpq7goe"]
+[gd_scene load_steps=16 format=3 uid="uid://c50narwpq7goe"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_4inkl"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalStage.cs" id="1_8idn7"]
 [ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_i2w48"]
 [ext_resource type="Script" path="res://Source/Models/Misc/NodeModulatorRedWhite.cs" id="3_g3obs"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_5gnbe"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalAngryCore.cs" id="4_lfwfv"]
+[ext_resource type="Texture2D" uid="uid://dyopnjb4wdvb5" path="res://Assets/Bosses/FinalBoss/MothershipCore/MothershipCore.png" id="6_7iv13"]
 [ext_resource type="PackedScene" uid="uid://dfvw876betv86" path="res://Scenes/Bosses/BossLevelThree/DimentionalStarship.tscn" id="6_vp135"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwsxg"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on03e"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_8r6b0"]
+resource_name = "new_animation"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 7, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.352941), Color(1, 0, 0, 0.352941), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvdar"]
+_data = {
+"new_animation": SubResource("Animation_8r6b0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2qai"]
+atlas = ExtResource("6_7iv13")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtgmd"]
+atlas = ExtResource("6_7iv13")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhnau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2qai")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtgmd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiyyl"]
-size = Vector2(100, 100)
+size = Vector2(183, 253)
 
 [node name="FinalStage" type="Node2D"]
 script = ExtResource("1_8idn7")
@@ -420,24 +472,40 @@ offset_right = 1247.99
 offset_bottom = 1278.01
 theme_override_styles/panel = SubResource("StyleBoxFlat_hwsxg")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="ParallaxBackground"]
+layer = 1
+
+[node name="Panel" type="Panel" parent="ParallaxBackground/ParallaxBackground"]
+modulate = Color(1, 0, 0, 0.230197)
+offset_right = 1404.0
+offset_bottom = 904.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_on03e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxBackground/Panel"]
+root_node = NodePath("../..")
+autoplay = "new_animation"
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_cvdar")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(592, 176)
+position = Vector2(700, 176)
 script = ExtResource("4_lfwfv")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0.250008, 0)
-scale = Vector2(1.55469, 1.5625)
-texture = ExtResource("4_5gnbe")
-metadata/_edit_lock_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lhnau")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, 11.5)
 shape = SubResource("RectangleShape2D_yiyyl")
 metadata/_edit_lock_ = true
 
 [node name="DimentionalStarship" parent="." instance=ExtResource("6_vp135")]
-visible = false
-position = Vector2(591, 391)
+position = Vector2(-564, -532)
 EndLevel = false
+EmitLight = false
 
 [connection signal="OnDestroyed" from="CharacterBody2D" to="." method="OnCoreDestroyed"]
 [connection signal="OnDestroyed" from="CharacterBody2D" to="DimentionalStarship" method="OnFinalBossDestroyed"]

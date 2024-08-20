@@ -24,7 +24,7 @@ public class DimentionalStarshipGoingVisibleState : IState
     {
         var animatedSprite = _node.GetNode<Node2D>("AnimatedSprite2D");
         animatedSprite.Modulate = Color.Color8(255, 255, 255, _opacity);
-        
+
         _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
 
         _opacity += 10;

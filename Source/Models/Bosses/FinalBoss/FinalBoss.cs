@@ -8,7 +8,7 @@ using Shooter.Source.Models.Bosses.FinalBoss.States;
 
 public partial class FinalBoss : Node2D
 {
-	private EFinalBossState _bossLevelState = EFinalBossState.TimelineTwoFour;
+	private EFinalBossState _bossLevelState = EFinalBossState.TheWall;
 	private IState _state;
 
 	public override void _Ready()
@@ -22,6 +22,7 @@ public partial class FinalBoss : Node2D
 		DisableNodeHelpers.DisableNodeIncludingChildren(GetNode("FinalStage"));
 
         VerifyFinalPowerUp();
+		GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").ClearEnemySection();
 	}
 
     private void VerifyFinalPowerUp()

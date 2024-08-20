@@ -18,11 +18,12 @@ public partial class FinalStage : Node2D
     public override void _Ready()
 	{
 		_enemyManager = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		GetNode<AnimationPlayer>("ParallaxBackground/ParallaxBackground/Panel/AnimationPlayer").Stop();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		GetNode<AnimationPlayer>("ParallaxBackground/ParallaxBackground/Panel/AnimationPlayer").Play();
 		if(_state is not null)
 		{
 			if(_state.Process())
@@ -49,26 +50,29 @@ public partial class FinalStage : Node2D
 			enemies = new List<EnemySection>()
             {
                 new EnemySection(10, false, new DOrbiter()),
+                new EnemySection(10, false, new DOrbiter()),
+                new EnemySection(10, false, new DOrbiter()),
+                new EnemySection(10, false, new DOrbiter()),
                 new EnemySection(50, true, new DOrbiter()),
             };
 		}else if(enemySection == 1)
 		{
 			enemies = new List<EnemySection>()
             {
-                new EnemySection(10, false, new DBomber(100)),
-                new EnemySection(10, false, new DBomber(200)),
-                new EnemySection(10, false, new DBomber(300)),
-                new EnemySection(10, false, new DBomber(400)),
-                new EnemySection(10, false, new DBomber(500)),
-                new EnemySection(10, false, new DBomber(600)),
-                new EnemySection(10, false, new DBomber(700)),
-                new EnemySection(10, false, new DBomber(800)),
-                new EnemySection(10, false, new DBomber(900)),
-                new EnemySection(10, false, new DBomber(1000)),
-                new EnemySection(10, false, new DBomber(1100)),
-                new EnemySection(10, false, new DBomber(1200)),
-                new EnemySection(10, false, new DBomber(1300)),
-                new EnemySection(10, false, new DBomber(1400)),
+                new EnemySection(30, false, new DBomber(100)),
+                new EnemySection(30, false, new DBomber(200)),
+                new EnemySection(30, false, new DBomber(300)),
+                new EnemySection(30, false, new DBomber(400)),
+                new EnemySection(30, false, new DBomber(500)),
+                new EnemySection(30, false, new DBomber(600)),
+                new EnemySection(30, false, new DBomber(700)),
+                new EnemySection(30, false, new DBomber(800)),
+                new EnemySection(30, false, new DBomber(900)),
+                new EnemySection(30, false, new DBomber(1000)),
+                new EnemySection(30, false, new DBomber(1100)),
+                new EnemySection(30, false, new DBomber(1200)),
+                new EnemySection(30, false, new DBomber(1300)),
+                new EnemySection(30, false, new DBomber(1400)),
             };
 		}else if(enemySection == 2)
 		{
@@ -163,25 +167,52 @@ public partial class FinalStage : Node2D
 		{
 			enemies = new List<EnemySection>()
             {
-                new EnemySection(10, false, new DGooder(100, true),
-											new DGooder(200, true),
-											new DGooder(300, true)),
+				new EnemySection(10, false,
+							new DReinforcedCommon(250, 5),
+							new DReinforcedCommon(300, 5),
+							new DReinforcedCommon(350, 5),
+							new DReinforcedCommon(400, 5),
+							new DReinforcedCommon(450, 5),
+							new DReinforcedCommon(500, 5),
+							new DReinforcedCommon(550, 5),
+							new DReinforcedCommon(600, 5),
+							new DReinforcedCommon(650, 5),
+							new DReinforcedCommon(700, 5),
+							new DReinforcedCommon(750, 5),
+							new DReinforcedCommon(800, 5),
+							new DReinforcedCommon(850, 5),
+							new DReinforcedCommon(900, 5),
+							new DReinforcedCommon(950, 5),
+							new DReinforcedCommon(1000, 5),
+							new DReinforcedCommon(1050, 5),
+							new DReinforcedCommon(1100, 5),
+							new DReinforcedCommon(1150, 5),
+							new DReinforcedCommon(1200, 5),
+							new DReinforcedCommon(1250, 5)),
             };
 		}else if(enemySection == 7)
 		{
 			enemies = new List<EnemySection>()
             {
-                new EnemySection(50, false, new DLazer(500, 100)),
-                new EnemySection(50, false, new DLazer(400, 100)),
-                new EnemySection(50, false, new DLazer(600, 100))
+                new(30, false, new DLazer(100, 200)),
+                new(30, false, new DLazer(200, 200)),
+                new(30, false, new DLazer(300, 200)),
+                new(30, false, new DLazer(400, 200)),
+                new(30, false, new DLazer(500, 200)),
+
+                new(30, false, new DLazer(1300, 200)),
+                new(30, false, new DLazer(1200, 200)),
+                new(30, false, new DLazer(1100, 200)),
+                new(30, false, new DLazer(1000, 200)),
+                new(30, true, new DLazer(900, 200)),
             };
 		}else if(enemySection == 8)
 		{
 			enemies = new List<EnemySection>()
             {
-                new EnemySection(10, false, new DShoter(500, EEnemyProjectileType.Light),
-											new DShoter(400, EEnemyProjectileType.Normal),
-											new DShoter(700, EEnemyProjectileType.Normal)),
+                new EnemySection(40, false,
+											new DShoter(100, EEnemyProjectileType.Normal),
+											new DShoter(1300, EEnemyProjectileType.Normal)),
             };
 		}else if(enemySection == 9)
 		{
@@ -281,6 +312,7 @@ public partial class FinalStage : Node2D
 		_state = new Exploding(node, removeEnemy: false);
 		_boss = node;
 		_enemyManager.RemoveAllEnemies();
+
 	}
 
 	[Signal]

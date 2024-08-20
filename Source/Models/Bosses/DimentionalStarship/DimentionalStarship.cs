@@ -8,6 +8,8 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
     private int _hp = 60;
     [Export]
     public bool EndLevel = true;
+    [Export]
+    public bool EmitLight = true;
     private DamageAnimationPlayer _damageAnimator;
     public IState _state;
 
@@ -15,6 +17,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
     {
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
         _state = new DimentionalStarshipGoingInvisibleState(this);
+
     }
 
     public override void _Process(double delta)
@@ -29,6 +32,8 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
         _state = _state.NextState();
     
         _damageAnimator.Process();
+        GetNode<Node2D>("LevelThreeLight").Visible = EmitLight;
+        
     }
 
     public void Destroy()
@@ -53,7 +58,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
 
     public void OnFinalBossDestroyed(Node2D node)
     {
-        _state = new DimentionalStarshipGoingInvisibleState(this);
+        _state = new Exploding(this, 300, removeEnemy: EndLevel, positionOffSet: new Vector2(0, 200));
     }
 
     public EnemyBoundy GetBoundy()
