@@ -1,24 +1,99 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddctoyk3npe81"]
+[gd_scene load_steps=26 format=3 uid="uid://ddctoyk3npe81"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/angryCoreBase.cs" id="1_gjyg8"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_kk7b0"]
 [ext_resource type="Texture2D" uid="uid://cuf1sdjadaueu" path="res://Assets/Background/LevelEleven/CoreBackground.png" id="2_hf4le"]
 [ext_resource type="Script" path="res://Source/Models/Misc/NodeModulatorRedWhite.cs" id="3_es4fh"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="4_kbaab"]
-[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCore1.cs" id="5_uhm8c"]
+[ext_resource type="PackedScene" uid="uid://ct61kpiv1kam1" path="res://Scenes/Misc/RegularShootPoint.tscn" id="6_0k326"]
 [ext_resource type="Texture2D" uid="uid://b32vklrbcxkaa" path="res://Assets/Bosses/Concept/ForceField.png" id="6_8oq5b"]
 [ext_resource type="Script" path="res://Scenes/Bosses/FinalBoss/CoreProtector.cs" id="6_iy5fe"]
+[ext_resource type="Texture2D" uid="uid://dlx3ytaldx2t6" path="res://Assets/Bosses/FinalBoss/MothershipCore/CoreProtector.png" id="6_roavp"]
 [ext_resource type="PackedScene" uid="uid://ddhqdn4kgj7qm" path="res://Scenes/Bosses/FinalBoss/ChequerActack.tscn" id="7_0jmni"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/ChequerActackContainer.cs" id="7_7n8h2"]
+[ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCoreFirstState.cs" id="10_5p2ty"]
+[ext_resource type="Texture2D" uid="uid://dyopnjb4wdvb5" path="res://Assets/Bosses/FinalBoss/MothershipCore/MothershipCore.png" id="11_btrmd"]
+[ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="13_ydivq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u2qh"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiahg"]
-size = Vector2(64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mvaf"]
+atlas = ExtResource("6_roavp")
+region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_88abq"]
-size = Vector2(178, 165)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dxoa"]
+atlas = ExtResource("6_roavp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n35d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mvaf")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dxoa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiahg"]
+size = Vector2(109, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doqkk"]
+atlas = ExtResource("6_roavp")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf4fw"]
+atlas = ExtResource("6_roavp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0fb5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doqkk")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf4fw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjtct"]
+size = Vector2(109.5, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_282u3"]
+atlas = ExtResource("11_btrmd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pd3ec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_282u3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebf42"]
+radius = 139.032
 
 [node name="AngryMotherShipCore" type="Node2D"]
 script = ExtResource("1_gjyg8")
@@ -428,14 +503,30 @@ offset_bottom = 1278.01
 theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-position = Vector2(490, 239)
+position = Vector2(380, 239)
 script = ExtResource("6_iy5fe")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D2"]
-texture = ExtResource("4_kbaab")
-metadata/_edit_lock_ = true
+[node name="RegularShootPoint" parent="CharacterBody2D2" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
+position = Vector2(50, 24)
+Parent = NodePath("..")
+Speed = Vector2(0.7, 2)
+Active = false
+Timer = 60
+
+[node name="RegularShootPoint2" parent="CharacterBody2D2" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
+position = Vector2(-50, 24)
+Parent = NodePath("..")
+Speed = Vector2(-0.7, 2)
+Active = false
+Timer = 60
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+position = Vector2(0, -28)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_6n35d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(0.5, -25.5)
 shape = SubResource("RectangleShape2D_eiahg")
 metadata/_edit_lock_ = true
 
@@ -719,8 +810,32 @@ column = 2
 row = 5
 
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
-position = Vector2(874, 239)
+position = Vector2(1020, 239)
 script = ExtResource("6_iy5fe")
+
+[node name="RegularShootPoint" parent="CharacterBody2D3" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
+position = Vector2(50, 25)
+Parent = NodePath("..")
+Speed = Vector2(0.7, 2)
+Active = false
+Timer = 60
+
+[node name="RegularShootPoint2" parent="CharacterBody2D3" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
+position = Vector2(-50, 25)
+Parent = NodePath("..")
+Speed = Vector2(-0.7, 2)
+Active = false
+Timer = 60
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3"]
+position = Vector2(0, -28)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_j0fb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+position = Vector2(-0.25, -25.5)
+shape = SubResource("RectangleShape2D_hjtct")
+metadata/_edit_lock_ = true
 
 [node name="ChequerAtackContainer" type="Node2D" parent="CharacterBody2D3"]
 script = ExtResource("7_7n8h2")
@@ -1001,23 +1116,15 @@ position = Vector2(-128, 320)
 column = 2
 row = 5
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D3"]
-texture = ExtResource("4_kbaab")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
-shape = SubResource("RectangleShape2D_eiahg")
-metadata/_edit_lock_ = true
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(679, 136)
-script = ExtResource("5_uhm8c")
+script = ExtResource("10_5p2ty")
+FinalPosition = 175
 EntreringStage = false
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(2.78125, 2.60938)
-texture = ExtResource("4_kbaab")
-metadata/_edit_lock_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_pd3ec")
 
 [node name="ForceField" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -7.62939e-06)
@@ -1025,8 +1132,47 @@ scale = Vector2(4.84375, 4.84375)
 texture = ExtResource("6_8oq5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_88abq")
+shape = SubResource("CircleShape2D_ebf42")
 metadata/_edit_lock_ = true
+
+[node name="ShootPoint" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
+position = Vector2(0, 91)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+Active = false
+
+[node name="ShootPoint2" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
+position = Vector2(-33, 90)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = -0.3
+Active = false
+
+[node name="ShootPoint3" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
+position = Vector2(-57, 78)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = -0.5
+Active = false
+
+[node name="ShootPoint4" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
+position = Vector2(33, 91)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = 0.3
+Active = false
+
+[node name="ShootPoint5" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
+position = Vector2(58, 77)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = 0.5
+Active = false
 
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="." method="OnProtectorDestoyed"]
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="CharacterBody2D3" method="OnOtherProtectorDestroyed"]

@@ -13,6 +13,7 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 
 	private bool _activated = false;
 	private int _timer = 0;
+	private byte _opacity = 0;
 
 	public override void _Ready()
 	{
@@ -31,7 +32,11 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 
 		if(_timer > 10)
 			Deactivate();
-
+		else
+		{
+			Modulate = Color.Color8(255, 255, 255, _opacity);
+			_opacity -= 15;
+		}
 	}
 
     private void Deactivate()
@@ -48,6 +53,8 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 		Visible = true;
 		_timer = 0;
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+
+		_opacity = 150;
     }
 
     public void Destroy()

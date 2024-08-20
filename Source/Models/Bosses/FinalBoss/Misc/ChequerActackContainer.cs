@@ -7,6 +7,8 @@ public partial class ChequerActackContainer : Node2D
 	private int _timer;
     private ChequerActack _mainNode;
 
+    public bool Active = true;
+
     public override void _Ready()
 	{
 		_mainNode = GetNode<ChequerActack>("MainNode");
@@ -23,9 +25,12 @@ public partial class ChequerActackContainer : Node2D
 
     public override void _Process(double delta)
 	{
+		if(!Active)
+			return;
+			
 		_timer++;
 
-		if(_timer > 100)
+		if(_timer > 50)
 		{
 			_mainNode.Activate();
 			_timer = 0;

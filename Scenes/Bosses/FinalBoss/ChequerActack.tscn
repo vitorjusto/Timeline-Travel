@@ -1,10 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddhqdn4kgj7qm"]
+[gd_scene load_steps=12 format=3 uid="uid://ddhqdn4kgj7qm"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/Misc/ChequerActack.cs" id="1_8wpl5"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="1_nphrf"]
+[ext_resource type="Texture2D" uid="uid://bkaj75whn1411" path="res://Assets/Bosses/FinalBoss/MothershipCore/ChequerActtackFrame.png" id="2_u1c60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7xe6"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf53u"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c65jw"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b205x"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohn8l"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqddx"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62qv2"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jj6q"]
+atlas = ExtResource("2_u1c60")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cjmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf53u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c65jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b205x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohn8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqddx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62qv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jj6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="CharacterBody2D"]
 script = ExtResource("1_8wpl5")
@@ -13,5 +70,7 @@ script = ExtResource("1_8wpl5")
 visible = false
 shape = SubResource("RectangleShape2D_b7xe6")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-texture = ExtResource("1_nphrf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6cjmb")
+autoplay = "default"
