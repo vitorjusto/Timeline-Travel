@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx4ub5nnajut4"]
+[gd_scene load_steps=11 format=3 uid="uid://dx4ub5nnajut4"]
 
 [ext_resource type="PackedScene" uid="uid://dn6km325lq2tu" path="res://Scenes/Background/BackgroundLevelTimelineEleven.tscn" id="1_opg3o"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/TimelinesStates/TimelineEleven.cs" id="1_pvd04"]
 [ext_resource type="Script" path="res://Scenes/Bosses/FinalBoss/BombThrower.cs" id="2_pucnp"]
 [ext_resource type="Texture2D" uid="uid://b82f5m05v1d54" path="res://Assets/Bosses/FinalBoss/BombThrower/BombThrower.png" id="4_id4vh"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="5_wyvuu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e670l"]
+font = ExtResource("5_wyvuu")
+font_size = 60
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acvh5"]
 atlas = ExtResource("4_id4vh")
@@ -39,6 +44,15 @@ size = Vector2(168, 164)
 script = ExtResource("1_pvd04")
 
 [node name="BackgroundLevelSeven" parent="." instance=ExtResource("1_opg3o")]
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1400.0
+offset_bottom = 900.0
+text = "TIMELINE 11"
+label_settings = SubResource("LabelSettings_e670l")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(728, 224)

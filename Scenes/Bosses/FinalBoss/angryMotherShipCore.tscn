@@ -93,7 +93,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebf42"]
-radius = 139.032
+radius = 181.177
 
 [node name="AngryMotherShipCore" type="Node2D"]
 script = ExtResource("1_gjyg8")
@@ -1123,27 +1123,27 @@ FinalPosition = 175
 EntreringStage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_pd3ec")
 
 [node name="ForceField" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -7.62939e-06)
-scale = Vector2(4.84375, 4.84375)
+position = Vector2(-1, 0)
+scale = Vector2(6.14063, 6.20313)
 texture = ExtResource("6_8oq5b")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_ebf42")
-metadata/_edit_lock_ = true
 
 [node name="ShootPoint" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
-position = Vector2(0, 91)
+position = Vector2(-2, 118)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 Active = false
 
 [node name="ShootPoint2" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
-position = Vector2(-33, 90)
+position = Vector2(-42, 118)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
@@ -1151,7 +1151,7 @@ ExtraAngle = -0.3
 Active = false
 
 [node name="ShootPoint3" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
-position = Vector2(-57, 78)
+position = Vector2(-73, 103)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
@@ -1159,7 +1159,7 @@ ExtraAngle = -0.5
 Active = false
 
 [node name="ShootPoint4" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
-position = Vector2(33, 91)
+position = Vector2(42, 118)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
@@ -1167,7 +1167,7 @@ ExtraAngle = 0.3
 Active = false
 
 [node name="ShootPoint5" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
-position = Vector2(58, 77)
+position = Vector2(74, 100)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80

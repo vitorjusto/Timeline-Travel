@@ -3,14 +3,23 @@ using System;
 
 public partial class TimelineEleven : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
+	private int _timer;
 	public override void _Ready()
 	{
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(_timer == 200)
+		{
+			GetNode<Label>("Label").Visible = false;
+			return;
+		}
+
+		if(_timer % 10 == 0)
+			GetNode<Label>("Label").Visible = !GetNode<Label>("Label").Visible;
+
+		_timer++;
 	}
 
 	[Signal]

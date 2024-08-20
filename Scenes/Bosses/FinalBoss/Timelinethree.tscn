@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf3jkv7064sr"]
+[gd_scene load_steps=5 format=3 uid="uid://bf3jkv7064sr"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/TimelinesStates/Timelinethree.cs" id="1_50qwv"]
 [ext_resource type="PackedScene" uid="uid://cfs5tc7grqqai" path="res://Scenes/Background/BackgroundLevelThree.tscn" id="1_cbase"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_ul6vo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8byr6"]
+font = ExtResource("2_ul6vo")
+font_size = 60
 
 [node name="Timelinethree" type="Node2D"]
 script = ExtResource("1_50qwv")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1400.0
+offset_bottom = 900.0
+text = "TIW37INE E"
+label_settings = SubResource("LabelSettings_8byr6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundLevelThree" parent="." instance=ExtResource("1_cbase")]
