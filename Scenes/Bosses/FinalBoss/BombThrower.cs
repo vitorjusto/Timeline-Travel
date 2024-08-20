@@ -6,10 +6,12 @@ using Shooter.Source.Models.Misc;
 
 public partial class BombThrower : Node2D, IEnemy
 {
-    private int _hp = 100;
+    private int _hp = 400;
 	private int _timer;
     private EnemySpawner _enemySpawner;
     private IState _state;
+    private DamageAnimationPlayer _damageAnimator;
+    private WaveSpeed _yspeed;
 
     public void Destroy()
     {
@@ -18,8 +20,12 @@ public partial class BombThrower : Node2D, IEnemy
         if(_hp == 0)
         {
             _state = new Exploding(this, removeEnemy: false);
-        }
+            _damageAnimator.PlayDefaultAnimation();
 
+        }else if(_hp > 0)
+        {
+            _damageAnimator.PlayDamageAnimation();
+        }
     }
 
     public bool IsImortal()
@@ -29,7 +35,10 @@ public partial class BombThrower : Node2D, IEnemy
 
     public override void _Ready()
     {
+        _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
         _enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+
+        _yspeed = new WaveSpeed(-2, 10, Position.Y);
     } 
 
     public override void _Process(double delta)
@@ -44,6 +53,8 @@ public partial class BombThrower : Node2D, IEnemy
             
             return;
         }
+
+        _damageAnimator.Process();
 
         _timer++;
 
@@ -67,6 +78,8 @@ public partial class BombThrower : Node2D, IEnemy
 
             _timer = 0;
         }
+
+        Position = new Vector2(Position.X, _yspeed.Update());
 	}
 
     public EnemyBoundy GetBoundy()

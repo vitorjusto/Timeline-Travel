@@ -1,12 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx4ub5nnajut4"]
+[gd_scene load_steps=9 format=3 uid="uid://dx4ub5nnajut4"]
 
 [ext_resource type="PackedScene" uid="uid://dn6km325lq2tu" path="res://Scenes/Background/BackgroundLevelTimelineEleven.tscn" id="1_opg3o"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/TimelinesStates/TimelineEleven.cs" id="1_pvd04"]
-[ext_resource type="Texture2D" uid="uid://d2yvbpmbsysh" path="res://Assets/Enemies/EnemyPlaceholder.png" id="2_mmb2s"]
 [ext_resource type="Script" path="res://Scenes/Bosses/FinalBoss/BombThrower.cs" id="2_pucnp"]
+[ext_resource type="Texture2D" uid="uid://b82f5m05v1d54" path="res://Assets/Bosses/FinalBoss/BombThrower/BombThrower.png" id="4_id4vh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acvh5"]
+atlas = ExtResource("4_id4vh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq05u"]
+atlas = ExtResource("4_id4vh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lv0mw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acvh5")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq05u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54w2n"]
-size = Vector2(176, 176)
+size = Vector2(168, 164)
 
 [node name="TimelineEleven" type="Node2D"]
 script = ExtResource("1_pvd04")
@@ -17,13 +44,12 @@ script = ExtResource("1_pvd04")
 position = Vector2(728, 224)
 script = ExtResource("2_pucnp")
 
-[node name="EnemyPlaceholder" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-1.78814e-06, 1.43051e-06)
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("2_mmb2s")
-metadata/_edit_lock_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lv0mw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_54w2n")
 metadata/_edit_lock_ = true
 
