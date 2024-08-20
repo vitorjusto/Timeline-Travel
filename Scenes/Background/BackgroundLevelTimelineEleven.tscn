@@ -215,6 +215,7 @@ texture = ExtResource("7_ej0ad")
 layer = -4
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground5" instance=ExtResource("2_m2p2n")]
+motion_mirroring = Vector2(3000, 0)
 XSpeed = -0.3
 YSpeed = 0.3
 
@@ -375,26 +376,30 @@ texture = ExtResource("2_c13le")
 layer = -6
 
 [node name="MovingParallaxLayer" parent="ParallaxBackground" instance=ExtResource("2_m2p2n")]
+motion_mirroring = Vector2(0, 990)
 YSpeed = 0.3
 
-[node name="Panel2" type="Panel" parent="ParallaxBackground/MovingParallaxLayer"]
+[node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+position = Vector2(952, 600)
+scale = Vector2(1.47992, 1.4096)
+texture = ExtResource("10_hwds8")
+
+[node name="MovingParallaxLayer2" parent="ParallaxBackground" instance=ExtResource("2_m2p2n")]
+YSpeed = 0.3
+
+[node name="Panel2" type="Panel" parent="ParallaxBackground/MovingParallaxLayer2"]
 offset_left = -48.0
 offset_top = -688.0
 offset_right = 1632.0
 offset_bottom = 848.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8t1fo")
 
-[node name="Panel" type="Panel" parent="ParallaxBackground/MovingParallaxLayer"]
+[node name="Panel" type="Panel" parent="ParallaxBackground/MovingParallaxLayer2"]
 offset_left = -56.0
 offset_top = -1264.0
 offset_right = 1856.0
 offset_bottom = -584.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sm73y")
-
-[node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
-position = Vector2(944, -2024)
-scale = Vector2(1.47992, 1.4096)
-texture = ExtResource("10_hwds8")
 
 [node name="ParallaxBackground7" type="ParallaxBackground" parent="."]
 layer = 1
