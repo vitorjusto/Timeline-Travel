@@ -1,7 +1,7 @@
 using Godot;
 using Shooter.Source.Interfaces;
 
-public partial class HpUp : CharacterBody2D, IPowerUp
+public partial class HpUp : Node2D, IPowerUp
 {
     public void OnPickUp()
     {
@@ -15,7 +15,7 @@ public partial class HpUp : CharacterBody2D, IPowerUp
 		QueueFree();
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
 	{
 		Position = new Vector2(Position.X, Position.Y + 2);
 	}

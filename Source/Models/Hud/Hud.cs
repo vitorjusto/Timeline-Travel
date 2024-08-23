@@ -9,6 +9,12 @@ public partial class Hud : Node2D
 	private int _time = 0;
 	public bool IsShowingTimelineLabel => _showingTimelineLabel;
 	private bool _isGamePaused;
+    private GameManager _game;
+
+    public override void _Ready()
+	{
+		_game = GetTree().Root.GetNode<GameManager>("/root/Main");
+	}
 
 	public override void _Process(double delta)
 	{
@@ -77,7 +83,7 @@ public partial class Hud : Node2D
 
     public void PauseGame()
     {
-		if(_showingTimelineLabel || _showingWarningBoss)
+		if(_showingTimelineLabel || _showingWarningBoss || _game.IsBlackScreen)
 			return;
 
         var lblPause = GetNode<Label>("lblPause");
@@ -103,6 +109,14 @@ public partial class Hud : Node2D
 
 		if(nodeParent is not Hud)
 			nodeParent.SetProcess(!_isGamePaused);
+		
+		if(nodeParent is AnimatedSprite2D animated)
+		{
+			if(_isGamePaused)
+				animated.Stop();
+			else
+				animated.Play();
+		}
     }
 
 	public void ShowTimelineLabel(int currentLevel)
