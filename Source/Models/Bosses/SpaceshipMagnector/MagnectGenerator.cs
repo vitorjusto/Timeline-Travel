@@ -24,8 +24,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 			return;
 
 		EmitSignal("OnEnemyDestroyed");
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        enemySpawner.RemoveEnemy(this);
+		EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
     }
 
     public bool IsImortal()

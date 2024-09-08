@@ -39,9 +39,7 @@ public partial class Bomber : CharacterBody2D, IEnemy
 
     public void OnScreenExited()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
 	public bool IsImortal()
@@ -72,10 +70,7 @@ public partial class Bomber : CharacterBody2D, IEnemy
 		projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, -2.5f, 5));
 		projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, -2.5f, -5));
 
-
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 	}
 
     public EnemyBoundy GetBoundy()

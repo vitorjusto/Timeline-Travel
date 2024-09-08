@@ -12,9 +12,7 @@ public partial class LazerPart : CharacterBody2D, IEnemy, INonExplodable
 	{
 		if(_time > MaxTimer)
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        	enemySpawner.RemoveEnemy(this);
+        	EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 		}
 		_time++;
 	}
@@ -23,7 +21,6 @@ public partial class LazerPart : CharacterBody2D, IEnemy, INonExplodable
 	{
 		return true;
 	}
-
 
     public void Destroy()
     {

@@ -58,9 +58,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 			}
 		}else
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        	enemySpawner.RemoveEnemy(this);
+        	EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 		}
 	}
 
@@ -86,9 +84,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 
     public void OnScreenExited()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
 	public bool IsImortal()

@@ -33,7 +33,7 @@ public partial class SpaceScrap : CharacterBody2D, IEnemy
 
     public void OnScreenExited()
     {
-        Destroy();
+		EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
 	public void Destroy()
@@ -41,8 +41,7 @@ public partial class SpaceScrap : CharacterBody2D, IEnemy
         if(SpaceScrapType == ESpaceScrapType.Bomber)
             Explode();
 
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-		enemySpawner.RemoveEnemy(this);
+		EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
     }
 
     public void Explode()

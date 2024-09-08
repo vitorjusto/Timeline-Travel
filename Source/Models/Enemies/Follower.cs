@@ -77,9 +77,7 @@ public partial class Follower : CharacterBody2D, IEnemy
 
     public void OnScreenExited()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
 	public bool IsImortal()
@@ -90,9 +88,7 @@ public partial class Follower : CharacterBody2D, IEnemy
 
     public void Destroy()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
     }
 
     public EnemyBoundy GetBoundy()

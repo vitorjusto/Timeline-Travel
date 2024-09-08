@@ -101,7 +101,7 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 
 		if(_hp == 0)
 		{
-			GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").RemoveEnemy(this);
+			EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 			_projectiles.RemoveAllProjectiles();
 			
 			EmitSignal("BossDefeated");

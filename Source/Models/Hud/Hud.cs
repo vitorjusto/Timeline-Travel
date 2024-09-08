@@ -4,6 +4,8 @@ using System;
 
 public partial class Hud : Node2D
 {
+	private static Hud _hud;
+	public int Score;
     private bool _showingTimelineLabel;
 	private bool _showingWarningBoss;
 	private int _time = 0;
@@ -14,6 +16,7 @@ public partial class Hud : Node2D
     public override void _Ready()
 	{
 		_game = GetTree().Root.GetNode<GameManager>("/root/Main");
+		_hud = this;
 	}
 
 	public override void _Process(double delta)
@@ -62,6 +65,12 @@ public partial class Hud : Node2D
 
 		if(Input.IsActionJustPressed("pause"))
 			OnPausePressed();
+	}
+
+	public static void AddScore(int score)
+	{
+		_hud.Score += score;
+		_hud.GetNode<Label>("lblScore").SetDeferred("text", _hud.Score.ToString("0000000000"));
 	}
 
 	public void PlayerHpUpdated(int hp)

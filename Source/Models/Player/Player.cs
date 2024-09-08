@@ -210,8 +210,7 @@ public partial class Player : Area2D
     {
         Hp = 0;
 
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-		enemySpawner.AddExplosion(Position.X, Position.Y);
+		EnemySpawner.GetEnemySpawner().AddExplosion(Position.X, Position.Y, addScore: false);
 		Visible = false;
 
 		_playerDestroyed = true;

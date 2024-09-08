@@ -123,6 +123,16 @@ theme_override_font_sizes/font_size = 50
 text = "PAUSE"
 label_settings = SubResource("LabelSettings_c2lr6")
 
+[node name="lblScore" type="Label" parent="."]
+offset_left = 827.0
+offset_top = 47.0
+offset_right = 1305.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 50
+text = "0000000000"
+label_settings = SubResource("LabelSettings_767yk")
+horizontal_alignment = 2
+
 [node name="lblHp" type="Label" parent="."]
 offset_left = 343.0
 offset_top = 45.0

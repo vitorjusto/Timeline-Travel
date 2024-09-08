@@ -43,7 +43,7 @@ public partial class Lighting : Node2D, IEnemy, INonExplodable
 	private void MakeLightning()
 	{
 
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+		var enemySpawner = EnemySpawner.GetEnemySpawner();
         enemySpawner.AddEnemy(new DLightningPart(Position.X, (_time * 320)));
 
 		if(_time == 4)
@@ -61,9 +61,7 @@ public partial class Lighting : Node2D, IEnemy, INonExplodable
 
     public void Destroy()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
     public EnemyBoundy GetBoundy()

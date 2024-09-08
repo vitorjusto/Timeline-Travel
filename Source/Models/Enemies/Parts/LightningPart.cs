@@ -16,13 +16,9 @@ public partial class LightningPart : CharacterBody2D, IEnemy, INonExplodable
 	}
     public override void _Process(double delta)
 	{
-
-
 		if(_time > 10)
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        	enemySpawner.RemoveEnemy(this);
+        	EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 		}
 		_time++;
 	}

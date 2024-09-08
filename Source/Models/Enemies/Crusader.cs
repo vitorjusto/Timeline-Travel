@@ -46,9 +46,7 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 
 		}else if(_time == 185)
 		{
-			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        	enemySpawner.RemoveEnemy(this);
+        	EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 		}
 
 		_time++;
@@ -61,9 +59,7 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 
     public void OnScreenExited()
     {
-        var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
     }
 
 	public bool IsImortal()

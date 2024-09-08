@@ -10,6 +10,11 @@ using Shooter.Source.Interfaces;
 
 public partial class EnemySpawner : Node2D
 {
+	private static EnemySpawner _enemySpawner;
+
+	public static EnemySpawner GetEnemySpawner()
+		=> _enemySpawner;
+
 	private int _time;
 	private int _timeSection;
 
@@ -33,6 +38,8 @@ public partial class EnemySpawner : Node2D
 		
 		StartLevel();
 		_gameManager = GetTree().Root.GetNode<GameManager>("/root/Main");
+
+		_enemySpawner = this;
 	}
 
 	public void StartLevel()
@@ -168,12 +175,7 @@ public partial class EnemySpawner : Node2D
 
 	public void RemoveEnemy(Node2D node)
 	{
-		var enemy = Enemies.Find((x) => x == node);
-
 		Enemies.Remove(node);
-
-		if(node is not INonExplodable)
-			AddExplosion(node.Position.X, node.Position.Y);
 
 		node.QueueFree();
 
@@ -185,6 +187,14 @@ public partial class EnemySpawner : Node2D
 			hud.ShowWarningBoss();
 			_time = 0;
 		}
+	}
+
+	public void DestroyEnemy(Node2D node)
+	{
+		if(node is not INonExplodable)
+			AddExplosion(node.Position.X, node.Position.Y);
+		
+		RemoveEnemy(node);
 	}
 
     private void ShowWarningBoss()
@@ -199,13 +209,16 @@ public partial class EnemySpawner : Node2D
     }
 
 
-    public void AddExplosion(float x, float y)
+    public void AddExplosion(float x, float y, bool addScore = true)
     {
         var scene = GD.Load<PackedScene>("res://Scenes/Misc/Explosion.tscn");
         var instance = (Explosion)scene.Instantiate();
 		instance.Position = new Vector2(x, y);
 
 		CallDeferred("add_child", instance);
+		
+		if(addScore)
+			Hud.AddScore(100);
     }
 
 	public void RemoveAllExplosions()

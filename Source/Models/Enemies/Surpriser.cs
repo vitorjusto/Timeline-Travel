@@ -89,7 +89,7 @@ public partial class Surpriser : Node2D, IEnemy
 
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
-        enemySpawner.RemoveEnemy(this);
+        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 
     }
 

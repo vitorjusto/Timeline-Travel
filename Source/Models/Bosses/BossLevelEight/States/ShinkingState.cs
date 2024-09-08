@@ -23,9 +23,8 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
             if(_node.Scale.X < 0.08)
             {
-                var enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-                enemySpawner.EndLevel();
-			    enemySpawner.RemoveEnemy(_node);
+                EnemySpawner.GetEnemySpawner().EndLevel();
+			    EnemySpawner.GetEnemySpawner().RemoveEnemy(_node);
             }
             
             return false;

@@ -9,7 +9,6 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
         private Player _player;
         private Panel _panel;
         private int _playerSpeed = -10;
-        private EnemySpawner _enemySpawner;
         private byte _panelOpacity = 0;
 
         public FinalTransitionState(Player player, Panel panel)
@@ -17,7 +16,6 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
             _player = player;
             _player.OnEndingLevel();
             _panel = panel;
-            _enemySpawner = _player.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
         }
 
         public IState NextState()
@@ -47,7 +45,7 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
 
         private void CreateExplosions()
         {
-            _enemySpawner.AddExplosion(new Random().Next(0, 1444), new Random().Next(0, 940));
+            EnemySpawner.GetEnemySpawner().AddExplosion(new Random().Next(0, 1444), new Random().Next(0, 940), addScore: false);
         }
 
         private void AnimatePlayer()
