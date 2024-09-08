@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://du5tghdgt0vbs"]
+
+[ext_resource type="Script" path="res://Scenes/GameOverScreen.cs" id="1_wyx0k"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_1l62e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxbcs"]
+font = ExtResource("2_1l62e")
+font_size = 60
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_wyx0k")
+
+[node name="lblTimeline" type="Label" parent="."]
+offset_right = 1400.0
+offset_bottom = 904.0
+theme_override_fonts/font = ExtResource("2_1l62e")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_yxbcs")
+horizontal_alignment = 1
+vertical_alignment = 1

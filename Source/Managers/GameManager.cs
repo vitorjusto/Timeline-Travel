@@ -30,6 +30,11 @@ public partial class GameManager : Node2D
 
 	public void OnPlayerDestroyed()
 	{
+		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		
+		if(player.Life == 0)
+			GetTree().ChangeSceneToFile("res://Scenes/GameOverScreen.tscn");
+
 		RestartLevel();
 	}
 
