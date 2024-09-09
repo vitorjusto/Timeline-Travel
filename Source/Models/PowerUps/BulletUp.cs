@@ -10,7 +10,12 @@ public partial class BulletUp : Node2D, IPowerUp
 		p.PlayerProjectileLevel += 1;
 
 		if(p.PlayerProjectileLevel > 5)
+		{
+			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+			player.AddLifeProgress();
+			
 			p.PlayerProjectileLevel = 5;
+		}
 			
 		QueueFree();
     }

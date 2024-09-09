@@ -5,7 +5,22 @@ using System;
 
 public partial class ProjectileManager : Node2D
 {
-	public int PlayerProjectileLevel = 1;
+	public int PlayerProjectileLevel { 
+		get => _playerProjectileLevel;
+		set  { SetPlayerProjectileLevel(value); }
+	}
+
+    private void SetPlayerProjectileLevel(int value)
+    {
+        _playerProjectileLevel = value;
+		EmitSignal("PlayerBulletUpdated", _playerProjectileLevel);
+    }
+
+    public int _playerProjectileLevel = 1;
+	
+	[Signal]
+	public delegate void PlayerBulletUpdatedEventHandler(int currentBullet);
+
 	public override void _Ready()
 	{
 		EnemiesProjectiles = new List<Node2D>();

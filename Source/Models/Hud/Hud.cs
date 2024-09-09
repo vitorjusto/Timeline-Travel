@@ -1,6 +1,4 @@
-using System.Runtime.InteropServices;
 using Godot;
-using System;
 
 public partial class Hud : Node2D
 {
@@ -27,13 +25,13 @@ public partial class Hud : Node2D
 
 			if(_time % 10 == 0)
 			{
-				var lblTimeline = GetNode<Label>("lblTimeline");
+				var lblTimeline = GetNode<Label>("ParallaxBackground/lblTimeline");
 				lblTimeline.Visible = !lblTimeline.Visible;
 			}
 
 			if(_time == 200)
 			{
-				var lblTimeline = GetNode<Label>("lblTimeline");
+				var lblTimeline = GetNode<Label>("ParallaxBackground/lblTimeline");
 				lblTimeline.Visible = false;
 				_time = 0;
 				_showingTimelineLabel = false;
@@ -46,13 +44,13 @@ public partial class Hud : Node2D
 
 			if(_time % 10 == 0)
 			{
-				var bossWarning = GetNode<Node2D>("BossWarning");
+				var bossWarning = GetNode<Node2D>("ParallaxBackground/BossWarning");
 				bossWarning.Visible = !bossWarning.Visible;
 			}
 
 			if(_time == 200)
 			{
-				var bossWarning = GetNode<Node2D>("BossWarning");
+				var bossWarning = GetNode<Node2D>("ParallaxBackground/BossWarning");
 				bossWarning.Visible = false;
 				_time = 0;
 				_showingWarningBoss = false;
@@ -70,18 +68,28 @@ public partial class Hud : Node2D
 	public static void AddScore(int score)
 	{
 		_hud.Score += score;
-		_hud.GetNode<Label>("lblScore").SetDeferred("text", _hud.Score.ToString("0000000000"));
+		_hud.GetNode<Label>("ParallaxBackground/lblScore").SetDeferred("text", _hud.Score.ToString("0000000000"));
 	}
 
 	public void PlayerHpUpdated(int hp)
 	{
-		var lblHp = GetNode<Label>("lblHp");
+		var lblHp = GetNode<Label>("ParallaxBackground/lblHp");
 		lblHp.Text = $"{hp}";
+
+		lblHp.Modulate = hp == 10? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
+	}
+
+	public void PlayerBulletUpdated(int bullet)
+	{
+		var lblBullet = GetNode<Label>("ParallaxBackground/lblBullet");
+		lblBullet.Text = $"{bullet}";
+
+		lblBullet.Modulate = bullet == 5? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
 	}
 
 	public void onPlayerLifeUpdated(int life)
 	{
-		var lblHp = GetNode<Label>("lblLife");
+		var lblHp = GetNode<Label>("ParallaxBackground/lblLife");
 		lblHp.Text = $"{life}";
 	}
 
@@ -95,7 +103,7 @@ public partial class Hud : Node2D
 		if(_showingTimelineLabel || _showingWarningBoss || _game.IsBlackScreen)
 			return;
 
-        var lblPause = GetNode<Label>("lblPause");
+        var lblPause = GetNode<Label>("ParallaxBackground/lblPause");
 		lblPause.Visible = !lblPause.Visible;
 		_isGamePaused = lblPause.Visible;
 
@@ -132,10 +140,10 @@ public partial class Hud : Node2D
 	{
 		_showingTimelineLabel = true;
 
-		var bossWarning = GetNode<Node2D>("BossWarning");
+		var bossWarning = GetNode<Node2D>("ParallaxBackground/BossWarning");
 		bossWarning.Visible = false;
 
-		var lblTimeline = GetNode<Label>("lblTimeline");
+		var lblTimeline = GetNode<Label>("ParallaxBackground/lblTimeline");
 		
 		if(currentLevel == 1)
 			lblTimeline.Text = $"OUR TIMELINE";
@@ -156,7 +164,15 @@ public partial class Hud : Node2D
 
 	public void ShowCustomWarning(string name)
 	{
-		GetNode<AnimatedSprite2D>("AniCustomWarning").Play(name);
+		GetNode<AnimatedSprite2D>("ParallaxBackground/AniCustomWarning").Play(name);
 	}
 
+	public void OnPlayerLifeProgressOpdated(int lifeProgress, int maxLifeProgress)
+	{
+		var panel = GetNode<Panel>("ParallaxBackground/LifeProgressBar");
+
+		var whidth = lifeProgress * 64 / maxLifeProgress;
+
+		panel.Size = new Vector2(whidth, panel.Size.Y);
+	}
 }

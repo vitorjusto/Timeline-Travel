@@ -26,6 +26,8 @@ public partial class Player : Area2D
     public bool GetFinalPowerUp { get; internal set; }
 
     public int Life = 3;
+    private int _lifeProgress = 0;
+    private int _maxLifeProgress = 4;
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
@@ -33,6 +35,21 @@ public partial class Player : Area2D
     private int _minLimit = 32;
     private int _maxLimit;
     private int _targetCount;
+
+	public void AddLifeProgress()
+	{
+		_lifeProgress++;
+
+		if(_lifeProgress == _maxLifeProgress)
+		{
+			_maxLifeProgress++;
+			Life++;
+			_lifeProgress = 0;
+			EmitSignal("PlayerLifeUpdated", Life);
+		}
+
+		EmitSignal("PlayerLifeProgressUpdated", _lifeProgress, _maxLifeProgress);
+	}
 
     public override void _Ready()
 	{
@@ -151,7 +168,7 @@ public partial class Player : Area2D
 
 	public void OnPlayerBodyEntered(Node2D node)
 	{
-		if(_playerDestroyed || _playerImortal)
+		if(_playerDestroyed)
 			return;
 
 		if(node is IPowerUp)
@@ -165,6 +182,9 @@ public partial class Player : Area2D
 			EmitSignal("PlayerHpUpdated", Hp);
 			return;
 		}
+
+		if(_playerImortal)
+			return;
 
 		if(node is IEnemy)
 		{
@@ -222,6 +242,8 @@ public partial class Player : Area2D
 	public delegate void PlayerDestroyedEventHandler();	
 	[Signal]
 	public delegate void PlayerLifeUpdatedEventHandler(int life);
+	[Signal]
+	public delegate void PlayerLifeProgressUpdatedEventHandler(int lifeProgress, int maxLifeProgress);
 
 	public void SetSpeed(float xspeed, float yspeed, int limit = 5)
 	{

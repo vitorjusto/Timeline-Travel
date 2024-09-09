@@ -10,7 +10,11 @@ public partial class HpUp : Node2D, IPowerUp
 		player.Hp += 5;
 
 		if(player.Hp > 10)
+		{
+			player.AddLifeProgress();
+
 			player.Hp = 10;
+		}
 
 		QueueFree();
     }

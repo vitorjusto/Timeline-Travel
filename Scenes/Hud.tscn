@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bm27is2hj0xno"]
+[gd_scene load_steps=25 format=3 uid="uid://bm27is2hj0xno"]
 
 [ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
 [ext_resource type="Texture2D" uid="uid://nwwt2vhp6t4v" path="res://Assets/Misc/PauseButton.png" id="2_skput"]
@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c5c4e0sjl6pmm" path="res://Assets/Misc/HpHeart.png" id="5_vhthy"]
 [ext_resource type="Texture2D" uid="uid://d0tmatv34hhbj" path="res://Assets/Player/spaceship.png" id="6_6jbvm"]
 [ext_resource type="Texture2D" uid="uid://cwxt5hbcb5cdv" path="res://Assets/Bosses/SpaceshipMagnector/NoDash.png" id="6_vv4tk"]
+[ext_resource type="Texture2D" uid="uid://cahwglt044jud" path="res://Assets/Misc/BulletUp.png" id="8_d2v5p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncljb"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl04d"]
+bg_color = Color(0.0784314, 1, 0.0784314, 1)
 
 [sub_resource type="FontFile" id="FontFile_885gs"]
 subpixel_positioning = 0
@@ -31,14 +38,20 @@ cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_c2lr6"]
 font = ExtResource("3_r2m58")
 font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_767yk"]
 font = ExtResource("3_r2m58")
 font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqi1k"]
 font = ExtResource("3_r2m58")
 font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmi7a"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -46,10 +59,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_m8q50"]
 font = ExtResource("3_r2m58")
 font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ur8oy"]
 font = ExtResource("3_r2m58")
 font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_buh6u"]
 atlas = ExtResource("4_rcc7s")
@@ -112,58 +129,76 @@ animations = [{
 [node name="Hud" type="Node2D"]
 script = ExtResource("1_sofgy")
 
-[node name="lblPause" type="Label" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 120
+
+[node name="Panel" type="Panel" parent="ParallaxBackground"]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncljb")
+
+[node name="LifeProgressBar" type="Panel" parent="ParallaxBackground"]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 16.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fl04d")
+
+[node name="lblPause" type="Label" parent="ParallaxBackground"]
 visible = false
 offset_left = 610.0
 offset_top = 448.0
-offset_right = 798.0
+offset_right = 819.0
 offset_bottom = 534.0
 theme_override_fonts/font = SubResource("FontFile_885gs")
 theme_override_font_sizes/font_size = 50
 text = "PAUSE"
 label_settings = SubResource("LabelSettings_c2lr6")
 
-[node name="lblScore" type="Label" parent="."]
-offset_left = 827.0
-offset_top = 47.0
-offset_right = 1305.0
-offset_bottom = 133.0
+[node name="lblScore" type="Label" parent="ParallaxBackground"]
+offset_left = 831.0
+offset_top = 19.0
+offset_right = 1309.0
+offset_bottom = 105.0
 theme_override_font_sizes/font_size = 50
 text = "0000000000"
 label_settings = SubResource("LabelSettings_767yk")
 horizontal_alignment = 2
 
-[node name="lblHp" type="Label" parent="."]
-offset_left = 343.0
-offset_top = 45.0
-offset_right = 497.0
-offset_bottom = 131.0
+[node name="lblHp" type="Label" parent="ParallaxBackground"]
+modulate = Color(1, 1, 0, 1)
+offset_left = 311.0
+offset_top = 16.0
+offset_right = 465.0
+offset_bottom = 102.0
 theme_override_font_sizes/font_size = 50
 text = "10"
 label_settings = SubResource("LabelSettings_767yk")
 
-[node name="lblLife" type="Label" parent="."]
-offset_left = 136.0
-offset_top = 45.0
-offset_right = 182.0
-offset_bottom = 131.0
+[node name="lblLife" type="Label" parent="ParallaxBackground"]
+offset_left = 96.0
+offset_top = 19.0
+offset_right = 142.0
+offset_bottom = 105.0
 theme_override_fonts/font = SubResource("FontFile_885gs")
 theme_override_font_sizes/font_size = 50
 text = "3"
 label_settings = SubResource("LabelSettings_xqi1k")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 1297.0
-offset_top = 33.0
-offset_right = 1369.0
-offset_bottom = 105.0
+[node name="Button" type="Button" parent="ParallaxBackground"]
+offset_left = 1328.0
+offset_top = 7.0
+offset_right = 1400.0
+offset_bottom = 79.0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_mmi7a")
 icon = ExtResource("2_skput")
 flat = true
 icon_alignment = 1
 
-[node name="lblTimeline" type="Label" parent="."]
+[node name="lblTimeline" type="Label" parent="ParallaxBackground"]
 offset_right = 1400.0
 offset_bottom = 904.0
 theme_override_fonts/font = ExtResource("3_r2m58")
@@ -172,15 +207,16 @@ text = "TIMELINE 1"
 label_settings = SubResource("LabelSettings_m8q50")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="BossWarning" type="Node2D" parent="."]
+[node name="BossWarning" type="Node2D" parent="ParallaxBackground"]
 visible = false
 
-[node name="Warning2" type="Sprite2D" parent="BossWarning"]
+[node name="Warning2" type="Sprite2D" parent="ParallaxBackground/BossWarning"]
 position = Vector2(398, 450)
 texture = ExtResource("3_xy2mw")
 
-[node name="Label" type="Label" parent="BossWarning"]
+[node name="Label" type="Label" parent="ParallaxBackground/BossWarning"]
 offset_right = 1400.0
 offset_bottom = 904.0
 theme_override_font_sizes/font_size = 50
@@ -190,24 +226,39 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Warning" type="Sprite2D" parent="BossWarning"]
+[node name="Warning" type="Sprite2D" parent="ParallaxBackground/BossWarning"]
 position = Vector2(1005, 450)
 texture = ExtResource("3_xy2mw")
 
-[node name="AniCustomWarning" type="AnimatedSprite2D" parent="."]
+[node name="AniCustomWarning" type="AnimatedSprite2D" parent="ParallaxBackground"]
 position = Vector2(704, 336)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wrsm7")
 animation = &"None"
 speed_scale = 0.5
 
-[node name="HpHeart" type="Sprite2D" parent="."]
-position = Vector2(312, 77)
+[node name="HpHeart" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(280, 45)
 scale = Vector2(3, 3.25)
 texture = ExtResource("5_vhthy")
 
-[node name="Spaceship" type="Sprite2D" parent="."]
-position = Vector2(88, 64)
+[node name="lblBullet" type="Label" parent="ParallaxBackground"]
+offset_left = 205.0
+offset_top = 18.0
+offset_right = 359.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 50
+text = "1"
+label_settings = SubResource("LabelSettings_767yk")
+
+[node name="Bullet" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(174, 43)
+scale = Vector2(3, 3.25)
+texture = ExtResource("8_d2v5p")
+
+[node name="Spaceship" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(48, 48)
+scale = Vector2(2, 2)
 texture = ExtResource("6_6jbvm")
 
-[connection signal="pressed" from="Button" to="." method="OnPausePressed"]
+[connection signal="pressed" from="ParallaxBackground/Button" to="." method="OnPausePressed"]
