@@ -6,13 +6,17 @@ public partial class HpUp : Node2D, IPowerUp
     public void OnPickUp()
     {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		
+		if(player.Hp == 10)
+		{
+			player.AddLifeProgress();
+			return;
+		}
 
 		player.Hp += 5;
 
 		if(player.Hp > 10)
 		{
-			player.AddLifeProgress();
-
 			player.Hp = 10;
 		}
 
