@@ -100,6 +100,3 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
         return new();
     }
 }
-
-
-

@@ -164,7 +164,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1000)
                              , new DLighting(1200)),
                 
-                new(40, false, new DSpreader(100, EEnemyProjectileType.Light, 8)
+                new(80, false, new DSpreader(100, EEnemyProjectileType.Light, 8)
                              , new DSpreader(1300, EEnemyProjectileType.Light, 8)
                              , new DLighting(100)
                              , new DLighting(300)
@@ -174,7 +174,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
             
-                new(40, false
+                new(80, false
                              , new DLighting(200)
                              , new DLighting(400)
                              , new DLighting(600)
@@ -182,7 +182,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1000)
                              , new DLighting(1200)),
                 
-                new(30, false, new DSpreader(100, EEnemyProjectileType.Light, 8)
+                new(80, false, new DSpreader(100, EEnemyProjectileType.Light, 8)
                              , new DSpreader(1300, EEnemyProjectileType.Light, 8)
                              , new DLighting(100)
                              , new DLighting(300)
@@ -192,14 +192,14 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
             
-                new(30, false, new DLighting(200)
+                new(50, false, new DLighting(200)
                              , new DLighting(400)
                              , new DLighting(600)
                              , new DLighting(800)
                              , new DLighting(1000)
                              , new DLighting(1200)),
 
-                new(30, false, new DLighting(100)
+                new(50, false, new DLighting(100)
                              , new DLighting(300)
                              , new DLighting(500)
                              , new DLighting(700)
@@ -207,14 +207,14 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
 
-                new(30, false, new DLighting(200)
+                new(50, false, new DLighting(200)
                              , new DLighting(400)
                              , new DLighting(600)
                              , new DLighting(800)
                              , new DLighting(1000)
                              , new DLighting(1200)),
 
-                new(30, false, new DLighting(100)
+                new(50, false, new DLighting(100)
                              , new DLighting(300)
                              , new DLighting(500)
                              , new DLighting(700)
@@ -222,14 +222,14 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
 
-                new(30, false, new DLighting(200)
+                new(50, false, new DLighting(200)
                              , new DLighting(400)
                              , new DLighting(600)
                              , new DLighting(800)
                              , new DLighting(1000)
                              , new DLighting(1200)),
 
-                new(30, false, new DLighting(100)
+                new(50, false, new DLighting(100)
                              , new DLighting(300)
                              , new DLighting(500)
                              , new DLighting(700)
@@ -237,14 +237,14 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
 
-                new(30, false, new DLighting(200)
+                new(50, false, new DLighting(200)
                              , new DLighting(400)
                              , new DLighting(600)
                              , new DLighting(800)
                              , new DLighting(1000)
                              , new DLighting(1200)),
 
-                new(30, false, new DLighting(100)
+                new(50, false, new DLighting(100)
                              , new DLighting(300)
                              , new DLighting(500)
                              , new DLighting(700)
@@ -252,14 +252,6 @@ namespace Shooter.Source.Factories.Enemies
                              , new DLighting(1100)
                              , new DLighting(1300)),
 
-                new(20, true, new DLighting(200)
-                             , new DLighting(400)
-                             , new DLighting(600)
-                             , new DLighting(800)
-                             , new DLighting(1000)
-                             , new DLighting(1200)),
-
-                
                 new(50, false, new DCommon(100, 3)
                              , new DCommon(200, 3)
                              , new DCommon(300, 3)
