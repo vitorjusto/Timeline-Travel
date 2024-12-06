@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbshewwmnedw8"]
+
+[ext_resource type="Script" path="res://Source/Managers/AudioManager.cs" id="1_pigs6"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_pigs6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnAudioFinished"]
