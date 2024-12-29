@@ -322,7 +322,7 @@ namespace Shooter.Source.Factories.Enemies
                             , new DSurpriser(new Vector2(1000, 450)), new DSurpriser(new Vector2(400, 450))
                             , new DSurpriser(new Vector2(700, 750))),
                 
-                new(20, false, new DCommon(100, 5), new DCommon(200, 5), new DCommon(1300, 5), new DCommon(1200, 5)),
+                new(20, false, new DCommon(100, 5), new DCommon(200, 5), new DCommon(1300, 5), new DCommon(1200, 5)) { CheckpointId = 1 },
                 new(20, false, new DCommon(100, 5), new DCommon(200, 5), new DCommon(1300, 5), new DCommon(1200, 5)),
                 new(20, false, new DCommon(100, 5), new DCommon(200, 5), new DCommon(1300, 5), new DCommon(1200, 5)),
                 new(20, false, new DCommon(100, 5), new DCommon(200, 5), new DCommon(1300, 5), new DCommon(1200, 5)),
@@ -520,8 +520,6 @@ namespace Shooter.Source.Factories.Enemies
                 new(30, false, new DSurpriser(new Vector2(100, 100))),
             
             };
-            
-
         }
     }
 }

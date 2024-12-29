@@ -126,7 +126,7 @@ namespace Shooter.Source.Factories.Enemies
                 new(20, false, new DCommon(200, 5), new DSpreader(300, EEnemyProjectileType.Normal,5), new DCommon(400, 5), new DCommon(1000, 5), new DSpreader(1100, EEnemyProjectileType.Normal,5), new DCommon(1200, 5)),
                 new(20, true, new DCommon(200, 5), new DCommon(300, 5), new DCommon(400, 5), new DCommon(1000, 5), new DCommon(1100, 5), new DCommon(1200, 5)),
 
-                new(100, false, new DLazer(700, 150)),
+                new(100, false, new DLazer(700, 150)) { CheckpointId = 1 },
                 new(100, false, new DLazer(600, 1400), new DLazer(500, 1400), new DLazer(800, 1400), new DLazer(900, 1400)),
 
                 new(60, false, new DBlackHole(700, false, 3)),
@@ -173,7 +173,7 @@ namespace Shooter.Source.Factories.Enemies
                 new(40, true, new DCommon(700, 3)),
 
 
-                new(40, false, new DBlackHole(700, true, 4)),
+                new(40, false, new DBlackHole(700, true, 4)) { CheckpointId = 2 },
                 new(40, false, new DSpread(1300, EEnemyProjectileType.Normal, 4)),
                 new(40, false, new DSpread(100, EEnemyProjectileType.Normal, 4)),
 

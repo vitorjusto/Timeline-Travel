@@ -266,7 +266,7 @@ namespace Shooter.Source.Factories.Enemies
                               , new DGooder(700, true, 500)
                               , new DGooder(500, true, 500)
                               , new DGooder(900, true, 500)
-                              , new DGooder(1300, true, 500)),
+                              , new DGooder(1300, true, 500)) { CheckpointId = 1 },
                 
                 new(30, false, new DCommon(300, 5), new DCommon(400, 5), new DCommon(500, 5), new DCommon(1100, 5), new DCommon(1000, 5), new DCommon(900, 5)),
                 new(30, false, new DCommon(300, 5), new DCommon(400, 5), new DCommon(500, 5), new DCommon(1100, 5), new DCommon(1000, 5), new DCommon(900, 5)),

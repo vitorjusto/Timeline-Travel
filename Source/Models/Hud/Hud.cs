@@ -10,15 +10,24 @@ public partial class Hud : Node2D
 	public bool IsShowingTimelineLabel => _showingTimelineLabel;
 	private bool _isGamePaused;
     private GameManager _game;
+    public int CheckpointLabelTimer;
+    private Label _lblCheckpoint;
 
     public override void _Ready()
 	{
 		_game = GetTree().Root.GetNode<GameManager>("/root/Main");
 		_hud = this;
+        _lblCheckpoint = GetNode<Label>("ParallaxBackground/lblCheckpoint");
 	}
 
 	public override void _Process(double delta)
 	{
+        if(CheckpointLabelTimer > 0)
+        {
+            CheckpointLabelTimer--;
+            _lblCheckpoint.Visible = CheckpointLabelTimer > 0;
+        }
+
 		if(_showingTimelineLabel)
 		{
 			_time++;
@@ -64,6 +73,11 @@ public partial class Hud : Node2D
 		if(Input.IsActionJustPressed("pause"))
 			OnPausePressed();
 	}
+
+    public static void SetCheckpointTimer(int timer)
+    {
+        _hud.CheckpointLabelTimer = timer;
+    }
 
 	public static void AddScore(int score)
 	{

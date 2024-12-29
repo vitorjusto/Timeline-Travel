@@ -150,7 +150,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DCommon(1300, 2)),
 
                 
-                new(30, false, new DLazer(700, 1400), new DLazer(600, 1400), new DLazer(800, 1400)),
+                new(30, false, new DLazer(700, 1400), new DLazer(600, 1400), new DLazer(800, 1400)) { CheckpointId = 1 },
 
                 new(100, false, new DDasher(100), new DDasher(1300)),
 

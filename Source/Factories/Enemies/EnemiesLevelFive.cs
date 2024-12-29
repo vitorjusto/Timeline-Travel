@@ -52,7 +52,7 @@ namespace Shooter.Source.Factories.Enemies
                 new(50, false, new DCommon(300, 3), new DCommon(400, 3), new DCommon(500, 3), new DCommon(600, 3), new DCommon(700, 3), new DCommon(800, 3), new DCommon(900, 3), new DCommon(1000, 3), new DCommon(1100, 3)),
                 new(200, false,  new DSpreader(100, EEnemyProjectileType.Strong, 3),  new DSpreader(1300, EEnemyProjectileType.Strong, 3)),
                 
-                new(50, false, new DCommon(300, 3), new DCommon(400, 3), new DCommon(500, 3), new DCommon(600, 3), new DCommon(700, 3), new DCommon(800, 3), new DCommon(900, 3), new DCommon(1000, 3), new DCommon(1100, 3)),
+                new(50, false, new DCommon(300, 3), new DCommon(400, 3), new DCommon(500, 3), new DCommon(600, 3), new DCommon(700, 3), new DCommon(800, 3), new DCommon(900, 3), new DCommon(1000, 3), new DCommon(1100, 3)) { CheckpointId = 1 },
                 new(50, false, new DCommon(300, 3), new DSpread(400, EEnemyProjectileType.Normal, 3), new DSpread(500, EEnemyProjectileType.Normal, 3), new DSpread(600, EEnemyProjectileType.Normal, 3), new DSpread(700, EEnemyProjectileType.Normal, 3), new DSpread(800, EEnemyProjectileType.Normal, 3), new DSpread(900, EEnemyProjectileType.Normal, 3), new DSpread(1000, EEnemyProjectileType.Normal, 3), new DCommon(1100, 3)),
                 new(50, true, new DCommon(300, 3), new DCommon(400, 3), new DCommon(500, 3), new DCommon(600, 3), new DCommon(700, 3), new DCommon(800, 3), new DCommon(900, 3), new DCommon(1000, 3), new DCommon(1100, 3)),
             
@@ -253,7 +253,7 @@ namespace Shooter.Source.Factories.Enemies
                                new DSniper(1300, EEnemyProjectileType.Light)
                 ),
 
-                new(15, false, new DLazer(100, 200)),
+                new(15, false, new DLazer(100, 200))  { CheckpointId = 2 },
                 new(15, false, new DLazer(200, 2000)),
                 new(15, false, new DLazer(300, 2000)),
                 new(15, false, new DLazer(400, 2000)),

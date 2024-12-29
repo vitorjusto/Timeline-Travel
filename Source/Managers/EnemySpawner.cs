@@ -23,7 +23,7 @@ public partial class EnemySpawner : Node2D
 	private List<EnemySection> _enemySection;
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
-	public int CurrentLevel = 1;
+	public int CurrentLevel = 10;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -159,8 +159,11 @@ public partial class EnemySpawner : Node2D
 		}
 		var currentSection = _enemySection.First();
 
-        if(currentSection.CheckpointId > 0 && !BossApeared)
+        if(currentSection.CheckpointId > 0 && currentSection.CheckpointId != CheckpointId && !BossApeared)
+        {
             CheckpointId = currentSection.CheckpointId;
+            Hud.SetCheckpointTimer(100);
+        }
             
 		_enemySection.RemoveAt(0);
 

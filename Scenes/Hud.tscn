@@ -209,6 +209,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
+[node name="lblCheckpoint" type="Label" parent="ParallaxBackground"]
+visible = false
+offset_right = 1400.0
+offset_bottom = 904.0
+theme_override_fonts/font = ExtResource("3_r2m58")
+theme_override_font_sizes/font_size = 50
+text = "CHECKPOINT"
+label_settings = SubResource("LabelSettings_m8q50")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
 [node name="BossWarning" type="Node2D" parent="ParallaxBackground"]
 visible = false
 

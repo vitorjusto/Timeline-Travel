@@ -253,7 +253,7 @@ namespace Shooter.Source.Factories.Enemies
 
                 ////**Level 7//
                 
-                new(60, false, new DGooder(100, true, 1500)),
+                new(60, false, new DGooder(100, true, 1500)) { CheckpointId = 1 },
                 new(40, false, new DCommon(100, 4)
                              , new DCommon(200, 4)
                              , new DCommon(300, 4)
