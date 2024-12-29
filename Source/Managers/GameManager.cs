@@ -86,7 +86,8 @@ public partial class GameManager : Node2D
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 		enemySpawner.RestartLevel();
 		enemySpawner.CurrentLevel += 1;
-
+        enemySpawner.CheckpointId = 0;
+        
 		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 		projectileManager.RemoveAllProjectiles();
 

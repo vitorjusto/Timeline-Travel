@@ -30,6 +30,7 @@ public partial class EnemySpawner : Node2D
 	private bool _showingWarningBoss;
     private Node2D _boss;
 	private GameManager _gameManager;
+    public int CheckpointId;
 	
     public override void _Ready()
 	{
@@ -51,6 +52,11 @@ public partial class EnemySpawner : Node2D
 		hud.ShowTimelineLabel(CurrentLevel);
 
 		GetEnemyLevel();
+
+        if(CheckpointId == 0 || BossApeared)
+            return;
+        
+        _enemySection.RemoveRange(0, _enemySection.IndexOf(_enemySection.First((x) => x.CheckpointId == CheckpointId)));
 	}
 
 	public void AddEnemySection(List<EnemySection> enemies)
@@ -152,6 +158,10 @@ public partial class EnemySpawner : Node2D
 			return;
 		}
 		var currentSection = _enemySection.First();
+
+        if(currentSection.CheckpointId > 0 && !BossApeared)
+            CheckpointId = currentSection.CheckpointId;
+            
 		_enemySection.RemoveAt(0);
 
 		_timeSection = currentSection.Time;

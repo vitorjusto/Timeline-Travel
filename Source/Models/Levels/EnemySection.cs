@@ -11,6 +11,7 @@ namespace Shooter.Source.Models.Levels
         public List<IEnemyDummy> Enemies;
         public int Time = 0;
         public bool WaitForEveryEnemy = false;
+        public int CheckpointId = 0;
 
         public EnemySection(int time, bool waitForEveryEnemy, params IEnemyDummy[] enemies)
         {

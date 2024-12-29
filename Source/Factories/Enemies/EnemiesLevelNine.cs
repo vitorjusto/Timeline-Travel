@@ -250,7 +250,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DReinforcedCommon(1380, 4)
                 ),
 
-                new(20, false, new DFollower(50, EEnemyProjectileType.Light)),
+                new(20, false, new DFollower(50, EEnemyProjectileType.Light)) { CheckpointId = 1 },
                 new(20, false, new DFollower(100, EEnemyProjectileType.Light)),
                 new(20, false, new DFollower(150, EEnemyProjectileType.Light)),
                 new(20, false, new DFollower(200, EEnemyProjectileType.Light)),
@@ -1218,7 +1218,7 @@ namespace Shooter.Source.Factories.Enemies
                               , new DCrusader(1000, 6f)
                    ),
 
-                new(15, false, new DFollower(100, EEnemyProjectileType.Light)),
+                new(15, false, new DFollower(100, EEnemyProjectileType.Light)) { CheckpointId = 2 },
                 new(15, false, new DFollower(200, EEnemyProjectileType.Light)),
                 new(15, false, new DFollower(300, EEnemyProjectileType.Light)),
                 new(15, false, new DFollower(400, EEnemyProjectileType.Light)),
