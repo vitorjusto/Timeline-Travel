@@ -4,7 +4,9 @@ using System;
 public partial class Timelinethree : Node2D
 {
 	private int _timer = 0;
-	public override void _Ready()
+    private INextStateFinalBoss _nextState;
+
+    public override void _Ready()
 	{
 	}
 
@@ -12,13 +14,14 @@ public partial class Timelinethree : Node2D
 	{
 		_timer++;
 		if(_timer == 20)
-			EmitSignal("OnNextStage");
+            _nextState.OnNextState();
 
-		
 		if(_timer % 10 == 0)
 			GetNode<Label>("Label").Visible = !GetNode<Label>("Label").Visible;
 	}
 
-	[Signal]
-	public delegate void OnNextStageEventHandler();
+    public void SetNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
 }

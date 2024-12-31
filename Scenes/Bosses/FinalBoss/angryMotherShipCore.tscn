@@ -505,19 +505,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3u2qh")
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(380, 239)
 script = ExtResource("6_iy5fe")
+Id = 1
 
 [node name="RegularShootPoint" parent="CharacterBody2D2" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
 position = Vector2(50, 24)
 Parent = NodePath("..")
 Speed = Vector2(0.7, 2)
-Active = false
 Timer = 60
 
 [node name="RegularShootPoint2" parent="CharacterBody2D2" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
 position = Vector2(-50, 24)
 Parent = NodePath("..")
 Speed = Vector2(-0.7, 2)
-Active = false
 Timer = 60
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
@@ -812,19 +811,18 @@ row = 5
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
 position = Vector2(1020, 239)
 script = ExtResource("6_iy5fe")
+Id = 2
 
 [node name="RegularShootPoint" parent="CharacterBody2D3" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
 position = Vector2(50, 25)
 Parent = NodePath("..")
 Speed = Vector2(0.7, 2)
-Active = false
 Timer = 60
 
 [node name="RegularShootPoint2" parent="CharacterBody2D3" node_paths=PackedStringArray("Parent") instance=ExtResource("6_0k326")]
 position = Vector2(-50, 25)
 Parent = NodePath("..")
 Speed = Vector2(-0.7, 2)
-Active = false
 Timer = 60
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3"]
@@ -1140,7 +1138,6 @@ position = Vector2(-2, 118)
 NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
-Active = false
 
 [node name="ShootPoint2" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(-42, 118)
@@ -1148,7 +1145,6 @@ NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 ExtraAngle = -0.3
-Active = false
 
 [node name="ShootPoint3" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(-73, 103)
@@ -1156,7 +1152,6 @@ NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 ExtraAngle = -0.5
-Active = false
 
 [node name="ShootPoint4" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(42, 118)
@@ -1164,7 +1159,6 @@ NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 ExtraAngle = 0.3
-Active = false
 
 [node name="ShootPoint5" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(74, 100)
@@ -1172,7 +1166,6 @@ NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 ExtraAngle = 0.5
-Active = false
 
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="." method="OnProtectorDestoyed"]
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="CharacterBody2D3" method="OnOtherProtectorDestroyed"]

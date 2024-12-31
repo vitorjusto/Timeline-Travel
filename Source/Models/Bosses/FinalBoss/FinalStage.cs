@@ -14,6 +14,8 @@ public partial class FinalStage : Node2D
 	
 	private IState _state;
     private Node2D _boss;
+    private INextStateFinalBoss _nextState;
+    private bool _bossDestroing;
 
     public override void _Ready()
 	{
@@ -26,11 +28,11 @@ public partial class FinalStage : Node2D
 		GetNode<AnimationPlayer>("ParallaxBackground/ParallaxBackground/Panel/AnimationPlayer").Play();
 		if(_state is not null)
 		{
-			if(_state.Process())
+			if(_state.Process() && !_bossDestroing)
 			{
-				EmitSignal("OnNextStage");
+                _nextState.OnNextState();
 				_boss.QueueFree();
-				SetProcess(false);
+                _bossDestroing = true;
 			}
 			return;
 		}
@@ -315,6 +317,9 @@ public partial class FinalStage : Node2D
 
 	}
 
-	[Signal]
-	public delegate void OnNextStageEventHandler();
+    public void SetNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
+
 }

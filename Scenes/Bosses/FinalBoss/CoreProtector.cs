@@ -10,6 +10,9 @@ public partial class CoreProtector : CharacterBody2D, IEnemy
     private DamageAnimationPlayer _damageAnimator;
     private bool _destroyed;
 
+    [Export]
+    public int Id;
+
     public override void _Ready()
 	{
 		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
@@ -61,15 +64,6 @@ public partial class CoreProtector : CharacterBody2D, IEnemy
     public EnemyBoundy GetBoundy()
     {
         return new();
-    }
-
-    public void EnableProtector()
-    {
-        GetNode<RegularShootPoint>("RegularShootPoint").Active = true;
-        GetNode<RegularShootPoint>("RegularShootPoint2").Active = true;
-		_canTakeDamage = true;
-
-		GetNode<ChequerActackContainer>("ChequerAtackContainer").Active = true;
     }
 
     [Signal]

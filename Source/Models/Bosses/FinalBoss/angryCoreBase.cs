@@ -7,9 +7,8 @@ public partial class angryCoreBase : Node2D
 {
 	private IState _state;
 	private Node2D _destroingNode;
-	public override void _Ready()
-	{
-	}
+    private int _protectorIdDestroyed;
+    private INextStateFinalBoss _nextState;
 
 	public override void _Process(double delta)
 	{
@@ -18,7 +17,7 @@ public partial class angryCoreBase : Node2D
 			
 		if(_state.Process())
 		{
-			EmitSignal("OnNextStage");
+            _nextState.OnNextState();
 			_state = _state.NextState();
 			_destroingNode.CallDeferred("queue_free");
 		}
@@ -28,27 +27,32 @@ public partial class angryCoreBase : Node2D
 	{
 		_state = new Exploding(node, removeEnemy: false);
 		_destroingNode = node;
+        _protectorIdDestroyed = ((CoreProtector)node).Id;
 
         GetNode<MothershipCoreFirstState>("CharacterBody2D").Disable();
 	}
 
-    public void EnableCore()
+    public void AddNextState(INextStateFinalBoss nextState)
     {
-		try
-		{
-        	GetNode<CoreProtector>("CharacterBody2D2").EnableProtector();
-
-		}catch(Exception){ }
-
-		try
-		{
-        	GetNode<CoreProtector>("CharacterBody2D3").EnableProtector();
-
-		}catch(Exception){ }
-
-        GetNode<MothershipCoreFirstState>("CharacterBody2D").Enable();
+        _nextState = nextState;
     }
 
-    [Signal]
-	public delegate void OnNextStageEventHandler();
+    public int StopProcess()
+    {
+        return _protectorIdDestroyed;
+    }
+
+    public void RemoveProtector(int removeProtectorId)
+    {
+        if(removeProtectorId == 0)
+            return;
+        
+        if(removeProtectorId == 1)
+        {
+            GetNode("CharacterBody2D2").CallDeferred("queue_free");
+        }else if(removeProtectorId == 2)
+        {
+            GetNode("CharacterBody2D3").CallDeferred("queue_free");
+        }
+    }
 }

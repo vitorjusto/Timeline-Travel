@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Shooter.Source.Models.Misc;
 
@@ -30,14 +31,7 @@ public partial class MothershipCoreFirstState : CharacterBody2D
 		if(Position.Y < FinalPosition)
 			return;
 
-		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
-		EntreringStage = false;
-
-		GetNode<ShootPoint>("ShootPoint").Active = true;
-		GetNode<ShootPoint>("ShootPoint2").Active = true;
-		GetNode<ShootPoint>("ShootPoint3").Active = true;
-		GetNode<ShootPoint>("ShootPoint4").Active = true;
-		GetNode<ShootPoint>("ShootPoint5").Active = true;
+        EnterOnFinalPosition();
     }
 
 	public void OnPuncherDestroyed(Node2D node)
@@ -65,6 +59,20 @@ public partial class MothershipCoreFirstState : CharacterBody2D
 	public void Enable()
     {
         GetNode<ShootPoint>("ShootPoint").Active = true;
+		GetNode<ShootPoint>("ShootPoint2").Active = true;
+		GetNode<ShootPoint>("ShootPoint3").Active = true;
+		GetNode<ShootPoint>("ShootPoint4").Active = true;
+		GetNode<ShootPoint>("ShootPoint5").Active = true;
+    }
+
+    public void EnterOnFinalPosition()
+    {
+        Position = new Vector2(Position.X, FinalPosition);
+        
+		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
+		EntreringStage = false;
+
+		GetNode<ShootPoint>("ShootPoint").Active = true;
 		GetNode<ShootPoint>("ShootPoint2").Active = true;
 		GetNode<ShootPoint>("ShootPoint3").Active = true;
 		GetNode<ShootPoint>("ShootPoint4").Active = true;

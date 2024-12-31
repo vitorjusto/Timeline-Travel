@@ -1,36 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b83tcux8dkpvy"]
+[gd_scene load_steps=3 format=3 uid="uid://b83tcux8dkpvy"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalBoss.cs" id="1_b6frb"]
-[ext_resource type="PackedScene" uid="uid://bhmtiqixlsj56" path="res://Scenes/Bosses/FinalBoss/FirstState.tscn" id="1_uvane"]
-[ext_resource type="PackedScene" uid="uid://cav7yasi24bq" path="res://Scenes/Bosses/FinalBoss/MotherShipCore1.tscn" id="3_2poc8"]
-[ext_resource type="PackedScene" uid="uid://clj66ailvb4fm" path="res://Scenes/Bosses/FinalBoss/TimelineEightFinalBoss.tscn" id="4_cgju8"]
-[ext_resource type="PackedScene" uid="uid://bw0tfphfvqk1f" path="res://Scenes/Bosses/FinalBoss/TimelineTwoFourBoss.tscn" id="5_dm0lx"]
-[ext_resource type="PackedScene" uid="uid://ddctoyk3npe81" path="res://Scenes/Bosses/FinalBoss/angryMotherShipCore.tscn" id="6_dan5n"]
-[ext_resource type="PackedScene" uid="uid://dx4ub5nnajut4" path="res://Scenes/Bosses/FinalBoss/TimelineEleven.tscn" id="7_fg7kp"]
-[ext_resource type="PackedScene" uid="uid://bf3jkv7064sr" path="res://Scenes/Bosses/FinalBoss/Timelinethree.tscn" id="8_ape5u"]
-[ext_resource type="PackedScene" uid="uid://c50narwpq7goe" path="res://Scenes/Bosses/FinalBoss/FinalStage.tscn" id="9_2ys65"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_doo4o"]
 bg_color = Color(1, 1, 1, 1)
 
 [node name="FinalBossBase" type="Node2D"]
 script = ExtResource("1_b6frb")
-
-[node name="FirstState" parent="." instance=ExtResource("1_uvane")]
-
-[node name="MotherShipCore1" parent="." instance=ExtResource("3_2poc8")]
-
-[node name="TimelineEightFinalBoss" parent="." instance=ExtResource("4_cgju8")]
-
-[node name="TimelineTwoFourBoss" parent="." instance=ExtResource("5_dm0lx")]
-
-[node name="AngryMotherShipCore" parent="." instance=ExtResource("6_dan5n")]
-
-[node name="TimelineEleven" parent="." instance=ExtResource("7_fg7kp")]
-
-[node name="Timelinethree" parent="." instance=ExtResource("8_ape5u")]
-
-[node name="FinalStage" parent="." instance=ExtResource("9_2ys65")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = 128
@@ -42,12 +18,3 @@ offset_top = -3.0
 offset_right = 1464.0
 offset_bottom = 914.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_doo4o")
-
-[connection signal="OnFinishedState" from="FirstState" to="." method="OnNextState"]
-[connection signal="OnNextState" from="MotherShipCore1" to="." method="OnNextState"]
-[connection signal="OnNextState" from="TimelineEightFinalBoss" to="." method="OnNextState"]
-[connection signal="OnNextLevel" from="TimelineTwoFourBoss" to="." method="OnNextState"]
-[connection signal="OnNextStage" from="AngryMotherShipCore" to="." method="OnNextState"]
-[connection signal="OnNextStage" from="TimelineEleven" to="." method="OnNextState"]
-[connection signal="OnNextStage" from="Timelinethree" to="." method="OnNextState"]
-[connection signal="OnNextStage" from="FinalStage" to="." method="OnNextState"]

@@ -285,6 +285,7 @@ metadata/_edit_lock_ = true
 [node name="CharacterBody2D4" type="CharacterBody2D" parent="."]
 position = Vector2(150, -260)
 script = ExtResource("6_ueqpb")
+Id = 1
 
 [node name="AniPuncher" type="AnimatedSprite2D" parent="CharacterBody2D4"]
 scale = Vector2(3, 3)
@@ -297,6 +298,7 @@ shape = SubResource("RectangleShape2D_mdway")
 [node name="CharacterBody2D6" type="CharacterBody2D" parent="."]
 position = Vector2(1250, -260)
 script = ExtResource("6_ueqpb")
+Id = 2
 
 [node name="AniPuncher" type="AnimatedSprite2D" parent="CharacterBody2D6"]
 scale = Vector2(3, 3)

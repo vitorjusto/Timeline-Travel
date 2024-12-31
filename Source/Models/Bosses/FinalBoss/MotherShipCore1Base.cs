@@ -8,6 +8,8 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 	private IState _state; 
 	private Node2D _destroingNode;
 	private bool _nextStateCalled;
+    private int _destroyedPuncherId;
+    private INextStateFinalBoss _nextState;
 	
 	public override void _Process(double delta)
 	{
@@ -19,7 +21,7 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 
 		if(!_nextStateCalled)
 		{
-			EmitSignal("OnNextState");
+            _nextState.OnNextState();
 			_nextStateCalled = true;
 		}
 
@@ -31,6 +33,7 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 		_state = new Exploding(node, removeEnemy: true);
 		node.SetProcess(false);
 		_destroingNode = node;
+        _destroyedPuncherId = ((MothershipCorePuncher)node).Id;
 	}
 
     public void OnDisable()
@@ -45,13 +48,15 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 		GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").RemoveAllExplosions();
     }
 
-    public void StopProcess()
+    public int StopProcess()
     {
 		GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
 
         GetNode<MothershipCoreFirstState>("CharacterBody2D").Disable();
         GetNode<MothershipCore1>("CharacterBody2D2").Disable();
         GetNode<MothershipCore1>("CharacterBody2D3").Disable();
+
+        return _destroyedPuncherId;
     }
 
 	public void StartProcess()
@@ -61,6 +66,30 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
         GetNode<MothershipCore1>("CharacterBody2D3").Enable();
     }
 
-    [Signal]
-	public delegate void OnNextStateEventHandler();
+    public void RemovePuncher(int removePuncherId)
+    {
+        if(removePuncherId == 0)
+            return;
+
+        GetNode<MothershipCoreFirstState>("CharacterBody2D").EnterOnFinalPosition();
+        
+        GetNode<MothershipCore1>("CharacterBody2D2").EnterOnFinalPosition();
+        GetNode<MothershipCore1>("CharacterBody2D3").EnterOnFinalPosition();
+
+        if(removePuncherId == 1)
+        {
+            GetNode<MothershipCorePuncher>("CharacterBody2D4").CallDeferred("queue_free");
+            GetNode<MothershipCorePuncher>("CharacterBody2D6").EnterOnFinalPosition();
+        }
+        else if(removePuncherId == 2)
+        {
+            GetNode<MothershipCorePuncher>("CharacterBody2D6").CallDeferred("queue_free");
+            GetNode<MothershipCorePuncher>("CharacterBody2D4").EnterOnFinalPosition();
+        }
+    }
+
+    public void AddNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
 }

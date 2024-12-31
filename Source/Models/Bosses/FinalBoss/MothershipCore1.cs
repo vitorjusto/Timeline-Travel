@@ -32,6 +32,18 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		if(Position.Y < FinalPosition)
 			return;
 		
+        EnterOnFinalPosition();
+    }
+
+	public void OnPuncherDestroyed(Node2D node)
+	{
+		this.SetProcess(false);
+	}
+
+    public void EnterOnFinalPosition()
+    {
+        Position = new Vector2(Position.X, FinalPosition);
+
 		_ySpeed = new WaveSpeed(-1, 5, Position.Y);
 		EntreringStage = false;
 
@@ -42,11 +54,6 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		GetNode<ShootPoint>("ShootPoint5").Active = true;
 		GetNode<ShootPoint>("ShootPoint6").Active = true;
     }
-
-	public void OnPuncherDestroyed(Node2D node)
-	{
-		this.SetProcess(false);
-	}
 
 	public void Disable()
 	{

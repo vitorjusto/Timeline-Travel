@@ -5,6 +5,8 @@ using Shooter.Source.Models.Misc;
 
 public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 {
+    [Export]
+    public int Id;
     private WaveSpeed _idleySpeed;
     private float _ySpeed;
     private float _xSpeed;
@@ -104,10 +106,8 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		
 		if(Position.Y < 175)
 			return;
-		
-		_idleySpeed = new WaveSpeed(-1, 5, Position.Y);
-		_idlePosition = Position;
-		_entreringStage = false;
+
+		EnterOnFinalPosition();
     }
 
 	public void Destroy()
@@ -146,6 +146,14 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
     public EnemyBoundy GetBoundy()
     {
         return new();
+    }
+
+    public void EnterOnFinalPosition()
+    {
+        Position = new Vector2(Position.X, 175);
+		_entreringStage = false;
+        _idlePosition = Position;
+		_idleySpeed = new WaveSpeed(-1, 5, Position.Y);		
     }
 
     [Signal]

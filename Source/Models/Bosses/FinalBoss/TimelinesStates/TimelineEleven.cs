@@ -4,7 +4,9 @@ using System;
 public partial class TimelineEleven : Node2D
 {
 	private int _timer;
-	public override void _Ready()
+    private INextStateFinalBoss _nextState;
+
+    public override void _Ready()
 	{
 	}
 
@@ -22,11 +24,13 @@ public partial class TimelineEleven : Node2D
 		_timer++;
 	}
 
-	[Signal]
-	public delegate void OnNextStageEventHandler();
-
 	public void OnBossDestroyed()
 	{
-		EmitSignal("OnNextStage");
+		_nextState.OnNextState();
 	}
+
+    internal void SetNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
 }

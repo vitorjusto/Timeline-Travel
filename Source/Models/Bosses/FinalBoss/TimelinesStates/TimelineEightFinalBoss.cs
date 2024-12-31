@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 using Shooter.Source.Dumies.Enemies;
@@ -10,6 +9,8 @@ public partial class TimelineEightFinalBoss : Node2D
     private Label _lblTimeline;
 	private int _timer;
     private EnemySpawner _enemyManager;
+    private INextStateFinalBoss _nextState;
+    private bool _nextStateCalled;
 
     public override void _Ready()
 	{
@@ -19,14 +20,12 @@ public partial class TimelineEightFinalBoss : Node2D
 
 	public override void _Process(double delta)
 	{
-
-
 		if(_timer == 200)
 		{
-			if(_enemyManager.EnemiesSectionEmpty)
+			if(_enemyManager.EnemiesSectionEmpty && !_nextStateCalled)
 			{
-				EmitSignal("OnNextState");
-				SetProcess(false);
+				_nextState.OnNextState();
+				_nextStateCalled = true;
 			}
 			
 			return;
@@ -114,7 +113,8 @@ public partial class TimelineEightFinalBoss : Node2D
 		_enemyManager.GetNextSection();
     }
 
-
-	[Signal]
-	public delegate void OnNextStateEventHandler();
+    public void SetNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
 }

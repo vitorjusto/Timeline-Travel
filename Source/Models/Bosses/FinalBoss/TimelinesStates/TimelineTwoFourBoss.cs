@@ -10,6 +10,7 @@ public partial class TimelineTwoFourBoss : Node2D
     private EnemySpawner _enemySpawner;
     private Label lbltimeline1;
     private Label lbltimeline2;
+    private INextStateFinalBoss _nextState;
 
     public override void _Ready()
 	{
@@ -76,10 +77,12 @@ public partial class TimelineTwoFourBoss : Node2D
     public void OnConceptDestroyed()
     {
         _enemySpawner.RemoveAllEnemies();
-        EmitSignal("OnNextLevel");
+        _nextState.OnNextState();
+        GetNode<Node2D>("Concept").CallDeferred("queue_free");
     }
 
-    [Signal]
-    public delegate void OnNextLevelEventHandler();
-
+    public void SetNextState(INextStateFinalBoss nextState)
+    {
+        _nextState = nextState;
+    }
 }
