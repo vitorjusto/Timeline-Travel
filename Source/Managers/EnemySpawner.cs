@@ -31,7 +31,8 @@ public partial class EnemySpawner : Node2D
     private Node2D _boss;
 	private GameManager _gameManager;
     public int CheckpointId;
-	
+    private bool _removingExplosion;
+
     public override void _Ready()
 	{
 		Enemies = new List<Node2D>();
@@ -123,6 +124,11 @@ public partial class EnemySpawner : Node2D
 		else
 			VerifyEnemySection();
 
+        if(_removingExplosion)
+        {
+            RemoveAllExplosions();
+            _removingExplosion = false;
+        }
 	}
 
     private void WaitForTimelineLabel()
@@ -236,6 +242,7 @@ public partial class EnemySpawner : Node2D
 
 	public void RemoveAllExplosions()
     {
+        _removingExplosion = true;
 		foreach(var node in GetChildren())
 		{
 			if(node is Explosion explosion)

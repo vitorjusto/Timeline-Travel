@@ -17,7 +17,6 @@ public partial class angryCoreBase : Node2D
 			
 		if(_state.Process())
 		{
-            _nextState.OnNextState();
 			_state = _state.NextState();
 			_destroingNode.CallDeferred("queue_free");
 		}
@@ -30,6 +29,7 @@ public partial class angryCoreBase : Node2D
         _protectorIdDestroyed = ((CoreProtector)node).Id;
 
         GetNode<MothershipCoreFirstState>("CharacterBody2D").Disable();
+        _nextState.OnNextState();
 	}
 
     public void AddNextState(INextStateFinalBoss nextState)

@@ -8,6 +8,7 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
         public Panel _transitionPanel;
         private Player _player;
         private byte _opacity; 
+        private int _timer; 
 
         public FinalPowerUpGetTransitionState(Panel transitionPanel)
         {
@@ -23,10 +24,11 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
 
         public bool Process()
         {
-            if(_opacity < 254)
+            if(_timer < 150)
             {
-                _opacity += 2;
+                _opacity += (byte)(_opacity < 254? 2: 0);
                 _transitionPanel.Modulate = Color.Color8(255, 255, 255, _opacity);
+                _timer++;
             }else
             {
                 _player.SetDefaultLimit();

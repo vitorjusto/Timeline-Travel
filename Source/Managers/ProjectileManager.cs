@@ -64,8 +64,15 @@ public partial class ProjectileManager : Node2D
 
     private void ShootPlayerProjectileFinalPowerUp()
     {
-		AddPlayerProjectile(0, -20, -10);
-		AddPlayerProjectile(0, -20, 10);
+		AddPlayerProjectile(-6, -15, -10);
+		AddPlayerProjectile(-3, -20, -10);
+		AddPlayerProjectile(6, -15, -10);
+		AddPlayerProjectile(3, -20, -10);
+
+		AddPlayerProjectile(-6, -15, 10);
+		AddPlayerProjectile(-3, -20, 10);
+		AddPlayerProjectile(6, -15, 10);
+		AddPlayerProjectile(3, -20, 10);
 
 		AddPlayerProjectile(0, -20, -32);
 

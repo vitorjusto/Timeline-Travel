@@ -21,6 +21,7 @@ public partial class BombThrower : Node2D, IEnemy
         {
             _state = new Exploding(this, removeEnemy: false);
             _damageAnimator.PlayDefaultAnimation();
+            EmitSignal("OnDestroyed");
 
         }else if(_hp > 0)
         {
@@ -47,7 +48,6 @@ public partial class BombThrower : Node2D, IEnemy
         {
             if(_state.Process())
             {
-                EmitSignal("OnDestroyed");
                 QueueFree();
             }
             

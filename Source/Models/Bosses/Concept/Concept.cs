@@ -23,12 +23,6 @@ public partial class Concept : Node2D, IEnemy, INonExplodable
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 	}
 
-    public override void _Process(double delta)
-	{
-
-
-	}
-
 	public void Destroy()
 	{
 

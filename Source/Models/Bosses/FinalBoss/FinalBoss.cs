@@ -69,7 +69,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
             try
             {
-			    removeIdProtector = GetNode<angryCoreBase>("MotherShipCore1").StopProcess();
+			    removeIdProtector = GetNode<angryCoreBase>("AngryMotherShipCore").StopProcess();
 
             }catch{}
 		}
@@ -139,5 +139,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		{
 			_state = new FinalTransitionState(GetTree().Root.GetNode<Player>("/root/Main/Player"), GetNode<Panel>("ParallaxBackground/PanelContainer"));
 		}
+        
+        EnemySpawner.GetEnemySpawner().RemoveAllExplosions();
 	}
 }
