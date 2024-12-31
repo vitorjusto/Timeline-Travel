@@ -25,7 +25,7 @@ public partial class Player : Area2D
     public int Hp {get; set;}
     public bool GetFinalPowerUp { get; internal set; }
 
-    public int Life = 9;
+    public int Life = 3;
     private int _lifeProgress = 0;
     private int _maxLifeProgress = 4;
     private GameManager _gameManager;
