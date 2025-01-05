@@ -25,6 +25,10 @@ namespace Shooter.Source.Dumies.Enemies
             instance.Position = new Vector2(_x, y: -30);
             instance.Walk = _walk;
             instance.MaxTimer = _maxTimer;
+
+            if(GameManager.IsSpecialMode)
+                instance.MakeAngry();
+                
             return instance;
         }
     }

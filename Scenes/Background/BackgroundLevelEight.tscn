@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://m8pmmair70e6"]
+[gd_scene load_steps=18 format=3 uid="uid://m8pmmair70e6"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_qmmnt"]
+[ext_resource type="Script" path="res://Source/Models/Background/LevelEight/BackgroundLevelEight.cs" id="1_sguxp"]
 [ext_resource type="Texture2D" uid="uid://rwd7vxwh0uys" path="res://Assets/Background/LevelEight/LevelEightBackground.png" id="2_7r3oa"]
 [ext_resource type="Script" path="res://Source/Models/Background/LevelEight/LightPanelModulator.cs" id="3_hftvh"]
 [ext_resource type="Texture2D" uid="uid://bjnnwvc0yohf5" path="res://Assets/Background/LevelOne/Stars.png" id="4_nx2fg"]
@@ -80,6 +81,7 @@ animations = [{
 }]
 
 [node name="BackgoundLevelEight" type="Node2D"]
+script = ExtResource("1_sguxp")
 
 [node name="ParallaxBackground6" type="ParallaxBackground" parent="."]
 layer = -5
@@ -5658,3 +5660,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2ob15")
 autoplay = "default"
 script = ExtResource("5_56r84")
+
+[connection signal="OnColorChange" from="ParallaxBackground6/ParallaxLayer/Panel" to="." method="OnPanelOnColorChange"]

@@ -6,7 +6,7 @@ using Shooter.Source.Models.Misc;
 public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
 {
     private IState _currentState;
-    public int Hp = 100;
+    public int Hp = GameManager.IsSpecialMode?400:100;
     private DamageAnimationPlayer _damageAnimator;
     public override void _Ready()
     {
@@ -28,7 +28,7 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
     {
         Hp--;
 
-        if(Hp == 0)
+        if(Hp <= 0)
         {
             _currentState = new Exploding(this);
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpeedScale = 0;

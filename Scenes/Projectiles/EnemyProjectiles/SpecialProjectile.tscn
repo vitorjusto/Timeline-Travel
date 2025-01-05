@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7c46iuhpufi5"]
+[gd_scene load_steps=5 format=3 uid="uid://cx2tv63igdvpy"]
 
-[ext_resource type="Script" path="res://Source/Models/Projectiles/EnemiesProjectiles/StrongProjectile.cs" id="1_0vpo7"]
-[ext_resource type="Texture2D" uid="uid://cgechy41qd3g3" path="res://Assets/Projectiles/PlayerProjectile.png" id="2_i6ddb"]
+[ext_resource type="Script" path="res://Source/Models/Projectiles/EnemiesProjectiles/SpecialProjectile.cs" id="1_qnscm"]
+[ext_resource type="Texture2D" uid="uid://cgechy41qd3g3" path="res://Assets/Projectiles/PlayerProjectile.png" id="2_1cwh5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6vf6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_i6ddb")
+"texture": ExtResource("2_1cwh5")
 }],
 "loop": true,
 "name": &"default",
@@ -17,8 +17,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01eb7"]
 size = Vector2(16, 16)
 
-[node name="StrongProjectile" type="CharacterBody2D"]
-script = ExtResource("1_0vpo7")
+[node name="SpecialProjectile" type="CharacterBody2D"]
+script = ExtResource("1_qnscm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -26,7 +26,7 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_c6vf6")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.67451, 0.305882, 0.694118, 1)
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(0.4375, 0.4375)
 sprite_frames = SubResource("SpriteFrames_c6vf6")

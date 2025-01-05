@@ -40,9 +40,16 @@ namespace Shooter.Source.Models.Bosses.LevelOne.Entities
 
         private void ShowBlackHole()
         {
-            var part = _parts[new Random().Next(0, _parts.Count)];
+            if(GameManager.IsSpecialMode)
+            {
+                _parts.ForEach((x) => x.OnShowBlackHole());
+            }else
+            {
+                var part = _parts[new Random().Next(0, _parts.Count)];
+
+	    	    part.OnShowBlackHole();
+            }
     
-	    	part.OnShowBlackHole();
 	    	_blackHoleTime = 0;
         }
 

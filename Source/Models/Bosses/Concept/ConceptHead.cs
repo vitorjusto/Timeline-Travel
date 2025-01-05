@@ -7,7 +7,7 @@ using Shooter.Source.Models.Misc;
 public partial class ConceptHead : CharacterBody2D, IEnemy
 {
 
-	private int _hp = 60;
+	private int _hp = GameManager.IsSpecialMode?200:60;
 	private bool _forceFieldDestroyed = false;
 	private IState _state;
     private DamageAnimationPlayer _damageAnimator;

@@ -23,7 +23,7 @@ namespace Shooter.Source.Dumies.Projectiles
             var instance = (HomingProjectile)scene.Instantiate();
 
             instance.SetPosition(X, Y);
-            instance.SpeedModifier = _speedModifier;
+            instance.SpeedModifier = GameManager.IsSpecialMode?_speedModifier*3:_speedModifier;
             
             return instance;
         }

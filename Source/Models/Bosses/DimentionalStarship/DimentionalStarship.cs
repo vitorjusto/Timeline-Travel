@@ -5,7 +5,7 @@ using Shooter.Source.Models.Misc;
 
 public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotifier
 {
-    private int _hp = 60;
+    private int _hp = GameManager.IsSpecialMode?200:60;
     [Export]
     public bool EndLevel = true;
     [Export]

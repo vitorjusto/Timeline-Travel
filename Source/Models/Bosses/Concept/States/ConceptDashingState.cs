@@ -16,6 +16,8 @@ namespace Shooter.Source.Models.Bosses.Concept.States
         private Node2D _node;
         private List<RegularShootPoint> _shootingPoints;
 
+        private int _timer = 0;
+
         public ConceptDashingState(Node2D node)
         {
             _node = node;
@@ -52,7 +54,21 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 
 			AnimateHead();
 
+            if(GameManager.IsSpecialMode)
+                ExtraShooting();
+                
             return false;
+        }
+
+        private void ExtraShooting()
+        {
+            _timer++;
+
+            if(_timer > 50)
+            {
+                ShootProjectile();
+                _timer = 0;
+            }
         }
 
         private void AnimateHead()

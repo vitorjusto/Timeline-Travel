@@ -8,7 +8,7 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 {
 
 	public bool ShowBlackHole = false;
-	public int _hp = 50;
+	public int _hp = GameManager.IsSpecialMode?100:50;
 	public int _damageAnimation = 0;
 	public int _blackholeTimer = 0;
 	public BlackHoleGenerator Boss;

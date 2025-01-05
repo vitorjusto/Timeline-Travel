@@ -13,6 +13,11 @@ public partial class Dasher : CharacterBody2D, IEnemy
 
 	private int _time = 0;
 
+    public override void _Ready()
+    {
+        GetNode<Node2D>("ReinforcedDasher").Visible = GameManager.IsSpecialMode;
+    }
+
     public override void _Process(double delta)
 	{
 		MoveEnemy();
@@ -59,6 +64,7 @@ public partial class Dasher : CharacterBody2D, IEnemy
 		var speed = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
 
 		GetNode<Node2D>("Dasher").Rotation = 90;
+		GetNode<Node2D>("ReinforcedDasher").Rotation = 90;
 		Rotation = speed.Angle();
     }
 
@@ -69,6 +75,9 @@ public partial class Dasher : CharacterBody2D, IEnemy
 
 	public void Destroy()
 	{
+        if(GameManager.IsSpecialMode)
+            return;
+
         EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 		
 		if(!_targetHid)
@@ -77,7 +86,7 @@ public partial class Dasher : CharacterBody2D, IEnemy
 
 	public bool IsImortal()
 	{
-		return false;
+		return GameManager.IsSpecialMode;
 	}
 
     public EnemyBoundy GetBoundy()

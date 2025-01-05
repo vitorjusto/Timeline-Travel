@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnhek885n24kx"]
+[gd_scene load_steps=6 format=3 uid="uid://cnhek885n24kx"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Stomper.cs" id="1_vhukm"]
 [ext_resource type="Texture2D" uid="uid://bu52revkdgh21" path="res://Assets/Enemies/Stomper.png" id="2_8afls"]
+[ext_resource type="Texture2D" uid="uid://ccviqm0v3foyw" path="res://Assets/Enemies/ReiforcedStomper.png" id="3_rc0ja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obad7"]
 size = Vector2(96, 75)
@@ -29,5 +30,11 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_4ap2l")
+
+[node name="ReiforcedStomper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("3_rc0ja")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

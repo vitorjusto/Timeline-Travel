@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Enums;
 
@@ -18,7 +17,7 @@ public partial class LightPanelModulator : Panel
 			return;
 		
 		ChangeColor();
-
+        EmitSignal("OnColorChange");
 		_timer = 0;
 	}
 
@@ -26,4 +25,7 @@ public partial class LightPanelModulator : Panel
     {
         this.Modulate = Color.FromString(((EColor)GD.RandRange(0, 6)).ToString(), Color.Color8(0, 0, 0));
     }
+
+    [Signal]
+    public delegate void OnColorChangeEventHandler();
 }

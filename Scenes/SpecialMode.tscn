@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://icbx6ouq43n4"]
+
+[ext_resource type="Script" path="res://Source/Managers/GameManager.cs" id="1_51h7b"]
+[ext_resource type="PackedScene" uid="uid://cbshewwmnedw8" path="res://Scenes/Audio/AudioManager.tscn" id="2_c8h2p"]
+[ext_resource type="PackedScene" uid="uid://4dqr70s7o5ti" path="res://Scenes/enemySpawner.tscn" id="3_471jm"]
+[ext_resource type="PackedScene" uid="uid://erfmsclpkmsj" path="res://Scenes/Player.tscn" id="4_jietg"]
+[ext_resource type="PackedScene" uid="uid://bie542gje8vfa" path="res://Scenes/Projectiles/projectileManager.tscn" id="5_mk80e"]
+[ext_resource type="PackedScene" uid="uid://lwvwwrmrkoav" path="res://Scenes/Background/background_manager.tscn" id="6_gbh3y"]
+[ext_resource type="PackedScene" uid="uid://bm27is2hj0xno" path="res://Scenes/Hud.tscn" id="7_jalmo"]
+[ext_resource type="Texture2D" uid="uid://dvcmh0qmrda5e" path="res://Assets/Background/misc/BlackScreen.png" id="8_f5kt7"]
+[ext_resource type="PackedScene" uid="uid://06t3g1ip4oix" path="res://Scenes/PowerUpManager.tscn" id="9_af82u"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_51h7b")
+
+[node name="AudioManager" parent="." instance=ExtResource("2_c8h2p")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_471jm")]
+
+[node name="Player" parent="." instance=ExtResource("4_jietg")]
+position = Vector2(721, 720)
+
+[node name="ProjectileManager" parent="." instance=ExtResource("5_mk80e")]
+
+[node name="BackgroundManager" parent="." instance=ExtResource("6_gbh3y")]
+
+[node name="Hud" parent="." instance=ExtResource("7_jalmo")]
+position = Vector2(0, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 128
+
+[node name="BlackScreen" type="Node2D" parent="ParallaxBackground"]
+visible = false
+top_level = true
+
+[node name="BlackScreenImage" type="Sprite2D" parent="ParallaxBackground/BlackScreen"]
+position = Vector2(684, 472)
+scale = Vector2(1.16575, 1.04811)
+texture = ExtResource("8_f5kt7")
+
+[node name="PowerUpManager" parent="." instance=ExtResource("9_af82u")]
+
+[connection signal="EndingLevel" from="EnemySpawner" to="Player" method="OnEndingLevel"]
+[connection signal="LevelEnded" from="EnemySpawner" to="." method="OnLevelPassed"]
+[connection signal="PlayerDestroyed" from="Player" to="." method="OnPlayerDestroyed"]
+[connection signal="PlayerHitProjectile" from="Player" to="ProjectileManager" method="PlayerHitProjectile"]
+[connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]
+[connection signal="PlayerLifeProgressUpdated" from="Player" to="Hud" method="OnPlayerLifeProgressOpdated"]
+[connection signal="PlayerLifeUpdated" from="Player" to="Hud" method="onPlayerLifeUpdated"]
+[connection signal="PlayerBulletUpdated" from="ProjectileManager" to="Hud" method="PlayerBulletUpdated"]

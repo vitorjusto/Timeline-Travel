@@ -9,7 +9,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
     public class ConceptMovingState : IState
     {
         private Node2D _node;
-        private int _speed = -4;
+        private int _speed = GameManager.IsSpecialMode?-6:-4;
         private WaveSpeed _ySpeed;
         private AnimatedSprite2D _sprite;
         public ConceptMovingState(Node2D node)

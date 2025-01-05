@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt7sy4pbhhw84"]
+[gd_scene load_steps=5 format=3 uid="uid://bt7sy4pbhhw84"]
 
 [ext_resource type="Script" path="res://Source/Models/Enemies/Dasher.cs" id="1_dmpl3"]
 [ext_resource type="Texture2D" uid="uid://cw3ken4syobkw" path="res://Assets/Enemies/Dasher.png" id="2_clbcr"]
+[ext_resource type="Texture2D" uid="uid://6egglvskkd44" path="res://Assets/Enemies/ReinforcedDasher.png" id="3_484bn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p6w0"]
 size = Vector2(96, 61)
@@ -20,5 +21,10 @@ scale = Vector2(5.8, 5.65)
 [node name="Dasher" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_clbcr")
+
+[node name="ReinforcedDasher" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("3_484bn")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnScreenExited"]

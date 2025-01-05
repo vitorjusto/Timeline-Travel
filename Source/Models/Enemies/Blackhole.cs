@@ -13,6 +13,12 @@ public partial class Blackhole : CharacterBody2D, IEnemy
 
 		GetNode<BlackHoleAnimation>("BlackHoleAnimation").UpdateAnimation(_isWhiteHole);
 	}
+
+    public void ToggleBlackHoleType()
+    {
+        SetBlackholeType(!_isWhiteHole);
+    }
+
     public override void _Process(double delta)
 	{
 		MoveEnemy();

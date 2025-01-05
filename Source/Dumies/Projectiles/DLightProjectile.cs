@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Interfaces;
 
 namespace Shooter.Source.Dumies.Projectiles
 {
@@ -21,12 +22,20 @@ namespace Shooter.Source.Dumies.Projectiles
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/EnemyProjectiles/LightProjectile.tscn");
+            PackedScene scene;
 
-            var instance = (LightProjectile)scene.Instantiate();
+            if(GameManager.IsSpecialMode)
+            {
+                scene = GD.Load<PackedScene>("res://Scenes/Projectiles/EnemyProjectiles/SpecialProjectile.tscn");
+            }else
+            {
+                scene = GD.Load<PackedScene>("res://Scenes/Projectiles/EnemyProjectiles/LightProjectile.tscn");
+            }
 
-            instance.SetPosition(X, Y);
-            instance.SetSpeed(XSpeed, YSpeeed);
+            var instance = scene.Instantiate<Node2D>();
+
+            ((IEnemyProjectile)instance).SetPosition(X, Y);
+            ((IEnemyProjectile)instance).SetSpeed(XSpeed, YSpeeed);
 
             return instance;
         }

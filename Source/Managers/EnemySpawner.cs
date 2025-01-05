@@ -23,7 +23,7 @@ public partial class EnemySpawner : Node2D
 	private List<EnemySection> _enemySection;
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
-	public int CurrentLevel = 1;
+	public int CurrentLevel = 8;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;

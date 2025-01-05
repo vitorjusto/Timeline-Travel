@@ -5,8 +5,8 @@ using Shooter.Source.Models.Misc;
 public partial class ConceptPart : CharacterBody2D, IEnemy
 {
 
-	private int _hp = 40;
-    private int _speed = -4;
+	private int _hp = GameManager.IsSpecialMode?150:40;
+    private int _speed = GameManager.IsSpecialMode?-6:-4;
     private ProjectileManager _projectiles;
     private WaveSpeed _ySpeed;
     private AnimatedSprite2D _aniSprite;

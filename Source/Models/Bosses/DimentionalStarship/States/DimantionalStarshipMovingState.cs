@@ -11,6 +11,7 @@ public class DimantionalStarshipMovingState : IState
 
     private Vector2 _goToPosition;
     private Vector2 _speed;
+    private int _speedModifier = GameManager.IsSpecialMode?-10:-6;
 
     public DimantionalStarshipMovingState(Node2D node)
     {
@@ -19,7 +20,7 @@ public class DimantionalStarshipMovingState : IState
 
         var angle = Math.Atan2(_node.Position.X - _goToPosition.X, _node.Position.Y - _goToPosition.Y);
 
-        _speed = new Vector2((float)Math.Sin(angle) * (-6), (float)Math.Cos(angle) * (-6));
+        _speed = new Vector2((float)Math.Sin(angle) * (_speedModifier), (float)Math.Cos(angle) * (_speedModifier));
     }
 
     public IState NextState()
@@ -31,7 +32,7 @@ public class DimantionalStarshipMovingState : IState
     {
         _node.Position += _speed;
 
-        return Math.Abs(_goToPosition.X - _node.Position.X) < 12 && (Math.Abs(_goToPosition.Y- _node.Position.Y) < 12);
+        return Math.Abs(_goToPosition.X - _node.Position.X) < 20 && (Math.Abs(_goToPosition.Y- _node.Position.Y) < 20);
     }
 
 }

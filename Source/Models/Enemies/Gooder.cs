@@ -9,7 +9,7 @@ public partial class Gooder : CharacterBody2D, IEnemy
 	private int _yspeed = 2;
 	private int _xspeed = 6;
 	private int _time = 0;
-	private bool _isAngry = false;
+	public bool _isAngry = false;
 	public bool Walk = false;
 	private float _speedModifier = 5;
 	public int MaxTimer = 900;
@@ -96,15 +96,24 @@ public partial class Gooder : CharacterBody2D, IEnemy
     {
 		if(_isAngry)
 		{
+            if(GameManager.IsSpecialMode)
+            {
+        	    EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+			    return;
+            }
 			_time -= 10;
 			_speedModifier+= 0.5f;
 			return;
 		}
 
+		MakeAngry();
+    }
+
+    public void MakeAngry()
+    {
 		_isAngry = true;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Angry");
 		_time = 0;
-		
     }
 
     public EnemyBoundy GetBoundy()

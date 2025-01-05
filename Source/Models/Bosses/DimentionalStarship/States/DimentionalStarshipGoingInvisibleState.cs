@@ -19,7 +19,7 @@ public class DimentionalStarshipGoingInvisibleState : IState
 
     public bool Process()
     {
-        _opacity -= 10;
+        _opacity -= GameManager.IsSpecialMode?(byte)25:(byte)10;
         _node.GetNode<Node2D>("AnimatedSprite2D").Modulate = Color.Color8(255, 255, 255, _opacity);
         _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
 

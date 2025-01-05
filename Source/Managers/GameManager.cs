@@ -2,8 +2,28 @@ using Godot;
 
 public partial class GameManager : Node2D
 {
+    [Export]
+    public bool SpecialMode = false;
+    private static GameManager _game;
+
+    public static bool IsSpecialMode => _game.SpecialMode;
 	private int _time = 0;
 	public bool IsBlackScreen = false;
+
+    public override void _Ready()
+    {
+        _game = this;
+        if(SpecialMode)
+        {
+            var player = GetNode<Player>("Player");
+
+            FinalPowerUp.GiveFinalPowerUpStatus(player);
+            player.Hp = 600;
+            player.Life = 1;
+            
+		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player);
+        }
+    }
 
 	public override void _Process(double delta)
 	{

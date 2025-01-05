@@ -64,7 +64,29 @@ public partial class Follower : CharacterBody2D, IEnemy
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
-		if(ProjectileType == EEnemyProjectileType.Normal)
+        if(GameManager.IsSpecialMode)
+        {
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 5, 5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 5, -5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -5, 5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -5, -5));
+
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 5, 0));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 0, 5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -5, 0));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 0, -5));
+
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 5, 2.5f));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -5, 2.5f));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 2.5f, 5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 2.5f, -5));
+
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, 5, -2.5f));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -5, -2.5f));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -2.5f, 5));
+		    projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y+ 10, -2.5f, -5));
+
+        }else if(ProjectileType == EEnemyProjectileType.Normal)
 			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 10, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
 		else if(ProjectileType == EEnemyProjectileType.Light)
 			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y + 10, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));

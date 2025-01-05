@@ -14,6 +14,21 @@ public partial class Stomper : CharacterBody2D, IEnemy
     private EDashStatus _dashStatus;
 	private int _timeDashed = 0;
 
+    public override void _Ready()
+    {
+        if(!GameManager.IsSpecialMode)
+            return;
+
+        _dashStatus = EDashStatus.Dashing;
+        _timeDashed = 5;
+        var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+
+        Position = new Vector2(player.Position.X, -32);
+        _time = 50;
+        GetNode<Node2D>("ReiforcedStomper").Visible = true;
+
+    }
+
     public override void _Process(double delta)
 	{
 		MoveEnemy();
@@ -79,13 +94,13 @@ public partial class Stomper : CharacterBody2D, IEnemy
 
 	public bool IsImortal()
 	{
-		return false;
+		return GameManager.IsSpecialMode;
 	}
-
 
     public void Destroy()
     {
-        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+        if(!GameManager.IsSpecialMode)
+            EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
     }
 
     public EnemyBoundy GetBoundy()

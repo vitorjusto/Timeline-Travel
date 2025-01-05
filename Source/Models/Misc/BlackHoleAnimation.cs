@@ -20,6 +20,11 @@ public partial class BlackHoleAnimation : Node2D
 		{
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Whitehole");
 			GetNode<AnimationPlayer>("AnimationPlayer").Play("Whitehole");
-		}
+		}else
+        {
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Blackhole");
+			GetNode<AnimationPlayer>("AnimationPlayer").Play("Blackhole");
+        }
+
 	}
 }

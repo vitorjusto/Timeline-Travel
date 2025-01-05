@@ -51,6 +51,11 @@ public partial class Sniper : CharacterBody2D, IEnemy
 		else if(ProjectileType == EEnemyProjectileType.Homing)
 			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y + 41));		
 
+        if(GameManager.IsSpecialMode)
+        {
+			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle - 0.5) * (-3), (float)Math.Cos(angle - 0.5) * (-3)));
+			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle + 0.5) * (-3), (float)Math.Cos(angle + 0.5) * (-3)));    
+        }
 	}
 
     public void OnScreenExited()

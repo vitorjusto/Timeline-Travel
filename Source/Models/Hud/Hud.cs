@@ -107,6 +107,13 @@ public partial class Hud : Node2D
 		lblHp.Text = $"{life}";
 	}
 
+    public void UpdateHud(Player player)
+    {
+        PlayerHpUpdated(player.Hp);
+        PlayerBulletUpdated(6);
+        onPlayerLifeUpdated(player.Life);
+    }
+
 	public void OnPausePressed()
 	{
 		PauseGame();

@@ -50,4 +50,9 @@ public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
     {
         return Damage;
     }
+
+    public void SetSpeed(float XSpeed, float YSpeeed)
+    {
+        
+    }
 }
