@@ -204,7 +204,7 @@ public partial class Player : Area2D
 			EmitSignal("PlayerHitProjectile", node);
 		}
 
-		if(_iFrame == 0)
+		if(_iFrame == 0 && !GameManager.IsSpecialMode)
 		{
 			var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 

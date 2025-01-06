@@ -22,6 +22,8 @@ public partial class GameManager : Node2D
             player.Life = 0;
             
 		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player);
+            
+		    GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").PlayerProjectileLevel = 6;
         }
     }
 

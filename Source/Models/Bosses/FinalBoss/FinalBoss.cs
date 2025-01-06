@@ -33,8 +33,13 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		}
 
 		_bossLevelState = EFinalBossState.FinalPowerUpGetTransition;
-		FinalPowerUp.GiveFinalPowerUpStatus(player);
-		player.EmitSignal("PlayerHpUpdated", player.Hp);
+        
+        if(!GameManager.IsSpecialMode)
+        {
+		    FinalPowerUp.GiveFinalPowerUpStatus(player);
+		    player.EmitSignal("PlayerHpUpdated", player.Hp);
+        }
+
 		OnNextState();
     }
 

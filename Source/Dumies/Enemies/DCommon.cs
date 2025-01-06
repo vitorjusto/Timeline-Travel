@@ -22,7 +22,7 @@ namespace Shooter.Source.Dumies.Enemies
             instance.Position = new Vector2(_x, y: -30);
             instance.Speed = _speed;
 
-            instance.Hp = GameManager.IsSpecialMode?5:1;
+            instance.Hp = GameManager.IsSpecialMode?10:1;
 
             return instance;
         }

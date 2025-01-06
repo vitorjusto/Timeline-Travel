@@ -76,6 +76,8 @@ public partial class Hud : Node2D
 
     public static void SetCheckpointTimer(int timer)
     {
+        if(GameManager.IsSpecialMode)
+            return;
         _hud.CheckpointLabelTimer = timer;
     }
 
@@ -90,7 +92,7 @@ public partial class Hud : Node2D
 		var lblHp = GetNode<Label>("ParallaxBackground/lblHp");
 		lblHp.Text = $"{hp}";
 
-		lblHp.Modulate = hp == 10? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
+		lblHp.Modulate = hp > 9? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
 	}
 
 	public void PlayerBulletUpdated(int bullet)
@@ -98,7 +100,7 @@ public partial class Hud : Node2D
 		var lblBullet = GetNode<Label>("ParallaxBackground/lblBullet");
 		lblBullet.Text = $"{bullet}";
 
-		lblBullet.Modulate = bullet == 5? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
+		lblBullet.Modulate = bullet >= 5? Color.Color8(255, 255, 0, 255) : Color.Color8(255, 255, 255, 255);
 	}
 
 	public void onPlayerLifeUpdated(int life)
