@@ -7,7 +7,7 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
 {
 	public IState State;
 	private int _armHp = 2;
-	private int _hp = 100;
+	private int _hp = GameManager.IsSpecialMode? 300: 100;
 	private DamageAnimationPlayer _damageAnimator;
 	public override void _Ready()
 	{

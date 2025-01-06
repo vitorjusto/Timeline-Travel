@@ -55,7 +55,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             else if(number % 10 == 0)
 		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Sniper));
             else
-		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Common));
+		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, GameManager.IsSpecialMode? ESpaceScrapType.Sniper: ESpaceScrapType.Common));
 
             _timer = 0;
         }

@@ -6,7 +6,7 @@ using Shooter.Source.Models.Misc;
 public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
 {
     private IState _currentState;
-    public int Hp = GameManager.IsSpecialMode?400:100;
+    public int Hp = GameManager.IsSpecialMode?1000:100;
     private DamageAnimationPlayer _damageAnimator;
     public override void _Ready()
     {

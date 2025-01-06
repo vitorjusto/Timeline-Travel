@@ -10,18 +10,18 @@
 position = Vector2(721, -208)
 
 [node name="magnectGenerator" parent="." instance=ExtResource("2_kk7s5")]
-position = Vector2(240, -270)
+position = Vector2(240, -386)
 
 [node name="magnectGenerator2" parent="." instance=ExtResource("2_kk7s5")]
-position = Vector2(481, -270)
+position = Vector2(481, -386)
 Id = 1
 
 [node name="magnectGenerator3" parent="." instance=ExtResource("2_kk7s5")]
-position = Vector2(962, -270)
+position = Vector2(962, -386)
 Id = 2
 
 [node name="magnectGenerator4" parent="." instance=ExtResource("2_kk7s5")]
-position = Vector2(1203, -270)
+position = Vector2(1203, -386)
 Id = 3
 
 [node name="MacnectOrbiter" parent="." instance=ExtResource("3_yxjdl")]

@@ -68,3 +68,15 @@ sprite_frames = SubResource("SpriteFrames_u638j")
 position = Vector2(0, 35)
 NodeOrigin = NodePath("..")
 Active = false
+
+[node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_6dukh")]
+position = Vector2(0, 35)
+NodeOrigin = NodePath("..")
+ExtraAngle = 0.3
+Active = false
+
+[node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("3_6dukh")]
+position = Vector2(0, 35)
+NodeOrigin = NodePath("..")
+ExtraAngle = -0.3
+Active = false

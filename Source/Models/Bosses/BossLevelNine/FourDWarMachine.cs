@@ -8,7 +8,7 @@ using Shooter.Source.Models.Misc;
 public partial class FourDWarMachine : Node2D, IEnemy
 {
 	private IState _state;
-	private int _hp = 300;
+	private int _hp = GameManager.IsSpecialMode?1000:300;
 	private int _orbiters = 8;
 	private bool _HalfHealthEventTrigered = false;
 	public bool DestroingPlayer = false;

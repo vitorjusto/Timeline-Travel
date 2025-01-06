@@ -11,6 +11,8 @@ public partial class ProjectileShower : Node2D, IEnemy
 	public int Hp = 200;
 	public bool IsExploding => _state is Exploding;
 	private DamageAnimationPlayer _damageAnimator;
+    private int _alreadExplodedCount = 0;
+    public int Speed = 6;
 
 	public override void _Ready()
 	{
@@ -50,14 +52,20 @@ public partial class ProjectileShower : Node2D, IEnemy
 			return;
 
         Hp--;
-		
 
-		if(Hp == 30)
+		if(Hp == 30 && _alreadExplodedCount == 0)
 			_state = new Exploding(this, 500, removeEnemy: false);
 		else if(Hp == 0)
 		{
-			_state = new Exploding(this, 32);
+			_state = new Exploding(this, 32, !GameManager.IsSpecialMode || _alreadExplodedCount == 4);
 			GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
+
+            if(GameManager.IsSpecialMode)
+            {
+                _alreadExplodedCount++;
+                Hp = 200;
+                Speed += 3;
+            }
 		}
 		else
 			_damageAnimator.PlayDamageAnimation();

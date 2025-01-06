@@ -12,7 +12,7 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 	private IState _state;
 	private int _shieldHp = 4;
     private bool _isAtracting;
-    private int _hp = 20;
+    private int _hp = GameManager.IsSpecialMode?500:20;
     private DamageAnimationPlayer _damageAnimator;
 
     private int _warningTimer = 120;
@@ -63,6 +63,8 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 
         _state = new Exploding(this);
         GetNode<ShootPoint>("ShootPoint").Active = false;
+        GetNode<ShootPoint>("ShootPoint2").Active = false;
+        GetNode<ShootPoint>("ShootPoint3").Active = false;
     }
 
     public bool IsImortal()
@@ -75,7 +77,11 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
        	_shieldHp--;
 
 		if(_shieldHp == 2)
+        {
 			GetNode<ShootPoint>("ShootPoint").Active = true;
+            GetNode<ShootPoint>("ShootPoint2").Active = true;
+            GetNode<ShootPoint>("ShootPoint3").Active = true;
+        }
 
 		if(_shieldHp > 0)
 			return;
@@ -93,6 +99,8 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Atracting");
         _isAtracting = true;
         GetNode<ShootPoint>("ShootPoint").Active = false;
+        GetNode<ShootPoint>("ShootPoint2").Active = false;
+        GetNode<ShootPoint>("ShootPoint3").Active = false;
     }
 
     public void StopAtracting()
@@ -100,6 +108,8 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
         _isAtracting = false;
         GetNode<ShootPoint>("ShootPoint").Active = true;
+        GetNode<ShootPoint>("ShootPoint2").Active = true;
+        GetNode<ShootPoint>("ShootPoint3").Active = true;
     }
 
     public EnemyBoundy GetBoundy()

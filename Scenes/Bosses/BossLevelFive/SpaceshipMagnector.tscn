@@ -80,3 +80,19 @@ NodeOrigin = NodePath("..")
 ProjectileType = 1
 Timer = 80
 Active = false
+
+[node name="ShootPoint2" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_8nd1c")]
+position = Vector2(0, 64)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = -0.3
+Active = false
+
+[node name="ShootPoint3" parent="." node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("4_8nd1c")]
+position = Vector2(0, 64)
+NodeOrigin = NodePath("..")
+ProjectileType = 1
+Timer = 80
+ExtraAngle = 0.3
+Active = false

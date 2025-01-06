@@ -5,7 +5,7 @@ using Shooter.Source.Models.Misc;
 
 public partial class MagnectGenerator : Node2D , IEnemy
 {
-	int _hp = 10;
+	int _hp = GameManager.IsSpecialMode?50:10;
 	[Export]
 	public int Id = 0;
 	int _time = 0;
@@ -20,11 +20,11 @@ public partial class MagnectGenerator : Node2D , IEnemy
         _hp--;
 		_damageAnimator.PlayDamageAnimation();
 
-		if(_hp > 0)
-			return;
-
-		EmitSignal("OnEnemyDestroyed");
-		EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+		if(_hp == 0)
+        {
+		    EmitSignal("OnEnemyDestroyed");
+		    EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+        }
     }
 
     public bool IsImortal()
@@ -109,6 +109,12 @@ public partial class MagnectGenerator : Node2D , IEnemy
 			return;
 
 		_shootingPoint.Shoot();
+
+        if(GameManager.IsSpecialMode)
+        {
+            GetNode<ShootPoint>("ShootPoint2").Shoot();
+            GetNode<ShootPoint>("ShootPoint3").Shoot();
+        }
 
 		_time = 0;
 		_cycles++;

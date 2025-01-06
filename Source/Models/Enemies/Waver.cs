@@ -5,9 +5,9 @@ using Shooter.Source.Models.Misc;
 public partial class Waver : CharacterBody2D, IEnemy
 {
 	private WaveSpeed _yWaveSpeed;
-	private int _speed = 10;
+	private int _speed = 15;
 	private int _time = 0;
-	private const int Y_START_POSITION = -400;
+	private const int Y_START_POSITION = -100;
 
 
     public int WaveCooldown { get; set; }

@@ -8,11 +8,13 @@ using System;
 public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 {
 	public IState _state;
-    public int _hp = 300;
+    public int _hp;
+    private int MaxHp = GameManager.IsSpecialMode?1500:300;
     private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
     {
+        _hp = MaxHp;
         Position = Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2, y: -300);
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
@@ -49,9 +51,9 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 
         _hp--;
 
-        if(_hp == 290)
+        if(_hp == (MaxHp - (GameManager.IsSpecialMode?200:10)))
             _state = _state.NextState();
-        if(_hp == 150)
+        if(_hp == (MaxHp / 2))
             _state = _state.NextState();
         
         if(_hp == 0)
