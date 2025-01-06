@@ -22,24 +22,57 @@ position = Vector2(700, 456)
 scale = Vector2(2, 2)
 texture = ExtResource("1_1gltp")
 
-[node name="Label" type="Label" parent="."]
+[node name="lblControls" type="Label" parent="."]
 offset_left = 544.0
 offset_top = 592.0
 offset_right = 964.0
 offset_bottom = 668.0
-text = "START GAME"
-label_settings = SubResource("LabelSettings_ia1k6")
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 544.0
-offset_top = 651.0
-offset_right = 964.0
-offset_bottom = 727.0
 text = "CONTROLS"
 label_settings = SubResource("LabelSettings_ia1k6")
 
-[node name="Indicator" type="Sprite2D" parent="."]
-position = Vector2(515, 610)
+[node name="lblStartGame" type="Label" parent="."]
+offset_left = 544.0
+offset_top = 652.0
+offset_right = 964.0
+offset_bottom = 728.0
+text = "START GAME"
+label_settings = SubResource("LabelSettings_ia1k6")
+
+[node name="lblSpecialMode" type="Label" parent="."]
+visible = false
+offset_left = 544.0
+offset_top = 712.0
+offset_right = 964.0
+offset_bottom = 788.0
+text = "SPECIAL MODE"
+label_settings = SubResource("LabelSettings_ia1k6")
+
+[node name="lblBossRush" type="Label" parent="."]
+visible = false
+offset_left = 541.0
+offset_top = 772.0
+offset_right = 961.0
+offset_bottom = 848.0
+text = "BOSS RUSH"
+label_settings = SubResource("LabelSettings_ia1k6")
+
+[node name="Indicator1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(515, 608)
+texture = ExtResource("3_lra6u")
+
+[node name="Indicator2" type="Sprite2D" parent="."]
+position = Vector2(515, 668)
+texture = ExtResource("3_lra6u")
+
+[node name="Indicator3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(515, 728)
+texture = ExtResource("3_lra6u")
+
+[node name="Indicator4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(515, 788)
 texture = ExtResource("3_lra6u")
 
 [node name="ControlsScreen" parent="." instance=ExtResource("5_tvcsv")]

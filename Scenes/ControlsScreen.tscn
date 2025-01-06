@@ -66,5 +66,5 @@ text = "BACK"
 label_settings = SubResource("LabelSettings_iy7f8")
 
 [node name="Indicator" type="Sprite2D" parent="."]
-position = Vector2(515, 610)
+position = Vector2(515, 608)
 texture = ExtResource("3_p6od3")

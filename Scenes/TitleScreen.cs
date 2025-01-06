@@ -1,15 +1,38 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class TitleScreen : Node2D
 {
-	private Node2D _indicator;
     private bool _makeStartAnimation;
 	private int _timer;
+    private List<ETitleScreenOptions> _avaliableOptions;
+    private ETitleScreenOptions _selectedOption;
 
     public override void _Ready()
 	{
-		_indicator = GetNode<Node2D>("Indicator");
+        _avaliableOptions = new List<ETitleScreenOptions>
+        {
+            ETitleScreenOptions.Controls,
+            ETitleScreenOptions.StartGame
+        };
+
+        _selectedOption = ETitleScreenOptions.StartGame;
+
+        //Special Mode Active
+        if(false)
+        {
+            _avaliableOptions.Add(ETitleScreenOptions.SpecialMode);
+            GetNode<Label>("lblSpecialMode").Visible = true;
+        }
+
+        //Boss Rush Active
+        if(false)
+        {
+            _avaliableOptions.Add(ETitleScreenOptions.BossRush);
+            GetNode<Label>("lblBossRush").Visible = true;
+        }
 	}
 
 	public override void _Process(double delta)
@@ -30,39 +53,72 @@ public partial class TitleScreen : Node2D
 
 		if(Input.IsActionJustPressed("move_down"))
 		{
-			_indicator.Position += new Vector2(0, 60);
+            GetNode<Node2D>($"Indicator{(int)_selectedOption}").Visible = false;
+            _selectedOption += 1;
 
-			if(_indicator.Position.Y > 670)
-				_indicator.Position = new Vector2(515, 610);
+            if(!_avaliableOptions.Contains(_selectedOption))
+                _selectedOption = ETitleScreenOptions.Controls;
+                
+            GetNode<Node2D>($"Indicator{(int)_selectedOption}").Visible = true;
 			
 		}else if(Input.IsActionJustPressed("move_up"))
 		{
-			_indicator.Position -= new Vector2(0, 60);
+            GetNode<Node2D>($"Indicator{(int)_selectedOption}").Visible = false;
+            _selectedOption -= 1;
 
-			if(_indicator.Position.Y < 610)
-				_indicator.Position = new Vector2(515, 670);
+            if(_selectedOption == 0)
+                _selectedOption = _avaliableOptions.Max<ETitleScreenOptions>();
+
+            GetNode<Node2D>($"Indicator{(int)_selectedOption}").Visible = true;
 				
 		}else if(Input.IsActionJustPressed("Enter"))
 		{
-			if(_indicator.Position.Y == 670)
-				GetNode<Node2D>("ControlsScreen").Visible = true;
-			else if(_indicator.Position.Y == 610)
-				_makeStartAnimation = true;
+            OnOptionSelected();
 		}
 
 	}
 
+    private void OnOptionSelected()
+    {
+		if(_selectedOption == ETitleScreenOptions.Controls)
+			GetNode<Node2D>("ControlsScreen").Visible = true;
+		else
+			_makeStartAnimation = true;
+    }
+
     private void StartAnimation()
     {
 		if(_timer % 10 == 0)
-			GetNode<Label>("Label").Visible = !GetNode<Label>("Label").Visible;
+			GetChosenOptionLabel().Visible = !GetChosenOptionLabel().Visible;
 
 		if(_timer == 100)
 			GetNode<Panel>("BlackScreen").Visible = true;
 		
 		if(_timer == 120)
-			GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+        {
+            if(_selectedOption == ETitleScreenOptions.SpecialMode)
+                GetTree().ChangeSceneToFile("res://Scenes/SpecialMode.tscn");
+            else if(_selectedOption == ETitleScreenOptions.StartGame)
+                GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+        }
 			
 		_timer++;
+    }
+
+    private Label GetChosenOptionLabel()
+    {
+        switch (_selectedOption)
+        {
+            case ETitleScreenOptions.Controls:
+                return GetNode<Label>("lblControls");
+            case ETitleScreenOptions.StartGame:
+                return GetNode<Label>("lblStartGame");
+            case ETitleScreenOptions.SpecialMode:
+                return GetNode<Label>("lblSpecialMode");
+            case ETitleScreenOptions.BossRush:
+                return GetNode<Label>("lblBossRush");
+        }
+
+        return null;
     }
 }
