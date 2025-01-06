@@ -19,7 +19,7 @@ public partial class GameManager : Node2D
 
             FinalPowerUp.GiveFinalPowerUpStatus(player);
             player.Hp = 600;
-            player.Life = 1;
+            player.Life = 0;
             
 		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player);
         }

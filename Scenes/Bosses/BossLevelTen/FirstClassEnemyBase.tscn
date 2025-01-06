@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://boqdv1rd3b160"]
+[gd_scene load_steps=37 format=3 uid="uid://boqdv1rd3b160"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/BossLevelTen/FirstClassEnemyBase.cs" id="1_0gku7"]
 [ext_resource type="Texture2D" uid="uid://djigyq1ekwbf6" path="res://Assets/Bosses/FirstClassEnemy/Mothership.png" id="2_7dvqj"]
 [ext_resource type="PackedScene" uid="uid://uhm56lt7s72x" path="res://Scenes/Bosses/BossLevelTen/FirstClassEnemy.tscn" id="3_xr5fx"]
+[ext_resource type="PackedScene" uid="uid://dv3lu7r4e8c7b" path="res://Scenes/Bosses/BossLevelTen/FirstClassEnemySpecialMode.tscn" id="4_im4lk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rodsh"]
 atlas = ExtResource("2_7dvqj")
@@ -250,4 +251,8 @@ sprite_frames = SubResource("SpriteFrames_0r8yh")
 [node name="FirstClassEnemy" parent="." instance=ExtResource("3_xr5fx")]
 position = Vector2(678, -430)
 
+[node name="FirstClassEnemy2" parent="." instance=ExtResource("4_im4lk")]
+position = Vector2(678, -430)
+
 [connection signal="BossDefeated" from="FirstClassEnemy" to="." method="OnBossDefeated"]
+[connection signal="BossDefeated" from="FirstClassEnemy2" to="." method="OnBossDefeated"]

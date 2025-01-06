@@ -12,7 +12,7 @@ public partial class FirstClassEnemyBase : Node2D
 	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_boss = GetNode<FirstClassEnemy>("FirstClassEnemy");
+		_boss = GameManager.IsSpecialMode?GetNode<FirstClassEnemy>("FirstClassEnemy2"):GetNode<FirstClassEnemy>("FirstClassEnemy");
 		_boss.Enable = false;
 	}
 
