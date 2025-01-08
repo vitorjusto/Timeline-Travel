@@ -23,7 +23,8 @@ public partial class EnemySpawner : Node2D
 	private List<EnemySection> _enemySection;
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
-	public int CurrentLevel = 5;
+    [Export]
+	public int CurrentLevel = 1;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -32,6 +33,9 @@ public partial class EnemySpawner : Node2D
 	private GameManager _gameManager;
     public int CheckpointId;
     private bool _removingExplosion;
+    private int _currentBossOnBossRush = 1;
+    [Export]
+    public bool isBossRush = false;
 
     public override void _Ready()
 	{
@@ -42,6 +46,16 @@ public partial class EnemySpawner : Node2D
 		_gameManager = GetTree().Root.GetNode<GameManager>("/root/Main");
 
 		_enemySpawner = this;
+
+        if(isBossRush)
+        {
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+            player.Life = 0;
+            player.Hp = 10;
+
+		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player, 1);
+
+        }
 	}
 
 	public void StartLevel()
@@ -121,6 +135,8 @@ public partial class EnemySpawner : Node2D
 			ShowWarningBoss();
 		else if(_endingLevel)
 			EndingLevelAnimation();
+        else if(isBossRush && !BossApeared && CurrentLevel == 12)
+            GetBossOnBossRush();
 		else
 			VerifyEnemySection();
 
@@ -187,6 +203,28 @@ public partial class EnemySpawner : Node2D
 	private void GetBoss()
 	{
 		_boss = BossFactory.GetBoss(CurrentLevel);
+
+		CallDeferred("add_child", _boss);
+		BossApeared = true;
+	}
+
+	private void GetBossOnBossRush()
+	{
+        if(_boss is not null)
+        {
+            Vector2 position;
+
+            if(_boss is ICustomBossPosition customPosition)
+            {
+                position = customPosition.GetPosition();
+            }else
+                position =_boss.Position;
+
+            PowerUpManager.AddHpUp(position + new Vector2(10, 0));
+            PowerUpManager.AddBulletUp(position + new Vector2(-10, 0));
+        }
+
+		_boss = BossFactory.GetBoss(_currentBossOnBossRush);
 
 		CallDeferred("add_child", _boss);
 		BossApeared = true;
@@ -283,6 +321,17 @@ public partial class EnemySpawner : Node2D
 
     internal void EndLevel()
     {
+        if(isBossRush)
+        {
+            if(_currentBossOnBossRush < 10)
+            {
+                _currentBossOnBossRush++;
+                GetBossOnBossRush();
+                return;
+            }else
+                CurrentLevel = 10;
+        }
+
 		_endingLevel = true;
         EmitSignal("EndingLevel");
 		_time = 0;
@@ -307,6 +356,7 @@ public partial class EnemySpawner : Node2D
 		
 		_showingWarningBoss = false;
 		BossApeared = false;
+        _currentBossOnBossRush = 1;
     }
 
 	public void ClearEnemySection()

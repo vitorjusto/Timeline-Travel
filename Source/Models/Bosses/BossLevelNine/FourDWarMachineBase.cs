@@ -2,7 +2,7 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.BossLevelNine.States;
 
-public partial class FourDWarMachineBase : Node2D
+public partial class FourDWarMachineBase : Node2D, ICustomBossPosition
 {
 	private AnimatedSprite2D _aniEntreringPortal;
     private Node2D _boss;
@@ -26,4 +26,9 @@ public partial class FourDWarMachineBase : Node2D
 	{
 		_state = new BackInTimeTransitionState(_aniEntreringPortal, _boss, GetNode<Panel>("ParallaxBackground/Panel"));
 	}
+
+    public Vector2 GetPosition()
+    {
+        return GetNode<Node2D>("4DWarMachine").Position;
+    }
 }

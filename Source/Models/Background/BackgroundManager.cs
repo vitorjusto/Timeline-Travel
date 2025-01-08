@@ -15,7 +15,7 @@ public partial class BackgroundManager : Node2D
 
 	public void SetNewBackgroundLevel(int level)
 	{
-		_currentBackground.QueueFree();
+		_currentBackground?.QueueFree();
 		_currentBackground = LevelsFactory.GetBackground(level);
 
 		AddChild(_currentBackground);

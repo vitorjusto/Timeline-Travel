@@ -6,9 +6,9 @@ public partial class GameManager : Node2D
     public bool SpecialMode = false;
     private static GameManager _game;
 
-    public static bool IsSpecialMode => _game.SpecialMode;
+    public static bool IsSpecialMode => _game is not null && _game.SpecialMode;
 	private int _time = 0;
-	public bool IsBlackScreen = false;
+	public bool IsBlackScreen {get; private set; } = false;
 
     public override void _Ready()
     {
@@ -19,9 +19,10 @@ public partial class GameManager : Node2D
 
             FinalPowerUp.GiveFinalPowerUpStatus(player);
             player.Hp = 600;
+            player.Hp = 600;
             player.Life = 0;
             
-		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player);
+		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player, 6);
             
 		    GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").PlayerProjectileLevel = 6;
         }
@@ -65,6 +66,7 @@ public partial class GameManager : Node2D
         var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
+		_time++;
 
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		player.Hp = 10;
@@ -85,7 +87,6 @@ public partial class GameManager : Node2D
 		projectileManager.RemoveAllProjectiles();
 		projectileManager.PlayerProjectileLevel = 1;
 
-		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
 
 		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
@@ -101,6 +102,7 @@ public partial class GameManager : Node2D
 		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
+		_time++;
 
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		player.Position = new Vector2(x: 722, y: 720);
@@ -117,7 +119,6 @@ public partial class GameManager : Node2D
 		backgroundManager.SetNewBackgroundLevel(enemySpawner.CurrentLevel);
 		player.ResetTargetCount();
 		
-		_time++;
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
 		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
 	}

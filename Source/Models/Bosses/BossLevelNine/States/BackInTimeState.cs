@@ -13,7 +13,11 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             _boss.EmitSignal("ChangeShootingState", true);
 
             var enemySpawner = _boss.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+            var currentLevel = enemySpawner.CurrentLevel;
+
+            enemySpawner.CurrentLevel = 9;
 			enemySpawner.StartLevel();
+            enemySpawner.CurrentLevel = currentLevel;
 
             _boss.TransitionEnded();
         }

@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 
-public partial class ProjectileShowerBase : Node2D
+public partial class ProjectileShowerBase : Node2D, ICustomBossPosition
 {
 	private int _timer;
 	private int _timerCowdown = 20;
@@ -57,4 +57,9 @@ public partial class ProjectileShowerBase : Node2D
 		if(_boss.Hp < 10)
 			_projectiles.AddProjectile(new DStrongProjectile(new Random().Next(100, 1600) , -10, -1, 2));
 	}
+
+    public Vector2 GetPosition()
+    {
+        return GetNode<Node2D>("ProjectileShower").Position;
+    }
 }

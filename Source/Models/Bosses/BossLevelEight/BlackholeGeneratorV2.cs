@@ -3,7 +3,7 @@ using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.BossLevelEight.States;
 using Shooter.Source.Models.Misc;
 
-public partial class BlackholeGeneratorV2 : Node2D, IEnemy
+public partial class BlackholeGeneratorV2 : Node2D, IEnemy, ICustomBossPosition
 {
 	public IState State;
 	private int _armHp = 2;
@@ -81,5 +81,10 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy
     public EnemyBoundy GetBoundy()
     {
         return new();
+    }
+
+    public Vector2 GetPosition()
+    {
+        return new Vector2(Position.X, -15);
     }
 }

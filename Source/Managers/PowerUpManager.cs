@@ -7,6 +7,13 @@ public partial class PowerUpManager : Node2D
 	private int _hpPoints = 0;
 	private int _bulletPoints = 0;
 
+    private static PowerUpManager _manager;
+
+    public override void _Ready()
+    {
+        _manager = this;
+    }
+
 	public void AddEnemyDefeated(IEnemy node)
 	{
 		var boundy = node.GetBoundy();
@@ -21,16 +28,16 @@ public partial class PowerUpManager : Node2D
 			AddHpUp(boundy.Position);
 	}
 
-    private void AddHpUp(Vector2 position)
+    public static void AddHpUp(Vector2 position)
     {
-        CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
-		_hpPoints = 0;
+        _manager.CallDeferred("add_child",PowerUpFactory.GetPowerUp("HpUp", position));
+		_manager._hpPoints = 0;
     }
 
-    private void AddBulletUp(Vector2 position)
+    public static void AddBulletUp(Vector2 position)
     {
-        CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
-		_bulletPoints = 0;
+        _manager.CallDeferred("add_child",PowerUpFactory.GetPowerUp("BulletUp", position));
+		_manager._bulletPoints = 0;
     }
 
 	public void ClearAllChild()

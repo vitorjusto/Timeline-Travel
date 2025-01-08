@@ -1,9 +1,8 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
-using System;
 
-public partial class Concept : Node2D, IEnemy, INonExplodable
+public partial class Concept : Node2D, IEnemy, INonExplodable, ICustomBossPosition
 {
 	
 	private int _speed = -3;
@@ -62,6 +61,11 @@ public partial class Concept : Node2D, IEnemy, INonExplodable
     public EnemyBoundy GetBoundy()
     {
         return new(); 
+    }
+
+    public Vector2 GetPosition()
+    {
+        return GetNode<Node2D>("ConceptHead").Position;
     }
 
     [Signal]

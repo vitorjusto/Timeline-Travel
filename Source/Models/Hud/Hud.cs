@@ -109,10 +109,10 @@ public partial class Hud : Node2D
 		lblHp.Text = $"{life}";
 	}
 
-    public void UpdateHud(Player player)
+    public void UpdateHud(Player player, int bullet)
     {
         PlayerHpUpdated(player.Hp);
-        PlayerBulletUpdated(6);
+        PlayerBulletUpdated(bullet);
         onPlayerLifeUpdated(player.Life);
     }
 
@@ -174,6 +174,8 @@ public partial class Hud : Node2D
 			lblTimeline.Text = $"THEIR TIMELINE";
 		else if(currentLevel == 11)
 			lblTimeline.Text = $"FINAL BOSS";
+		else if(currentLevel == 12)
+			lblTimeline.Text = $"BOSS RUSH";
 		else
 			lblTimeline.Text = $"TIMELINE {currentLevel}";
 

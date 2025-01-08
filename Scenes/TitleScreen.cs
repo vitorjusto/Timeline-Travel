@@ -21,14 +21,14 @@ public partial class TitleScreen : Node2D
         _selectedOption = ETitleScreenOptions.StartGame;
 
         //Special Mode Active
-        if(false)
+        if(true)
         {
             _avaliableOptions.Add(ETitleScreenOptions.SpecialMode);
             GetNode<Label>("lblSpecialMode").Visible = true;
         }
 
         //Boss Rush Active
-        if(false)
+        if(true)
         {
             _avaliableOptions.Add(ETitleScreenOptions.BossRush);
             GetNode<Label>("lblBossRush").Visible = true;
@@ -100,6 +100,8 @@ public partial class TitleScreen : Node2D
                 GetTree().ChangeSceneToFile("res://Scenes/SpecialMode.tscn");
             else if(_selectedOption == ETitleScreenOptions.StartGame)
                 GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+            else if(_selectedOption == ETitleScreenOptions.BossRush)
+                GetTree().ChangeSceneToFile("res://Scenes/BossRush.tscn");
         }
 			
 		_timer++;

@@ -11,9 +11,12 @@ public partial class BulletUp : Node2D, IPowerUp
 
 		if(p.PlayerProjectileLevel > 5)
 		{
+
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-			player.AddLifeProgress();
-			
+
+            if(!EnemySpawner.GetEnemySpawner().isBossRush)
+			    player.AddLifeProgress();
+
 			p.PlayerProjectileLevel = 5;
 		}
 			
