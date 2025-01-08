@@ -8,7 +8,7 @@ public partial class AudioManager : Node2D
 	public override void _Ready()
 	{
                 // Carregar o áudio
-        audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/OurTimeline.mp3");
+        audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Timeline5.wav");
 
         // Criar e configurar o AudioStreamPlayer
         player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
