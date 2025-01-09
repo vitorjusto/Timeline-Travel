@@ -30,10 +30,13 @@ namespace Shooter.Source.Factories.Levels
             else if(level == 9)
                 return GetLevelNine();      
             else if(level == 10)
-                return GetLevelTen(); 
+                return GetLevelTen();   
+            else if(level == 12)
+                return GetLevelBossRush(); 
 
             return null;
         }
+
         private static Node2D GetLevelOne()
         {
             var scene = GD.Load<PackedScene>("res://Scenes/Background/BackgroundLevelOne.tscn");
@@ -123,5 +126,14 @@ namespace Shooter.Source.Factories.Levels
 
 		    return instance;
         }
+        private static Node2D GetLevelBossRush()
+        {
+            var scene = GD.Load<PackedScene>("res://Scenes/Background/BossRushBackground.tscn");
+
+            var instance = (Node2D)scene.Instantiate();
+
+		    return instance;
+        }
+
     }
 }

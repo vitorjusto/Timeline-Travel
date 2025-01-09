@@ -20,15 +20,17 @@ public partial class TitleScreen : Node2D
 
         _selectedOption = ETitleScreenOptions.StartGame;
 
+        SaveManager.Load();
+
         //Special Mode Active
-        if(true)
+        if(SaveManager.Data.SpecialModeUnlocked)
         {
             _avaliableOptions.Add(ETitleScreenOptions.SpecialMode);
             GetNode<Label>("lblSpecialMode").Visible = true;
         }
 
         //Boss Rush Active
-        if(true)
+        if(SaveManager.Data.BossRushUnlocked)
         {
             _avaliableOptions.Add(ETitleScreenOptions.BossRush);
             GetNode<Label>("lblBossRush").Visible = true;

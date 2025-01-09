@@ -36,6 +36,16 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
             if(_panelOpacity == 255)
             {
                 _player.GetTree().ChangeSceneToFile("res://Scenes/Misc/FinalCutscene.tscn");
+                if(GameManager.IsSpecialMode)
+                {
+                    SaveManager.Data.BossRushUnlocked = true;
+                    SaveManager.Save();
+                }else if(!EnemySpawner.GetEnemySpawner().isBossRush)
+                {
+                    SaveManager.Data.SpecialModeUnlocked = true;
+                    SaveManager.Save();
+                }
+                
                 return;
             }
 

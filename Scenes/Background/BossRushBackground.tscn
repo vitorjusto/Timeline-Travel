@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dle5u0mtoe77r"]
+
+[ext_resource type="Texture2D" uid="uid://d1moeh22pdub8" path="res://Assets/Background/BossRush/BossRushBackground.jpg" id="1_o45k5"]
+
+[node name="BackgroundLevelFive" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 10869.8)
+
+[node name="BossRushBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0, 0.592157, 0.596078, 1)
+position = Vector2(862, -177)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("1_o45k5")

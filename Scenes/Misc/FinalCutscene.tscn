@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://due3kaah4881a"]
+[gd_scene load_steps=3 format=3 uid="uid://due3kaah4881a"]
+
+[ext_resource type="Script" path="res://Scenes/Misc/FinalCutscene.cs" id="1_sxgjo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ukyp"]
 font_size = 64
 
 [node name="FinalCutscene" type="Node2D"]
+script = ExtResource("1_sxgjo")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 845.0
+offset_right = 740.0
+offset_bottom = 1157.0
+text = "you unlock special mode"
+label_settings = SubResource("LabelSettings_2ukyp")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 666.0
