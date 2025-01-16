@@ -178,7 +178,7 @@ namespace Shooter.Source.Factories.Enemies
                                new DSniper(1300, EEnemyProjectileType.Strong)
                 ),
 
-                new(20, true, new DSniper(100, EEnemyProjectileType.Strong),
+                new(20, false, new DSniper(100, EEnemyProjectileType.Strong),
                                new DSniper(200, EEnemyProjectileType.Strong),
                                new DSniper(300, EEnemyProjectileType.Strong),
                                new DSniper(400, EEnemyProjectileType.Strong),
