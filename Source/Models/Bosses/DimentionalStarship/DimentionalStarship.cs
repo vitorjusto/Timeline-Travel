@@ -17,6 +17,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
     {
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
         _state = new DimentionalStarshipGoingInvisibleState(this);
+        EmitLight = !EnemySpawner.GetEnemySpawner().isBossRush;
 
     }
 
