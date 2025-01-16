@@ -5,13 +5,13 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 {
     public class BossShownUpState : IState
     {
-        private Node2D _boss;
+        private FourDWarMachine _boss;
 
-        public BossShownUpState(Node2D boss)
+        public BossShownUpState(FourDWarMachine boss)
         {
             _boss = boss;
             _boss.Visible = true;
-            _boss.SetProcess(true);
+            _boss.Active = true;
             _boss.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
             _boss.EmitSignal("OnActivated");
         }

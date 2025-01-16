@@ -3,7 +3,6 @@ using Godot;
 using shooter.Source.Models.Bosses.FinalBoss.States;
 using Shooter.Source.Dumies.FinalBoss;
 using Shooter.Source.Enums;
-using Shooter.Source.Helpers;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.FinalBoss.States;
 

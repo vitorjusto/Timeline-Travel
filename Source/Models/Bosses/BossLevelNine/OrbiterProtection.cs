@@ -15,16 +15,20 @@ public partial class OrbiterProtection : Node2D, IEnemy
 	public int _shootingCooldown = 100;
 	private bool _allowShoot = true;
     private DamageAnimationPlayer _damageAnimator;
+    private bool _active;
 
 	public int _hp = 20;
 	public override void _Ready()
 	{
-		SetProcess(false);
+		_active = false;
 		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
 
 	public override void _Process(double delta)
 	{
+        if(!_active)
+            return;
+
 		if(_hp <= 0)
 		{
 			EmitSignal("OnOrbiterDestroyed", this);
@@ -93,7 +97,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
 	public void OnActivated()
 	{
-		SetProcess(true);
+		_active = true;
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 

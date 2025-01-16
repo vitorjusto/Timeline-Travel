@@ -12,13 +12,14 @@ public partial class FourDWarMachine : Node2D, IEnemy
 	private int _orbiters = 8;
 	private bool _HalfHealthEventTrigered = false;
 	public bool DestroingPlayer = false;
+	public bool Active = false;
 
     private DamageAnimationPlayer _damageAnimator;
 
 	public override void _Ready()
 	{
 		_state = new MovingState(this);
-		SetProcess(false);
+		Active = false;
 		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 	}
 

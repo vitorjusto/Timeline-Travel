@@ -5,12 +5,12 @@ using Shooter.Source.Models.Bosses.BossLevelNine.States;
 public partial class FourDWarMachineBase : Node2D, ICustomBossPosition
 {
 	private AnimatedSprite2D _aniEntreringPortal;
-    private Node2D _boss;
+    private FourDWarMachine _boss;
     private IState _state;
 	public override void _Ready()
 	{
 		_aniEntreringPortal = GetNode<AnimatedSprite2D>("aniEntreringPortal");
-		_boss = GetNode<Node2D>("4DWarMachine");
+		_boss = GetNode<FourDWarMachine>("4DWarMachine");
 		_state = new BossEntreringAnimationState(_aniEntreringPortal, _boss);
 	}
 

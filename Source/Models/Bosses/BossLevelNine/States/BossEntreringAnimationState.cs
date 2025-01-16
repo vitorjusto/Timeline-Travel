@@ -8,9 +8,9 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         private AnimatedSprite2D _aniEntreringPortal;
         private int _timer = 0;
         private int _currentAnimationFrame = 0;
-        private Node2D _boss;
+        private FourDWarMachine _boss;
 
-        public BossEntreringAnimationState(AnimatedSprite2D aniEntreringPortal, Node2D boss)
+        public BossEntreringAnimationState(AnimatedSprite2D aniEntreringPortal, FourDWarMachine boss)
         {
             _aniEntreringPortal = aniEntreringPortal;
             _boss = boss;
