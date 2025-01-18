@@ -54,7 +54,7 @@ public partial class ProjectileShower : Node2D, IEnemy
         Hp--;
 
 		if(Hp == 30 && _alreadExplodedCount == 0)
-			_state = new Exploding(this, 500, removeEnemy: false);
+			_state = new Exploding(this, new Vector2(650, 200), removeEnemy: false);
 		else if(Hp == 0)
 		{
 			_state = new Exploding(this, 32, !GameManager.IsSpecialMode || _alreadExplodedCount == 4);
