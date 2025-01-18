@@ -42,9 +42,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
                 _time++;
             }
 
-            
-
-            return ((SpaceshipPredadorModel)_node).Hp < (GameManager.IsSpecialMode?300:15) && _enemiesSpawned == 4;
+            return ((SpaceshipPredadorModel)_node).Hp < (GameManager.IsSpecialMode?300:50) && _enemiesSpawned == 4;
         }
 
         private void AddEnemies()

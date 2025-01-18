@@ -41,7 +41,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             if(_time == 0)
                 _enemySpawner.RemoveAllEnemies();
 
-            _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + (new Random().Next(-(int)_size.Y, (int)_size.Y)));
+            _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y));
 
 		    if(_time == 300)
 		    {

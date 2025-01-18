@@ -40,13 +40,16 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 		if(!_forceFieldDestroyed)
 			return;
 		
+        if(_hp <= 0)
+            return;
+
 		_hp--;
 		_damageAnimator.PlayDamageAnimation();
 		
 		if(_hp == 0)
 		{
 			_shootingPoint.Active = false;
-			_state = new Exploding(this, removeEnemy: false);
+			_state = new Exploding(this, size: 140, removeEnemy: false);
 			var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 			projectiles.RemoveAllProjectiles();
