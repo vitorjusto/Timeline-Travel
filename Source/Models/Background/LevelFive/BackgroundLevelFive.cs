@@ -13,7 +13,6 @@ public partial class BackgroundLevelFive : Node2D, IBackground
 		_animationPlayer.Play("new_animation");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		_parallaxLayer.MotionOffset = new Vector2(

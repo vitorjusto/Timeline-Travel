@@ -9,11 +9,20 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         public Node2D _node;
         private EnemySpawner _enemySpawner;
         public int _time = 0;
-        private int _size;
+        private Vector2 _size;
         private bool _removeEnemy;
         private Vector2 _positionOffSet;
 
         public Exploding(Node2D node, int size = 100, bool removeEnemy = true, Vector2 positionOffSet = default)
+        {
+            _node = node;
+            _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+            _size = new Vector2(size, size);
+            _removeEnemy = removeEnemy;
+            _positionOffSet = positionOffSet;
+        }
+
+        public Exploding(Node2D node, Vector2 size, bool removeEnemy = true, Vector2 positionOffSet = default)
         {
             _node = node;
             _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
@@ -32,7 +41,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             if(_time == 0)
                 _enemySpawner.RemoveAllEnemies();
 
-            _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-_size, _size), _node.Position.Y + _positionOffSet.Y + (new Random().Next(-_size, _size)));
+            _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + (new Random().Next(-(int)_size.Y, (int)_size.Y)));
 
 		    if(_time == 300)
 		    {

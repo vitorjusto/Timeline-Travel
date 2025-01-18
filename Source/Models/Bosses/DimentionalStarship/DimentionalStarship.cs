@@ -42,7 +42,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
         _hp--;
 
         if(_hp == 0)
-            _state = new Exploding(this, 300, removeEnemy: EndLevel, positionOffSet: new Vector2(0, 200));
+            _state = new Exploding(this, 150, removeEnemy: EndLevel, positionOffSet: new Vector2(GetNode<Node2D>("AnimatedSprite2D").Scale.X < 0? -150: 150, 200));
         else if(_hp > 0)
             _damageAnimator.PlayDamageAnimation();
     }
@@ -59,7 +59,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
 
     public void OnFinalBossDestroyed(Node2D node)
     {
-        _state = new Exploding(this, 300, removeEnemy: EndLevel, positionOffSet: new Vector2(0, 200));
+        _state = new Exploding(this, 150, removeEnemy: EndLevel, positionOffSet: new Vector2(GetNode<Node2D>("AnimatedSprite2D").Scale.X < 0? -150: 150, 200));
     }
 
     public EnemyBoundy GetBoundy()

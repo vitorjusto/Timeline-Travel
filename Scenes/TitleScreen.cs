@@ -23,14 +23,14 @@ public partial class TitleScreen : Node2D
         SaveManager.Load();
 
         //Special Mode Active
-        if(SaveManager.Data.SpecialModeUnlocked)
+        if(true)
         {
             _avaliableOptions.Add(ETitleScreenOptions.SpecialMode);
             GetNode<Label>("lblSpecialMode").Visible = true;
         }
 
         //Boss Rush Active
-        if(SaveManager.Data.BossRushUnlocked)
+        if(true)
         {
             _avaliableOptions.Add(ETitleScreenOptions.BossRush);
             GetNode<Label>("lblBossRush").Visible = true;
