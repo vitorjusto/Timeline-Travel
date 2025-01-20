@@ -26,6 +26,9 @@ public partial class GameManager : Node2D
             
 		    GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").PlayerProjectileLevel = 6;
         }
+
+        AudioManager.SetTimelineSong(EnemySpawner.GetEnemySpawner().CurrentLevel);
+        AudioManager.Play();
     }
 
 	public override void _Process(double delta)
@@ -36,6 +39,7 @@ public partial class GameManager : Node2D
 
 			if(_time > 130)
 			{
+                AudioManager.Play();
 				var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 				blackScreen.Visible = false;
 				IsBlackScreen = false;
@@ -68,6 +72,8 @@ public partial class GameManager : Node2D
 		IsBlackScreen = true;
 		_time++;
 
+        AudioManager.Stop();
+
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		player.Hp = 10;
 
@@ -90,6 +96,7 @@ public partial class GameManager : Node2D
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
 
 		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
+
     }
 
 	public void OnLevelPassed()
@@ -102,6 +109,8 @@ public partial class GameManager : Node2D
 		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
+        AudioManager.Stop();
+
 		_time++;
 
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
@@ -121,6 +130,8 @@ public partial class GameManager : Node2D
 		
 		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
 		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
+
+        AudioManager.SetTimelineSong(enemySpawner.CurrentLevel);
 	}
 
 	[Signal]
