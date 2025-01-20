@@ -10,6 +10,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 	private int _hp = GameManager.IsSpecialMode?200:60;
 	private bool _forceFieldDestroyed = false;
 	private IState _state;
+    public bool IsExploding => _state is Exploding;
     private DamageAnimationPlayer _damageAnimator;
     private ShootPoint _shootingPoint;
 
@@ -50,6 +51,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 		{
 			_shootingPoint.Active = false;
 			_state = new Exploding(this, size: 140, removeEnemy: false);
+            
 			var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 			projectiles.RemoveAllProjectiles();

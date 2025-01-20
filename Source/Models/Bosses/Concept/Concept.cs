@@ -14,13 +14,25 @@ public partial class Concept : Node2D, IEnemy, INonExplodable, ICustomBossPositi
 	private int _damageAnimation = 0;
 
     private EnemySpawner _enemySpawner;
-
-	[Export]
+    private ConceptHead _conceptHead;
+    [Export]
 	public bool AutoEndLevel = true;
+    private bool _musicStopped;
+
     public override void _Ready()
 	{
 		_enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+        _conceptHead = GetNode<ConceptHead>("ConceptHead");
 	}
+
+    public override void _Process(float delta)
+    {
+        if(_conceptHead.IsExploding && AutoEndLevel && !_musicStopped)
+        {
+            AudioManager.Stop();
+            _musicStopped = true;
+        }
+    }
 
 	public void Destroy()
 	{

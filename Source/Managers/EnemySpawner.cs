@@ -241,6 +241,7 @@ public partial class EnemySpawner : Node2D
 			var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
 
 			_showingWarningBoss = true;
+            AudioManager.StartBossTransition();
 			hud.ShowWarningBoss();
 			_time = 0;
 		}
@@ -260,6 +261,7 @@ public partial class EnemySpawner : Node2D
 		if(_time == 200)
 		{
 			_showingWarningBoss = false;
+            AudioManager.SetBossMusic();
 			_time = 0;
 			GetBoss();
 		}

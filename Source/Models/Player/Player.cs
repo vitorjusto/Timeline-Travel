@@ -229,7 +229,7 @@ public partial class Player : Area2D
     public void DestroyPlayer()
     {
         Hp = 0;
-
+        AudioManager.Stop();
 		EnemySpawner.GetEnemySpawner().AddExplosion(Position.X, Position.Y, addScore: false);
 		Visible = false;
 

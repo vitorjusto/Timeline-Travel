@@ -3,11 +3,10 @@ using Godot;
 public partial class AudioManager : Node2D
 {
     private static AudioManager _manager;
-    
+    private static bool _startingBossTransition;
     public static void SetTimelineSong(int level)
     {
-        GD.Print(level);
-
+        _player.VolumeDb = 0;
         switch (level)
         {
             case 1:
@@ -58,6 +57,25 @@ public partial class AudioManager : Node2D
         _player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
+    public override void _Process(double delta)
+    {
+        if(_startingBossTransition)
+        {
+            _player.VolumeDb -= 0.5f;
+        }
+    }
+    
+    public static void StartBossTransition()
+        => _startingBossTransition = true;
+
+    public static void SetBossMusic()
+    {
+        _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Boss.wav");
+        _player.Stream = _audio;
+        _startingBossTransition = false;
+        _player.VolumeDb = 0;
+        Play();
+    } 
     public void OnAudioFinished()
             => _player.Play(0);
 

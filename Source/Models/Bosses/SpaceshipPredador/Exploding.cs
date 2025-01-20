@@ -20,6 +20,8 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _size = new Vector2(size, size);
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
+            if(removeEnemy)   
+                AudioManager.Stop();
         }
 
         public Exploding(Node2D node, Vector2 size, bool removeEnemy = true, Vector2 positionOffSet = default)
@@ -29,6 +31,9 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _size = size;
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
+            
+            if(removeEnemy)   
+                AudioManager.Stop();
         }
 
         public IState NextState()

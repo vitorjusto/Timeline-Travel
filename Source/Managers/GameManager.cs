@@ -87,6 +87,8 @@ public partial class GameManager : Node2D
 		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
 		enemySpawner.RestartLevel();
+        
+        AudioManager.SetTimelineSong(enemySpawner.CurrentLevel);
 
 		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
