@@ -25,7 +25,7 @@ public partial class Concept : Node2D, IEnemy, INonExplodable, ICustomBossPositi
         _conceptHead = GetNode<ConceptHead>("ConceptHead");
 	}
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         if(_conceptHead.IsExploding && AutoEndLevel && !_musicStopped)
         {
