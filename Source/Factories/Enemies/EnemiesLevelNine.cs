@@ -10,11 +10,6 @@ namespace Shooter.Source.Factories.Enemies
     {
         public static List<EnemySection> GetEnemies()
         {
-            
-            return new List<EnemySection>()
-            {
-                new(10, false, new DFollower(10, EEnemyProjectileType.Normal)),
-            };
             return new List<EnemySection>()
             {
                 new(10, false, new DFollower(10, EEnemyProjectileType.Normal)),
