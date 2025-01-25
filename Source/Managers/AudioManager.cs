@@ -25,6 +25,8 @@ public partial class AudioManager : Node2D
                 _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Timeline5.wav");
                 break;
             case 6:
+                _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Timeline6.wav");
+                break;
             case 7:
                 _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Timeline7.wav");
                 break;
