@@ -1,0 +1,496 @@
+[gd_scene load_steps=30 format=3 uid="uid://dnjg6xfccsj6y"]
+
+[ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_e3kyk"]
+[ext_resource type="Script" path="res://Source/Models/Misc/FinalCutscene/FinalEndingScene2.cs" id="1_fmooc"]
+[ext_resource type="Texture2D" uid="uid://udk0wlvk2c6f" path="res://Assets/Background/LevelTen/MainBackground.png" id="2_stqj3"]
+[ext_resource type="Texture2D" uid="uid://bjnnwvc0yohf5" path="res://Assets/Background/LevelOne/Stars.png" id="3_rg1je"]
+[ext_resource type="Texture2D" uid="uid://daxuv4gf7d0os" path="res://Assets/Player/spaceshipUpgrade.png" id="4_thu5q"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="6_ukx2c"]
+[ext_resource type="Texture2D" uid="uid://dfae0jlg24to7" path="res://Assets/Misc/Ending/spaceshipGoingThrougBackground.png" id="7_oy4y3"]
+[ext_resource type="Texture2D" uid="uid://bvcnlgxf1m8k1" path="res://Assets/Misc/Ending/EndText.png" id="8_v6k7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0vyp"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(0, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m5kp"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(11, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7gvi"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(22, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qncph"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(33, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77mx8"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(44, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0pev"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(55, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32pk6"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(66, 11, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no7ga"]
+atlas = ExtResource("3_rg1je")
+region = Rect2(77, 11, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ys1rw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0vyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m5kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7gvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qncph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77mx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0pev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32pk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no7ga")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q32o6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bajaw"]
+font = ExtResource("6_ukx2c")
+font_size = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu77p"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cei26"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj8v1"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w63tj"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e2ym"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd5qj"]
+atlas = ExtResource("7_oy4y3")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k2ek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu77p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cei26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj8v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w63tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e2ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd5qj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qufx7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ck6o4"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lel5t"]
+_data = {
+"new_animation": SubResource("Animation_ck6o4")
+}
+
+[node name="FinalEndingScene2" type="Node2D"]
+script = ExtResource("1_fmooc")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MovingParallaxLayer" parent="ParallaxBackground" instance=ExtResource("1_e3kyk")]
+position = Vector2(0, -13)
+motion_mirroring = Vector2(1440, 0)
+XSpeed = 10.0
+
+[node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+position = Vector2(722, 495)
+texture = ExtResource("2_stqj3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(87, 120)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(226, 220)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(724, 147)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(1003, 321)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(860, 486)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(704, 599)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(130, 570)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(412, 375)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(245, 408)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(484, 803)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(536, 971)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(1067, 783)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(851, 663)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(1218, 660)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(1315, 381)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(1340, 97)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(942, 61)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(493, 52)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(518, 279)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(311, 81)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(352, 204)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(73, 356)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(596, 434)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(311, 506)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(754, 290)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1074, 163)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1189, 321)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1177, 471)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1002, 619)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1285, 821)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(818, 798)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(627, 822)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(312, 782)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(473, 651)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(187, 679)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(87, 821)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(241, 956)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(756, 958)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="ParallaxBackground/MovingParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1086, 966)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ys1rw")
+autoplay = "default"
+
+[node name="SpaceshipUpgrade" type="Sprite2D" parent="."]
+position = Vector2(1490, 295)
+rotation = 4.71239
+scale = Vector2(3, 3)
+texture = ExtResource("4_thu5q")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="SpaceshipUpgrade"]
+position = Vector2(-0.49733, 95.7831)
+scale = Vector2(1, 2.45191)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -40.0
+offset_top = 686.0
+offset_right = 1423.0
+offset_bottom = 902.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q32o6")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 19.0
+offset_right = 1425.0
+offset_bottom = 193.0
+label_settings = SubResource("LabelSettings_bajaw")
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-130, 168)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0k2ek")
+speed_scale = 0.4
+
+[node name="EndText" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(700, 450)
+scale = Vector2(3, 3)
+texture = ExtResource("8_v6k7g")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 1718.0
+offset_bottom = 943.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qufx7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_lel5t")
+}
+
+[connection signal="screen_exited" from="SpaceshipUpgrade/VisibleOnScreenNotifier2D" to="." method="OnPlayerExited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="AnimatedSpriteFinished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="AnimationEnded"]
