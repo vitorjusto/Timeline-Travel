@@ -58,7 +58,7 @@ texture = ExtResource("2_qasl2")
 metadata/_edit_lock_ = true
 
 [node name="TheWall" type="CharacterBody2D" parent="."]
-position = Vector2(703, -72)
+position = Vector2(703, -146)
 script = ExtResource("1_oognb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TheWall"]
