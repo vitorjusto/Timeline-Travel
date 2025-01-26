@@ -130,6 +130,11 @@ public partial class Hud : Node2D
 		lblPause.Visible = !lblPause.Visible;
 		_isGamePaused = lblPause.Visible;
 
+        if(_isGamePaused)
+            AudioManager.Pause();
+        else
+            AudioManager.Unpause();
+
 		PauseAllProcess();
     }
 

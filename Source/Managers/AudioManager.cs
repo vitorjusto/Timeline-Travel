@@ -57,9 +57,23 @@ public partial class AudioManager : Node2D
         _player.Stop();
     }
 
+    public static void Pause()
+    {
+        _pausedPosition = _player.GetPlaybackPosition();
+        _player.Stop();
+    }
+
+    public static void Unpause()
+    {
+        _player.Play(_pausedPosition);
+        _pausedPosition = 0;
+    }
+
     private static AudioStream _audio;
     private static AudioStreamPlayer _player;
-	public override void _Ready()
+    private static float _pausedPosition;
+
+    public override void _Ready()
 	{
         _player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
