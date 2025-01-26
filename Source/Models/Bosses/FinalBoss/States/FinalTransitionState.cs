@@ -11,6 +11,8 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
         private int _playerSpeed = -10;
         private byte _panelOpacity = 0;
 
+        private int _timer = 0;
+
         public FinalTransitionState(Player player, Panel panel)
         {
             _player = player;
@@ -35,7 +37,12 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
         {
             if(_panelOpacity == 255)
             {
-                _player.GetTree().ChangeSceneToFile("res://Scenes/Misc/FinalCutscene.tscn");
+                _timer++;
+
+                if(_timer < 100)
+                    return;
+
+                _player.GetTree().ChangeSceneToFile("res://Scenes/Misc/FinalEndings/FinalCutscene.tscn");
                 if(GameManager.IsSpecialMode)
                 {
                     SaveManager.Data.BossRushUnlocked = true;

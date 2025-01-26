@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cs6l37g86feig"]
+[gd_scene load_steps=29 format=3 uid="uid://cs6l37g86feig"]
 
 [ext_resource type="Script" path="res://Source/Models/Misc/FinalCutscene/FinalEndingScene.cs" id="1_fqq8i"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_ku6k2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjnnwvc0yohf5" path="res://Assets/Background/LevelOne/Stars.png" id="3_aldjf"]
 [ext_resource type="Texture2D" uid="uid://dfae0jlg24to7" path="res://Assets/Misc/Ending/spaceshipGoingThrougBackground.png" id="5_wi5o6"]
 [ext_resource type="Texture2D" uid="uid://daxuv4gf7d0os" path="res://Assets/Player/spaceshipUpgrade.png" id="6_cw6e7"]
+[ext_resource type="Texture2D" uid="uid://br7fctntolea4" path="res://Assets/Misc/Ending/Mothership.png" id="7_6m108"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0vyp"]
 atlas = ExtResource("3_aldjf")
@@ -121,6 +122,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufdur"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+shadow_color = Color(1, 1, 1, 0.25098)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ec5um"]
 bg_color = Color(1, 1, 1, 1)
 
@@ -140,9 +150,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bpgid"]
+resource_name = "new_animation_2"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Panel2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1000, 1000)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8kdlb"]
 _data = {
-"new_animation": SubResource("Animation_tbpc2")
+"new_animation": SubResource("Animation_tbpc2"),
+"new_animation_2": SubResource("Animation_bpgid")
 }
 
 [node name="FinalEndingScene" type="Node2D"]
@@ -438,6 +465,20 @@ sprite_frames = SubResource("SpriteFrames_7keuf")
 autoplay = "default"
 speed_scale = 0.6
 
+[node name="Mothership" type="Sprite2D" parent="."]
+position = Vector2(842, 369)
+rotation = 0.214675
+scale = Vector2(2, 2)
+texture = ExtResource("7_6m108")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 805.0
+offset_top = 401.0
+offset_right = 806.0
+offset_bottom = 402.0
+pivot_offset = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufdur")
+
 [node name="SpaceshipUpgrade" type="Sprite2D" parent="."]
 position = Vector2(1509, 638)
 rotation = 4.71239
@@ -450,11 +491,12 @@ scale = Vector2(1, 2.45191)
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = -11.0
-offset_top = -8.0
-offset_right = 1718.0
-offset_bottom = 943.0
+offset_left = -127.0
+offset_top = -43.0
+offset_right = 1602.0
+offset_bottom = 908.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ec5um")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Panel")
@@ -463,6 +505,15 @@ libraries = {
 "": SubResource("AnimationLibrary_8kdlb")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Panel")
+autoplay = "new_animation_2"
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_8kdlb")
+}
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]
 [connection signal="screen_exited" from="SpaceshipUpgrade/VisibleOnScreenNotifier2D" to="." method="OnPlayerExited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationFinished"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="OnAnimationFinished"]

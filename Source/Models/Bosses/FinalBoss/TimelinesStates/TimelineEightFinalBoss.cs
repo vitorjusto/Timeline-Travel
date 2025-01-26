@@ -84,29 +84,6 @@ public partial class TimelineEightFinalBoss : Node2D
                 new(10, false, new DFollower(1390, EEnemyProjectileType.Light)),
                 new(10, true, new DFollower(1390, EEnemyProjectileType.Light)),
 
-                new(40, false, new DCommon(700, 3)),
-                new(40, false, new DCommon(700, 3), new DCommon(600, 3), new DCommon(800, 3)),
-                new(40, false, new DCommon(700, 3), new DCommon(600, 3), new DCommon(800, 3), new DCommon(500, 3), new DCommon(900, 3)),
-                new(40, false, new DSpread(700, EEnemyProjectileType.Normal ,3), new DCommon(600, 3), new DCommon(800, 3), new DCommon(500, 3), new DCommon(900, 3), new DCommon(400, 3), new DCommon(1000, 3)),
-                new(40, false, new DBlackHole(700, false, 3), new DSpread(600, EEnemyProjectileType.Normal ,3), new DSpread(800, EEnemyProjectileType.Normal ,3), new DCommon(500, 3), new DCommon(900, 3), new DCommon(400, 3), new DCommon(1000, 3), new DCommon(300, 3), new DCommon(1100, 3)),
-                new(40, false, new DSpread(700, EEnemyProjectileType.Normal ,3), new DCommon(600, 3), new DCommon(800, 3), new DCommon(500, 3), new DCommon(900, 3), new DCommon(400, 3), new DCommon(1000, 3)),
-                new(40, false, new DCommon(700, 3), new DCommon(600, 3), new DCommon(800, 3), new DCommon(500, 3), new DCommon(900, 3)),
-                new(40, false, new DCommon(700, 3), new DCommon(600, 3), new DCommon(800, 3)),
-                new(40, true, new DCommon(700, 3)),
-
-
-                new(40, false, new DBlackHole(700, true, 4)),
-                new(40, false, new DSpread(1300, EEnemyProjectileType.Normal, 4)),
-                new(40, false, new DSpread(100, EEnemyProjectileType.Normal, 4)),
-
-                new(40, false, new DSpread(1300, EEnemyProjectileType.Normal, 4)),
-                new(40, false, new DSpread(1300, EEnemyProjectileType.Normal, 4), new DSpread(1200, EEnemyProjectileType.Normal, 4)),
-                new(40, false, new DSpread(1300, EEnemyProjectileType.Normal, 4)),
-
-                new(40, false, new DBlackHole(700, true, 4)),
-                new(40, false, new DSpread(100, EEnemyProjectileType.Normal, 4)),
-                new(40, false, new DSpread(100, EEnemyProjectileType.Normal, 4), new DSpread(200, EEnemyProjectileType.Normal, 4)),
-                new(40, true, new DSpread(100, EEnemyProjectileType.Normal, 4)),    
             };
 
 		_enemyManager.AddEnemySection(enemies);
