@@ -30,7 +30,7 @@ public partial class ChequerActackContainer : Node2D
 			
 		_timer++;
 
-		if(_timer > 50)
+		if(_timer > 150)
 		{
 			_mainNode.Activate();
 			_timer = 0;

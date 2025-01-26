@@ -5,7 +5,7 @@ using Shooter.Source.Models.Misc;
 public partial class ConceptPart : CharacterBody2D, IEnemy
 {
 
-	private int _hp = GameManager.IsSpecialMode?150:40;
+	private int _hp = GameManager.IsSpecialMode?200:40;
     private int _speed = GameManager.IsSpecialMode?-6:-4;
     private ProjectileManager _projectiles;
     private WaveSpeed _ySpeed;
@@ -19,6 +19,8 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
         _ySpeed = new WaveSpeed(-2, 10, Position.Y, StartWaveSpeedCooldown);
 
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
+
+        _hp = GetTree().Root.GetNode<Player>("/root/Main/Player").GetFinalPowerUp?200:40;
     }
 
     public override void _Process(double delta)

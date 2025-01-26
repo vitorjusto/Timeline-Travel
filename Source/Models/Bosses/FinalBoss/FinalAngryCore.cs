@@ -4,7 +4,7 @@ using Shooter.Source.Models.Misc;
 public partial class FinalAngryCore : Node2D, IEnemy
 {
 
-	private int _hp = 210;
+	private int _hp = 420;
 	private WaveSpeed _ySpeed;
     private DamageAnimationPlayer _damageAnimator;
 

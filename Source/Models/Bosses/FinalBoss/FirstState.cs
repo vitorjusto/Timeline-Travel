@@ -121,7 +121,7 @@ public partial class FirstState : Node2D, IEnemy
         _hp--;
 
 		if(_hp == 0)
-			_exploding = new Exploding(this, removeEnemy: false);
+			_exploding = new Exploding(this, size: new Vector2(230, 100), removeEnemy: false);
 		else if(_hp > 0)
 			_damageAnimator.PlayDamageAnimation();
     }

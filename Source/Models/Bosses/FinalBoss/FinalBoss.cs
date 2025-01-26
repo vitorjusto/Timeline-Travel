@@ -58,6 +58,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 	public void OnNextState()
 	{
+        GetTree().Root.GetNode<Player>("/root/Main/Player").ResetTargetCount();
 		GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
 		_bossLevelState += 1;
 

@@ -30,7 +30,7 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 		
 		_timer++;
 
-		if(_timer > 10)
+		if(_timer > 20)
 			Deactivate();
 		else
 		{

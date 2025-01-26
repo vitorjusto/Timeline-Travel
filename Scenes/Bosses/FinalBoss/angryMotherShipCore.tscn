@@ -1136,34 +1136,29 @@ shape = SubResource("CircleShape2D_ebf42")
 [node name="ShootPoint" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(-2, 118)
 NodeOrigin = NodePath("..")
-ProjectileType = 1
 Timer = 80
 
 [node name="ShootPoint2" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(-42, 118)
 NodeOrigin = NodePath("..")
-ProjectileType = 1
 Timer = 80
 ExtraAngle = -0.3
 
 [node name="ShootPoint3" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(-73, 103)
 NodeOrigin = NodePath("..")
-ProjectileType = 1
 Timer = 80
 ExtraAngle = -0.5
 
 [node name="ShootPoint4" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(42, 118)
 NodeOrigin = NodePath("..")
-ProjectileType = 1
 Timer = 80
 ExtraAngle = 0.3
 
 [node name="ShootPoint5" parent="CharacterBody2D" node_paths=PackedStringArray("NodeOrigin") instance=ExtResource("13_ydivq")]
 position = Vector2(74, 100)
 NodeOrigin = NodePath("..")
-ProjectileType = 1
 Timer = 80
 ExtraAngle = 0.5
 
