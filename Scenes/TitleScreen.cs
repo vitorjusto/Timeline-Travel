@@ -125,4 +125,9 @@ public partial class TitleScreen : Node2D
 
         return null;
     }
+
+    public void OnSongFinished()
+    {
+        GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
+    }
 }

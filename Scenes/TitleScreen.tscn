@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5f8gphncxs8u"]
+[gd_scene load_steps=9 format=3 uid="uid://b5f8gphncxs8u"]
 
 [ext_resource type="Texture2D" uid="uid://dvujglul4x1io" path="res://Assets/Misc/TitleScreen.png" id="1_1gltp"]
 [ext_resource type="Script" path="res://Scenes/TitleScreen.cs" id="1_as76h"]
 [ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_6p143"]
 [ext_resource type="Texture2D" uid="uid://c4wm2v4x768v5" path="res://Assets/Misc/Indicator.png" id="3_lra6u"]
 [ext_resource type="PackedScene" uid="uid://cjmt2politan5" path="res://Scenes/ControlsScreen.tscn" id="5_tvcsv"]
+[ext_resource type="AudioStream" uid="uid://bkwkvenvymi5d" path="res://Assets/Songs/TitleScreen.wav" id="6_frx3o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ia1k6"]
 line_spacing = 16.0
@@ -85,3 +86,9 @@ offset_top = -23.0
 offset_right = 1471.0
 offset_bottom = 982.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pgwup")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_frx3o")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnSongFinished"]
