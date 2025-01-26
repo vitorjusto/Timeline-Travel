@@ -16,7 +16,7 @@ namespace Shooter.Source.Factories.Enemies
                 new(10, true, new DLighting(1300), new DLighting(1200), new DLighting(1100), new DLighting(1000), new DLighting(900), new DLighting(800), new DLighting(700), new DLighting(600), new DLighting(500), new DLighting(400), new DLighting(300)),
 
                 new(20, false, new DCrusader(100, 1), new DCrusader(100, 4), new DCrusader(1300, 1), new DCrusader(1300, 4)),
-                new(20, true, new DSpread(700, EEnemyProjectileType.Normal)),
+                new(20, true, new DSpread(700, EEnemyProjectileType.Normal, 4)),
 
                 new(10, false, new DLighting(100)),
                 new(10, false, new DLighting(200)),
