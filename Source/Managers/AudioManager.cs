@@ -10,7 +10,7 @@ public partial class AudioManager : Node2D
         switch (level)
         {
             case 1:
-                _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/TheirTimeline.wav");
+                _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/OurTimeline.wav");
                 break;
             case 2:
                 _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Timeline2Or7.wav");
