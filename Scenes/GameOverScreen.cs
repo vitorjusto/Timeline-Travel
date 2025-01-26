@@ -12,7 +12,7 @@ public partial class GameOverScreen : Node2D
 	{
 		_timer++;
 
-		if(_timer == 300)
+		if(_timer == 500)
 			GetTree().ChangeSceneToFile("res://Scenes/TitleScreen.tscn");
 	}
 }

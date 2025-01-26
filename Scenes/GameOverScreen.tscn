@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://du5tghdgt0vbs"]
+[gd_scene load_steps=5 format=3 uid="uid://du5tghdgt0vbs"]
 
 [ext_resource type="Script" path="res://Scenes/GameOverScreen.cs" id="1_wyx0k"]
 [ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_1l62e"]
+[ext_resource type="AudioStream" uid="uid://dgqqcbtqpg1qd" path="res://Assets/Songs/GameOver.wav" id="3_hp6ay"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxbcs"]
 font = ExtResource("2_1l62e")
@@ -19,3 +20,7 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_yxbcs")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hp6ay")
+autoplay = true
