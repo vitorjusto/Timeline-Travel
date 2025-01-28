@@ -10,7 +10,14 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 	private bool _nextStateCalled;
     private int _destroyedPuncherId;
     private INextStateFinalBoss _nextState;
-	
+    private bool _puncherRemoved;
+
+    public override void _Ready()
+    {   
+        if(_puncherRemoved)
+            GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(6);
+    }
+
 	public override void _Process(double delta)
 	{
 		if(_state is null)
@@ -71,6 +78,7 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
         if(removePuncherId == 0)
             return;
 
+        _puncherRemoved = true;
         GetNode<MothershipCoreFirstState>("CharacterBody2D").EnterOnFinalPosition();
         
         GetNode<MothershipCore1>("CharacterBody2D2").EnterOnFinalPosition();
@@ -91,5 +99,10 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
     public void AddNextState(INextStateFinalBoss nextState)
     {
         _nextState = nextState;
+    }
+
+    public void OnAudioFinished()
+    {
+        GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
     }
 }

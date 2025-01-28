@@ -55,4 +55,7 @@ public partial class angryCoreBase : Node2D
             GetNode("CharacterBody2D3").CallDeferred("queue_free");
         }
     }
+
+    public void OnSongFinished()
+        => GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
 }

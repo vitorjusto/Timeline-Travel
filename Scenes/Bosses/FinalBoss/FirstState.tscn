@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhmtiqixlsj56"]
+[gd_scene load_steps=14 format=3 uid="uid://bhmtiqixlsj56"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_koq25"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FirstStateBase.cs" id="1_nonx2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://su24qqn0iv3n" path="res://Assets/Bosses/FinalBoss/TheWall/TheWall.png" id="5_2brvd"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalPowerUp.cs" id="5_ejc5g"]
 [ext_resource type="Texture2D" uid="uid://bcsi30pfkm2ia" path="res://Assets/Bosses/FinalBoss/TheWall/FinalPowerUp.png" id="7_v8bpr"]
+[ext_resource type="AudioStream" uid="uid://v1l3xw7304lt" path="res://Assets/Songs/FinalBoss/TheWall.wav" id="8_yf5vs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d541i"]
 size = Vector2(562, 130)
@@ -88,6 +89,12 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_08jay")
 metadata/_edit_lock_ = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_yf5vs")
+autoplay = true
+
+[connection signal="OnDestroyed" from="TheWall" to="." method="OnWallDestroyed"]
 [connection signal="OnDestroyed" from="TheWall" to="CharacterBody2D" method="OnBossDestroyed"]
 [connection signal="OnWallEntered" from="TheWall" to="." method="OnWallEntered"]
 [connection signal="OnGetPowerUp" from="CharacterBody2D" to="." method="OnFinalPowerUpGet"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnMusicFinished"]

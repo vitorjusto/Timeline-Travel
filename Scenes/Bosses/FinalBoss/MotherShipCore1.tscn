@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cav7yasi24bq"]
+[gd_scene load_steps=23 format=3 uid="uid://cav7yasi24bq"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_ggno3"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MotherShipCore1Base.cs" id="1_ha2ii"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dlx3ytaldx2t6" path="res://Assets/Bosses/FinalBoss/MothershipCore/CoreProtector.png" id="7_1lxiv"]
 [ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="7_7cboa"]
 [ext_resource type="Texture2D" uid="uid://46o2u6o85e1d" path="res://Assets/Bosses/FinalBoss/MothershipCore/Puncher.png" id="8_532b3"]
+[ext_resource type="AudioStream" uid="uid://cm5q41fmuc21w" path="res://Assets/Songs/FinalBoss/Core.wav" id="12_5cxu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yo5aq"]
 atlas = ExtResource("5_e4p4u")
@@ -308,9 +309,14 @@ sprite_frames = SubResource("SpriteFrames_8wflp")
 position = Vector2(-1.5, 3)
 shape = SubResource("RectangleShape2D_mdway")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_5cxu3")
+autoplay = true
+
 [connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="." method="OnPuncherDestroing"]
 [connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D" method="OnPuncherDestroyed"]
 [connection signal="OnPuncherDestroing" from="CharacterBody2D4" to="CharacterBody2D2" method="OnPuncherDestroyed"]
 [connection signal="OnPuncherDestroing" from="CharacterBody2D6" to="." method="OnPuncherDestroing"]
 [connection signal="OnPuncherDestroing" from="CharacterBody2D6" to="CharacterBody2D" method="OnPuncherDestroyed"]
 [connection signal="OnPuncherDestroing" from="CharacterBody2D6" to="CharacterBody2D2" method="OnPuncherDestroyed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnAudioFinished"]

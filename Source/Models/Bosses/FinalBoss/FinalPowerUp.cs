@@ -49,4 +49,5 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
 
 	[Signal]
 	public delegate void OnGetPowerUpEventHandler();
+    
 }
