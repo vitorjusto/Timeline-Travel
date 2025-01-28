@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clj66ailvb4fm"]
+[gd_scene load_steps=5 format=3 uid="uid://clj66ailvb4fm"]
 
 [ext_resource type="PackedScene" uid="uid://m8pmmair70e6" path="res://Scenes/Background/BackgroundLevelEight.tscn" id="1_tn0nc"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/TimelinesStates/TimelineEightFinalBoss.cs" id="1_yux3t"]
 [ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_8ya8b"]
-[ext_resource type="AudioStream" uid="uid://l47rwd533j5t" path="res://Assets/Songs/timeline8.wav" id="4_bnxg2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opc61"]
 font = ExtResource("2_8ya8b")
@@ -23,7 +22,3 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackgoundLevelEight" parent="." instance=ExtResource("1_tn0nc")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_bnxg2")
-autoplay = true

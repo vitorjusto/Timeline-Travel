@@ -27,7 +27,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		{
 			player.SetSizeLimit(462, 944);
             AddChild(new DFistState(this).GetInstance());
-
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/TheWall.wav");
 			return;
 		}
 
@@ -64,7 +64,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 		if(_bossLevelState == EFinalBossState.FinalPowerUpGetTransition || _bossLevelState == EFinalBossState.TransitionToTimelineEight || _bossLevelState == EFinalBossState.TransitionToMothershipCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineTwoFour || _bossLevelState == EFinalBossState.TransitionToAngryCore || _bossLevelState == EFinalBossState.TransitionToTimeLineEleven || _bossLevelState == EFinalBossState.TransitionToAngryCore2 || _bossLevelState == EFinalBossState.TransitionToTimelineThree || _bossLevelState == EFinalBossState.TransitionToFinalStage)
 		{
-			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"));
+			_state = new FinalPowerUpGetTransitionState(GetNode<Panel>("ParallaxBackground/PanelContainer"), AudioManager.AudioStreamPlayer);
             
             try
             {
@@ -80,6 +80,9 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		}
 		else if(_bossLevelState == EFinalBossState.MothershipCore)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/Core.wav");
+
             try
             {
 			    GetNode("FirstState").QueueFree();
@@ -91,6 +94,8 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 		}else if(_bossLevelState == EFinalBossState.TimelineEight)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/timeline8.wav");
             GetNode<MotherShipCore1Base>("MotherShipCore1").QueueFree();
             AddChild(new DTimelineEightFinalBoss(this).GetInstance());
 			
@@ -98,6 +103,8 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 		}else if(_bossLevelState == EFinalBossState.MothershipCore2)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/Core.wav");
             AddChild(new DMotherShipCore1(this, removeIdPuncher).GetInstance());
 			GetNode("TimelineEightFinalBoss").QueueFree();
 
@@ -105,12 +112,16 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 		}else if(_bossLevelState == EFinalBossState.TimelineTwoFour)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/Timeline4.wav");
             GetNode<MotherShipCore1Base>("MotherShipCore1").QueueFree();
             AddChild(new DTimelineTwoFourBoss(this).GetInstance());
 			
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 		}else if(_bossLevelState == EFinalBossState.AngryCore)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/AngryCore.wav");
 			GetNode("TimelineTwoFourBoss").QueueFree();
 
             AddChild(new DAngryMotherShipCore(this).GetInstance());
@@ -118,12 +129,16 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 
 		}else if(_bossLevelState == EFinalBossState.TimeLineEleven)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/Timeline7.wav");
 			GetNode("AngryMotherShipCore").QueueFree();
             AddChild(new DTimelineEleven(this).GetInstance());
 			
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 		}else if(_bossLevelState == EFinalBossState.AngryCore2)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/AngryCore.wav");
 			GetNode("TimelineEleven").QueueFree();
 
             AddChild(new DAngryMotherShipCore(this, removeIdProtector).GetInstance());
@@ -137,6 +152,8 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);
 		}else if(_bossLevelState == EFinalBossState.FinalStage)
 		{
+            
+            AudioManager.SetCustonMusic("res://Assets/Songs/FinalBoss/DeseperateCore.wav");
 			GetNode("Timelinethree").QueueFree();
             AddChild(new DFinalStage(this).GetInstance());
 			GetNode<Panel>("ParallaxBackground/PanelContainer").Modulate = Color.Color8(255, 255, 255, 0);

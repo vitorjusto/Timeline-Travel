@@ -56,6 +56,4 @@ public partial class angryCoreBase : Node2D
         }
     }
 
-    public void OnSongFinished()
-        => GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
 }

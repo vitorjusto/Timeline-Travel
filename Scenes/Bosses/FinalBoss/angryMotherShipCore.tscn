@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddctoyk3npe81"]
+[gd_scene load_steps=26 format=3 uid="uid://ddctoyk3npe81"]
 
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/angryCoreBase.cs" id="1_gjyg8"]
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_kk7b0"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/MothershipCoreFirstState.cs" id="10_5p2ty"]
 [ext_resource type="Texture2D" uid="uid://dyopnjb4wdvb5" path="res://Assets/Bosses/FinalBoss/MothershipCore/MothershipCore.png" id="11_btrmd"]
 [ext_resource type="PackedScene" uid="uid://7ta0sneowshf" path="res://Scenes/Misc/ShootPoint.tscn" id="13_ydivq"]
-[ext_resource type="AudioStream" uid="uid://7yuivxn8mv3l" path="res://Assets/Songs/FinalBoss/AngryCore.wav" id="14_d6luv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u2qh"]
 bg_color = Color(1, 1, 1, 1)
@@ -1163,12 +1162,7 @@ NodeOrigin = NodePath("..")
 Timer = 80
 ExtraAngle = 0.5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_d6luv")
-autoplay = true
-
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="." method="OnProtectorDestoyed"]
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D2" to="CharacterBody2D3" method="OnOtherProtectorDestroyed"]
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D3" to="." method="OnProtectorDestoyed"]
 [connection signal="OnProtectorDestoyed" from="CharacterBody2D3" to="CharacterBody2D2" method="OnOtherProtectorDestroyed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="OnSongFinished"]

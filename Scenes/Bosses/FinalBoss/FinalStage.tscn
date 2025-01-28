@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c50narwpq7goe"]
+[gd_scene load_steps=16 format=3 uid="uid://c50narwpq7goe"]
 
 [ext_resource type="PackedScene" uid="uid://br1ks8rpde1th" path="res://Scenes/Misc/MovingParallaxLayer.tscn" id="1_4inkl"]
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalStage.cs" id="1_8idn7"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Source/Models/Bosses/FinalBoss/FinalAngryCore.cs" id="4_lfwfv"]
 [ext_resource type="Texture2D" uid="uid://dyopnjb4wdvb5" path="res://Assets/Bosses/FinalBoss/MothershipCore/MothershipCore.png" id="6_7iv13"]
 [ext_resource type="PackedScene" uid="uid://dfvw876betv86" path="res://Scenes/Bosses/BossLevelThree/DimentionalStarship.tscn" id="6_vp135"]
-[ext_resource type="AudioStream" uid="uid://bwcixmmapbx41" path="res://Assets/Songs/FinalBoss/DeseperateCore.wav" id="8_5gkby"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwsxg"]
 bg_color = Color(1, 1, 1, 1)
@@ -508,10 +507,5 @@ position = Vector2(-564, -532)
 EndLevel = false
 EmitLight = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_5gkby")
-autoplay = true
-
 [connection signal="OnDestroyed" from="CharacterBody2D" to="." method="OnCoreDestroyed"]
 [connection signal="OnDestroyed" from="CharacterBody2D" to="DimentionalStarship" method="OnFinalBossDestroyed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="OnMusicFinished"]

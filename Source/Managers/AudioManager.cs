@@ -7,6 +7,7 @@ public partial class AudioManager : Node2D
     public static void SetTimelineSong(int level)
     {
         _player.VolumeDb = 0;
+        _audio = null;
         switch (level)
         {
             case 1:
@@ -72,6 +73,15 @@ public partial class AudioManager : Node2D
     }
 
     private static AudioStream _audio;
+
+    public static AudioStreamPlayer AudioStreamPlayer => _player;
+    public static void SetCustonMusic(string song)
+    {
+        _audio = ResourceLoader.Load<AudioStream>(song);
+        _player.Stream = _audio;
+        _player.Play(0);
+    }
+
     private static AudioStreamPlayer _player;
     private static float _pausedPosition;
 
@@ -100,6 +110,6 @@ public partial class AudioManager : Node2D
         Play();
     } 
     public void OnAudioFinished()
-            => _player.Play(0);
+        => _player.Play(0);
 
 }

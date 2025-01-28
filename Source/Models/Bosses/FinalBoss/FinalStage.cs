@@ -322,7 +322,4 @@ public partial class FinalStage : Node2D
         _nextState = nextState;
     }
 
-    public void OnMusicFinished()
-        => GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
-
 }

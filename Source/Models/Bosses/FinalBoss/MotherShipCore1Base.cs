@@ -100,9 +100,4 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
     {
         _nextState = nextState;
     }
-
-    public void OnAudioFinished()
-    {
-        GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play(0);
-    }
 }
