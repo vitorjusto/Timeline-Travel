@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://due3kaah4881a"]
+[gd_scene load_steps=4 format=3 uid="uid://due3kaah4881a"]
 
 [ext_resource type="Script" path="res://Scenes/Misc/FinalCutscene.cs" id="1_evvo7"]
 [ext_resource type="PackedScene" uid="uid://cs6l37g86feig" path="res://Scenes/Misc/FinalEndings/FinalEndingScene.tscn" id="2_phvii"]
+[ext_resource type="AudioStream" uid="uid://cyc7qwo6sjaih" path="res://Assets/Songs/EndingSequence.wav" id="3_8ovm1"]
 
 [node name="FinalCutscene" type="Node2D"]
 script = ExtResource("1_evvo7")
 
 [node name="FinalEndingScene" parent="." instance=ExtResource("2_phvii")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8ovm1")
+autoplay = true
 
 [connection signal="OnFirstSceneEnded" from="FinalEndingScene" to="." method="OnFirstSceneEnded"]

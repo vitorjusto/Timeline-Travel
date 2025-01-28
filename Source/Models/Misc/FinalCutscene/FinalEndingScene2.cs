@@ -45,7 +45,7 @@ public partial class FinalEndingScene2 : Node2D
         if(_EndOpacity == 255)
             return;
 
-        _EndOpacity += 1;
+        _EndOpacity += 5;
         GetNode<Node2D>("EndText").Modulate = Color.Color8(255, 255, 255, _EndOpacity);
     }
 
@@ -89,14 +89,21 @@ public partial class FinalEndingScene2 : Node2D
         {
             _label.Text += _endingText[0];
             _endingText = _endingText.Substr(1, _endingText.Length - 1);
-            
+
             if(_endingText.Length == 0)
             {
                 _playerSpeed = -10;
                 return;
             }
 
-            _textCooldown = _endingText[0] == '\n'? 15: 5;
+            if(_endingText[0] == ' ')
+            {
+                _label.Text += _endingText[0];
+                _endingText = _endingText.Substr(1, _endingText.Length - 1);
+            }
+
+            _textCooldown = _endingText[0] == '\n'? 15: 3;
+
         }else
         {
             _textCooldown--;
