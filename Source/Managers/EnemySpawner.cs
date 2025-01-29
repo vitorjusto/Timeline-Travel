@@ -24,7 +24,7 @@ public partial class EnemySpawner : Node2D
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
     [Export]
-	public int CurrentLevel = 11;
+	public int CurrentLevel = 1;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -268,11 +268,12 @@ public partial class EnemySpawner : Node2D
     }
 
 
-    public void AddExplosion(float x, float y, bool addScore = true)
+    public void AddExplosion(float x, float y, bool addScore = true, bool makeSound = true)
     {
         var scene = GD.Load<PackedScene>("res://Scenes/Misc/Explosion.tscn");
         var instance = (Explosion)scene.Instantiate();
 		instance.Position = new Vector2(x, y);
+        instance.MakeSound = makeSound;
 
 		CallDeferred("add_child", instance);
 		

@@ -17,6 +17,7 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
     private EnemySpawner _enemySpawner;
 	private BlackholeManager _blackholeManager;
+    private int _explosionCooldown;
 
     public override void _Ready()
 	{
@@ -47,7 +48,15 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
     private void DestroyAnimation()
     {
-		_enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
+        if(_explosionCooldown == 0)
+        {
+		    _enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
+            _explosionCooldown = 10;
+        }else
+        {
+            _enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)), makeSound: false);
+            _explosionCooldown--;
+        }
 
 		GetNode<ShootPoint>("ShootPoint").Active = false;
 		GetNode<ShootPoint>("ShootPoint2").Active = false;
