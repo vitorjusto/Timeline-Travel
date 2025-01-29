@@ -84,7 +84,8 @@ public partial class AudioManager : Node2D
 
     private static AudioStreamPlayer _player;
     private static float _pausedPosition;
-    private static bool _calledInThisFrame;
+    private static bool _thunderCalledInThisFrame;
+    private static bool _laserCalledInThisFrame;
 
     public override void _Ready()
 	{
@@ -94,7 +95,8 @@ public partial class AudioManager : Node2D
 
     public override void _Process(double delta)
     {
-        _calledInThisFrame = false;
+        _thunderCalledInThisFrame = false;
+        _laserCalledInThisFrame = false;
         if(_startingBossTransition)
         {
             _player.VolumeDb -= 0.5f;
@@ -123,14 +125,28 @@ public partial class AudioManager : Node2D
 
     public static void OnLighting()
     {
-        if(_calledInThisFrame)
+        if(_thunderCalledInThisFrame)
             return;
         
-        _calledInThisFrame = true;
+        _thunderCalledInThisFrame = true;
         if(_manager.GetNode<AudioStreamPlayer>("Lightingsfx").Playing)
             _manager.GetNode<AudioStreamPlayer>("Lightingsfx2").Play();
         else
             _manager.GetNode<AudioStreamPlayer>("Lightingsfx").Play();
+
+    }
+
+    
+    public static void OnLaser()
+    {
+        if(_laserCalledInThisFrame)
+            return;
+        
+        _laserCalledInThisFrame = true;
+        if(_manager.GetNode<AudioStreamPlayer>("Lasersfx").Playing)
+            _manager.GetNode<AudioStreamPlayer>("Lasersfx2").Play();
+        else
+            _manager.GetNode<AudioStreamPlayer>("Lasersfx").Play();
 
     }
 

@@ -25,6 +25,7 @@ public partial class Lazer : CharacterBody2D, IEnemy
 
 		}else
 		{
+            AudioManager.OnLaser();
 			_isShooting = true;
 			_time = 0;
 		}
