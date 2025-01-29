@@ -12,6 +12,7 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
         private byte _panelOpacity = 0;
 
         private int _timer = 0;
+        private int _explosionCooldown;
 
         public FinalTransitionState(Player player, Panel panel)
         {
@@ -43,16 +44,7 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
                     return;
 
                 _player.GetTree().ChangeSceneToFile("res://Scenes/Misc/FinalEndings/FinalCutscene.tscn");
-                if(GameManager.IsSpecialMode)
-                {
-                    SaveManager.Data.BossRushUnlocked = true;
-                    SaveManager.Save();
-                }else if(!EnemySpawner.GetEnemySpawner().isBossRush)
-                {
-                    SaveManager.Data.SpecialModeUnlocked = true;
-                    SaveManager.Save();
-                }
-                
+
                 return;
             }
 
@@ -62,7 +54,16 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
 
         private void CreateExplosions()
         {
-            EnemySpawner.GetEnemySpawner().AddExplosion(new Random().Next(0, 1444), new Random().Next(0, 940), addScore: false);
+            if(_explosionCooldown == 0)
+            {
+                EnemySpawner.GetEnemySpawner().AddExplosion(new Random().Next(0, 1444), new Random().Next(0, 940), addScore: false, makeSound: true);
+                _explosionCooldown = 10;
+            }else
+            {
+                
+                EnemySpawner.GetEnemySpawner().AddExplosion(new Random().Next(0, 1444), new Random().Next(0, 940), addScore: false, makeSound: false);
+                _explosionCooldown--;
+            }
         }
 
         private void AnimatePlayer()

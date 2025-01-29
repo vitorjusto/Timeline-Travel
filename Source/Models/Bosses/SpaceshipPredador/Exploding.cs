@@ -12,6 +12,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         private Vector2 _size;
         private bool _removeEnemy;
         private Vector2 _positionOffSet;
+        private int _explosionCooldown;
 
         public Exploding(Node2D node, int size = 100, bool removeEnemy = true, Vector2 positionOffSet = default)
         {
@@ -46,7 +47,15 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             if(_time == 0)
                 _enemySpawner.RemoveAllEnemies();
 
-            _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y));
+            if(_explosionCooldown == 0)
+            {
+                _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y));
+                _explosionCooldown = 10;
+            }else
+            {
+                _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y), makeSound: false);
+                _explosionCooldown--;
+            }
 
 		    if(_time == 300)
 		    {

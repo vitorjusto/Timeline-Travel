@@ -23,14 +23,14 @@ public partial class TitleScreen : Node2D
         SaveManager.Load();
 
         //Special Mode Active
-        if(true)
+        if(SaveManager.Data.SpecialModeUnlocked)
         {
             _avaliableOptions.Add(ETitleScreenOptions.SpecialMode);
             GetNode<Label>("lblSpecialMode").Visible = true;
         }
 
         //Boss Rush Active
-        if(true)
+        if(SaveManager.Data.BossRushUnlocked)
         {
             _avaliableOptions.Add(ETitleScreenOptions.BossRush);
             GetNode<Label>("lblBossRush").Visible = true;
@@ -99,11 +99,21 @@ public partial class TitleScreen : Node2D
 		if(_timer == 120)
         {
             if(_selectedOption == ETitleScreenOptions.SpecialMode)
+            {
+                SaveManager.Data.GameMode = EGameMode.Special;
                 GetTree().ChangeSceneToFile("res://Scenes/SpecialMode.tscn");
+            }
             else if(_selectedOption == ETitleScreenOptions.StartGame)
+            {
+                
+                SaveManager.Data.GameMode = EGameMode.Normal;
                 GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+            }
             else if(_selectedOption == ETitleScreenOptions.BossRush)
+            {
+                SaveManager.Data.GameMode = EGameMode.BossRush;
                 GetTree().ChangeSceneToFile("res://Scenes/BossRush.tscn");
+            }
         }
 			
 		_timer++;

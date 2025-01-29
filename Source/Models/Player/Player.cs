@@ -31,7 +31,7 @@ public partial class Player : Area2D
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
-	private bool _playerImortal = false;
+	private bool _playerImortal = true;
     private int _minLimit = 32;
     private int _maxLimit;
     private int _targetCount;
