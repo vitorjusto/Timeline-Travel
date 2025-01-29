@@ -54,7 +54,6 @@ public partial class ProjectileManager : Node2D
         if (Input.IsActionJustPressed("shoot") && !Input.IsActionJustPressed("pause"))
 		{
             
-            GetNode<AudioStreamPlayer>("PlayerProjectilesfx").Play();
 			if(_player.GetFinalPowerUp)
 				ShootPlayerProjectileFinalPowerUp();
 			else
@@ -66,6 +65,8 @@ public partial class ProjectileManager : Node2D
 
     private void ShootPlayerProjectileFinalPowerUp()
     {
+        
+        GetNode<AudioStreamPlayer>("PlayerProjectilesfx").Play();
 		AddPlayerProjectile(-6, -15, -10);
 		AddPlayerProjectile(-3, -20, -10);
 		AddPlayerProjectile(6, -15, -10);
@@ -83,6 +84,8 @@ public partial class ProjectileManager : Node2D
 
     private void ShootPlayerProjectile()
     {
+        
+        GetNode<AudioStreamPlayer>("PlayerProjectilesfx").Play();
 		if(PlayerProjectileLevel == 1)
 			AddPlayerProjectile(0, -20);
 		else if(PlayerProjectileLevel == 2)

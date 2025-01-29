@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbshewwmnedw8"]
+[gd_scene load_steps=5 format=3 uid="uid://cbshewwmnedw8"]
 
 [ext_resource type="Script" path="res://Source/Managers/AudioManager.cs" id="1_pigs6"]
 [ext_resource type="AudioStream" uid="uid://dpot5j0k25bbq" path="res://Assets/Songs/OurTimeline.mp3" id="2_dehn0"]
 [ext_resource type="AudioStream" uid="uid://coe6ixksvpklw" path="res://Assets/sfx/pickupPowerUp.wav" id="3_lb13h"]
+[ext_resource type="AudioStream" uid="uid://davtdcbhmubky" path="res://Assets/sfx/thunder.wav" id="4_835co"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_pigs6")
@@ -12,5 +13,15 @@ stream = ExtResource("2_dehn0")
 
 [node name="PowerUpsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_lb13h")
+
+[node name="Lightingsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_835co")
+volume_db = -10.0
+pitch_scale = 0.1
+
+[node name="Lightingsfx2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_835co")
+volume_db = -10.0
+pitch_scale = 0.1
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="OnAudioFinished"]

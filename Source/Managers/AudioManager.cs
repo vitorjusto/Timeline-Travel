@@ -84,6 +84,7 @@ public partial class AudioManager : Node2D
 
     private static AudioStreamPlayer _player;
     private static float _pausedPosition;
+    private static bool _calledInThisFrame;
 
     public override void _Ready()
 	{
@@ -93,10 +94,14 @@ public partial class AudioManager : Node2D
 
     public override void _Process(double delta)
     {
+        _calledInThisFrame = false;
         if(_startingBossTransition)
         {
             _player.VolumeDb -= 0.5f;
         }
+
+        if(GetNode<AudioStreamPlayer>("Lightingsfx").GetPlaybackPosition() > 0.1) GetNode<AudioStreamPlayer>("Lightingsfx").Stop();
+        if(GetNode<AudioStreamPlayer>("Lightingsfx2").GetPlaybackPosition() > 0.1) GetNode<AudioStreamPlayer>("Lightingsfx2").Stop();
     }
     
     public static void StartBossTransition()
@@ -115,5 +120,18 @@ public partial class AudioManager : Node2D
 
     public void OnPowerUpPickUp()
         => GetNode<AudioStreamPlayer>("PowerUpsfx").Play();
+
+    public static void OnLighting()
+    {
+        if(_calledInThisFrame)
+            return;
+        
+        _calledInThisFrame = true;
+        if(_manager.GetNode<AudioStreamPlayer>("Lightingsfx").Playing)
+            _manager.GetNode<AudioStreamPlayer>("Lightingsfx2").Play();
+        else
+            _manager.GetNode<AudioStreamPlayer>("Lightingsfx").Play();
+
+    }
 
 }

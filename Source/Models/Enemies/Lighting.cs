@@ -46,6 +46,9 @@ public partial class Lighting : Node2D, IEnemy, INonExplodable
 		var enemySpawner = EnemySpawner.GetEnemySpawner();
         enemySpawner.AddEnemy(new DLightningPart(Position.X, (_time * 320)));
 
+        if(_time == 1)
+            AudioManager.OnLighting();
+
 		if(_time == 4)
 		{
         	enemySpawner.RemoveEnemy(this);
