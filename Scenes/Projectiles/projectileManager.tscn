@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bie542gje8vfa"]
+[gd_scene load_steps=3 format=3 uid="uid://bie542gje8vfa"]
 
 [ext_resource type="Script" path="res://Source/Managers/ProjectileManager.cs" id="1_brbrs"]
+[ext_resource type="AudioStream" uid="uid://ghfvii5xtpn2" path="res://Assets/sfx/PlayerShoot.wav" id="2_4kqcx"]
 
 [node name="ProjectileManager" type="Node2D"]
 script = ExtResource("1_brbrs")
+
+[node name="PlayerProjectilesfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4kqcx")
+volume_db = -20.0

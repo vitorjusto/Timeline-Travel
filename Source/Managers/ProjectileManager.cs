@@ -53,6 +53,8 @@ public partial class ProjectileManager : Node2D
 
         if (Input.IsActionJustPressed("shoot") && !Input.IsActionJustPressed("pause"))
 		{
+            
+            GetNode<AudioStreamPlayer>("PlayerProjectilesfx").Play();
 			if(_player.GetFinalPowerUp)
 				ShootPlayerProjectileFinalPowerUp();
 			else

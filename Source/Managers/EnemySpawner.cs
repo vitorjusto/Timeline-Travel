@@ -36,6 +36,7 @@ public partial class EnemySpawner : Node2D
     private int _currentBossOnBossRush = 1;
     [Export]
     public bool isBossRush = false;
+    private bool _explodedFrame;
 
     public override void _Ready()
 	{
@@ -126,6 +127,7 @@ public partial class EnemySpawner : Node2D
 
     public override void _Process(double delta)
 	{
+        _explodedFrame = false;
 		if(_gameManager.IsBlackScreen)
 			return;
 
@@ -273,7 +275,8 @@ public partial class EnemySpawner : Node2D
         var scene = GD.Load<PackedScene>("res://Scenes/Misc/Explosion.tscn");
         var instance = (Explosion)scene.Instantiate();
 		instance.Position = new Vector2(x, y);
-        instance.MakeSound = makeSound;
+        instance.MakeSound = makeSound && !_explodedFrame;
+        _explodedFrame = true;
 
 		CallDeferred("add_child", instance);
 		

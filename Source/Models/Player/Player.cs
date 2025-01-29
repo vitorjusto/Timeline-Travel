@@ -31,7 +31,7 @@ public partial class Player : Area2D
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
-	private bool _playerImortal = true;
+	private bool _playerImortal = false;
     private int _minLimit = 32;
     private int _maxLimit;
     private int _targetCount;
@@ -216,13 +216,17 @@ public partial class Player : Area2D
 				projectileManager.PlayerProjectileLevel = 1;
 				
 		}
-		if(_iFrame == 0)
-			_iFrame = IFrameTime;
 
 		if(Hp <= 0)
 		{
 			DestroyPlayer();
 		}
+        else if(_iFrame == 0)
+        {
+			_iFrame = IFrameTime;
+            
+            GetNode<AudioStreamPlayer>("Hurtsfx").Play();
+        }
 
 		EmitSignal("PlayerHpUpdated", Hp);//Não pode colocar eventhandler (mesmo que o delegate obriga a por no nome)
 
