@@ -19,7 +19,6 @@ public partial class BulletUp : Node2D, IPowerUp
 
 			p.PlayerProjectileLevel = 5;
 		}
-			
 		QueueFree();
     }
 

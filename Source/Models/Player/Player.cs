@@ -180,6 +180,8 @@ public partial class Player : Area2D
 
 			powerUp.OnPickUp();
 			EmitSignal("PlayerHpUpdated", Hp);
+            EmitSignal("PlayerPowerUpPickUp");
+            
 			return;
 		}
 
@@ -240,6 +242,9 @@ public partial class Player : Area2D
 
     [Signal]
 	public delegate void PlayerDestroyedEventHandler();	
+    
+    [Signal]
+	public delegate void PlayerPowerUpPickUpEventHandler();	
 	[Signal]
 	public delegate void PlayerLifeUpdatedEventHandler(int life);
 	[Signal]

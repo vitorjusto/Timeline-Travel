@@ -87,6 +87,7 @@ public partial class AudioManager : Node2D
 
     public override void _Ready()
 	{
+        _manager = this;
         _player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
@@ -111,5 +112,8 @@ public partial class AudioManager : Node2D
     } 
     public void OnAudioFinished()
         => _player.Play(0);
+
+    public void OnPowerUpPickUp()
+        => GetNode<AudioStreamPlayer>("PowerUpsfx").Play();
 
 }

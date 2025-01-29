@@ -50,4 +50,5 @@ texture = ExtResource("8_tnyt0")
 [connection signal="PlayerHpUpdated" from="Player" to="Hud" method="PlayerHpUpdated"]
 [connection signal="PlayerLifeProgressUpdated" from="Player" to="Hud" method="OnPlayerLifeProgressOpdated"]
 [connection signal="PlayerLifeUpdated" from="Player" to="Hud" method="onPlayerLifeUpdated"]
+[connection signal="PlayerPowerUpPickUp" from="Player" to="AudioManager" method="OnPowerUpPickUp"]
 [connection signal="PlayerBulletUpdated" from="ProjectileManager" to="Hud" method="PlayerBulletUpdated"]

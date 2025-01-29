@@ -17,6 +17,11 @@ config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 config/icon="res://Assets/Player/spaceship.png"
 
+[audio]
+
+driver/output_latency=5
+buses/channel_disable_time=0.0
+
 [display]
 
 window/size/viewport_width=1400
