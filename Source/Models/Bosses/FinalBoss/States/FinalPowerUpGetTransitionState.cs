@@ -32,6 +32,7 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
                 _opacity += (byte)(_opacity < 254? 2: 0);
                 _transitionPanel.Modulate = Color.Color8(255, 255, 255, _opacity);
                 _timer++;
+
             }else
             {
                 _audioStreamPlayer.Stop();

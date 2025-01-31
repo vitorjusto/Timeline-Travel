@@ -75,6 +75,7 @@ public partial class AudioManager : Node2D
     private static AudioStream _audio;
 
     public static AudioStreamPlayer AudioStreamPlayer => _player;
+    
     public static void SetCustonMusic(string song)
     {
         _audio = ResourceLoader.Load<AudioStream>(song);

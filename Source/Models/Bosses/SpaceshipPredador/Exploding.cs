@@ -14,14 +14,14 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         private Vector2 _positionOffSet;
         private int _explosionCooldown;
 
-        public Exploding(Node2D node, int size = 100, bool removeEnemy = true, Vector2 positionOffSet = default)
+        public Exploding(Node2D node, int size = 100, bool removeEnemy = true, Vector2 positionOffSet = default, bool continueMusicEvenWithoutEnemy = false)
         {
             _node = node;
             _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
             _size = new Vector2(size, size);
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
-            if(removeEnemy)   
+            if(removeEnemy && !continueMusicEvenWithoutEnemy)   
                 AudioManager.Stop();
         }
 

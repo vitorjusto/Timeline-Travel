@@ -4,6 +4,6 @@ public class SaveData
     public bool SpecialModeUnlocked;
     public bool BossRushUnlocked;
 
-    public EGameMode GameMode;
+    public EGameMode GameMode = EGameMode.Special;
 
 }

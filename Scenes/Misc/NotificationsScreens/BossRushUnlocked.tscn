@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgu2jriux6mjs"]
+
+[ext_resource type="Script" path="res://Source/Models/Misc/ModeUnclocked.cs" id="1_7kotn"]
+[ext_resource type="FontFile" uid="uid://rs83dvl8v5js" path="res://Assets/Fonts/TimelineTravel.ttf" id="2_g21cf"]
+[ext_resource type="AudioStream" uid="uid://b8gfu1jwxgwru" path="res://Assets/Songs/unlockFanfare.wav" id="3_gl2i1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciiqy"]
+font = ExtResource("2_g21cf")
+font_size = 64
+
+[node name="SpecialModeUnclocked" type="Node2D"]
+script = ExtResource("1_7kotn")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1400.0
+offset_bottom = 900.0
+text = "BOSS RUSH UNLOCKED !!!"
+label_settings = SubResource("LabelSettings_ciiqy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gl2i1")
+autoplay = true

@@ -16,6 +16,9 @@ public partial class FinalEndingScene2 : Node2D
     private int _textCooldown = 100;
     private bool _TextFadedOut;
     private bool _EndTextFadeIn;
+    private bool _allowPlayerToExit;
+    private bool _playerUnlockedSpecialMode;
+    private bool _playerUnlockedBossRush;
 
     public override void _Ready()
 	{
@@ -29,7 +32,8 @@ public partial class FinalEndingScene2 : Node2D
 	{
         if(!_enabled)
             return;
-
+        if(_allowPlayerToExit)
+            ListenPlayerInput();
         if(_EndTextFadeIn)
             FadeInEndText();
         if(_TextFadedOut)
@@ -40,13 +44,47 @@ public partial class FinalEndingScene2 : Node2D
             GenerateText();
 	}
 
+    private void ListenPlayerInput()
+    {
+        if(!Input.IsActionJustPressed("Enter"))
+            return;
+
+        if(_playerUnlockedSpecialMode)
+            GetTree().ChangeSceneToFile("res://Scenes/Misc/NotificationsScreens/SpecialModeUnlocked.tscn");
+        else if(_playerUnlockedBossRush)
+            GetTree().ChangeSceneToFile("res://Scenes/Misc/NotificationsScreens/BossRushUnlocked.tscn");
+        else
+            GetTree().ChangeSceneToFile("res://Scenes/TitleScreen.tscn");
+    }
+
     private void FadeInEndText()
     {
         if(_EndOpacity == 255)
+        {
+            VerifyUnlockables();
+            _allowPlayerToExit = true;
             return;
+        }
 
         _EndOpacity += 5;
         GetNode<Node2D>("EndText").Modulate = Color.Color8(255, 255, 255, _EndOpacity);
+    }
+
+    private void VerifyUnlockables()
+    {
+        if(SaveManager.Data.GameMode == EGameMode.Normal && !SaveManager.Data.SpecialModeUnlocked)
+        {
+            SaveManager.Data.SpecialModeUnlocked = true;
+            SaveManager.Save();
+            _playerUnlockedSpecialMode = true;
+
+        }else if(SaveManager.Data.GameMode == EGameMode.Special && !SaveManager.Data.BossRushUnlocked)
+        {
+            SaveManager.Data.BossRushUnlocked = true;
+            SaveManager.Save();
+            _playerUnlockedBossRush = true;
+        }
+
     }
 
     private void LetPlayerGoBackGround()

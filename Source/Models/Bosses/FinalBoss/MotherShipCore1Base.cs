@@ -37,7 +37,7 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 
 	public void OnPuncherDestroing(Node2D node)
 	{
-		_state = new Exploding(node, removeEnemy: true);
+		_state = new Exploding(node, removeEnemy: true, continueMusicEvenWithoutEnemy: true);
 		node.SetProcess(false);
 		_destroingNode = node;
         _destroyedPuncherId = ((MothershipCorePuncher)node).Id;
