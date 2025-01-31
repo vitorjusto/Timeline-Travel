@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://l47rwd533j5t"
-path="res://.godot/imported/timeline8.wav-bde721ef16635165eab63b14b2522cce.sample"
+path="res://.godot/imported/Timeline8.wav-f90225fc8ecfe8bc089c64ab79871b2c.sample"
 
 [deps]
 
-source_file="res://Assets/Songs/timeline8.wav"
-dest_files=["res://.godot/imported/timeline8.wav-bde721ef16635165eab63b14b2522cce.sample"]
+source_file="res://Assets/Songs/Timeline8.wav"
+dest_files=["res://.godot/imported/Timeline8.wav-f90225fc8ecfe8bc089c64ab79871b2c.sample"]
 
 [params]
 

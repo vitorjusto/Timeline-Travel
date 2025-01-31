@@ -60,16 +60,18 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 
 		var projectilesWithoutLight = projectileManager.GetChildren().Where((x) => !lights.Select((y) => ((LevelThreeLight)y).LightOwner).Contains(x)).ToList();
 
-		foreach(Node2D projectile in projectilesWithoutLight)
+		foreach(Node projectile in projectilesWithoutLight)
 		{
-			var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
+            if(projectile is Node2D node2d)
+            {
+			    var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
 
-        	var instance = (LevelThreeLight)scene.Instantiate();
-			instance.LightOwner = projectile;
-			instance.ShrinkLight();
+        	    var instance = (LevelThreeLight)scene.Instantiate();
+			    instance.LightOwner = node2d;
+			    instance.ShrinkLight();
 
-			_lightContainer.AddChild(instance);
-
+			    _lightContainer.AddChild(instance);
+            }
 		}
     }
 

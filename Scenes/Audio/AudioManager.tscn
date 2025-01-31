@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbshewwmnedw8"]
+[gd_scene load_steps=5 format=3 uid="uid://cbshewwmnedw8"]
 
 [ext_resource type="Script" path="res://Source/Managers/AudioManager.cs" id="1_pigs6"]
-[ext_resource type="AudioStream" uid="uid://dpot5j0k25bbq" path="res://Assets/Songs/OurTimeline.mp3" id="2_dehn0"]
 [ext_resource type="AudioStream" uid="uid://coe6ixksvpklw" path="res://Assets/sfx/pickupPowerUp.wav" id="3_lb13h"]
 [ext_resource type="AudioStream" uid="uid://davtdcbhmubky" path="res://Assets/sfx/thunder.wav" id="4_835co"]
 [ext_resource type="AudioStream" uid="uid://u6wfq4sumxsa" path="res://Assets/sfx/laserShoot (1).wav" id="5_ue5gi"]
@@ -10,7 +9,6 @@
 script = ExtResource("1_pigs6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_dehn0")
 
 [node name="PowerUpsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_lb13h")
