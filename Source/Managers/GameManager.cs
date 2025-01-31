@@ -5,6 +5,8 @@ public partial class GameManager : Node2D
     [Export]
     public bool SpecialMode = false;
     private static GameManager _game;
+    public static GameManager GetManager()
+        => _game;
 
     public static bool IsSpecialMode => _game is not null && _game.SpecialMode;
 	private int _time = 0;

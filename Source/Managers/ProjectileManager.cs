@@ -37,6 +37,9 @@ public partial class ProjectileManager : Node2D
 
     private void Shoot()
     {
+        if(GameManager.GetManager().IsBlackScreen)
+            return;
+
 		if(Input.IsActionPressed("shoot"))
 		{
 			_autoFireCooldown--;
