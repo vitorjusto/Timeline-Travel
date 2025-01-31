@@ -124,7 +124,9 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		{
 			_enemySpawner.RemoveAllEnemies();
 			_isDestroing = true;
-            AudioManager.Stop();
+
+            if(!_enemySpawner.isBossRush)
+                AudioManager.Stop();
 			_time = 0;
 		}
 

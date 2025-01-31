@@ -21,7 +21,8 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _size = new Vector2(size, size);
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
-            if(removeEnemy && !continueMusicEvenWithoutEnemy)   
+
+            if(removeEnemy && !continueMusicEvenWithoutEnemy && !_enemySpawner.isBossRush)   
                 AudioManager.Stop();
         }
 
@@ -33,7 +34,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
             
-            if(removeEnemy)   
+            if(removeEnemy && !_enemySpawner.isBossRush)   
                 AudioManager.Stop();
         }
 

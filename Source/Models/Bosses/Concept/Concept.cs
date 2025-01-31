@@ -29,7 +29,10 @@ public partial class Concept : Node2D, IEnemy, INonExplodable, ICustomBossPositi
     {
         if(_conceptHead.IsExploding && AutoEndLevel && !_musicStopped)
         {
-            AudioManager.Stop();
+            
+            if(!_enemySpawner.isBossRush)
+                AudioManager.Stop();
+                
             _musicStopped = true;
         }
     }
