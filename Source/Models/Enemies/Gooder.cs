@@ -101,7 +101,6 @@ public partial class Gooder : CharacterBody2D, IEnemy
         	    EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
 			    return;
             }
-			_time -= 10;
 			_speedModifier+= 0.5f;
 			return;
 		}

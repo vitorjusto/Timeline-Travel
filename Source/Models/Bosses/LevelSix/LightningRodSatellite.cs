@@ -9,7 +9,7 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 {
 	public IState _state;
     public int _hp;
-    private int MaxHp = GameManager.IsSpecialMode?5000:1000;
+    private int MaxHp = GameManager.IsSpecialMode?5000:500;
     private DamageAnimationPlayer _damageAnimator;
 
     public override void _Ready()
@@ -34,7 +34,7 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
 	{
         if(_state.Process())
             _state = _state.NextState();
@@ -51,9 +51,9 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
 
         _hp--;
 
-        if(_hp == (MaxHp - (GameManager.IsSpecialMode?200:50)))
+        if(_hp == (MaxHp - (GameManager.IsSpecialMode?200:100)))
             _state = _state.NextState();
-        if(_hp == (MaxHp  - (GameManager.IsSpecialMode?750:700)))
+        if(_hp == (MaxHp  - (GameManager.IsSpecialMode?750:400)))
             _state = _state.NextState();
         
         if(_hp == 0)

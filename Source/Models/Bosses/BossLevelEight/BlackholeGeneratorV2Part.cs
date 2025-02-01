@@ -18,7 +18,7 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
         _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
 	{
         _damageAnimator.Process();
         

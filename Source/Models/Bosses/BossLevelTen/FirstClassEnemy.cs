@@ -93,12 +93,12 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, -6, 2));
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, -3, 3));
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, 6, 2));
-		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, 6, 2));
+		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, 3, 2));
 
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 10, Position.Y + 32, -6, 2));
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 10, Position.Y + 32, -3, 3));
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 10, Position.Y + 32, 6, 2));
-		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 10, Position.Y + 32, 6, 2));
+		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 10, Position.Y + 32, 3, 2));
 
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 32, Position.Y + 32, 0, 3));
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X + 32, Position.Y + 32, 0, 3));
