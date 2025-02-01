@@ -95,7 +95,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		}else if(_bossLevelState == EFinalBossState.TimelineEight)
 		{
             
-            AudioManager.SetCustonMusic("res://Assets/Songs/timeline8.wav");
+            AudioManager.SetCustonMusic("res://Assets/Songs/Timeline8.wav");
             GetNode<MotherShipCore1Base>("MotherShipCore1").QueueFree();
             AddChild(new DTimelineEightFinalBoss(this).GetInstance());
 			

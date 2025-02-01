@@ -8,7 +8,7 @@ public partial class SpecialProjectile : CharacterBody2D, IEnemyProjectile
 
 	private float _speedModifier = 5;
 
-	public int Damage = 4;
+	public int Damage = 3;
 	public override void _Ready()
 	{
 	}
