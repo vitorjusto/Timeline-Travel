@@ -418,7 +418,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DCommon(1000, 3)
                              , new DCommon(1100, 3)
                              , new DCommon(1200, 3)
-                             , new DCommon(1300, 3)) { CheckpointId = 2 },
+                             , new DCommon(1300, 3)),
 
                 new(10, false, new DLighting(300)
                             , new DLighting(400)
@@ -430,7 +430,7 @@ namespace Shooter.Source.Factories.Enemies
                             , new DLighting(1000)
                             , new DLighting(1100)
                             , new DLighting(1200)
-                            , new DLighting(1300)),
+                            , new DLighting(1300)) { CheckpointId = 2 },
 
                 new(15, false, new DCommon(100, 5), new DCommon(200, 5)),
                 new(15, false, new DCommon(100, 5), new DCommon(200, 5)),

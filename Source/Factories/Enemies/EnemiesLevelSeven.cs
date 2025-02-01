@@ -191,7 +191,7 @@ namespace Shooter.Source.Factories.Enemies
                              , new DSniper(1300, EEnemyProjectileType.Light)),    
 
 
-                new(20, false, new DLazer(50, 2580)),                                 
+                new(20, false, new DLazer(50, 2580)) { CheckpointId = 1 },                                 
                 new(20, false, new DLazer(150, 2560)),                                 
                 new(20, false, new DLazer(250, 2540)),                                 
                 new(20, false, new DLazer(350, 2520)),                                 
