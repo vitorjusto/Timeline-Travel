@@ -83,6 +83,9 @@ public partial class FirstState : Node2D, IEnemy
 
     private void ShootLazers()
     {
+        if(_time == 0)
+            AudioManager.OnLaser();
+            
 		_time++;
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
         enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * _time), 200));

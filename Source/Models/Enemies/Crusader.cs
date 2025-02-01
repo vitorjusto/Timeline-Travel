@@ -28,6 +28,8 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
 		else if(_time == 150)
 		{
 			_isExplosing = true; 
+            AudioManager.OnExplosion();
+            
 			var animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			animation.Play("RayLazer");
 			animation.ApplyScale(new Vector2(x: 1, y: 990));
@@ -71,7 +73,10 @@ public partial class Crusader : CharacterBody2D, IEnemy, INonExplodable
     public void Destroy()
     {
 		if(!_isExplosing)
+        {
+            
 			_time = 150;
+        }
     }
 
     public EnemyBoundy GetBoundy()

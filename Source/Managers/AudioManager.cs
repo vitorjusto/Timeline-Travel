@@ -87,6 +87,7 @@ public partial class AudioManager : Node2D
     private static float _pausedPosition;
     private static bool _thunderCalledInThisFrame;
     private static bool _laserCalledInThisFrame;
+    private static bool _explosionCalledInThisFrame;
 
     public override void _Ready()
 	{
@@ -98,6 +99,8 @@ public partial class AudioManager : Node2D
     {
         _thunderCalledInThisFrame = false;
         _laserCalledInThisFrame = false;
+        _explosionCalledInThisFrame = false;
+        
         if(_startingBossTransition)
         {
             _player.VolumeDb -= 0.5f;
@@ -137,7 +140,6 @@ public partial class AudioManager : Node2D
 
     }
 
-    
     public static void OnLaser()
     {
         if(_laserCalledInThisFrame)
@@ -150,5 +152,17 @@ public partial class AudioManager : Node2D
             _manager.GetNode<AudioStreamPlayer>("Lasersfx").Play();
 
     }
+    
+    public static void OnExplosion()
+    {
+        if(_explosionCalledInThisFrame)
+            return;
+        
+        _explosionCalledInThisFrame = true;
+        if(_manager.GetNode<AudioStreamPlayer>("Explosionsfx").Playing)
+            _manager.GetNode<AudioStreamPlayer>("Explosionsfx").Play();
+        else
+            _manager.GetNode<AudioStreamPlayer>("Explosionsfx").Play();
 
+    }
 }
