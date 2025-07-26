@@ -1,23 +1,29 @@
 using Godot;
+using Shooter.Source.Models.Enemies;
 
-public partial class BackgroundLevelEight : Node2D
+namespace Shooter.Source.Models.Background.LevelEight
 {
-    public void OnPanelOnColorChange()
+    public partial class BackgroundLevelEight : Node2D
     {
-        if(!GameManager.IsSpecialMode)
-            return;
-            
-        var enemies = EnemySpawner.GetEnemySpawner().Enemies;
-
-        foreach(Node2D enemy in enemies)
+        public void OnPanelOnColorChange()
         {
-            if(enemy is not Blackhole)
-                continue;
-
-            try
+            if (!GameManager.IsSpecialMode)
+                return;
+    
+            var enemies = EnemySpawner.GetEnemySpawner().Enemies;
+    
+            foreach (Node2D enemy in enemies)
             {
-                ((Blackhole)enemy).ToggleBlackHoleType();
-            }catch{}
+                if (enemy is not Blackhole)
+                    continue;
+    
+                try
+                {
+                    ((Blackhole)enemy).ToggleBlackHoleType();
+                }
+                catch { }
+            }
         }
     }
 }
+

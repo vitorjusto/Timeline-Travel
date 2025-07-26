@@ -1,14 +1,15 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DBlackHole : IEnemyDummy
     {
-        private int _x;
-        private int _y;
-        private bool _isWhiteHole;
-        private int _speed;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly bool _isWhiteHole;
+        private readonly int _speed;
 
         public DBlackHole(int x, bool isWhiteHole, int speed)
         {
