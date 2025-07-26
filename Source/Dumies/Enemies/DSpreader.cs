@@ -1,14 +1,15 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Enums;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DSpreader : IEnemyDummy
     {
-        private int _x;
-        private EEnemyProjectileType _projectileType;
-        private int _speed;
+        private readonly int _x;
+        private readonly EEnemyProjectileType _projectileType;
+        private readonly int _speed;
 
         public DSpreader(int x, EEnemyProjectileType projectileType, int speed = 1)
         {
@@ -23,7 +24,7 @@ namespace Shooter.Source.Dumies.Enemies
 
             var instance = (Spreader)scene.Instantiate();
 
-            instance.Position = new Vector2(_x, y: -30);
+            instance.Position = new Vector2(_x, y: -50);
 
             instance.ProjectileType = _projectileType;
             instance.Speed = _speed;

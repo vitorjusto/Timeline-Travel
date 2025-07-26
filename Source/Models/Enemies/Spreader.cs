@@ -4,88 +4,73 @@ using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Misc;
 
-public partial class Spreader : CharacterBody2D, IEnemy
+namespace Shooter.Source.Models.Enemies
 {
-	public int Speed = 1;
-	private int _time = 0;
-	public EEnemyProjectileType ProjectileType;
-
-	public override void _Ready()
-	{
-		GetNode<RegularShootPoint>("RegularShootPoint").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint2").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint3").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint4").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint5").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint6").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint7").ProjectileType = ProjectileType;
-		GetNode<RegularShootPoint>("RegularShootPoint8").ProjectileType = ProjectileType;
-
-		GetNode<RegularShootPoint>("RegularShootPoint").Speed = new Vector2(-Speed, 0);
-		GetNode<RegularShootPoint>("RegularShootPoint2").Speed = new Vector2(-Speed, Speed);
-		GetNode<RegularShootPoint>("RegularShootPoint3").Speed = new Vector2(0, Speed);
-		GetNode<RegularShootPoint>("RegularShootPoint4").Speed = new Vector2(Speed, Speed);
-		GetNode<RegularShootPoint>("RegularShootPoint5").Speed = new Vector2(Speed, 0);
-		GetNode<RegularShootPoint>("RegularShootPoint6").Speed = new Vector2(Speed, -Speed);
-		GetNode<RegularShootPoint>("RegularShootPoint7").Speed = new Vector2(0, -Speed);
-		GetNode<RegularShootPoint>("RegularShootPoint8").Speed = new Vector2(-Speed, -Speed);
-
-
-		if(ProjectileType == EEnemyProjectileType.Strong)
-		{
-			GetNode<RegularShootPoint>("RegularShootPoint").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint2").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint3").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint4").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint5").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint6").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint7").Speed *= 2;
-			GetNode<RegularShootPoint>("RegularShootPoint8").Speed *= 2;
-		}
-	}
-
-    public override void _Process(double delta)
-	{
-		MoveEnemy();
-
-	}
-
-    private void MoveEnemy()
+    public partial class Spreader : CharacterBody2D, IEnemy
     {
-        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
-    }
+        public int Speed = 1;
+        private int _time = 0;
+        public EEnemyProjectileType ProjectileType;
 
-	private void ShootProjectile(float xspeed, float yspeed)
-	{
-		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+        public override void _Ready()
+        {
+            GetNode<RegularShootPoint>("RegularShootPoint").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint2").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint3").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint4").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint5").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint6").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint7").ProjectileType = ProjectileType;
+            GetNode<RegularShootPoint>("RegularShootPoint8").ProjectileType = ProjectileType;
 
-		if(ProjectileType == EEnemyProjectileType.Normal)
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, xspeed, yspeed));
-		else if(ProjectileType == EEnemyProjectileType.Light)
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, xspeed, yspeed));
-		else if(ProjectileType == EEnemyProjectileType.Strong)
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, xspeed * (2), yspeed * (2)));		
-		
+            GetNode<RegularShootPoint>("RegularShootPoint").Speed = new Vector2(-Speed, 0);
+            GetNode<RegularShootPoint>("RegularShootPoint2").Speed = new Vector2(-Speed, Speed);
+            GetNode<RegularShootPoint>("RegularShootPoint3").Speed = new Vector2(0, Speed);
+            GetNode<RegularShootPoint>("RegularShootPoint4").Speed = new Vector2(Speed, Speed);
+            GetNode<RegularShootPoint>("RegularShootPoint5").Speed = new Vector2(Speed, 0);
+            GetNode<RegularShootPoint>("RegularShootPoint6").Speed = new Vector2(Speed, -Speed);
+            GetNode<RegularShootPoint>("RegularShootPoint7").Speed = new Vector2(0, -Speed);
+            GetNode<RegularShootPoint>("RegularShootPoint8").Speed = new Vector2(-Speed, -Speed);
 
-	}
 
-    public void OnScreenExited()
-    {
-        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-    }
+            if (ProjectileType == EEnemyProjectileType.Strong)
+            {
+                GetNode<RegularShootPoint>("RegularShootPoint").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint2").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint3").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint4").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint5").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint6").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint7").Speed *= 2;
+                GetNode<RegularShootPoint>("RegularShootPoint8").Speed *= 2;
+            }
+        }
 
-	public void Destroy()
-	{
-        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
-	}
+        public override void _Process(double delta)
+            => Position += new Vector2(x: 0, y: Speed * (float)(delta * 60));
 
-	public bool IsImortal()
-	{
-		return false;
-	}
+        private void ShootProjectile(float xspeed, float yspeed)
+        {
+            var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new(2, 3, Position);
+            if (ProjectileType == EEnemyProjectileType.Normal)
+                projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y, xspeed, yspeed));
+            else if (ProjectileType == EEnemyProjectileType.Light)
+                projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y, xspeed, yspeed));
+            else if (ProjectileType == EEnemyProjectileType.Strong)
+                projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y, xspeed * 2, yspeed * 2));
+        }
+
+        public void OnScreenExited()
+            => EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
+
+        public void Destroy()
+            => EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+
+        public bool IsImortal()
+            => false;
+
+        public EnemyBoundy GetBoundy()
+            => new(hpUpPoints: 2, bulletPoints: 3, position: Position);
     }
 }

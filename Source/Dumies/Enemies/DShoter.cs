@@ -1,13 +1,14 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Enums;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DShoter : IEnemyDummy
     {
-        private int _x;
-        private EEnemyProjectileType _projectileType;
+        private readonly int _x;
+        private readonly EEnemyProjectileType _projectileType;
         public DShoter(int x, EEnemyProjectileType projectileType)
         {
             _x = x;

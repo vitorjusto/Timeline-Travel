@@ -11,10 +11,15 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, false, new DReinforcedCommon(400, 3)),
-                new EnemySection(50, false, new DReinforcedCommon(500, 3)),
-                new EnemySection(50, false, new DReinforcedCommon(600, 3)),
-                new EnemySection(50, false, new DReinforcedCommon(700, 3)),
+                new EnemySection(50, false, new DSpreader(400, EEnemyProjectileType.Normal, speed: 2)),
+                new EnemySection(50, false, new DSpreader(500, EEnemyProjectileType.Normal, speed: 2)),
+                new EnemySection(50, false, new DSpreader(600, EEnemyProjectileType.Normal, speed: 2)),
+                new EnemySection(50, false, new DSpreader(700, EEnemyProjectileType.Normal, speed: 2)),
+
+                new EnemySection(50, false, new DSpread(400, EEnemyProjectileType.Normal)),
+                new EnemySection(50, false, new DSpread(500, EEnemyProjectileType.Normal)),
+                new EnemySection(50, false, new DSpread(600, EEnemyProjectileType.Normal)),
+                new EnemySection(50, false, new DSpread(700, EEnemyProjectileType.Normal)),
             };
         }
     }

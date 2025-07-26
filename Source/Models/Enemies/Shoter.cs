@@ -5,93 +5,87 @@ using Shooter.Source.Interfaces;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Misc;
 
-public partial class Shoter : CharacterBody2D, IEnemy
+namespace Shooter.Source.Models.Enemies
 {
-
-	private int _speed = 3;
-	private int _timeShooted = 0;
-	private int _time = 0;
-
-	public EEnemyProjectileType ProjectileType;
-    public override void _Process(double delta)
-	{
-		MoveEnemy();
-
-		_time++;
-	}
-
-    private void MoveEnemy()
+    public partial class Shoter : CharacterBody2D, IEnemy
     {
-		if(_timeShooted == 15)
-		{
-			Position = new Vector2(x: Position.X, y: Position.Y - _speed);
-			return;
-		}
+        private int _speed = 3;
+        private int _timeShooted = 0;
+        private float _time = 0;
 
-		if(_time < 50)
-		{
-        	Position = new Vector2(x: Position.X, y: Position.Y + _speed);
+        public EEnemyProjectileType ProjectileType;
 
-		}else if(_time == 100)
-		{
-			ShootProjectile();
-			_time = 50;
-			_timeShooted++;
-		}
-    }
+        public override void _Process(double delta)
+        {
+            MoveEnemy(delta);
 
-	private void ShootProjectile()
-	{
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
-		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
+            _time+= (float)(delta * 60);
+        }
 
-		if(ProjectileType == EEnemyProjectileType.Normal)
-		{
-			projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-			projectiles.AddProjectile(new DNormalProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-			projectiles.AddProjectile(new DNormalProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-			projectiles.AddProjectile(new DNormalProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-			projectiles.AddProjectile(new DNormalProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
-		}
-		else if(ProjectileType == EEnemyProjectileType.Light)
-		{
-			projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-			projectiles.AddProjectile(new DLightProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-			projectiles.AddProjectile(new DLightProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-			projectiles.AddProjectile(new DLightProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-			projectiles.AddProjectile(new DLightProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));
-		}
-		else if(ProjectileType == EEnemyProjectileType.Strong)
-		{
-			projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));	
-			projectiles.AddProjectile(new DStrongProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * (-3), (float)Math.Cos(angle + 0.6) * (-3)));
-			projectiles.AddProjectile(new DStrongProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * (-3), (float)Math.Cos(angle - 0.6) * (-3)));
-			projectiles.AddProjectile(new DStrongProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * (-3), (float)Math.Cos(angle + 0.3) * (-3)));
-			projectiles.AddProjectile(new DStrongProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * (-3), (float)Math.Cos(angle - 0.3) * (-3)));	
-		}
-		else if(ProjectileType == EEnemyProjectileType.Homing)
-			projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y + 36));		
+        private void MoveEnemy(double delta)
+        {
+            if (_timeShooted == 15)
+            {
+                Position += new Vector2(x: 0, y: -_speed * (float)(delta * 60));
+                return;
+            }
 
-	}
+            if (_time < 50)
+            {
+                Position += new Vector2(x: 0, y: _speed * (float)(delta * 60));
+            }
+            else if (_time >= 100)
+            {
+                ShootProjectile();
+                _time = 50;
+                _timeShooted++;
+            }
+        }
 
-    public void OnScreenExited()
-    {
-        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-    }
+        private void ShootProjectile()
+        {
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+            var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
+            var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
-	public void Destroy()
-	{
-        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
-	}
+            if (ProjectileType == EEnemyProjectileType.Normal)
+            {
+                projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * -3, (float)Math.Cos(angle) * -3));
+                projectiles.AddProjectile(new DNormalProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * -3, (float)Math.Cos(angle + 0.6) * -3));
+                projectiles.AddProjectile(new DNormalProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * -3, (float)Math.Cos(angle - 0.6) * -3));
+                projectiles.AddProjectile(new DNormalProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * -3, (float)Math.Cos(angle + 0.3) * -3));
+                projectiles.AddProjectile(new DNormalProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * -3, (float)Math.Cos(angle - 0.3) * -3));
+            }
+            else if (ProjectileType == EEnemyProjectileType.Light)
+            {
+                projectiles.AddProjectile(new DLightProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * -3, (float)Math.Cos(angle) * -3));
+                projectiles.AddProjectile(new DLightProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * -3, (float)Math.Cos(angle + 0.6) * -3));
+                projectiles.AddProjectile(new DLightProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * -3, (float)Math.Cos(angle - 0.6) * -3));
+                projectiles.AddProjectile(new DLightProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * -3, (float)Math.Cos(angle + 0.3) * -3));
+                projectiles.AddProjectile(new DLightProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * -3, (float)Math.Cos(angle - 0.3) * -3));
+            }
+            else if (ProjectileType == EEnemyProjectileType.Strong)
+            {
+                projectiles.AddProjectile(new DStrongProjectile(Position.X, Position.Y + 30, (float)Math.Sin(angle) * -3, (float)Math.Cos(angle) * -3));
+                projectiles.AddProjectile(new DStrongProjectile(Position.X + 42, Position.Y + 18, (float)Math.Sin(angle + 0.6) * -3, (float)Math.Cos(angle + 0.6) * -3));
+                projectiles.AddProjectile(new DStrongProjectile(Position.X - 42, Position.Y + 18, (float)Math.Sin(angle - 0.6) * -3, (float)Math.Cos(angle - 0.6) * -3));
+                projectiles.AddProjectile(new DStrongProjectile(Position.X + 21, Position.Y + 21, (float)Math.Sin(angle + 0.3) * -3, (float)Math.Cos(angle + 0.3) * -3));
+                projectiles.AddProjectile(new DStrongProjectile(Position.X - 21, Position.Y + 21, (float)Math.Sin(angle - 0.3) * -3, (float)Math.Cos(angle - 0.3) * -3));
+            }
+            else if (ProjectileType == EEnemyProjectileType.Homing)
+                projectiles.AddProjectile(new DHomingProjectile(Position.X, Position.Y + 36));
+        }
 
-	public bool IsImortal()
-	{
-		return false;
-	}
+        public void OnScreenExited()
+            => EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new(3, 2, Position);
+        public void Destroy()
+            => EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+
+        public bool IsImortal()
+            => false;
+
+        public EnemyBoundy GetBoundy()
+            => new(hpUpPoints: 3, bulletPoints: 2, position: Position);
     }
 }
