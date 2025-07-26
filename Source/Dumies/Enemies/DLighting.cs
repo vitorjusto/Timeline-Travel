@@ -1,11 +1,12 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DLighting : IEnemyDummy
     {
-        private int _x;
+        private readonly int _x;
         public DLighting(int x)
         {
             _x = x;

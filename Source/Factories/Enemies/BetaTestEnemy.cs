@@ -11,9 +11,11 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, true, new DFollower(500, EEnemyProjectileType.Normal)),
-                new EnemySection(50, true, new DFollower(300, EEnemyProjectileType.Normal)),
-                new EnemySection(50, true, new DFollower(300, EEnemyProjectileType.Normal)),
+                new EnemySection(50, true, new DLighting(500)),
+                new EnemySection(50, true, new DLighting(500)),
+                new EnemySection(50, true, new DLighting(500)),
+                new EnemySection(50, true, new DLighting(500)),
+                new EnemySection(50, true, new DLighting(500)),
             };
         }
     }

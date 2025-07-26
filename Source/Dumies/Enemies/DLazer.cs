@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DLazer : IEnemyDummy
     {
-        private int _x;
-        private int _maxTimer;
+        private readonly int _x;
+        private readonly int _maxTimer;
 
         public DLazer(int x, int maxTimer)
         {

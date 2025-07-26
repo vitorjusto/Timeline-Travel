@@ -1,13 +1,14 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DGooder : IEnemyDummy
     {
-        private int _x;
-        private bool _walk;
-        private int _maxTimer;
+        private readonly int _x;
+        private readonly bool _walk;
+        private readonly int _maxTimer;
 
         public DGooder(int x, bool walk, int maxTimer = 900)
         {
