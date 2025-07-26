@@ -28,7 +28,7 @@ public class DimantionalStarshipMovingState : IState
         return new DimentionalStarshipGoingVisibleState(_node);
     }
 
-    public bool Process()
+    public bool Process(double delta)
     {
         _node.Position += _speed;
 

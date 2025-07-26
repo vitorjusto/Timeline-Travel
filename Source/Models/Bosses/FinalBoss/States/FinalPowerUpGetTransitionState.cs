@@ -23,7 +23,7 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             
             if(_timer < 150)

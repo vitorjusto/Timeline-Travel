@@ -28,7 +28,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _timer++;
 

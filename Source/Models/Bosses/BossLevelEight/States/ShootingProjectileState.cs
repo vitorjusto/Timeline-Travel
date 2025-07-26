@@ -30,9 +30,9 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             return this;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            if(_blackholeState.Process())
+            if(_blackholeState.Process(delta))
                 return true;
 
             _timer++;

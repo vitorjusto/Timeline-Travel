@@ -47,7 +47,7 @@ public partial class FinalBoss : Node2D, INextStateFinalBoss
 		if(_state is null)
 			return;
 		
-		if(_state.Process())
+		if(_state.Process(delta))
 		{
 			_state = _state.NextState();
 

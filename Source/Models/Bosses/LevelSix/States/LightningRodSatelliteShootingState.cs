@@ -31,11 +31,11 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
             return new LightningRodSatelliteMovingAroundState(this, _node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             PunishPlayer();
 
-            _node.Position = new Vector2(x: _node.Position.X, y: _ySpeed.Update());
+            _node.Position = new Vector2(x: _node.Position.X, y: _ySpeed.Update(delta));
 
             _time++;
             return false;

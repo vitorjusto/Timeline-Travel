@@ -22,7 +22,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_timesFells < 2)
                 FallingAnimation();

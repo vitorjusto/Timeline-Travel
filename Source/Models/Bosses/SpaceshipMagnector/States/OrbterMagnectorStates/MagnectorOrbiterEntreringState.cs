@@ -48,7 +48,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
             return new MagnectorOrbiterRotatingState(_node, _time, _ytime, _xspeedModifier, _yspeedModifier);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_node.SpawnPosition == EDirection.Up)
 			{

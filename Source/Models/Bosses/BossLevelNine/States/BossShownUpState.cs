@@ -21,7 +21,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             throw new System.NotImplementedException();
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             return false;
         }

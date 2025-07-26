@@ -18,7 +18,7 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
     }
     public override void _Process(double delta)
     {
-        if(_currentState.Process())
+        if(_currentState.Process(delta))
             _currentState = _currentState.NextState();
 
         _damageAnimator.Process();

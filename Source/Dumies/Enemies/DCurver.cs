@@ -1,11 +1,12 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DCurver : IEnemyDummy
     {
-        private float _x;
+        private readonly float _x;
         public DCurver(float x)
         {
             _x = x;

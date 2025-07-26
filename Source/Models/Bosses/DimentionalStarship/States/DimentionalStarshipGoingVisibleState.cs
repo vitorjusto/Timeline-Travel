@@ -20,7 +20,7 @@ public class DimentionalStarshipGoingVisibleState : IState
         return new DimentionalStarshipShootingState(_node);
     }
 
-    public bool Process()
+    public bool Process(double delta)
     {
         var animatedSprite = _node.GetNode<Node2D>("AnimatedSprite2D");
         animatedSprite.Modulate = Color.Color8(255, 255, 255, _opacity);

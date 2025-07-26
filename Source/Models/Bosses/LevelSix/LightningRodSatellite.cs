@@ -36,7 +36,7 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
     }
     public override void _Process(double delta)
 	{
-        if(_state.Process())
+        if(_state.Process(delta))
             _state = _state.NextState();
         
         _damageAnimator.Process();

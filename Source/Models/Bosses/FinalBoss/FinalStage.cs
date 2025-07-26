@@ -28,7 +28,7 @@ public partial class FinalStage : Node2D
 		GetNode<AnimationPlayer>("ParallaxBackground/ParallaxBackground/Panel/AnimationPlayer").Play();
 		if(_state is not null)
 		{
-			if(!_bossDestroing && _state.Process())
+			if(!_bossDestroing && _state.Process(delta))
 			{
                 _nextState.OnNextState();
 				_boss.QueueFree();

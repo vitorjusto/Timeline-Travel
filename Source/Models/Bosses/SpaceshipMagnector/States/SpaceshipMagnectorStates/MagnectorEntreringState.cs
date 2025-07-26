@@ -19,7 +19,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States
             return new MagnectorIdleState(_node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _node.Position = new Vector2(x: _node.Position.X, _node.Position.Y + _speed);
             _time++;

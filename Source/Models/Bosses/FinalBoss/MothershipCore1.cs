@@ -21,7 +21,7 @@ public partial class MothershipCore1 : Node2D, IEnemy
 		if(EntreringStage)
 			MoveBoss();
 		else
-			Position = new Vector2(Position.X, _ySpeed.Update());
+			Position = new Vector2(Position.X, _ySpeed.Update(delta));
 		
 	}
 

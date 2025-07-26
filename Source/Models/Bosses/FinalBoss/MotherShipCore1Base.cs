@@ -32,7 +32,7 @@ public partial class MotherShipCore1Base : Node2D, IDisableNotifier
 			_nextStateCalled = true;
 		}
 
-		_state.Process();
+		_state.Process(delta);
 	}
 
 	public void OnPuncherDestroing(Node2D node)

@@ -26,7 +26,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             return new ShootingProjectileState(_node, this);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _timer++;
 
@@ -37,7 +37,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
                 _timer = 0;
             }
             
-            _node.Position = new Vector2(_node.Position.X, _xSpeed.Update());
+            _node.Position = new Vector2(_node.Position.X, _xSpeed.Update(delta));
             return false;
         }
     }

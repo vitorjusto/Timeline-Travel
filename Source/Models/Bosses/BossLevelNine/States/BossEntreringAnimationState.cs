@@ -21,7 +21,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return new BossShownUpState(_boss);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _timer++;
             if(_timer > 50)

@@ -22,7 +22,7 @@ namespace Shooter.Source.Models.Misc
                 _SpeedModifier *= -1;
         }
 
-        public float Update()
+        public float Update(double delta)
         {
             if(_startCooldown > 0)
             {
@@ -32,7 +32,7 @@ namespace Shooter.Source.Models.Misc
             //se você quiser aumentar a distancia, altere o B (30), se você quiser aumentar a velocidade altere o A (-6)
 		    Speed = (_velocity * (_time * _time)) + (_time * _distance);
 
-		    Speed *= _SpeedModifier; 
+		    Speed *= _SpeedModifier * (float)(delta * 60); 
             Speed += _originalPosition;
 		    _time += 0.1f;
 

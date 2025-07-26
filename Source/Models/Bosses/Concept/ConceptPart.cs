@@ -26,12 +26,12 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
     public override void _Process(double delta)
 	{
         _damageAnimator.Process();
-		MoveEnemy();
+		MoveEnemy(delta);
 	}
 
-    private void MoveEnemy()
+    private void MoveEnemy(double delta)
     {
-        Position = new Vector2(x: Position.X + _speed, y: _ySpeed.Update());
+        Position = new Vector2(x: Position.X + _speed, y: _ySpeed.Update(delta));
 
 		if(Position.X - 64 <= 0 && _speed < 0)
 			_speed *= -1;

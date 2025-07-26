@@ -19,12 +19,12 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
             return new MagnectorOrbiterFollowingPlayerState(_node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if((int)_node.SpawnPosition * 50 == _time)
                 return true;
 
-            _rotatingState.Process();
+            _rotatingState.Process(delta);
             
             _time++;
             return false;

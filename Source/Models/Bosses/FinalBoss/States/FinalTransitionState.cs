@@ -26,7 +26,7 @@ namespace shooter.Source.Models.Bosses.FinalBoss.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             AnimatePlayer();
             CreateExplosions();

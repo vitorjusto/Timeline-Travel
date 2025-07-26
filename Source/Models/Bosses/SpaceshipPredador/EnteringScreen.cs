@@ -18,7 +18,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             return new MovingAround(_node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _node.Position = new Vector2(x: _node.Position.X, y: _node.Position.Y + 5);
 			_time++;

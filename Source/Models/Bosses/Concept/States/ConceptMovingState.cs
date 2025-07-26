@@ -25,18 +25,18 @@ namespace Shooter.Source.Models.Bosses.Concept.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            MoveEnemy();
+            MoveEnemy(delta);
             
             _sprite.Scale = new Vector2(Math.Abs(_sprite.Scale.X) * (_speed > 0? -1: 1), _sprite.Scale.Y);
 
             return false;
         }
 
-        private void MoveEnemy()
+        private void MoveEnemy(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _ySpeed.Update());
+            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _ySpeed.Update(delta));
 
 		    if(_node.Position.X - 64 <= 0 && _speed < 0)
 			    _speed *= -1;

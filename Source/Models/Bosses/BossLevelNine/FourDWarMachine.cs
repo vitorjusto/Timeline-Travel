@@ -25,7 +25,7 @@ public partial class FourDWarMachine : Node2D, IEnemy
 
 	public override void _Process(double delta)
 	{
-		if(_state.Process())
+		if(_state.Process(delta))
 			_state = _state.NextState();
 		
 		if(!IsTimeTravelTransition() && !DestroingPlayer)

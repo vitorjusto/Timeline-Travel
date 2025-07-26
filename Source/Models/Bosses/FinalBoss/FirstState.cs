@@ -31,7 +31,7 @@ public partial class FirstState : Node2D, IEnemy
 	{
 		if(_exploding is not null)
 		{
-			if(_exploding.Process())
+			if(_exploding.Process(delta))
 				EndPhase();
 			
 			return;

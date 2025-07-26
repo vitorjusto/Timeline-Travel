@@ -25,7 +25,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return new HoldingPlayerState(_boss);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
 
             if(_nearPlayer)

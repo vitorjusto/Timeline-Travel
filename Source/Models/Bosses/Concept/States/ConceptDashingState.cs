@@ -48,9 +48,9 @@ namespace Shooter.Source.Models.Bosses.Concept.States
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            Dash();
+            Dash(delta);
 
 			AnimateHead();
 
@@ -79,7 +79,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 				_sprite.Scale = new Vector2(Math.Abs(_sprite.Scale.X) * -1, _sprite.Scale.Y);
         }
 
-        private void Dash()
+        private void Dash(double delta)
         {
 		    var xSpeed = 0;
 		    float yPosition = 0;
@@ -106,18 +106,18 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 		    	{
 		    		_dashStatus = EDashStatus.NotDashing;
 		    		_ySpeed = new WaveSpeed(-6, 30, _node.Position.Y, reverseDirection: true);
-		    		yPosition = _ySpeed.Update();
+		    		yPosition = _ySpeed.Update(delta);
 		    	}
 		    }
 		    else if(_node.Position.X < _player.Position.X)
 		    {
 		    	xSpeed = _xSpeed;
-		    	yPosition = _ySpeed.Update();
+		    	yPosition = _ySpeed.Update(delta);
 		    }
 		    else if(_node.Position.X > _player.Position.X)
 		    {
 		    	xSpeed = _xSpeed * -1;
-		    	yPosition = _ySpeed.Update();
+		    	yPosition = _ySpeed.Update(delta);
 		    }
 
 		    _node.Position = new Vector2(x: _node.Position.X + xSpeed, y: yPosition);

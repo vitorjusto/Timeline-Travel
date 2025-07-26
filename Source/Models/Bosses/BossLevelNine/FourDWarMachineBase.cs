@@ -16,7 +16,7 @@ public partial class FourDWarMachineBase : Node2D, ICustomBossPosition
 
 	public override void _Process(double delta)
 	{
-		if(_state.Process())
+		if(_state.Process(delta))
 		{
 			_state = _state.NextState();
 		}

@@ -21,7 +21,7 @@ public partial class MothershipCoreFirstState : CharacterBody2D
 		if(EntreringStage)
 			MoveBoss();
 		else
-			Position = new Vector2(Position.X, _ySpeed.Update());
+			Position = new Vector2(Position.X, _ySpeed.Update(delta));
 	}
 
     private void MoveBoss()

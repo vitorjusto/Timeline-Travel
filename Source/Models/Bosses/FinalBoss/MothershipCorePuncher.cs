@@ -39,7 +39,7 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 			Dash();
 		else
 		{
-			Position = new Vector2(Position.X, _idleySpeed.Update());
+			Position = new Vector2(Position.X, _idleySpeed.Update(delta));
 
 			if(!_damageDisabled)
 				_timer++;

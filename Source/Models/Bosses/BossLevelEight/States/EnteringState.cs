@@ -17,7 +17,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             return new ShootingBlackholeState(_node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _node.Position = new Vector2(_node.Position.X, _node.Position.Y + 5);
 

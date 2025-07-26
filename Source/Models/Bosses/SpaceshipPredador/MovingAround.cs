@@ -27,9 +27,9 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             return new Hunting(_node); 
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _yspeed.Update());
+            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _yspeed.Update(delta));
 
 			if(_node.Position.X > 1412 || _node.Position.X < 32)
 				_speed *= -1;

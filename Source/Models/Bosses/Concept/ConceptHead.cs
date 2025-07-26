@@ -27,7 +27,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 		if(_state is null)
 			return;
 			
-		if(_state.Process())
+		if(_state.Process(delta))
 		{
 			EmitSignal("OnHeadDestroyed");
 			_state = null;

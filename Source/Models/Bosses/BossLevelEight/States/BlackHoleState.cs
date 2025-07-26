@@ -24,7 +24,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             return new ShinkingState(_node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
 		    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
 

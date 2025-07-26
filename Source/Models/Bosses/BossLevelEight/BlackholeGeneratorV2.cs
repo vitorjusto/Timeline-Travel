@@ -21,7 +21,7 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy, ICustomBossPosition
 	}
     public override void _Process(double delta)
 	{
-		if(State.Process())
+		if(State.Process(delta))
 		{
 			State = State.NextState();
 			if(State is null)

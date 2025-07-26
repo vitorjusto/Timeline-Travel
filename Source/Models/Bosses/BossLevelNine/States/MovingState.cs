@@ -20,9 +20,9 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return new MovingBackInTimeState(_boss);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            _boss.Position = new Vector2(_boss.Position.X, _ySpeed.Update());
+            _boss.Position = new Vector2(_boss.Position.X, _ySpeed.Update(delta));
 
             return false;
         }

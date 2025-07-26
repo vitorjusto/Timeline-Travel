@@ -26,10 +26,10 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
             return new LightningRodSatelliteLightningState(_node, this); 
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             Move();
-            _state.Process();
+            _state.Process(delta);
             return false;
         }
 

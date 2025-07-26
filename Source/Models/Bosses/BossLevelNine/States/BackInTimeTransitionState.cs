@@ -28,7 +28,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return new BackInTimeState(_boss);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_foregroundPanelOpacity < 255)
                 MakeTransition();

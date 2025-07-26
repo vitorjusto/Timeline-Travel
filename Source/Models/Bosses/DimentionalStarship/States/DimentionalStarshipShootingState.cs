@@ -23,7 +23,7 @@ public class DimentionalStarshipShootingState : IState
         return new DimentionalStarshipGoingInvisibleState(_node);
     }
 
-    public bool Process()
+    public bool Process(double delta)
     {
         if(_time % 33 == 0)
             Shoot();

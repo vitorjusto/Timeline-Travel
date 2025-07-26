@@ -32,7 +32,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
             throw new System.NotImplementedException();
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             _node.Position = new Vector2(_node.Position.X + XSpeed, _node.Position.Y + YSpeed);
 

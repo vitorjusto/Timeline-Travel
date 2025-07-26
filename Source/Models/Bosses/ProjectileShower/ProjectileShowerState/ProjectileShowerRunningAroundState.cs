@@ -21,9 +21,9 @@ namespace Shooter.Source.Models.Bosses.ProjectileShowerState
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + (_node.Speed * _speedModifier), y: _ySpeed.Update());
+            _node.Position = new Vector2(x: _node.Position.X + (_node.Speed * _speedModifier), y: _ySpeed.Update(delta));
 
 		    if(_node.Position.X - 100 <= 0 && (_node.Speed * _speedModifier) < 0)
 			    _speedModifier *= -1;

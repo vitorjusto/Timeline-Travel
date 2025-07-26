@@ -43,7 +43,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_time == 0)
                 _enemySpawner.RemoveAllEnemies();

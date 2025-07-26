@@ -38,7 +38,7 @@ public partial class FinalPowerUp : CharacterBody2D, IPowerUp
 	}
     public override void _Process(double delta)
 	{
-		Position = new Vector2(Position.X, _yspeed.Update());
+		Position = new Vector2(Position.X, _yspeed.Update(delta));
 	}
 	public void OnBossDestroyed()
 	{

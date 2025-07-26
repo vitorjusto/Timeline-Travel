@@ -26,7 +26,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
             return new MagnectorOrbiterWaitingState(this, _node);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
 
 		    float xspeed = (-15 * (_time * _time)) + (_time * 100f);

@@ -30,14 +30,14 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 
     public override void _Process(double delta)
 	{
-		MoveEnemy();
+		MoveEnemy(delta);
 	}
 
-    private void MoveEnemy()
+    private void MoveEnemy(double delta)
     {
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		
-		if(_state.Process())
+		if(_state.Process(delta))
 			_state = _state.NextState();
 
     }

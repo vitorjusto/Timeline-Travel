@@ -29,7 +29,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
           return;
       }
 
-      if(_state.Process())
+      if(_state.Process(delta))
         _state = _state.NextState();
     
         _damageAnimator.Process();

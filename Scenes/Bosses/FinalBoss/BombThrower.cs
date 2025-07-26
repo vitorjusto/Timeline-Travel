@@ -46,7 +46,7 @@ public partial class BombThrower : Node2D, IEnemy
 	{
         if(_state is not null)
         {
-            if(_state.Process())
+            if(_state.Process(delta))
             {
                 QueueFree();
             }
@@ -79,7 +79,7 @@ public partial class BombThrower : Node2D, IEnemy
             _timer = 0;
         }
 
-        Position = new Vector2(Position.X, _yspeed.Update());
+        Position = new Vector2(Position.X, _yspeed.Update(delta));
 	}
 
     public EnemyBoundy GetBoundy()

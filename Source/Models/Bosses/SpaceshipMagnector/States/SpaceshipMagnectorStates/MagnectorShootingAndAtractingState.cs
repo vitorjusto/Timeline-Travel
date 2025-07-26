@@ -27,7 +27,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
             return null;
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_time == 200)
             {
@@ -45,7 +45,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
 			    _player.SetSpeed((float)Math.Sin(angle) * (7), (float)Math.Cos(angle) * (7) );
             }else
             {
-                _idleState.Process();
+                _idleState.Process(delta);
             }
 
             _time++;

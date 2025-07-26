@@ -26,13 +26,13 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
             return new Exploding(_node, 150);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
             if(_time == 150)
                 ShootLightning();
             
             _time++;
-            _state.Process();
+            _state.Process(delta);
             return false;
         }
 

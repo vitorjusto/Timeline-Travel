@@ -23,9 +23,9 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             return new Exploding(_boss);
         }
 
-        public bool Process()
+        public bool Process(double delta)
         {
-            _boss.Position = new Vector2(_boss.Position.X + _xspeed, _ySpeed.Update());
+            _boss.Position = new Vector2(_boss.Position.X + _xspeed, _ySpeed.Update(delta));
 
             if(_boss.Position.X < 100 || _boss.Position.X > 1300)
                 _xspeed *= -1;
