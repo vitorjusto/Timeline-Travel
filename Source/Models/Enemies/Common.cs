@@ -2,50 +2,43 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
-public partial class Common : CharacterBody2D, IEnemy
+namespace Shooter.Source.Models.Enemies
 {
-	public int Speed = 1;
-    private DamageAnimationPlayer _damageAnimator;
-    public int Hp = 1;
-
-    public override void _Ready()
+    public partial class Common : CharacterBody2D, IEnemy
     {
-		_damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
-    }
+        public int Speed = 1;
+        private DamageAnimationPlayer _damageAnimator;
+        public int Hp = 1;
 
-    public override void _Process(double delta)
-	{
-		MoveEnemy();
-		_damageAnimator.Process();
-	}
+        public override void _Ready()
+            => _damageAnimator = new DamageAnimationPlayer(GetNode<AnimatedSprite2D>("AnimatedSprite2D"));
 
-    private void MoveEnemy()
-    {
-        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
-    }
+        public override void _Process(double delta)
+        {
+            MoveEnemy(delta);
+            _damageAnimator.Process();
+        }
 
-    public void OnScreenExited()
-    {
-        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-    }
+        private void MoveEnemy(double delta)
+            => Position += new Vector2(0, y: Speed * (float)(delta * 60));
 
-	public bool IsImortal()
-	{
-		return false;
-	}
+        public void OnScreenExited()
+            => EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 
-    public void Destroy()
-    {
-        Hp--;
+        public bool IsImortal()
+            => false;
 
-        if(Hp <= 0)
-            EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
-        
-        _damageAnimator.PlayDamageAnimation();
-    }
+        public void Destroy()
+        {
+            Hp--;
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new(1, 0, Position);
+            if (Hp <= 0)
+                EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+
+            _damageAnimator.PlayDamageAnimation();
+        }
+
+        public EnemyBoundy GetBoundy()
+            => new(hpUpPoints: 1, bulletPoints: 0, Position);
     }
 }
