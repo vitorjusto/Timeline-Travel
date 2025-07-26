@@ -1,15 +1,14 @@
 using Shooter.Source.Dumies.Interfaces;
 using Godot;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DBomber : IEnemyDummy
     {
-        private int _x;
+        private readonly int _x;
         public DBomber(int x)
-        {
-            _x = x;
-        }
+            => _x = x;
 
         public Node2D GetInstance()
         {

@@ -89,7 +89,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pgwup")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_frx3o")
-volume_db = -80.0
 autoplay = true
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="OnSongFinished"]

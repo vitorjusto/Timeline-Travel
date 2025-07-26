@@ -24,7 +24,7 @@ public partial class EnemySpawner : Node2D
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
     [Export]
-	public int CurrentLevel = 8;
+	public int CurrentLevel = 22;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -104,6 +104,8 @@ public partial class EnemySpawner : Node2D
 			_enemySection = EnemiesLevelTen.GetEnemies();
 		if(CurrentLevel == 11)
 			GetBoss();
+		if(CurrentLevel == 22)
+			_enemySection = BetaTestEnemy.GetEnemies();
     }
 
 
