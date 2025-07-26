@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Shooter.Source.Dumies.Enemies;
+using Shooter.Source.Enums;
 using Shooter.Source.Models.Levels;
 
 namespace Shooter.Source.Factories.Enemies
@@ -10,9 +11,9 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, true, new DDasher(500)),
-                new EnemySection(50, true, new DDasher(300)),
-                new EnemySection(50, true, new DDasher(300), new DDasher(800)),
+                new EnemySection(50, true, new DFollower(500, EEnemyProjectileType.Normal)),
+                new EnemySection(50, true, new DFollower(300, EEnemyProjectileType.Normal)),
+                new EnemySection(50, true, new DFollower(300, EEnemyProjectileType.Normal)),
             };
         }
     }
