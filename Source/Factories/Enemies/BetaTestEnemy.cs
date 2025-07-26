@@ -10,14 +10,9 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
-                new EnemySection(50, true, new DCurver(500)),
+                new EnemySection(50, true, new DDasher(500)),
+                new EnemySection(50, true, new DDasher(300)),
+                new EnemySection(50, true, new DDasher(300), new DDasher(800)),
             };
         }
     }
