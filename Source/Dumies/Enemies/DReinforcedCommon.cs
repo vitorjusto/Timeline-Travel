@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DReinforcedCommon : IEnemyDummy
     {
-        private int _x;
-        private int _speed;
+        private readonly int _x;
+        private readonly int _speed;
         public DReinforcedCommon(int x, int speed)
         {
             _x = x;

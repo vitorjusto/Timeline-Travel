@@ -2,34 +2,24 @@ using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
-public partial class ReinforcedCommon : CharacterBody2D, IEnemy
+namespace Shooter.Source.Models.Enemies
 {
-	public int Speed = 1;
-
-    public override void _Process(double delta)
-	{
-		MoveEnemy();
-	}
-
-    private void MoveEnemy()
+    public partial class ReinforcedCommon : CharacterBody2D, IEnemy
     {
-        Position = new Vector2(x: Position.X, y: Position.Y + Speed);
-    }
+        public int Speed = 1;
 
-    public void OnScreenExited()
-    {
-        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-    }
+        public override void _Process(double delta)
+            => Position += new Vector2(x: 0, y: Speed * (float)(delta * 60));
 
-	public bool IsImortal()
-	{
-		return false;
-	}
+        public void OnScreenExited()
+            => EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
 
-    public void Destroy(){ }
+        public bool IsImortal()
+            => false;
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new();
+        public void Destroy() { }
+
+        public EnemyBoundy GetBoundy()
+            => new();
     }
 }
