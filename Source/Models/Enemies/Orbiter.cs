@@ -3,101 +3,77 @@ using System;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
 
-public partial class Orbiter : CharacterBody2D, IEnemy
+namespace Shooter.Source.Models.Enemies
 {
-
-	private int _speed = 10;
-	private bool _isRotating = false;
-
-	private int _xspeedModifier = 1;
-	private int _yspeedModifier = 1;
-
-	private float _time = 0;
-	private float _ytime = 2f;
-
-	private int _semiRotation = 0;
-	private bool _selfDestructing = false;
-
-	public override void _Ready()
-	{
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		Position = new Vector2(x: player.Position.X, y: 1000);
-	}
-
-    public override void _Process(double delta)
-	{
-		MoveEnemy();
-	}
-
-    private void MoveEnemy()
+    public partial class Orbiter : CharacterBody2D, IEnemy
     {
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		if(_selfDestructing)
-		{
-			Position = new Vector2(x: player.Position.X, y: Position.Y + _speed * 3);
-		}
-		else if(_isRotating)
-		{
-			Rotate();
-		}else
-		{
-			
-			Position = new Vector2(x: player.Position.X, y: Position.Y - _speed);
-			
-			if(Position.Y - player.Position.Y < 150)
-				_isRotating = true;
-		}
-    }
+        private int _speed = 10;
+        private bool _isRotating = false;
 
-	public void Rotate()
-	{
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+        private int _rotationCycle = 0;
+        private bool _selfDestructing = false;
+        private double _angle = 270;
 
-		float xspeed = (-30 * (_time * _time)) + (_time * 120f);
-		xspeed *= _xspeedModifier; 
-		_time += 0.1f;
+        public override void _Ready()
+        {
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+            Position = new Vector2(x: player.Position.X, y: 1000);
+        }
 
-		//Caso altere o A ou o B, faça |B/A| e coloca aqui
-		if(_time > 4)
-		{
-			_time = 0;
-			_xspeedModifier *= (-1);
-			_semiRotation++;
-		}
+        public override void _Process(double delta)
+        {
+            MoveEnemy(delta);
+        }
 
-		float yspeed = (-30 * (_ytime * _ytime)) + (_ytime * 120f);
-		yspeed *= _yspeedModifier; 
-		_ytime += 0.1f;
+        private void MoveEnemy(double delta)
+        {
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+            if (_selfDestructing)
+            {
+                Position = new Vector2(x: player.Position.X, y: Position.Y + _speed * 3 * (float)(delta * 60));
+            }
+            else if (_isRotating)
+            {
+                Rotate(delta);
+            }
+            else
+            {
+                Position = new Vector2(x: player.Position.X, y: Position.Y - _speed * (float)(delta * 60));
 
-		if(_ytime > 4)
-		{
-			_ytime = 0;
-			_yspeedModifier *= (-1);
-		}
+                if (Position.Y - player.Position.Y < 150)
+                    _isRotating = true;
+            }
+        }
 
-        Position = new Vector2(x:player.Position.X + xspeed, y: player.Position.Y + yspeed);
-		
-		_selfDestructing = _semiRotation == 7;
-	}
+        public void Rotate(double delta)
+        {
+            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-    public void OnScreenExited()
-    {
-        EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-    }
+            _angle += 5 * (float)(delta * 60);
 
-	public bool IsImortal()
-	{
-		return false;
-	}
+            var radian = -_angle * (Math.PI / 180);
 
+            Position = new Vector2((int)(Math.Cos(radian) * 140) + player.Position.X, (int)(Math.Sin(radian) * 140) + player.Position.Y);
 
-    public void Destroy()
-    {
-        EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
-    }
+            if (_angle > 360)
+            {
+                _angle -= 360;
+                _rotationCycle++;
+            }
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new(2, 0, Position);
+            _selfDestructing = _rotationCycle == 4 && _angle > 90;
+        }
+
+        public void OnScreenExited()
+            => EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
+
+        public bool IsImortal()
+            => false;
+
+        public void Destroy()
+            => EnemySpawner.GetEnemySpawner().DestroyEnemy(this);
+
+        public EnemyBoundy GetBoundy()
+            => new(hpUpPoints: 2, bulletPoints: 0, position: Position);
     }
 }
