@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DCrusader: IEnemyDummy
     {
-        private int _x;
-        private float _speed;
+        private readonly int _x;
+        private readonly float _speed;
         public DCrusader(int x, float speed)
         {
             _x = x;
