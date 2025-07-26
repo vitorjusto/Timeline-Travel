@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Godot;
+using Shooter.Source.Models.Enemies;
 
 public partial class BackgroundLevelThree : Node2D, IBackground
 {
