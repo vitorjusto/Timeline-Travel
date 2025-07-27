@@ -7,6 +7,7 @@ using System.Linq;
 using Shooter.Source.Factories.Bosses;
 using Shooter.Source.Factories.Enemies;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class EnemySpawner : Node2D
 {
@@ -15,8 +16,9 @@ public partial class EnemySpawner : Node2D
 	public static EnemySpawner GetEnemySpawner()
 		=> _enemySpawner;
 
-	private int _time;
-	private int _timeSection;
+	// private int _time;
+	private QuickTimer _timer;
+	// private int _timeSection;
 
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
@@ -24,7 +26,7 @@ public partial class EnemySpawner : Node2D
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
     [Export]
-	public int CurrentLevel = 22;
+	public int CurrentLevel = 1;
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -40,7 +42,8 @@ public partial class EnemySpawner : Node2D
 
     public override void _Ready()
 	{
-		Enemies = new List<Node2D>();
+        _timer = new QuickTimer(1);
+        Enemies = new List<Node2D>();
 		_enemySection = new List<EnemySection>();
 		
 		StartLevel();
@@ -55,14 +58,13 @@ public partial class EnemySpawner : Node2D
             player.Hp = 10;
 
 		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player, 1);
-
         }
 	}
 
 	public void StartLevel()
 	{
-		_time = 0;
-		_startingLevel = true;
+        _timer = new(200);
+        _startingLevel = true;
 		var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
 
 		hud.ShowTimelineLabel(CurrentLevel);
@@ -108,20 +110,17 @@ public partial class EnemySpawner : Node2D
 			_enemySection = BetaTestEnemy.GetEnemies();
     }
 
-
-    private void EndingLevelAnimation()
+    private void EndingLevelAnimation(double delta)
     {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
 		player.SetSpeed(0, -player.Speed, -100);
 
-		if(_time > 200)
+		if(_timer.Process(delta))
 		{
 			_endingLevel = false;
 			EmitSignal("LevelEnded");
 		}
-		
-		_time++;
     }
 
 	[Signal]
@@ -134,15 +133,15 @@ public partial class EnemySpawner : Node2D
 			return;
 
 		if(_startingLevel)
-			WaitForTimelineLabel();
+			WaitForTimelineLabel(delta);
 		else if(_showingWarningBoss)
-			ShowWarningBoss();
+			ShowWarningBoss(delta);
 		else if(_endingLevel)
-			EndingLevelAnimation();
+			EndingLevelAnimation(delta);
         else if(isBossRush && !BossApeared && CurrentLevel == 12)
             GetBossOnBossRush();
 		else
-			VerifyEnemySection();
+			VerifyEnemySection(delta);
 
         if(_removingExplosion)
         {
@@ -151,30 +150,27 @@ public partial class EnemySpawner : Node2D
         }
 	}
 
-    private void WaitForTimelineLabel()
+    private void WaitForTimelineLabel(double delta)
     {
-        _time++;
-
-		if(_time == 200)
+		if(_timer.Process(delta))
 		{
 			_startingLevel = false;
-			_time = 0;
-			GetNextSection();
+            _timer.Reset();
+            GetNextSection();
 		}
     }
 
-    private void VerifyEnemySection()
+    private void VerifyEnemySection(double delta)
 	{
 		if(_waitForEveryEnemy)
 		{
 			if(Enemies.Count == 0)
 				GetNextSection();
 		}
-		else if(_time == _timeSection)
+		else if(_timer.Process(delta))
 		{
 			GetNextSection();
 		}
-		_time++;
 	}
 
 	public void GetNextSection()
@@ -193,8 +189,8 @@ public partial class EnemySpawner : Node2D
             
 		_enemySection.RemoveAt(0);
 
-		_timeSection = currentSection.Time;
-		_time = 0;
+		// _timeSection = currentSection.Time;
+		_timer = new(currentSection.Time);
 
 		_waitForEveryEnemy = currentSection.WaitForEveryEnemy;
 
@@ -247,7 +243,7 @@ public partial class EnemySpawner : Node2D
 			_showingWarningBoss = true;
             AudioManager.StartBossTransition();
 			hud.ShowWarningBoss();
-			_time = 0;
+			_timer = new(200);
 		}
 	}
 
@@ -259,14 +255,13 @@ public partial class EnemySpawner : Node2D
 		RemoveEnemy(node);
 	}
 
-    private void ShowWarningBoss()
+    private void ShowWarningBoss(double delta)
     {
-        _time++;
-		if(_time == 200)
+		if(_timer.Process(delta))
 		{
 			_showingWarningBoss = false;
             AudioManager.SetBossMusic();
-			_time = 0;
+			_timer.Reset();
 			GetBoss();
 		}
     }
@@ -342,7 +337,7 @@ public partial class EnemySpawner : Node2D
 
 		_endingLevel = true;
         EmitSignal("EndingLevel");
-		_time = 0;
+		_timer = new(200);
 
 		GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").RemoveAllProjectiles();
 
@@ -352,7 +347,7 @@ public partial class EnemySpawner : Node2D
 
     public void RestartLevel()
     {
-		_time = 0;
+		_timer.Reset();
         while(Enemies.Count > 0)
 		{
 			Enemies[0].QueueFree();
