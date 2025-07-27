@@ -6,7 +6,8 @@ public partial class Hud : Node2D
 	public int Score;
     private bool _showingTimelineLabel;
 	private bool _showingWarningBoss;
-	private int _time = 0;
+	private float _timer = 0;
+	private float _labeltimer = 0;
 	public bool IsShowingTimelineLabel => _showingTimelineLabel;
 	private bool _isGamePaused;
     private GameManager _game;
@@ -30,45 +31,50 @@ public partial class Hud : Node2D
 
 		if(_showingTimelineLabel)
 		{
-			_time++;
+			_timer += (float)(delta * 60);
+            _labeltimer += (float)(delta * 60);
 
-			if(_time % 10 == 0)
+			if(_labeltimer >= 10)
 			{
 				var lblTimeline = GetNode<Label>("ParallaxBackground/lblTimeline");
 				lblTimeline.Visible = !lblTimeline.Visible;
-			}
+                _labeltimer = 0;
+            }
 
-			if(_time == 200)
+			if(_timer >= 200)
 			{
 				var lblTimeline = GetNode<Label>("ParallaxBackground/lblTimeline");
 				lblTimeline.Visible = false;
-				_time = 0;
+				_timer = 0;
+                _labeltimer = 0;
 				_showingTimelineLabel = false;
 			}
 
 			return;
 		}else if(_showingWarningBoss)
 		{
-			_time++;
+			_timer += (float)(delta * 60);
+            _labeltimer += (float)(delta * 60);
 
-			if(_time % 10 == 0)
+			if(_labeltimer >= 10)
 			{
 				var bossWarning = GetNode<Node2D>("ParallaxBackground/BossWarning");
 				bossWarning.Visible = !bossWarning.Visible;
+                _labeltimer = 0;
 			}
 
-			if(_time == 200)
+			if(_timer >= 200)
 			{
 				var bossWarning = GetNode<Node2D>("ParallaxBackground/BossWarning");
 				bossWarning.Visible = false;
-				_time = 0;
+				_timer = 0;
+                _labeltimer = 0;
 				_showingWarningBoss = false;
 			}
 
 			return;
 
 		}
-
 
 		if(Input.IsActionJustPressed("pause"))
 			OnPausePressed();
@@ -188,8 +194,9 @@ public partial class Hud : Node2D
 
     internal void ShowWarningBoss()
     {
-        _showingWarningBoss = true;
-		_time = 0;
+        _showingWarningBoss = true;				
+        _timer = 0;
+        _labeltimer = 0;
     }
 
 	public void ShowCustomWarning(string name)
