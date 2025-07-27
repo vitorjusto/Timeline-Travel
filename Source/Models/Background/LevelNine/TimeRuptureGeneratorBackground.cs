@@ -1,18 +1,13 @@
 using System;
 using Godot;
+using Shooter.Source.Models.Misc;
 
 public partial class TimeRuptureGeneratorBackground : Node2D
 {
-	private int _timer;
-	public override void _Ready()
-	{
-	}
-
+	private readonly QuickTimer _timer = new(70);
 	public override void _Process(double delta)
 	{
-		_timer++;
-
-		if(_timer > 70)
+		if(_timer.Process(delta))
 			GenerateTimeRupture();
 	}
 
@@ -25,7 +20,5 @@ public partial class TimeRuptureGeneratorBackground : Node2D
         instance.Position = new Vector2(xPosition, y: -300);
 
 		AddChild(instance);
-
-		_timer = 0;
     }
 }

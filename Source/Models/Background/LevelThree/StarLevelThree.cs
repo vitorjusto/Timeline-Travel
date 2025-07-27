@@ -11,10 +11,9 @@ public partial class StarLevelThree : Node2D
 		Position = new Vector2(x: new Random().Next(0, width), y: -30);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position = new Vector2(x: Position.X, y: Position.Y + 5);
+		Position += new Vector2(x: 0, y: (float)(delta * 300));
 	}
 
 	public void OnScreenExited()

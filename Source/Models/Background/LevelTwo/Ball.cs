@@ -12,12 +12,8 @@ public partial class Ball : AnimatedSprite2D
 	}
 
 	public override void _Process(double delta)
-	{
-		Position = new Vector2(x: Position.X, y: Position.Y + _speed);
-	}
+	    => Position += new Vector2(x: 0, y: _speed * (float)(delta * 60));
 
 	public void OnScreenExited()
-	{
-		QueueFree();
-	}
+	    => QueueFree();
 }

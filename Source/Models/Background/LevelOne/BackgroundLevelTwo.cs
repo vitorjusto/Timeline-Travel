@@ -1,27 +1,19 @@
 using Godot;
-using System;
+using Shooter.Source.Models.Misc;
 
 public partial class BackgroundLevelTwo : Node2D, IBackground
 {
-    private int _time;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+    private readonly QuickTimer _timer = new(10);
 	public override void _Process(double delta)
 	{
-		
 		var paralax = GetNode<ParallaxLayer>("ParallaxBackground/ParallaxLayer3");
 
 		paralax.MotionOffset = new Vector2(
-    		x: paralax.MotionOffset.X + 0.5f,
-    		y: paralax.MotionOffset.Y + 1
+    		x: paralax.MotionOffset.X + (0.5f * (float)(delta * 60)),
+    		y: paralax.MotionOffset.Y + (1 * (float)(delta * 60))
 		);
 		
-		if(_time % 10 == 0)
+		if(_timer.Process(delta))
 		{
 			var scene = GD.Load<PackedScene>("res://Scenes/Background/Ball.tscn");
 
@@ -29,9 +21,6 @@ public partial class BackgroundLevelTwo : Node2D, IBackground
 
 			AddChild(instance);
 		}
-		
-		_time++;
-
 	}
 
     public void PauseBackground(bool isPaused)

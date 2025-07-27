@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class BackgroundLevelFive : Node2D, IBackground
 {
@@ -17,7 +16,7 @@ public partial class BackgroundLevelFive : Node2D, IBackground
 	{
 		_parallaxLayer.MotionOffset = new Vector2(
     		x: 0,
-    		y: _parallaxLayer.MotionOffset.Y + 2
+    		y: _parallaxLayer.MotionOffset.Y + (float)(delta * 120)
 		);
 
 	}

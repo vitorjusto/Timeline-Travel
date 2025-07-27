@@ -10,10 +10,9 @@ public partial class Leaf : Node2D
 		_xSpeedModifier = new Random().Next(1, 10) * 0.01f;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position = new Vector2(Position.X - _xSpeed, Position.Y + 5);
+		Position += new Vector2(-_xSpeed, 5) * (float)(delta * 60);
 
 		_xSpeed += _xSpeedModifier;
 

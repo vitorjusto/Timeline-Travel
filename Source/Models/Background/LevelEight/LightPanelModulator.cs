@@ -1,30 +1,24 @@
 using Godot;
 using Shooter.Source.Enums;
+using Shooter.Source.Models.Misc;
 
 public partial class LightPanelModulator : Panel
 {
-	private int _timer = 0;
+	private readonly QuickTimer _timer = new(40);
 	public override void _Ready()
-	{
-		ChangeColor();
-	}
+	    => ChangeColor();
 
 	public override void _Process(double delta)
 	{
-		_timer++;
-
-		if(_timer < 40)
+		if(!_timer.Process(delta))
 			return;
 		
 		ChangeColor();
         EmitSignal("OnColorChange");
-		_timer = 0;
 	}
 
     private void ChangeColor()
-    {
-        this.Modulate = Color.FromString(((EColor)GD.RandRange(0, 6)).ToString(), Color.Color8(0, 0, 0));
-    }
+        => this.Modulate = Color.FromString(((EColor)GD.RandRange(0, 6)).ToString(), Color.Color8(0, 0, 0));
 
     [Signal]
     public delegate void OnColorChangeEventHandler();

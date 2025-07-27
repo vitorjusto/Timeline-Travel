@@ -2,56 +2,47 @@ using System;
 using System.Linq;
 using Godot;
 using Shooter.Source.Models.Enemies;
+using Shooter.Source.Models.Misc;
 
 public partial class BackgroundLevelThree : Node2D, IBackground
 {
     private Node2D _lightContainer;
 
-	private int _time = 0;
+	private readonly QuickTimer _timer = new(40);
+    private PackedScene _starScene;
+    private PackedScene _lightScene;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+        _starScene = GD.Load<PackedScene>("res://Scenes/Background/StarLevelThree.tscn");
+        _lightScene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
+
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-		var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
-
-        var instance = (LevelThreeLight)scene.Instantiate();
-
+        var instance = (LevelThreeLight)_lightScene.Instantiate();
 		instance.LightOwner = player;
 
 		_lightContainer = GetNode<Node2D>("ParallaxBackground/LightCotainer");
 		_lightContainer.AddChild(instance);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		
 		AddLightToEnemies();
 		AddLightToProjectiles();
 
-		AddStar();
-
-		
+		AddStar(delta);
 	}
 
-    private void AddStar()
+    private void AddStar(double delta)
     {
-        if(_time == 40)
-		{
-			var scene = GD.Load<PackedScene>("res://Scenes/Background/StarLevelThree.tscn");
+        if(!_timer.Process(delta))
+            return;
 
-        	var instance = (StarLevelThree)scene.Instantiate();
-
-			AddChild(instance);
-
-			_time = 0;
-		}
-
-		_time++;
+		AddChild(_starScene.Instantiate());
+		_timer.Reset();
     }
-
 
     private void AddLightToProjectiles()
     {
@@ -65,9 +56,7 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 		{
             if(projectile is Node2D node2d)
             {
-			    var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
-
-        	    var instance = (LevelThreeLight)scene.Instantiate();
+        	    var instance = (LevelThreeLight)_lightScene.Instantiate();
 			    instance.LightOwner = node2d;
 			    instance.ShrinkLight();
 
@@ -89,13 +78,10 @@ public partial class BackgroundLevelThree : Node2D, IBackground
 			if(enemy is DimentionalStarship  || enemy is Surpriser)
 				continue;
 
-			var scene = GD.Load<PackedScene>("res://Scenes/Background/LevelThreeLight.tscn");
-
-        	var instance = (LevelThreeLight)scene.Instantiate();
+        	var instance = (LevelThreeLight)_lightScene.Instantiate();
 			instance.LightOwner = enemy;
 
 			_lightContainer.AddChild(instance);
 		}
     }
-
 }
