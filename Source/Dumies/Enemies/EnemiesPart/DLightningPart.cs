@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies.Parts;
 
 namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 {
     public class DLightningPart: IEnemyDummy
     {
-        private float _x;
-        private float _y;
+        private readonly float _x;
+        private readonly float _y;
         public DLightningPart(float x, float y)
         {
             _x = x;

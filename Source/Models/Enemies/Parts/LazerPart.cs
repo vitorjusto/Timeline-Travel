@@ -1,34 +1,28 @@
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
-public partial class LazerPart : CharacterBody2D, IEnemy, INonExplodable
+namespace Shooter.Source.Models.Enemies.Parts
 {
 
-	private int _speed = 1;
-
-	private int _time = 0;
-	public int MaxTimer = 200; 
-    public override void _Process(double delta)
-	{
-		if(_time > MaxTimer)
-		{
-        	EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
-		}
-		_time++;
-	}
-
-	public bool IsImortal()
-	{
-		return true;
-	}
-
-    public void Destroy()
+    public partial class LazerPart : CharacterBody2D, IEnemy, INonExplodable
     {
-        
-    }
+        private QuickTimer _timer = new(200);
 
-    public EnemyBoundy GetBoundy()
-    {
-        return new();
+        public void SetMaxTimer(int time)
+            => _timer = new(time);
+        public override void _Process(double delta)
+        {
+            if (_timer.Process(delta))
+                EnemySpawner.GetEnemySpawner().RemoveEnemy(this);
+        }
+
+        public bool IsImortal()
+            => true;
+
+        public void Destroy()
+        { }
+
+        public EnemyBoundy GetBoundy()
+            => new();
     }
 }

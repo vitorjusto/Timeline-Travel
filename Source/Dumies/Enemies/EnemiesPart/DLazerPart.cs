@@ -1,13 +1,14 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using Shooter.Source.Models.Enemies.Parts;
 
 namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 {
     public class DLazerPart: IEnemyDummy
     {
-        private float _x;
-        private float _y;
-        private int _maxTimer;
+        private readonly float _x;
+        private readonly float _y;
+        private readonly int _maxTimer;
         public DLazerPart(float x, float y, int maxTimer)
         {
             _x = x;
@@ -22,7 +23,7 @@ namespace Shooter.Source.Dumies.Enemies.EnemiesPart
             var instance = (LazerPart)scene.Instantiate();
 
             instance.Position = new Vector2(_x, _y);
-            instance.MaxTimer = _maxTimer;
+            instance.SetMaxTimer(_maxTimer);
 
             return instance;
         }
