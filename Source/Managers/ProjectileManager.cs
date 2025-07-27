@@ -26,24 +26,24 @@ public partial class ProjectileManager : Node2D
 		EnemiesProjectiles = new List<Node2D>();
 		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 	}
-	private int _autoFireCooldown = 0;
+	private float _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
     private Player _player;
 
     public override void _Process(double delta)
 	{
-		Shoot();
+		Shoot(delta);
 	}
 
-    private void Shoot()
+    private void Shoot(double delta)
     {
         if(GameManager.GetManager().IsBlackScreen)
             return;
 
 		if(Input.IsActionPressed("shoot"))
 		{
-			_autoFireCooldown--;
-			if(_autoFireCooldown == 0)
+			_autoFireCooldown -= (float)(delta * 60);
+			if(_autoFireCooldown <= 0)
 			{
 				if(_player.GetFinalPowerUp)
 					ShootPlayerProjectileFinalPowerUp();
