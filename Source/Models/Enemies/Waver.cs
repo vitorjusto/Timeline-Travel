@@ -6,7 +6,7 @@ public partial class Waver : CharacterBody2D, IEnemy
 {
 	private WaveSpeed _yWaveSpeed;
 	private int _speed = 15;
-	private int _time = 0;
+	private float _time = 0;
 	private const int Y_START_POSITION = -100;
 
 
@@ -20,14 +20,14 @@ public partial class Waver : CharacterBody2D, IEnemy
 
     public override void _Process(double delta)
     {
-		_time++;
+		_time+= (float)(delta * 60);
 
 		if(Position.X < -30)
 		{
 			Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") + 30, Position.Y);
 		}
 		
-		if(_time > 1532)
+		if(Position.Y > (int)ProjectSettings.GetSetting("display/window/size/viewport_height") + 60)
 		{
 			Position = new Vector2(Position.X, Y_START_POSITION);
 
@@ -35,7 +35,7 @@ public partial class Waver : CharacterBody2D, IEnemy
 			_yWaveSpeed = new WaveSpeed(-3, 20, Position.Y, startCooldown: WaveCooldown);
 		}
 
-        Position = new Vector2(Position.X - _speed,_yWaveSpeed.Update(delta) + _time);
+        Position = new Vector2(Position.X - _speed, _yWaveSpeed.Update(delta) + _time);
     }
 
 	public void OnScreenExited()
