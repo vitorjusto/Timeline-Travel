@@ -33,7 +33,7 @@ public partial class ConceptHead : CharacterBody2D, IEnemy
 			_state = null;
 		}
 
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 	}
 
 	public void Destroy()

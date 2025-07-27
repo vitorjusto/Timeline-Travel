@@ -25,7 +25,7 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
 
     public override void _Process(double delta)
 	{
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
 		MoveEnemy(delta);
 	}
 

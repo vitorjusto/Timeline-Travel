@@ -41,7 +41,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
 		Move();
 
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 
 	}
 

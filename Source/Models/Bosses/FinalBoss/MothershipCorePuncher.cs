@@ -31,7 +31,7 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 	
 	public override void _Process(double delta)
 	{
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 
 		if(_entreringStage)
 			MoveBoss();

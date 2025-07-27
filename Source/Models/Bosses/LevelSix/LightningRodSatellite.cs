@@ -39,7 +39,7 @@ public partial class LightningRodSatellite : CharacterBody2D, IEnemy
         if(_state.Process(delta))
             _state = _state.NextState();
         
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
 	}
 
 	public void Destroy()

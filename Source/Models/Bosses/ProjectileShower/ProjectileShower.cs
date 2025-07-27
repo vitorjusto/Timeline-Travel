@@ -31,7 +31,7 @@ public partial class ProjectileShower : Node2D, IEnemy
 
 		}
 
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 	}
 
     private void ShowSmallBoss()

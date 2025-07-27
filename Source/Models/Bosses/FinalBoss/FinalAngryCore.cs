@@ -17,7 +17,7 @@ public partial class FinalAngryCore : Node2D, IEnemy
     public override void _Process(double delta)
 	{
 		Position = new Vector2(Position.X, _ySpeed.Update(delta));
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
 	}
 
 	public void Destroy()

@@ -79,7 +79,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		}
 
 		if(!_isAtracting)
-            _damageAnimator.Process();
+            _damageAnimator.Process(delta);
 
 		_time++;
 	}

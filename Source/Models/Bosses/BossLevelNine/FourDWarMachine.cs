@@ -29,7 +29,7 @@ public partial class FourDWarMachine : Node2D, IEnemy
 			_state = _state.NextState();
 		
 		if(!IsTimeTravelTransition() && !DestroingPlayer)
-			_damageAnimator.Process();
+			_damageAnimator.Process(delta);
 
 		if(_hp > 0 && !DestroingPlayer && _HalfHealthEventTrigered && !IsTimeTravelTransition() && GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner").EnemiesSectionEmpty)
 		{

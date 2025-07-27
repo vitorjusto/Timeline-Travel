@@ -3,7 +3,7 @@ using Godot;
 public class DamageAnimationPlayer
 {
     private AnimatedSprite2D _sprite;
-    private int _animationFrames;
+    private double _animationFrames;
     private const int MAX_ANIMATION_FRAME = 3;
 
     public DamageAnimationPlayer(AnimatedSprite2D sprite)
@@ -11,12 +11,12 @@ public class DamageAnimationPlayer
         _sprite = sprite;
     }
 
-    public void Process()
+    public void Process(double delta)
     {
-        if(_animationFrames == 0)
-            _sprite.Play("default");
-        else
-            _animationFrames--;
+        if(_animationFrames <= 0)
+            PlayDefaultAnimation();
+        else if(_animationFrames > 0)
+            _animationFrames-= (float)(delta * 60);
     }
 
     public void PlayDamageAnimation()

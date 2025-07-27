@@ -34,7 +34,7 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 
         ProcessNoDashWarning();
         if(!_isAtracting)
-            _damageAnimator.Process();
+            _damageAnimator.Process(delta);
 	}
 
     private void ProcessNoDashWarning()

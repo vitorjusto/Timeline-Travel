@@ -19,7 +19,7 @@ public partial class CoreProtector : CharacterBody2D, IEnemy
 	}
 	public override void _Process(double delta)
 	{
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 	}
 
     public void Destroy()

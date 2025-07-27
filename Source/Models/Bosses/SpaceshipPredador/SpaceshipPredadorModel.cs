@@ -21,7 +21,7 @@ public partial class SpaceshipPredadorModel : CharacterBody2D, IEnemy
         if(_currentState.Process(delta))
             _currentState = _currentState.NextState();
 
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
     }
 
     public void Destroy()

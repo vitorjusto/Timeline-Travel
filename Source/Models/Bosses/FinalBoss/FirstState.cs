@@ -53,7 +53,7 @@ public partial class FirstState : Node2D, IEnemy
 		else
 			_shootingCooldown--;
 
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 	}
 
     private void EndPhase()

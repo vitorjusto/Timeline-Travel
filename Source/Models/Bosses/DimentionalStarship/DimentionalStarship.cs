@@ -32,7 +32,7 @@ public partial class DimentionalStarship : CharacterBody2D, IEnemy, IEnableNotif
       if(_state.Process(delta))
         _state = _state.NextState();
     
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
         GetNode<Node2D>("LevelThreeLight").Visible = EmitLight;
         
     }

@@ -20,7 +20,7 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
     }
     public override void _Process(double delta)
 	{
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
         
         if(Boss.State is EnteringState)
             return;

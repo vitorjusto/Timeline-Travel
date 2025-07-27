@@ -28,7 +28,7 @@ public partial class BlackholeGeneratorV2 : Node2D, IEnemy, ICustomBossPosition
 				SetBlackholeState();
 		}
 
-		_damageAnimator.Process();
+		_damageAnimator.Process(delta);
 
 	}
 

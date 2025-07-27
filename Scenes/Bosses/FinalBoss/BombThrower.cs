@@ -54,7 +54,7 @@ public partial class BombThrower : Node2D, IEnemy
             return;
         }
 
-        _damageAnimator.Process();
+        _damageAnimator.Process(delta);
 
         _timer++;
 

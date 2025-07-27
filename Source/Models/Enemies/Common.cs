@@ -16,7 +16,7 @@ namespace Shooter.Source.Models.Enemies
         public override void _Process(double delta)
         {
             MoveEnemy(delta);
-            _damageAnimator.Process();
+            _damageAnimator.Process(delta);
         }
 
         private void MoveEnemy(double delta)
