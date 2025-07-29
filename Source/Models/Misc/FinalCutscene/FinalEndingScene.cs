@@ -17,9 +17,9 @@ public partial class FinalEndingScene : Node2D
 	public override void _Process(double delta)
 	{
         if(_playerGoingToLeft)
-            _player.Position += new Vector2(-24, 0);
+            _player.Position += new Vector2(-24, 0) * (float)(delta * 60);
         else
-            _backgroundPlayer.Position += new Vector2(6, 2);
+            _backgroundPlayer.Position += new Vector2(6, 2) * (float)(delta * 60);
 	}
 
     public void OnAnimationFinished()

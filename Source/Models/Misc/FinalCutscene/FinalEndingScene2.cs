@@ -9,11 +9,11 @@ public partial class FinalEndingScene2 : Node2D
     private Label _label;
     private Panel _panel;
     private bool _enabled;
-    private byte _panelOpacity = 255;
-    private byte _EndOpacity = 0;
+    private float _panelOpacity = 255;
+    private float _EndOpacity = 0;
     private float _backgroundSpeed = 10;
     private string _endingText = "AFTER BLOWING UP THE ENEMIES' SHIP, ALL TIMELINES ARE AT PEACE.\nTHANKS TO YOU.";
-    private int _textCooldown = 100;
+    private float _textCooldown = 100;
     private bool _TextFadedOut;
     private bool _EndTextFadeIn;
     private bool _allowPlayerToExit;
@@ -35,13 +35,13 @@ public partial class FinalEndingScene2 : Node2D
         if(_allowPlayerToExit)
             ListenPlayerInput();
         if(_EndTextFadeIn)
-            FadeInEndText();
+            FadeInEndText(delta);
         if(_TextFadedOut)
-            LetPlayerGoBackGround();
+            LetPlayerGoBackGround(delta);
         if(_playerReachedEndScreen)
-            FadeOutText();
+            FadeOutText(delta);
         else
-            GenerateText();
+            GenerateText(delta);
 	}
 
     private void ListenPlayerInput()
@@ -57,17 +57,17 @@ public partial class FinalEndingScene2 : Node2D
             GetTree().ChangeSceneToFile("res://Scenes/TitleScreen.tscn");
     }
 
-    private void FadeInEndText()
+    private void FadeInEndText(double delta)
     {
-        if(_EndOpacity == 255)
+        if(_EndOpacity >= 255)
         {
             VerifyUnlockables();
             _allowPlayerToExit = true;
             return;
         }
 
-        _EndOpacity += 5;
-        GetNode<Node2D>("EndText").Modulate = Color.Color8(255, 255, 255, _EndOpacity);
+        _EndOpacity += (float)(delta * 300);
+        GetNode<Node2D>("EndText").Modulate = Color.Color8(255, 255, 255, (byte)Math.Clamp(Math.Floor(_EndOpacity), 0, 255));
     }
 
     private void VerifyUnlockables()
@@ -87,14 +87,14 @@ public partial class FinalEndingScene2 : Node2D
 
     }
 
-    private void LetPlayerGoBackGround()
+    private void LetPlayerGoBackGround(double delta)
     {
         var animationSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-        animationSprite.Position += new Vector2(4, 1);
+        animationSprite.Position += new Vector2(4, 1) * (float)(delta * 60);
     }
 
-    private void FadeOutText()
+    private void FadeOutText(double delta)
     {
         if(_panelOpacity == 0)
         {
@@ -105,25 +105,26 @@ public partial class FinalEndingScene2 : Node2D
                 return;
             }
 
-            _backgroundSpeed -= 0.2f;
+            _backgroundSpeed -= 0.2f * (float)(delta * 60);
             _backgroundSpeed = _backgroundSpeed < 0? 0: _backgroundSpeed;
 
             GetNode<MovingParallaxLayer>("ParallaxBackground/MovingParallaxLayer").XSpeed = _backgroundSpeed;
             return;
         }
 
-        _panelOpacity -= 5;
-        _panel.Modulate = Color.Color8(255, 255, 255, _panelOpacity);
+        _panelOpacity -= (float)(delta * 300);
+        _panelOpacity -= (float)Math.Clamp(Math.Floor(_panelOpacity), 0, 255);
+        _panel.Modulate = Color.Color8(255, 255, 255, (byte)_panelOpacity);
     }
 
-    private void GenerateText()
+    private void GenerateText(double delta)
     {
-        _player.Position += new Vector2(_playerSpeed, 0);
+        _player.Position += new Vector2(_playerSpeed * (float)(delta * 60), 0);
 
         if(_endingText.Length == 0)
             return;
 
-        if(_textCooldown == 0)
+        if(_textCooldown <= 0)
         {
             _label.Text += _endingText[0];
             _endingText = _endingText.Substr(1, _endingText.Length - 1);
@@ -144,7 +145,7 @@ public partial class FinalEndingScene2 : Node2D
 
         }else
         {
-            _textCooldown--;
+            _textCooldown-= (float)(delta * 60);
         }
     }
 
