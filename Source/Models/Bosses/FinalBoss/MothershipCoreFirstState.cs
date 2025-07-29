@@ -19,14 +19,14 @@ public partial class MothershipCoreFirstState : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		if(EntreringStage)
-			MoveBoss();
+			MoveBoss(delta);
 		else
 			Position = new Vector2(Position.X, _ySpeed.Update(delta));
 	}
 
-    private void MoveBoss()
+    private void MoveBoss(double delta)
     {
-        Position += new Vector2(0, 2);
+        Position += new Vector2(0, 2) * (float)(delta * 60);
 		
 		if(Position.Y < FinalPosition)
 			return;

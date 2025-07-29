@@ -35,7 +35,7 @@ public partial class Waver : CharacterBody2D, IEnemy
 			_yWaveSpeed = new WaveSpeed(-3, 20, Position.Y, startCooldown: WaveCooldown);
 		}
 
-        Position = new Vector2(Position.X - _speed, _yWaveSpeed.Update(delta) + _time);
+        Position = new Vector2(Position.X - (_speed * (float)(delta * 60)), _yWaveSpeed.Update(delta) + _time);
     }
 
 	public void OnScreenExited()

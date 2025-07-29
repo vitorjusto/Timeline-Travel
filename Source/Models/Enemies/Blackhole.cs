@@ -24,7 +24,6 @@ namespace Shooter.Source.Models.Enemies
         public override void _Process(double delta)
         {
             MoveEnemy((float)delta);
-            GD.Print(Speed * (delta * 60));
 
             AtractPlayer((float)delta);
         }

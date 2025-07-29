@@ -1,10 +1,11 @@
 using Godot;
+using Shooter.Source.Models.Misc;
 using System;
 using System.Linq;
 
 public partial class ChequerActackContainer : Node2D
 {
-	private int _timer;
+	private QuickTimer _timer = new(150);
     private ChequerActack _mainNode;
 
     public bool Active = true;
@@ -28,14 +29,10 @@ public partial class ChequerActackContainer : Node2D
 		if(!Active)
 			return;
 			
-		_timer++;
-
-		if(_timer > 150)
+		if(_timer.Process(delta))
 		{
 			_mainNode.Activate();
-			_timer = 0;
 		}
-
 	}
 
 	public void OnActivation(Node2D node)

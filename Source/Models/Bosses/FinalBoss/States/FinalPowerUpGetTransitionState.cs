@@ -1,5 +1,7 @@
+using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.FinalBoss.States
 {
@@ -7,8 +9,8 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
     {
         public Panel _transitionPanel;
         private Player _player;
-        private byte _opacity; 
-        private int _timer; 
+        private float _opacity; 
+        private float _timer; 
         private AudioStreamPlayer _audioStreamPlayer;
         public FinalPowerUpGetTransitionState(Panel transitionPanel, AudioStreamPlayer audioStreamPlayer)
         {
@@ -25,14 +27,14 @@ namespace Shooter.Source.Models.Bosses.FinalBoss.States
 
         public bool Process(double delta)
         {
-            
             if(_timer < 150)
             {
-                _audioStreamPlayer.VolumeDb -= 0.5f;
-                _opacity += (byte)(_opacity < 254? 2: 0);
-                _transitionPanel.Modulate = Color.Color8(255, 255, 255, _opacity);
-                _timer++;
+                _audioStreamPlayer.VolumeDb -= 0.5f * (float)(delta * 60);
 
+                _opacity += 2 * (float)(delta * 60);
+
+                _transitionPanel.Modulate = Color.Color8(255, 255, 255, (byte)Math.Clamp(_opacity, 0, 255));
+                _timer+= (float)(delta * 60);
             }else
             {
                 _audioStreamPlayer.Stop();

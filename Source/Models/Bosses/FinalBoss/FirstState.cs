@@ -11,12 +11,12 @@ public partial class FirstState : Node2D, IEnemy
 	private Player _player;
 	private bool _isEntrering = true;
 	private int _hp = 100;
-    private int _time;
-    private int _lazerCooldown;
+    private QuickTimer _time = new(100);
+    private float _lazerCooldown;
 	private int _lazerPosition1 = 0;
 	private int _lazerPosition2 = 50;
 	private int _lazerPosition3 = -50;
-	private int _shootingCooldown = 0;
+	private float _shootingCooldown = 0;
 	private IState _exploding;
     private DamageAnimationPlayer _damageAnimator;
 
@@ -39,19 +39,19 @@ public partial class FirstState : Node2D, IEnemy
 
 		if(_isEntrering)
 		{
-			EntreringState();
+			EntreringState(delta);
 			return;
 		}
 
-		if(_lazerCooldown == 0)
-			ShootLazers();
+		if(_lazerCooldown <= 0)
+			ShootLazers(delta);
 		else
-			_lazerCooldown--;
+			_lazerCooldown -= (float)(delta * 60);
 
-		if(_shootingCooldown == 0)
+		if(_shootingCooldown <= 0)
 			ShootProjectile();
 		else
-			_shootingCooldown--;
+			_shootingCooldown -= (float)(delta * 60);
 
 		_damageAnimator.Process(delta);
 	}
@@ -81,21 +81,20 @@ public partial class FirstState : Node2D, IEnemy
 		
     }
 
-    private void ShootLazers()
+    private void ShootLazers(double delta)
     {
-        if(_time == 0)
+        if(_time.Time == 0)
             AudioManager.OnLaser();
             
-		_time++;
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * _time), 200));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 20 + (20 * _time), 200));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 20 + (20 * _time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * (float)_time.Time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 20 + (20 * (float)_time.Time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 20 + (20 * (float)_time.Time), 200));
 
-		if(_time > 100)
+		if(_time.Process(delta))
 		{
-			_time = 0;
-			_lazerCooldown = 150;
+            _time.Reset();
+            _lazerCooldown = 150;
 
 			_lazerPosition1 = new Random().Next(-2, 3) * 100;
 			_lazerPosition2 = (new Random().Next(0, 3) * 100) + 50;
@@ -103,14 +102,14 @@ public partial class FirstState : Node2D, IEnemy
 		}
     }
 
-    private void EntreringState()
+    private void EntreringState(double delta)
     {
 		var hud = GetTree().Root.GetNode<Hud>("/root/Main/Hud");
 
 		if(hud.IsShowingTimelineLabel)
 			return;
 
-        Position += new Vector2(0, 10);
+        Position += new Vector2(0, 10) * (float)(delta * 60);
 
 		if(Position.Y > 50)
 		{

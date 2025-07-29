@@ -5,6 +5,7 @@ namespace Shooter.Source.Models.Misc
         public double Time => _timer;
         private double _timer;
         private int _maxTimer;
+        private bool _disabled;
 
         public QuickTimer(int maxTimer)
         {
@@ -13,6 +14,9 @@ namespace Shooter.Source.Models.Misc
 
         public bool Process(double delta)
         {
+            if(_disabled)
+                return false;
+
             _timer+= delta * 60;
 
             if(_timer < _maxTimer)
@@ -24,5 +28,8 @@ namespace Shooter.Source.Models.Misc
 
         public void Reset()
             => _timer = 0;
+
+        public void Stop()
+            => _disabled = true;
     }
 }

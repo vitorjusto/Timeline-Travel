@@ -1,10 +1,13 @@
 using Godot;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class TimelineEleven : Node2D
 {
-	private int _timer;
+	private QuickTimer _timer = new(200);
+	private QuickTimer _labelTimer = new(10);
     private INextStateFinalBoss _nextState;
+    private bool _labelDisposed;
 
     public override void _Ready()
 	{
@@ -12,16 +15,18 @@ public partial class TimelineEleven : Node2D
 
 	public override void _Process(double delta)
 	{
-		if(_timer == 200)
+        if(_labelDisposed)
+            return;
+
+        if(_timer.Process(delta))
 		{
 			GetNode<Label>("Label").Visible = false;
-			return;
+			_labelDisposed = true;
+            return;
 		}
 
-		if(_timer % 10 == 0)
+		if(_labelTimer.Process(delta))
 			GetNode<Label>("Label").Visible = !GetNode<Label>("Label").Visible;
-
-		_timer++;
 	}
 
 	public void OnBossDestroyed()

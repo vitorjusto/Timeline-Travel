@@ -15,12 +15,12 @@ public partial class GigantBomb : CharacterBody2D, IEnemy
 
 	public override void _Process(double delta)
 	{
-		Position += new Vector2(XSpeed, _ySpeed);
+		Position += new Vector2(XSpeed, _ySpeed) * (float)(delta * 60);
 
 		if(_ySpeed < 20)
 			_ySpeed += 0.5f;
 
-		Rotation += 0.05f;
+		Rotation += 0.05f * (float)(delta * 60);
 
 		if(Rotation == 360)
 			Rotation = 0;

@@ -4,12 +4,13 @@ using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
 using Shooter.Source.Models.Levels;
+using Shooter.Source.Models.Misc;
 using System;
 using System.Collections.Generic;
 
 public partial class FinalStage : Node2D
 {
-	private int _timer = 0;
+	private QuickTimer _timer = new(150);
     private EnemySpawner _enemyManager;
 	
 	private IState _state;
@@ -36,9 +37,8 @@ public partial class FinalStage : Node2D
 			}
 			return;
 		}
-		_timer++;
-
-		if(_timer > 150)
+        
+		if(_timer.Process(delta))
 			AddEnemies();
 	}
 
@@ -305,8 +305,6 @@ public partial class FinalStage : Node2D
 		}
 		_enemyManager.AddEnemySection(enemies);
 		_enemyManager.GetNextSection();
-
-		_timer = 0;
     }
 
 	public void OnCoreDestroyed(Node2D node)

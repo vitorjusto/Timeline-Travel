@@ -3,14 +3,17 @@ using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Levels;
+using Shooter.Source.Models.Misc;
 
 public partial class TimelineEightFinalBoss : Node2D
 {
     private Label _lblTimeline;
-	private int _timer;
+	private QuickTimer _timer = new(200);
+	private QuickTimer _labelTimer = new(10);
     private EnemySpawner _enemyManager;
     private INextStateFinalBoss _nextState;
     private bool _nextStateCalled;
+    private bool _enemiesCalled;
 
     public override void _Ready()
 	{
@@ -20,7 +23,7 @@ public partial class TimelineEightFinalBoss : Node2D
 
 	public override void _Process(double delta)
 	{
-		if(_timer == 200)
+		if(_enemiesCalled)
 		{
 			if(_enemyManager.EnemiesSectionEmpty && !_nextStateCalled)
 			{
@@ -31,16 +34,16 @@ public partial class TimelineEightFinalBoss : Node2D
 			return;
 		}
 
-		_timer++;
-			
-		if(_timer < 200)
-		{
-			if(_timer % 10 == 0)
+		if(!_timer.Process(delta))
+		{   
+			if(_labelTimer.Process(delta))
 				_lblTimeline.Visible = !_lblTimeline.Visible;
 		}else
 		{
-			AddEnemies();
-		}
+            _lblTimeline.Visible = false;
+            AddEnemies();
+            _enemiesCalled = true;
+        }
 	}
 
     private void AddEnemies()

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
@@ -12,8 +13,8 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 	public ChequerActackContainer BaseContainer;
 
 	private bool _activated = false;
-	private int _timer = 0;
-	private byte _opacity = 0;
+	private readonly QuickTimer _timer = new(20);
+	private float _opacity = 0;
 
 	public override void _Ready()
 	{
@@ -28,14 +29,12 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
 			return;
 		}
 		
-		_timer++;
-
-		if(_timer > 20)
+		if(_timer.Process(delta))
 			Deactivate();
 		else
 		{
-			Modulate = Color.Color8(255, 255, 255, _opacity);
-			_opacity -= 15;
+			Modulate = Color.Color8(255, 255, 255, (byte)Math.Clamp(_opacity, 0, 255));
+			_opacity -= 15 * (float)(delta * 60);
 		}
 	}
 
@@ -51,7 +50,7 @@ public partial class ChequerActack : Node2D, IEnemy, IEnableNotifier
     {
 		_activated = true;
 		Visible = true;
-		_timer = 0;
+		_timer.Reset();
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 
 		_opacity = 150;

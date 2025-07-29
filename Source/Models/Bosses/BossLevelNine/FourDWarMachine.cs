@@ -117,7 +117,6 @@ public partial class FourDWarMachine : Node2D, IEnemy
 			return;
 
         _hp--;
-		GD.Print(_hp);
 
 		if(_hp == 150)
 		{

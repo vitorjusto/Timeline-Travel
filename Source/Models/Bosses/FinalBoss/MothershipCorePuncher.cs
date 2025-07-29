@@ -14,14 +14,15 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 	private Vector2 _idlePosition;
 
 	private bool _entreringStage = true;
-	private int _timer;
-	private int _timerDashing;
+	private float _timer;
+	private float _timerDashing;
 
     private Player _player;
 	private bool _dashing;
 	private int _hp = 180;
     private bool _damageDisabled;
     private DamageAnimationPlayer _damageAnimator;
+    private int _dashFlag = 0;
 
     public override void _Ready()
 	{
@@ -34,15 +35,15 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		_damageAnimator.Process(delta);
 
 		if(_entreringStage)
-			MoveBoss();
+			MoveBoss(delta);
 		else if(_dashing)
-			Dash();
+			Dash(delta);
 		else
 		{
 			Position = new Vector2(Position.X, _idleySpeed.Update(delta));
 
 			if(!_damageDisabled)
-				_timer++;
+				_timer+= (float)(delta * 60);
 
 			_dashing = _timer > 50;
 		}
@@ -57,52 +58,56 @@ public partial class MothershipCorePuncher : Node2D, IEnemy, IEnableNotifier
 		Rotation = speed.Angle();
     }
 
-    private void Dash()
+    private void Dash(double delta)
     {
-		_timerDashing++;
+		_timerDashing+= (float)(delta * 60);
 		
-        if(_timerDashing == 1)
+        if(_dashFlag == 0)
 		{
 			_player.ShowTarget();
-			Animate();
+            _dashFlag++;
+            Animate();
 		}
 		else if(_timerDashing < 50)
 		{
 			Animate();
 		}
-		else if(_timerDashing == 50)
+		else if(_timerDashing > 50 && _dashFlag == 1)
 		{
 			_player.HideTarget();
 			var angle = Math.Atan2(Position.X - _player.Position.X, Position.Y - _player.Position.Y);
 
 			_xSpeed = (float)Math.Sin(angle) * (-20);
 			_ySpeed = (float)Math.Cos(angle) * (-20);
+            _dashFlag++;
 
-		}else if(_timerDashing == 100)
+		}else if(_timerDashing > 100 && _dashFlag == 2)
 		{
 			var angle = Math.Atan2(Position.X - _idlePosition.X, Position.Y - _idlePosition.Y);
 
 			_xSpeed = (float)Math.Sin(angle) * (-20);
 			_ySpeed = (float)Math.Cos(angle) * (-20);
+            _dashFlag++;
 
 		}
-		else if(_timerDashing == 150)
+		else if(_timerDashing > 150 && _dashFlag == 3)
 		{
 			_xSpeed = 0;
 			_ySpeed = 0;
 			_dashing = false;
 			_timerDashing = 0;
+            _dashFlag = 0;
 
-			Position = _idlePosition;
+            Position = _idlePosition;
 			_timer = 0;
 		}
 		
-		Position += new Vector2(_xSpeed, _ySpeed);
+		Position += new Vector2(_xSpeed, _ySpeed) * (float)(delta * 60);
     }
 
-    private void MoveBoss()
+    private void MoveBoss(double delta)
     {
-        Position += new Vector2(0, 2);
+        Position += new Vector2(0, 2) * (float)(delta * 60);
 		
 		if(Position.Y < 175)
 			return;

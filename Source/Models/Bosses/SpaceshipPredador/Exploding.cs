@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 {
@@ -8,7 +9,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
     {
         public Node2D _node;
         private EnemySpawner _enemySpawner;
-        public int _time = 0;
+        public QuickTimer _time = new(300);
         private Vector2 _size;
         private bool _removeEnemy;
         private Vector2 _positionOffSet;
@@ -21,6 +22,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _size = new Vector2(size, size);
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
+            _enemySpawner.RemoveAllEnemies();
 
             if(removeEnemy && !continueMusicEvenWithoutEnemy && !_enemySpawner.isBossRush)   
                 AudioManager.Stop();
@@ -33,6 +35,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _size = size;
             _removeEnemy = removeEnemy;
             _positionOffSet = positionOffSet;
+            _enemySpawner.RemoveAllEnemies();
             
             if(removeEnemy && !_enemySpawner.isBossRush)   
                 AudioManager.Stop();
@@ -45,9 +48,6 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 
         public bool Process(double delta)
         {
-            if(_time == 0)
-                _enemySpawner.RemoveAllEnemies();
-
             if(_explosionCooldown == 0)
             {
                 _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y));
@@ -58,7 +58,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
                 _explosionCooldown--;
             }
 
-		    if(_time == 300)
+		    if(_time.Process(delta))
 		    {
                 if(_removeEnemy)
                 {
@@ -66,10 +66,10 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 			        _enemySpawner.RemoveEnemy(_node);
                 }else
                     return true;
-		    }
 
-            _time++;
-            
+                _time.Stop();
+            }
+
             return false;
         }
     }

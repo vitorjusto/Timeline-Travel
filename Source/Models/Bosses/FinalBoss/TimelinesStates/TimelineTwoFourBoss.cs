@@ -1,16 +1,19 @@
 using System;
 using Godot;
 using Shooter.Source.Dumies.Enemies;
+using Shooter.Source.Models.Misc;
 
 public partial class TimelineTwoFourBoss : Node2D
 {
     private int _enemiesSpawned;
-    private int _time = 383;
-    private int _LabelsTime = 0;
+    private QuickTimer _timer = new(383);
+	private QuickTimer _labelTimer = new(200);
+	private QuickTimer _labelVisibleTimer = new(10);
     private EnemySpawner _enemySpawner;
     private Label lbltimeline1;
     private Label lbltimeline2;
     private INextStateFinalBoss _nextState;
+    private bool _labelsVisible = true;
 
     public override void _Ready()
 	{
@@ -22,37 +25,32 @@ public partial class TimelineTwoFourBoss : Node2D
 
 	public override void _Process(double delta)
 	{
-        ShowTimelinesLabels();
+        if(_labelsVisible)
+            ShowTimelinesLabels(delta);
 
 		if(_enemiesSpawned < 4)
         {
-            if(_time > 383)
+            if(_timer.Process(delta))
                 AddEnemies();
 
-            _time++;
         }
 	}
 
-    private void ShowTimelinesLabels()
+    private void ShowTimelinesLabels(double delta)
     {
-        if(_LabelsTime == 200)
+        if(_labelTimer.Process(delta))
         {
             lbltimeline1.Visible = false;
 		    lbltimeline2.Visible = false;
+            _labelsVisible = false;
             return;
-
         }
 
-        _LabelsTime++;
-			
-		if(_LabelsTime < 200)
-		{
-			if(_LabelsTime % 10 == 0)
-            {
-				lbltimeline1.Visible = !lbltimeline1.Visible;
-				lbltimeline2.Visible = !lbltimeline2.Visible;
-            }
-		}
+		if(_labelVisibleTimer.Process(delta))
+        {
+			lbltimeline1.Visible = !lbltimeline1.Visible;
+			lbltimeline2.Visible = !lbltimeline2.Visible;
+        }
     }
 
     private void AddEnemies()
@@ -70,7 +68,6 @@ public partial class TimelineTwoFourBoss : Node2D
         _enemySpawner.AddEnemy(new DWaver(1100, 55));
         _enemySpawner.AddEnemy(new DWaver(1200, 60));
 
-        _time = 0;
         _enemiesSpawned++;
     }
 
@@ -78,6 +75,7 @@ public partial class TimelineTwoFourBoss : Node2D
     {
         _enemySpawner.RemoveAllEnemies();
         _nextState.OnNextState();
+        _enemiesSpawned = 5;
         GetNode<Node2D>("Concept").CallDeferred("queue_free");
     }
 

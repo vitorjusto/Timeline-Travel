@@ -6,7 +6,7 @@ using Shooter.Source.Models.Misc;
 
 public partial class AngryCore : Node2D, IEnemy
 {
-    private int _timer;
+    private QuickTimer _timer = new(50);
     private WaveSpeed _ySpeed;
 
 	public override void _Ready()
@@ -17,16 +17,13 @@ public partial class AngryCore : Node2D, IEnemy
     public override void _Process(double delta)
 	{
 		Position = new Vector2(Position.X, _ySpeed.Update(delta));
-		_timer++;
 
-		if(_timer > 50)
+		if(_timer.Process(delta))
 			Shoot();
 	}
 
 	private void Shoot()
     {
-        _timer = 0;
-
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
