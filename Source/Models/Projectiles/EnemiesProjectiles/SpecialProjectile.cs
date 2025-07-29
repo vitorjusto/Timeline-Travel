@@ -9,13 +9,10 @@ public partial class SpecialProjectile : CharacterBody2D, IEnemyProjectile
 	private float _speedModifier = 5;
 
 	public int Damage = 3;
-	public override void _Ready()
-	{
-	}
 
 	public override void _Process(double delta)
 	{
-		Position = new Vector2(x: Position.X + (_Xspeed * _speedModifier), y: Position.Y + (_Yspeed * _speedModifier));
+		Position += new Vector2(x: _Xspeed * _speedModifier, y: _Yspeed * _speedModifier) * (float)(delta * 60);
 	}
 
 	public void SetPosition(float x, float y)

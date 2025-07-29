@@ -24,7 +24,7 @@ public partial class BulletUp : Node2D, IPowerUp
 
     public override void _Process(double delta)
 	{
-		Position = new Vector2(Position.X, Position.Y + 2);
+		Position += new Vector2(0, 2) * (float)(delta * 60);
 	}
 
 }

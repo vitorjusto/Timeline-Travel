@@ -14,7 +14,7 @@ public partial class PlayerProjectile : Area2D
 
 	public override void _Process(double delta)
 	{
-		Position = new Vector2(x: Position.X + _xSpeed, y: Position.Y + _ySpeed);
+		Position += new Vector2(x: _xSpeed, y: _ySpeed) * (float)(delta * 60);
 	}
 
 	public void SetPosition(float x, float y)

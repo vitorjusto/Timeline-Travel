@@ -1,31 +1,27 @@
 using Godot;
 using System;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 public partial class HomingProjectile : CharacterBody2D, IEnemyProjectile
 {	
 	public float SpeedModifier = 3;
 
-	private int _time = 0;
+	private QuickTimer _timer = new(500);
 
 	public int Damage = 2;
-	public override void _Ready()
-	{
-	}
 
 	public override void _Process(double delta)
 	{
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 
-		var x = Position.X + (float)Math.Sin(angle) * -SpeedModifier;
-		var y = Position.Y + (float)Math.Cos(angle) * -SpeedModifier;
+		var x = Position.X + (float)Math.Sin(angle) * -SpeedModifier * (float)(delta * 60);
+		var y = Position.Y + (float)Math.Cos(angle) * -SpeedModifier * (float)(delta * 60);
 		Position = new Vector2(x ,y);
 
-		if(_time > 500)
+		if(_timer.Process(delta))
 			DestroyProjectile();
-
-		_time++;
 	}
 
 	public void SetPosition(float x, float y)

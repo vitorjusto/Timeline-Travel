@@ -8,14 +8,9 @@ public partial class NormalProjectile : CharacterBody2D, IEnemyProjectile
 	private float _Yspeed = 0;
 	private float _speedModifier = 2;
 	public int Damage = 2;
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position = new Vector2(x: Position.X + (_Xspeed * _speedModifier), y: Position.Y + (_Yspeed * _speedModifier));
+		Position += new Vector2(x:_Xspeed * _speedModifier, y: _Yspeed * _speedModifier) * (float)(delta * 60);
 	}
 
 	public void SetPosition(float x, float y)
