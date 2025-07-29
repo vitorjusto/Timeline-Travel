@@ -11,7 +11,8 @@ public partial class Player : Area2D
 	[Export]
 	public int DashInitialSpeed = 45;
 	private int _dashSpeedBoost = 0;
-	private int _iFrame = 0;
+	private float _iFrame = 0;
+    private float _iFrameAnimation;
 	
 	[Export]
 	public int IFrameTime = 50;
@@ -21,7 +22,7 @@ public partial class Player : Area2D
     public Vector2 ScreenSize;
     private bool _unableToMove;
     private bool _playerDestroyed;
-	private int _time = 0;
+	private float _time = 0;
     public int Hp {get; set;}
     public bool GetFinalPowerUp { get; internal set; }
 
@@ -31,12 +32,12 @@ public partial class Player : Area2D
     private GameManager _gameManager;
 	private int _playerHitTimes = 0;
 	//Player will not take damage if _playerImortal is true, this property is only used for debugging proporses
-	private bool _playerImortal = true;
+	private bool _playerImortal = false;
     private int _minLimit = 32;
     private int _maxLimit;
     private int _targetCount;
 
-	public void AddLifeProgress()
+    public void AddLifeProgress()
 	{
 		_lifeProgress++;
 
@@ -70,7 +71,7 @@ public partial class Player : Area2D
 
 		if(_playerDestroyed)
 		{
-			_time++;
+			_time+= (float)(delta * 60);
 
 			if(_time > 20)
 			{
@@ -83,31 +84,35 @@ public partial class Player : Area2D
 
 		}
 
-		MovePlayer();
-		AnimateIFrame();
+		MovePlayer(delta);
+		AnimateIFrame(delta);
 	}
 
-    private void AnimateIFrame()
+    private void AnimateIFrame(double delta)
     {
         if(_iFrame > 0)
 		{
-			if(_iFrame % 5 == 0)
+			if(_iFrameAnimation <= 0)
 			{
 				_showingIFrameAnimation = !_showingIFrameAnimation;
-			}
+                _iFrameAnimation = 5;
+            }
 
 			Visible = _showingIFrameAnimation;
 
-			_iFrame--;
+			_iFrame-= (float)(delta * 60);
+			_iFrameAnimation -= (float)(delta * 60);
 
 		}else
 		{
 			Show();
-			_showingIFrameAnimation = true;
+            _iFrame = 0;
+            _iFrameAnimation = 0;
+            _showingIFrameAnimation = true;
 		}
     }
 
-    private void MovePlayer()
+    private void MovePlayer(double delta)
     {
 		if(_unableToMove)
 			return;
@@ -136,7 +141,9 @@ public partial class Player : Area2D
         	velocity.Y -= currentSpeed;
     	}
 
-		Position = new Vector2(
+        velocity *= (float)(delta * 60);
+
+        Position = new Vector2(
     		x: Mathf.Clamp(Position.X + velocity.X, _minLimit, _maxLimit),
     		y: Mathf.Clamp(Position.Y + velocity.Y, 5, ScreenSize.Y - 5)
 		);
