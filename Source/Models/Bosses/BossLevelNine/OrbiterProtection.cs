@@ -39,17 +39,17 @@ public partial class OrbiterProtection : Node2D, IEnemy
 		if(_shootingCooldown == 0)
 			Shoot();
 
-		Move();
+		Move(delta);
 
 		_damageAnimator.Process(delta);
 
 	}
 
-    private void Move()
+    private void Move(double delta)
     {
         float xspeed = (-15 * (_time * _time)) + (_time * 100f);
-		xspeed *= _xspeedModifier; 
-		_time += 0.1f;
+		xspeed *= _xspeedModifier * (float)(delta * 60); 
+		_time += 0.1f * (float)(delta * 60);
     
 		if(_time > 6.666)
 		{
@@ -58,8 +58,8 @@ public partial class OrbiterProtection : Node2D, IEnemy
 		}
     
 		float yspeed = (-15 * (_ytime * _ytime)) + (_ytime * 100f);
-		yspeed *= _yspeedModifier; 
-		_ytime += 0.1f;
+		yspeed *= _yspeedModifier * (float)(delta * 60); 
+		_ytime += 0.1f * (float)(delta * 60);
     
 		if(_ytime > 6.666)
 		{

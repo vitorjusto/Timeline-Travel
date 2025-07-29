@@ -11,7 +11,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
         private Node2D _node;
         private EnemySpawner _enemiesManager;
         private WaveSpeed _xSpeed;
-        private int _timer;
+        private QuickTimer _timer = new(200);
 
         public ShootingBlackholeState(Node2D node)
         {
@@ -28,13 +28,9 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
         public bool Process(double delta)
         {
-            _timer++;
-
-            if(_timer == 200)
+            if(_timer.Process(delta))
             {
                 _enemiesManager.AddEnemy(new DBlackHole((int)_node.Position.X, (int)_node.Position.Y, new Random().Next(0, 2) == 1));
-
-                _timer = 0;
             }
             
             _node.Position = new Vector2(_node.Position.X, _xSpeed.Update(delta));

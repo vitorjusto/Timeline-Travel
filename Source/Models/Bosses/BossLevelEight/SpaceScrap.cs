@@ -11,13 +11,12 @@ public partial class SpaceScrap : CharacterBody2D, IEnemy
 	public float XSpeed;
 	public float YSpeed;
     public ESpaceScrapType SpaceScrapType;
-    private int _timer;
+    private QuickTimer _timer = new(70);
     public override void _Process(double delta)
 	{
 		Position += new Vector2(XSpeed, YSpeed);
 
-        _timer++;
-        if(SpaceScrapType == ESpaceScrapType.Sniper && _timer == 70)
+        if(SpaceScrapType == ESpaceScrapType.Sniper && _timer.Process(delta))
             Shoot();
 	}
 
@@ -28,7 +27,6 @@ public partial class SpaceScrap : CharacterBody2D, IEnemy
 		var projectiles = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
 
 		projectiles.AddProjectile(new DNormalProjectile(Position.X, Position.Y + 41, (float)Math.Sin(angle) * (-3), (float)Math.Cos(angle) * (-3)));
-
     }
 
     public void OnScreenExited()

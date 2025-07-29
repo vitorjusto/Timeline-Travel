@@ -19,7 +19,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(_node.Position.X, _node.Position.Y + 5);
+            _node.Position += new Vector2(0, 5) * (float)(delta * 60);
 
             return _node.Position.Y > 130;
         }

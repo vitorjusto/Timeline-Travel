@@ -29,7 +29,7 @@ namespace Shooter.Source.Factories.Bosses
             if(level == 11)
                 return GetFinalBoss();
             if(level == 22)
-                return GetBossLevelNine();
+                return GetBossLevelEight();
 
             return null;
         }

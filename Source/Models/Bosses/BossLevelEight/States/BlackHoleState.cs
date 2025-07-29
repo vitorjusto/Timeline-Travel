@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 {
@@ -10,8 +11,8 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
     {
         public Node2D _node;
         private Player _player;
-        private int _timer;
-        private int _stateTimer;
+        private QuickTimer _timer = new(20);
+        private QuickTimer _stateTimer = new(1000);
 
         public BlackHoleState(Node2D node)
         {
@@ -28,15 +29,12 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
         {
 		    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
 
-		    _player.SetSpeed((float)Math.Sin(angle) * (5), (float)Math.Cos(angle) * (5));
+		    _player.SetSpeed((float)Math.Sin(angle) * (float)(delta * 300), (float)Math.Cos(angle) * (float)(delta * 300));
 
-            _timer++;
-            _stateTimer++;
-
-            if(_timer > 20)
+            if(_timer.Process(delta))
                 GenerateScrap();
             
-            return _stateTimer > 1000;
+            return _stateTimer.Process(delta);
         }
 
         private void GenerateScrap()
@@ -49,15 +47,12 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
             var number = new Random().Next(0, 100);
 
-
             if(number % 25 == 0)
 		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Bomber));
             else if(number % 10 == 0)
 		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, ESpaceScrapType.Sniper));
             else
 		        enemySpawner.AddEnemy(new DSpaceScrap((float)Math.Sin(angle) * (4), (float)Math.Cos(angle) * (4), xPosition, GameManager.IsSpecialMode? ESpaceScrapType.Sniper: ESpaceScrapType.Common));
-
-            _timer = 0;
         }
     }
 }

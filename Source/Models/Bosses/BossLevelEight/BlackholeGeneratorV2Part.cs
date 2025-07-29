@@ -9,7 +9,7 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
 {
 	private int _hp = 50;
     private ProjectileManager _projectiles;
-    private int _timer;
+    private QuickTimer _timer = new(90);
     public BlackholeGeneratorV2 Boss;
 	private DamageAnimationPlayer _damageAnimator;
     public override void _Ready()
@@ -25,9 +25,7 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
         if(Boss.State is EnteringState)
             return;
             
-        _timer++;
-
-        if(_timer < 90)
+        if(!_timer.Process(delta))
             return;
 
         var position = Boss.Position + Position;
@@ -38,9 +36,6 @@ public partial class BlackholeGeneratorV2Part : CharacterBody2D, IEnemy, INonExp
 		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y, (float)Math.Sin(angle) * (-2), (float)Math.Cos(angle) * (-2)));
 		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y, (float)Math.Sin(angle - 0.5) * (-2), (float)Math.Cos(angle - 0.5) * (-2)));
 		_projectiles.AddProjectile(new DLightProjectile(position.X, position.Y, (float)Math.Sin(angle + 0.5) * (-2), (float)Math.Cos(angle + 0.5) * (-2)));
-
-        _timer = 0;
-
 	}
 	
 	public void Destroy()

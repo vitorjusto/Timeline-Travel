@@ -19,7 +19,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 
         public bool Process(double delta)
         {
-            _node.Scale -= new Vector2(0.003f, 0.003f);
+            _node.Scale -= new Vector2(0.003f, 0.003f) * (float)(delta * 60);
 
             if(_node.Scale.X < 0.08)
             {

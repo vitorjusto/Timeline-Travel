@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Dumies.Projectiles;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 {
@@ -11,7 +12,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
         private IState _blackholeState;
         private ProjectileManager _projectiles;
         private Player _player;
-        private int _timer;
+        private QuickTimer _timer = new(150);
 
         public ShootingProjectileState(Node2D node, IState blackholeState)
         {
@@ -35,9 +36,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
             if(_blackholeState.Process(delta))
                 return true;
 
-            _timer++;
-
-            if(_timer < 150)
+            if(!_timer.Process(delta))
                 return false;
             
 		    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
@@ -47,8 +46,6 @@ namespace Shooter.Source.Models.Bosses.BossLevelEight.States
 		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle + 0.3) * (-2), (float)Math.Cos(angle + 0.3) * (-2)));
 		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle + 0.6) * (-2), (float)Math.Cos(angle + 0.6) * (-2)));
 		    _projectiles.AddProjectile(new DNormalProjectile(_node.Position.X, _node.Position.Y + 60, (float)Math.Sin(angle - 0.6) * (-2), (float)Math.Cos(angle - 0.6) * (-2)));
-
-            _timer = 0;
 
             return false;
         }
