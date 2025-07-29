@@ -13,7 +13,7 @@ public partial class TimeRupture : Node2D
 
 	public override void _Process(double delta)
 	{
-		Position += new Vector2(0, 7);
+		Position += new Vector2(0, 7) * (float)(delta * 60);
 	}
 
 	public void OnScreenExited()

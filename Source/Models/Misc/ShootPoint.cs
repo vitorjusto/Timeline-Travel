@@ -13,25 +13,24 @@ public partial class ShootPoint : Node2D
 
 	[Export]
 	public int Timer;
-	private int _currentTime;
+	private float _currentTime;
 
 	[Export]
 	public float ExtraAngle;
 	[Export]
 	public bool Active = true;
 
-	public override void _Ready()
-	{
-	}
-
 	public override void _Process(double delta)
 	{
 		if(!Active)
 			return;
 
-		_currentTime++;
-		if(_currentTime == Timer)
+		_currentTime+= (float)(delta * 60);
+		if(_currentTime >= Timer)
+        {
 			Shoot();
+            _currentTime -= Timer;
+        }
 	}
 
 	public void Shoot()

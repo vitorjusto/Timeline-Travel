@@ -2,10 +2,10 @@ using Godot;
 
 public partial class ModeUnclocked : Node2D
 {
-    private int _timer;
+    private double _timer;
 	public override void _Process(double delta)
 	{
-        _timer++;
+        _timer+= delta * 60;
         if(_timer > 250)
             GetTree().ChangeSceneToFile("res://Scenes/TitleScreen.tscn");
 	}
