@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 {
@@ -10,8 +11,8 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         
         private Node2D _boss;
         private Panel _foregroundPanel;
-        private byte _foregroundPanelOpacity = 0;
-        private int _timer = 0;
+        private float _foregroundPanelOpacity = 0;
+        private QuickTimer _timer = new(20);
 
         public BackInTimeTransitionState(AnimatedSprite2D aniEntreringPortal, Node2D boss, Panel foregroundPanel)
         {
@@ -31,19 +32,19 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         public bool Process(double delta)
         {
             if(_foregroundPanelOpacity < 255)
-                MakeTransition();
+                MakeTransition(delta);
             else
-                _timer++;
+                return _timer.Process(delta);
             
-            return _timer > 20;
+            return false;
         }
 
-        private void MakeTransition()
+        private void MakeTransition(double delta)
         {
-            _aniEntreringPortal.Scale *= new Vector2(1.01f, 1.01f);
+            _aniEntreringPortal.Scale *= new Vector2(1.01f, 1.01f) * (float)(delta * 60);
 
-            _foregroundPanelOpacity += 3;
-            _foregroundPanel.Modulate = Color.Color8(255, 255, 255, _foregroundPanelOpacity);
+            _foregroundPanelOpacity += (float)(delta * 120);
+            _foregroundPanel.Modulate = Color.Color8(255, 255, 255, (byte)Math.Clamp(_foregroundPanelOpacity, 0, 255));
         }
     }
 }

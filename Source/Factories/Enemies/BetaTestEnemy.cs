@@ -12,10 +12,7 @@ namespace Shooter.Source.Factories.Enemies
         {
             return new List<EnemySection>()
             {
-                new(30, false, new DWaver(100, 0)),
-                new(30, false, new DWaver(200, 0)),
-                new(30, false, new DWaver(300, 0)),
-                new(30, false, new DWaver(400, 0)),
+                new(30, false, new DDasher(100)),
             };
         }
     }

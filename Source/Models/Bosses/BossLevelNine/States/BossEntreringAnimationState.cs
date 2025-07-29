@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 {
     public class BossEntreringAnimationState : IState
     {
         private AnimatedSprite2D _aniEntreringPortal;
-        private int _timer = 0;
+        private QuickTimer _timer = new(50);
         private int _currentAnimationFrame = 0;
         private FourDWarMachine _boss;
 
@@ -23,8 +24,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         public bool Process(double delta)
         {
-            _timer++;
-            if(_timer > 50)
+            if(_timer.Process(delta))
                 AnimationNextFrame();
 
             return _currentAnimationFrame == 4;
@@ -35,7 +35,6 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
             _currentAnimationFrame++;
 
             _aniEntreringPortal.Play($"EntranceAnimation{_currentAnimationFrame}");
-            _timer = 0;
         }
     }
 }

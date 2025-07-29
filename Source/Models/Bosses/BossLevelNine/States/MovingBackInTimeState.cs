@@ -25,7 +25,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         public bool Process(double delta)
         {
-            _boss.Position = new Vector2(_boss.Position.X + _xspeed, _ySpeed.Update(delta));
+            _boss.Position = new Vector2(_boss.Position.X + _xspeed * (float)(delta * 60), _ySpeed.Update(delta));
 
             if(_boss.Position.X < 100 || _boss.Position.X > 1300)
                 _xspeed *= -1;

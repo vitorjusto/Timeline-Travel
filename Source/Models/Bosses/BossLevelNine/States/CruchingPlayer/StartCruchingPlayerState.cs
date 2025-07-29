@@ -2,6 +2,7 @@
 using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 {
@@ -11,7 +12,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         private Player _player;
         private bool _nearPlayer;
 
-        private int _timer;
+        private QuickTimer _timer = new(100);
 
         public StartCruchingPlayerState(Node2D boss)
         {
@@ -27,37 +28,30 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         public bool Process(double delta)
         {
-
             if(_nearPlayer)
                 FollowPlayer();
 
-            else if(_timer < 50)
-            {
-                _timer++;
-                return false;
-            }
-            else
-                Dash();
+            else if(_timer.Time > 50)
+                Dash(delta);
                 
-            return _nearPlayer && _timer > 100;
+            return _timer.Process(delta) && _nearPlayer;
         }
 
         private void FollowPlayer()
         {
             _boss.Position = new Vector2(_player.Position.X, _player.Position.Y - 128);
-            _timer++;
         }
 
-        private void Dash()
+        private void Dash(double delta)
         {
             
             var angle = Math.Atan2(_boss.Position.X - _player.Position.X, _boss.Position.Y - _player.Position.Y + 128);
-            _boss.Position += new Vector2((float)Math.Sin(angle) * (-20), (float)Math.Cos(angle) * (-20));
+            _boss.Position += new Vector2((float)Math.Sin(angle) * (-20), (float)Math.Cos(angle) * (-20)) * (float)(delta * 60);
 
             if(Math.Abs(_player.Position.X - _boss.Position.X) < 30 && Math.Abs(_player.Position.X - _boss.Position.X) < 158)
             {
                 _nearPlayer = true;
-                _timer = 0;
+                _timer.Reset();
             }
         }
     }

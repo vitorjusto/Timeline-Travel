@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 {
@@ -9,7 +10,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
         private Node2D _boss;
         private Player _player;
         private Vector2 _speed;
-        private int _timer;
+        private QuickTimer _timer = new(100);
 
         public HoldingPlayerState(Node2D boss)
         {
@@ -25,19 +26,20 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         public IState NextState()
         {
-            return null;
+            return new MovingState(_boss);
         }
 
         public bool Process(double delta)
         {
-            _timer++;
-
-            if(_timer == 100)
-                DestroyPlayer();
-            else if(_timer < 100)
+            if(_timer.Process(delta))
             {
-                _boss.Position += _speed;
-                _player.Position += _speed;
+                DestroyPlayer();
+                return true;
+            }
+            else
+            {
+                _boss.Position += _speed * (float)(delta * 60);
+                _player.Position += _speed * (float)(delta * 60);
             }                
 
             return false;
