@@ -23,7 +23,7 @@ namespace Shooter.Source.Models.Bosses.ProjectileShowerState
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + (_node.Speed * _speedModifier), y: _ySpeed.Update(delta));
+            _node.Position = new Vector2(x: _node.Position.X + (_node.Speed * _speedModifier * (float)(delta * 60)), y: _ySpeed.Update(delta));
 
 		    if(_node.Position.X - 100 <= 0 && (_node.Speed * _speedModifier) < 0)
 			    _speedModifier *= -1;

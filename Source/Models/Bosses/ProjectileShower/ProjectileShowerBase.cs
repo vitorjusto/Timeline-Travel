@@ -4,7 +4,7 @@ using Shooter.Source.Dumies.Projectiles;
 
 public partial class ProjectileShowerBase : Node2D, ICustomBossPosition
 {
-	private int _timer;
+	private float _timer;
 	private int _timerCowdown = 20;
     private ProjectileManager _projectiles;
     private ProjectileShower _boss;
@@ -18,12 +18,12 @@ public partial class ProjectileShowerBase : Node2D, ICustomBossPosition
 	public override void _Process(double delta)
 	{
 
-		_timer++;
+		_timer+= (float)(delta * 60);
 
 		if(_timer < _timerCowdown)
 			return;
 
-		_timer = 0;
+		_timer -= _timerCowdown;
 
 		if(_boss.IsExploding)
 		{
