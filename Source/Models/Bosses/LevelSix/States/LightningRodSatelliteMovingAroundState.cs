@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Shooter.Source.Enums;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.LevelSix.States
 {
@@ -11,8 +12,10 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
         private LightningRodSatelliteShootingState _state;
         private bool _isMoving;
         private float _stayPosition;
-        private int _time;
+        private QuickTimer _idleTimer = new(100);
+        private QuickTimer _warningTimer = new(50);
         private bool _isShowingWarning;
+        private bool _warningVisible;
 
         public LightningRodSatelliteMovingAroundState(LightningRodSatelliteShootingState state, Node2D node)
         {
@@ -28,57 +31,58 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 
         public bool Process(double delta)
         {
-            Move();
+            Move(delta);
             _state.Process(delta);
             return false;
         }
 
-        private void Move()
+        private void Move(double delta)
         {
             if(_isShowingWarning)
-                ShowingWarning();
+                ShowingWarning(delta);
             if(_isMoving)
-                ModeNode();
+                ModeNode(delta);
             else
-                UpdateTimer();
+                UpdateTimer(delta);
         }
 
-        private void ShowingWarning()
+        private void ShowingWarning(double delta)
         {
-            if(_time == 0)
+            if(!_warningVisible)
             {
+                _warningVisible = true;
                 var hud = _node.GetTree().Root.GetNode<Hud>("/root/Main/Hud");
                 hud.ShowCustomWarning(_stayPosition < _node.Position.X? "LeftWarning": "RightWarning");
-            }else if(_time == 50)
+            }
+
+            if(_warningTimer.Process(delta))
             {
                 _isShowingWarning = false;
                 _isMoving = true;
-                _time = 0;
+                _warningVisible = false;
+                _warningTimer.Reset();
                 _node.GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
             }
 
         }
 
-        private void ModeNode()
+        private void ModeNode(double delta)
         {
             if(Math.Abs(_node.Position.X - _stayPosition) < 6)
             {
                 _isMoving = false;
-                _time = 0;
                 return;
             }
 
             if(_node.Position.X - _stayPosition < 0)
-                _node.Position = new Vector2(_node.Position.X + 4, _node.Position.Y);
+                _node.Position += new Vector2(4, 0) * (float)(delta * 60);
             else
-                _node.Position = new Vector2(_node.Position.X - 4, _node.Position.Y);
+                _node.Position += new Vector2(-4, 0) * (float)(delta * 60);
         }
 
-        private void UpdateTimer()
+        private void UpdateTimer(double delta)
         {
-            _time++;
-
-            if(_time == 100)
+            if(_idleTimer.Process(delta))
                 SetStayPosition();
         }
 
@@ -96,7 +100,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
                 }
             }
             _isShowingWarning = true;
-            _time = 0;
+            _idleTimer.Reset();
         }
     }
 }

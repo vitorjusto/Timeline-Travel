@@ -11,8 +11,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
         private LightningRodSatellite _node;
         private ProjectileManager _projectileManager;
         private Player _player;
-        private int _time = 0;
-        private int _homingProjectileCowldown = 100;
+        private float _homingProjectileCowldown = 100;
         private WaveSpeed _ySpeed;
 
         public LightningRodSatelliteShootingState(LightningRodSatellite node)
@@ -33,15 +32,14 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 
         public bool Process(double delta)
         {
-            PunishPlayer();
+            PunishPlayer(delta);
 
             _node.Position = new Vector2(x: _node.Position.X, y: _ySpeed.Update(delta));
 
-            _time++;
             return false;
         }
 
-        private void PunishPlayer()
+        private void PunishPlayer(double delta)
         {
             if(Math.Abs(_player.Position.X - _node.Position.X) < 200)
             {
@@ -51,7 +49,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
             
             if(_homingProjectileCowldown > 0)
             {
-                _homingProjectileCowldown--;
+                _homingProjectileCowldown-= (float)(delta * 60);
                 return;
             }
 

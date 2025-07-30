@@ -3,6 +3,7 @@ using Godot;
 using Shooter.Source.Dumies.Enemies;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Bosses.SpaceshipPredador;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.LevelSix.States
 {
@@ -11,7 +12,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
         private Node2D _node;
         private LightningRodSatelliteMovingAroundState _state;
         private EnemySpawner _enemySpawner;
-        private int _time = 0;
+        private QuickTimer _time = new(150);
 
         public LightningRodSatelliteLightningState(Node2D node, LightningRodSatelliteMovingAroundState state)
         {
@@ -28,10 +29,9 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 
         public bool Process(double delta)
         {
-            if(_time == 150)
+            if(_time.Process(delta))
                 ShootLightning();
             
-            _time++;
             _state.Process(delta);
             return false;
         }
@@ -39,8 +39,6 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
         private void ShootLightning()
         {
             _enemySpawner.AddEnemy(new DLighting((int)_node.Position.X + (new Random().Next(-1, 1) == 1? 40: -40)));
-
-            _time = 0;
         }
     }
 }
