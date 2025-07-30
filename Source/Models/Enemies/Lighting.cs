@@ -8,6 +8,7 @@ namespace Shooter.Source.Models.Enemies
     public partial class Lighting : Node2D, IEnemy, INonExplodable
     {
         private float _time = 0;
+        private float _parts = 0;
         private float _warningTimer = 0;
         private bool _isWarning = true;
     
@@ -45,11 +46,15 @@ namespace Shooter.Source.Models.Enemies
 
         private void MakeLightning()
         {
-
             var enemySpawner = EnemySpawner.GetEnemySpawner();
-            enemySpawner.AddEnemy(new DLightningPart(Position.X, _time * 320));
+            while(_time > 1)
+            {
+                enemySpawner.AddEnemy(new DLightningPart(Position.X, _parts * 320));
+                _time -= 1;
+                _parts++;
+            }
 
-            if (_time > 4)
+            if (_parts > 4)
             {
                 enemySpawner.RemoveEnemy(this);
             }
