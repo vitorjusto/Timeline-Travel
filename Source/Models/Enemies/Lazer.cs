@@ -11,6 +11,9 @@ namespace Shooter.Source.Models.Enemies
         private float _time = 0;
         private bool _isShooting = false;
         public int MaxTime = 201;
+        private float _lazerPosition;
+        private float _timeLazer;
+
         public override void _Process(double delta)
         {
             if (_isShooting)
@@ -29,6 +32,7 @@ namespace Shooter.Source.Models.Enemies
             {
                 AudioManager.OnLaser();
                 _isShooting = true;
+                _lazerPosition = Position.Y + 20;
                 _time = 0;
             }
 
@@ -38,21 +42,27 @@ namespace Shooter.Source.Models.Enemies
         private void Shoot(double delta)
         {
             _time+= (float)(delta * 60);
+            _timeLazer += (float)(delta * 60);
 
             if (_time > MaxTime)
             {
                 Position += new Vector2(x: 0, y: -_yspeed * (float)(delta * 60));
+                _timeLazer = 0;
             }
             else
             {
-                var y = Position.Y + (20 * _time);
+                if(_timeLazer <= 1)
+                    return;
 
-                if (y > 900)
+                _timeLazer -= 1;
+                _lazerPosition += 20;
+
+                if (_lazerPosition > 900)
                     return;
 
                 var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
 
-                enemySpawner.AddEnemy(new DLazerPart(Position.X, y, MaxTime));
+                enemySpawner.AddEnemy(new DLazerPart(Position.X, _lazerPosition, MaxTime));
             }
         }
 
