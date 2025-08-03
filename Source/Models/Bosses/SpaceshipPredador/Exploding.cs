@@ -13,7 +13,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         private Vector2 _size;
         private bool _removeEnemy;
         private Vector2 _positionOffSet;
-        private int _explosionCooldown;
+        private float _explosionCooldown;
 
         public Exploding(Node2D node, int size = 100, bool removeEnemy = true, Vector2 positionOffSet = default, bool continueMusicEvenWithoutEnemy = false)
         {
@@ -48,14 +48,14 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 
         public bool Process(double delta)
         {
-            if(_explosionCooldown == 0)
+            if(_explosionCooldown <= 0)
             {
                 _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y));
-                _explosionCooldown = 10;
+                _explosionCooldown += 10;
             }else
             {
                 _enemySpawner.AddExplosion(_node.Position.X + _positionOffSet.X + new Random().Next(-(int)_size.X, (int)_size.X), _node.Position.Y + _positionOffSet.Y + new Random().Next(-(int)_size.Y, (int)_size.Y), makeSound: false);
-                _explosionCooldown--;
+                _explosionCooldown -= (float)(delta * 60);
             }
 
 		    if(_time.Process(delta))

@@ -11,7 +11,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
         private Node2D _node;
         private int _speed = 5;
         private WaveSpeed _yspeed;
-        private int _time = 383;
+        private QuickTimer _time = new(383);
         private int _enemiesSpawned = 0;
         private EnemySpawner _enemySpawner;
 
@@ -20,6 +20,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _node = node;
             _enemySpawner = _node.GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
             _yspeed = new WaveSpeed(-1, 7, _node.Position.Y);
+            AddEnemies();
         }
 
         public IState NextState()
@@ -29,20 +30,18 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _yspeed.Update(delta));
+            _node.Position = new Vector2(x: _node.Position.X + (_speed * (float)(delta * 60)), y: _yspeed.Update(delta));
 
 			if(_node.Position.X > 1412 || _node.Position.X < 32)
 				_speed *= -1;
 
-            if(_enemiesSpawned < 4)
+            if(_enemiesSpawned < 3)
             {
-                if(_time > 383)
+                if(_time.Process(delta))
                     AddEnemies();
-
-                _time++;
             }
 
-            return ((SpaceshipPredadorModel)_node).Hp < (GameManager.IsSpecialMode?300:50) && _enemiesSpawned == 4;
+            return ((SpaceshipPredadorModel)_node).Hp < (GameManager.IsSpecialMode?300:50) && _enemiesSpawned == 3;
         }
 
         private void AddEnemies()
@@ -60,7 +59,6 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
             _enemySpawner.AddEnemy(new DWaver(1100, 55));
             _enemySpawner.AddEnemy(new DWaver(1200, 60));
 
-            _time = 0;
             _enemiesSpawned++;
         }
     }

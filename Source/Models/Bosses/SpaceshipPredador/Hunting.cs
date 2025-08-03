@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses
 {
@@ -10,7 +11,7 @@ namespace Shooter.Source.Models.Bosses
         private Player _player;
         private int _speed = 5;
 
-        private int _time = 0;
+        private QuickTimer _time = new(100);
 
         private int _xSpeed;
         private int _ySpeed;
@@ -28,15 +29,10 @@ namespace Shooter.Source.Models.Bosses
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(_node.Position.X, _node.Position.Y + 15);
+            _node.Position += new Vector2(0, 15) * (float)(delta * 60);
 
-            if(_time == 100)
-            {
+            if(_time.Process(delta))
                 _node.Position = new Vector2(_player.Position.X, - 170);
-                _time = 0;
-            }
-
-            _time++;
 
             return false;
         }

@@ -27,12 +27,12 @@ public partial class Waver : CharacterBody2D, IEnemy
 			Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") + 30, Position.Y);
 		}
 		
-		if(Position.Y > (int)ProjectSettings.GetSetting("display/window/size/viewport_height") + 60)
+		if(_time > (int)ProjectSettings.GetSetting("display/window/size/viewport_height") + 220)
 		{
 			Position = new Vector2(Position.X, Y_START_POSITION);
 
 			_time = 0;
-			_yWaveSpeed = new WaveSpeed(-3, 20, Position.Y, startCooldown: WaveCooldown);
+			_yWaveSpeed = new WaveSpeed(-3, 15, Position.Y, startCooldown: WaveCooldown);
 		}
 
         Position = new Vector2(Position.X - (_speed * (float)(delta * 60)), _yWaveSpeed.Update(delta) + _time);

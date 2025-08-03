@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 {
     public class EnteringScreen : IState
     {
         private Node2D _node;
-        private int _time = 0;
+        private QuickTimer _time = new(50);
 
         public EnteringScreen(Node2D node)
         {
@@ -20,10 +21,9 @@ namespace Shooter.Source.Models.Bosses.SpaceshipPredador
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X, y: _node.Position.Y + 5);
-			_time++;
+            _node.Position += new Vector2(x: 0, y: 5) * (float)(delta * 60);
 
-            return _time == 50;
+            return _time.Process(delta);
         }
     }
 }

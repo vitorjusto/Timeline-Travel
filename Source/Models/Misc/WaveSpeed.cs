@@ -10,7 +10,7 @@ namespace Shooter.Source.Models.Misc
         private float _velocity;
         private float _distance;
 	    private float _originalPosition = 0;
-        private int _startCooldown;
+        private float _startCooldown;
         public WaveSpeed(float velocity, float distance, float originalPosition, int startCooldown = 0, bool reverseDirection = false)
         {
             _velocity = velocity;
@@ -26,7 +26,7 @@ namespace Shooter.Source.Models.Misc
         {
             if(_startCooldown > 0)
             {
-                _startCooldown--;
+                _startCooldown-= (float)(delta * 60);
                 return _originalPosition;
             }
             //se você quiser aumentar a distancia, altere o B (30), se você quiser aumentar a velocidade altere o A (-6)
