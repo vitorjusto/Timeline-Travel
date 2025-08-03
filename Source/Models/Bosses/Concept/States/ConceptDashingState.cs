@@ -16,7 +16,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
         private Node2D _node;
         private List<RegularShootPoint> _shootingPoints;
 
-        private int _timer = 0;
+        private QuickTimer _timer = new(50);
 
         public ConceptDashingState(Node2D node)
         {
@@ -55,20 +55,15 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 			AnimateHead();
 
             if(GameManager.IsSpecialMode)
-                ExtraShooting();
+                ExtraShooting(delta);
                 
             return false;
         }
 
-        private void ExtraShooting()
+        private void ExtraShooting(double delta)
         {
-            _timer++;
-
-            if(_timer > 50)
-            {
+            if(_timer.Process(delta))
                 ShootProjectile();
-                _timer = 0;
-            }
         }
 
         private void AnimateHead()
@@ -89,7 +84,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 
 		    if(_dashStatus == EDashStatus.Dashing)
 		    {
-		    	yPosition = 16 + _node.Position.Y;
+		    	yPosition = (16 * (float)(delta * 60)) + _node.Position.Y;
 
 		    	if(_node.Position.Y + 96 >= _node.GetViewport().GetWindow().Size.Y)
 		    	{
@@ -100,7 +95,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 		    }
 		    else if(_dashStatus == EDashStatus.GoingToOriginalPosition)
 		    {
-		    	yPosition = -16 + _node.Position.Y;
+		    	yPosition = (-16 * (float)(delta * 60)) + _node.Position.Y;
 
 		    	if(yPosition <=160)
 		    	{
@@ -120,7 +115,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 		    	yPosition = _ySpeed.Update(delta);
 		    }
 
-		    _node.Position = new Vector2(x: _node.Position.X + xSpeed, y: yPosition);
+		    _node.Position = new Vector2(x: _node.Position.X + (xSpeed * (float)(delta * 60)), y: yPosition);
         }
 
         private void ShootProjectile()

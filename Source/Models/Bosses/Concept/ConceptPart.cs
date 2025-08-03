@@ -31,7 +31,7 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
 
     private void MoveEnemy(double delta)
     {
-        Position = new Vector2(x: Position.X + _speed, y: _ySpeed.Update(delta));
+        Position = new Vector2(x: Position.X + (_speed * (float)(delta * 60)), y: _ySpeed.Update(delta));
 
 		if(Position.X - 64 <= 0 && _speed < 0)
 			_speed *= -1;
