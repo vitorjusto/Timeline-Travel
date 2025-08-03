@@ -1,15 +1,20 @@
 using System;
 using Godot;
+using Shooter.Source.Models.Misc;
 
 public partial class FirstClassEnemyBase : Node2D
 {
 	private AnimatedSprite2D _animatedSprite;
     private FirstClassEnemy _boss;
-    private int _timer;
+    private QuickTimer _timer = new(600);
+    private QuickTimer _closingTimer = new(200);
     private bool _endCutscene;
     private bool _mothershipClosing;
-	private byte _playerAphaColor = 255;
-	public override void _Ready()
+	private float _playerAphaColor = 255;
+    private bool _enteringAnimationEnded;
+    private bool _openingAnimationStarted;
+
+    public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_boss = GameManager.IsSpecialMode?GetNode<FirstClassEnemy>("FirstClassEnemy2"):GetNode<FirstClassEnemy>("FirstClassEnemy");
@@ -26,9 +31,7 @@ public partial class FirstClassEnemyBase : Node2D
 	{
 		if(_mothershipClosing)
 		{
-			_timer++;
-
-			if(_timer > 200)
+			if(_closingTimer.Process(delta))
 			{
 				var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 				blackScreen.Visible = true;
@@ -43,51 +46,54 @@ public partial class FirstClassEnemyBase : Node2D
 		}
 		if(_endCutscene)
 		{
-			MakeEndCutscene();
+			MakeEndCutscene(delta);
 			return;
 		}
 
-		if(_timer > 600)
-			return;
+        if(_enteringAnimationEnded)
+            return;
 
-		_timer++;
+        _enteringAnimationEnded = _timer.Process(delta);
 
-		if(_timer < 410)
-			_animatedSprite.Position += new Vector2(0, 0.9f);
+		if(_timer.Time < 410)
+			_animatedSprite.Position += new Vector2(0, 0.9f) * (float)(delta * 60);
 		
-		else if(_timer == 412)
-			_animatedSprite.Play("Opening");
+		else if(_timer.Time >= 412 && !_openingAnimationStarted)
+        {
+            _openingAnimationStarted = true;
+            _animatedSprite.Play("Opening");
+        }
 
-		else if(_timer == 580)
+		else if(_timer.Time >= 580)
 			_boss.Enable = true;
 	}
 
-    private void MakeEndCutscene()
+    private void MakeEndCutscene(double delta)
     {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+        player.DisablePlayerToMove();
 
-		if(Math.Abs(player.Position.X - 700) < 12)
+        if(Math.Abs(player.Position.X - 700) < 12)
 		{
-			
 			if(Math.Abs(player.Position.Y - 60) < 12)
 			{
-				_playerAphaColor -= 5;
-				player.Modulate = Color.Color8(255, 255, 255, _playerAphaColor);
+				_playerAphaColor -= (float)(delta * 300);
+				_playerAphaColor = Math.Clamp(_playerAphaColor, 0, 255);
+				player.Modulate = Color.Color8(255, 255, 255, (byte)_playerAphaColor);
 
-				if(_playerAphaColor == 0)
+				if((int)_playerAphaColor == 0)
 				{
 					_mothershipClosing = true;
 					_animatedSprite.Play("Closing");
-					_timer = 0;
 				}
 			}
 			else
-				player.Position += new Vector2(0, -player.Speed);
+				player.Position += new Vector2(0, -player.Speed) * (float)(delta * 60);
 		}
 		else if(player.Position.X < 700)
-			player.Position += new Vector2(player.Speed, 0);
+			player.Position += new Vector2(player.Speed, 0) * (float)(delta * 60);
 			
 		else if(player.Position.X > 700)
-			player.Position -= new Vector2(player.Speed, 0);
+			player.Position -= new Vector2(player.Speed, 0) * (float)(delta * 60);
     }
 }

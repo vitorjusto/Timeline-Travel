@@ -8,9 +8,9 @@ using Shooter.Source.Models.Misc;
 public partial class FirstClassEnemy : Node2D, IEnemy
 {
 	private int _hp = 10;
-	private int _Iframe = 0;
+	private float _Iframe = 0;
     private ProjectileManager _projectiles;
-	private int _timer;
+	private QuickTimer _timer = new(15);
     private Player _player;
     private bool _showingIFrameAnimation;
 	public bool Enable;
@@ -18,6 +18,7 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 
 	private float _yPosition;
 	private float _ySpeed;
+    private float _IframeAnimation;
 
     public override void _Ready()
 	{
@@ -36,10 +37,10 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 			return;
 
 		if(_followingPlayer)
-			FollowPlayer();
+			FollowPlayer(delta);
 		else
 		{
-			Position += new Vector2(0, 12);
+			Position += new Vector2(0, 12) * (float)(delta * 60);
 
 			_followingPlayer = Position.Y > 100;
 			return;
@@ -47,22 +48,24 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 
 		if(_Iframe > 0)
 		{
-			if(_Iframe % 5 == 0)
+			if(_IframeAnimation <= 0)
 			{
 				_showingIFrameAnimation = !_showingIFrameAnimation;
-			}
-			_Iframe--;
+                _IframeAnimation += 5;
+            }
+			_Iframe-= (float)(delta * 60);
+			_IframeAnimation-= (float)(delta * 60);
+
 			Visible = _showingIFrameAnimation;
 
 		}else
 			Visible = true;
 
-		_timer++;
-		if(_timer == 10)
+		if(_timer.Process(delta))
 			Shoot();
 	}
 
-    private void FollowPlayer()
+    private void FollowPlayer(double delta)
     {
 		var xspeed = 0;
 		if(Position.X < _player.Position.X - 5)
@@ -73,7 +76,7 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 			xspeed = -6;
 		}
 
-		Position += new Vector2(xspeed, _ySpeed);
+		Position += new Vector2(xspeed, _ySpeed) * (float)(delta * 60);
 
 		if(Math.Abs(_yPosition - Position.Y) < 8)
 		{
@@ -86,8 +89,6 @@ public partial class FirstClassEnemy : Node2D, IEnemy
 
     private void Shoot()
     {
-        _timer = 0;
-
         if(GameManager.IsSpecialMode)
         {
 		    _projectiles.AddProjectile(new DLightProjectile(Position.X - 10, Position.Y + 32, -6, 2));
