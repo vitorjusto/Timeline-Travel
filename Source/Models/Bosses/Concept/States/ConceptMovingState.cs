@@ -36,7 +36,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 
         private void MoveEnemy(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X + _speed, y: _ySpeed.Update(delta));
+            _node.Position = new Vector2(x: _node.Position.X + (_speed * (float)(delta * 60)), y: _ySpeed.Update(delta));
 
 		    if(_node.Position.X - 64 <= 0 && _speed < 0)
 			    _speed *= -1;

@@ -29,12 +29,14 @@ namespace Shooter.Source.Models.Misc
                 _startCooldown-= (float)(delta * 60);
                 return _originalPosition;
             }
+
+		    _time += 0.1f * (float)(delta * 60);
+            
             //se você quiser aumentar a distancia, altere o B (30), se você quiser aumentar a velocidade altere o A (-6)
 		    Speed = (_velocity * (_time * _time)) + (_time * _distance);
 
-		    Speed *= _SpeedModifier * (float)(delta * 60); 
+		    Speed *= _SpeedModifier; 
             Speed += _originalPosition;
-		    _time += 0.1f * (float)(delta * 60);
 
 		    if(_time > Math.Abs(_distance/_velocity))
 		    {

@@ -114,7 +114,7 @@ public partial class EnemySpawner : Node2D
     {
         var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-		player.SetSpeed(0, -player.Speed, -100);
+		player.SetSpeed(0, -player.Speed * (float)(delta * 60), -100);
 
 		if(_timer.Process(delta))
 		{

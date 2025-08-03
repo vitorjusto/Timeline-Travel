@@ -1,4 +1,5 @@
 using Godot;
+using Shooter.Source.Models.Misc;
 
 public partial class GameManager : Node2D
 {
@@ -9,7 +10,7 @@ public partial class GameManager : Node2D
         => _game;
 
     public static bool IsSpecialMode => _game is not null && _game.SpecialMode;
-	private int _time = 0;
+	private QuickTimer _time = new(130);
 	public bool IsBlackScreen {get; private set; } = false;
 
     public override void _Ready()
@@ -35,25 +36,23 @@ public partial class GameManager : Node2D
 
 	public override void _Process(double delta)
 	{
-		if(_time > 0)
+		if(!IsBlackScreen)
+            return;
+
+        if(_time.Process(delta))
 		{
-			_time++;
+            AudioManager.Play();
+			var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
+			blackScreen.Visible = false;
+			IsBlackScreen = false;
+			_time.Reset();
+			
+			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 
-			if(_time > 130)
-			{
-                AudioManager.Play();
-				var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
-				blackScreen.Visible = false;
-				IsBlackScreen = false;
-				_time = 0;
-				
-				var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+			player.EnablePlayerToMove();
 
-				player.EnablePlayerToMove();
-
-				var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-				enemySpawner.StartLevel();
-			}
+			var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
+			enemySpawner.StartLevel();
 		}
 	}
 
@@ -72,7 +71,6 @@ public partial class GameManager : Node2D
         var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
-		_time++;
 
         AudioManager.Stop();
 
@@ -114,8 +112,6 @@ public partial class GameManager : Node2D
 		blackScreen.Visible = true;
 		IsBlackScreen = true;
         AudioManager.Stop();
-
-		_time++;
 
 		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 		player.Position = new Vector2(x: 722, y: 720);
