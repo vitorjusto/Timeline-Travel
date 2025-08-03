@@ -87,9 +87,9 @@ public partial class FirstState : Node2D, IEnemy
             AudioManager.OnLaser();
             
         var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 20 + (20 * (float)_time.Time), 200));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 20 + (20 * (float)_time.Time), 200));
-        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 20 + (20 * (float)_time.Time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition1, Position.Y + 40 + (20 * (float)_time.Time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition2, Position.Y + 40 + (20 * (float)_time.Time), 200));
+        enemySpawner.AddEnemy(new DLazerPart(Position.X + _lazerPosition3, Position.Y + 40 + (20 * (float)_time.Time), 200));
 
 		if(_time.Process(delta))
 		{

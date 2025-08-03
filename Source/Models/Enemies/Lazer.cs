@@ -45,7 +45,7 @@ namespace Shooter.Source.Models.Enemies
             }
             else
             {
-                var y = Position.Y + 20 * _time;
+                var y = Position.Y + (20 * _time);
 
                 if (y > 900)
                     return;
