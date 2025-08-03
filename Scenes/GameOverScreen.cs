@@ -1,18 +1,13 @@
 using Godot;
-using System;
+using Shooter.Source.Models.Misc;
 
 public partial class GameOverScreen : Node2D
 {
-	private int _timer;
-	public override void _Ready()
-	{
-	}
-
+	private readonly QuickTimer _timer = new(500);
+    
 	public override void _Process(double delta)
 	{
-		_timer++;
-
-		if(_timer == 500)
+		if(_timer.Process(delta))
 			GetTree().ChangeSceneToFile("res://Scenes/TitleScreen.tscn");
 	}
 }

@@ -1,4 +1,5 @@
 using Godot;
+using Shooter.Source.Models.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,8 @@ using System.Linq;
 public partial class TitleScreen : Node2D
 {
     private bool _makeStartAnimation;
-	private int _timer;
+	private QuickTimer _timer = new(120);
+	private QuickTimer _animationTimer = new(10);
     private List<ETitleScreenOptions> _avaliableOptions;
     private ETitleScreenOptions _selectedOption;
 
@@ -41,7 +43,7 @@ public partial class TitleScreen : Node2D
 	{
 		if(_makeStartAnimation)
 		{
-			StartAnimation();
+			StartAnimation(delta);
 			return;
 		}
 			
@@ -88,15 +90,15 @@ public partial class TitleScreen : Node2D
 			_makeStartAnimation = true;
     }
 
-    private void StartAnimation()
+    private void StartAnimation(double delta)
     {
-		if(_timer % 10 == 0)
+		if(_animationTimer.Process(delta))
 			GetChosenOptionLabel().Visible = !GetChosenOptionLabel().Visible;
 
-		if(_timer == 100)
+		if(_timer.Time >= 100)
 			GetNode<Panel>("BlackScreen").Visible = true;
 		
-		if(_timer == 120)
+		if(_timer.Process(delta))
         {
             if(_selectedOption == ETitleScreenOptions.SpecialMode)
             {
@@ -115,8 +117,6 @@ public partial class TitleScreen : Node2D
                 GetTree().ChangeSceneToFile("res://Scenes/BossRush.tscn");
             }
         }
-			
-		_timer++;
     }
 
     private Label GetChosenOptionLabel()

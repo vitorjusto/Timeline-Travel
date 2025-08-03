@@ -7,11 +7,12 @@ using Shooter.Source.Models.Misc;
 public partial class BombThrower : Node2D, IEnemy
 {
     private int _hp = 400;
-	private int _timer;
+	private QuickTimer _timer = new(60);
     private EnemySpawner _enemySpawner;
     private IState _state;
     private DamageAnimationPlayer _damageAnimator;
     private WaveSpeed _yspeed;
+    private bool _bombCicle;
 
     public void Destroy()
     {
@@ -56,27 +57,24 @@ public partial class BombThrower : Node2D, IEnemy
 
         _damageAnimator.Process(delta);
 
-        _timer++;
-
-		if(_timer == 60)
+		if(_timer.Process(delta))
         {
             var bombPosition = Position - new Vector2(0, 30);
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 0));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 6));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 3));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -6));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -3));
-
-        }else if(_timer == 120)
-        {
-            var bombPosition = Position - new Vector2(0, 30);
-
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 3));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 1.5f));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -3));
-            _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -1.5f));
-
-            _timer = 0;
+            _bombCicle = !_bombCicle;
+            if(_bombCicle)
+            {
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 0));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 6));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 3));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -6));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -3));
+            }else
+            {
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 3));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, 1.5f));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -3));
+                _enemySpawner.AddEnemy(new DGigantBomb(bombPosition, -1.5f));
+            }
         }
 
         Position = new Vector2(Position.X, _yspeed.Update(delta));

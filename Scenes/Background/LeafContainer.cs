@@ -1,9 +1,10 @@
 using Godot;
+using Shooter.Source.Models.Misc;
 using System;
 
 public partial class LeafContainer : Node2D
 {
-	public int _time = 0;
+	public QuickTimer _time = new(20);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,10 +14,8 @@ public partial class LeafContainer : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(_time == 20)
+		if(_time.Process(delta))
 			AddLeaf();
-
-		_time++;
 	}
 
     private void AddLeaf()
@@ -27,6 +26,5 @@ public partial class LeafContainer : Node2D
         instance.Position = new Vector2(new Random().Next(30, 3000), -30);
 
 		AddChild(instance);
-		_time = 0;
     }
 }
