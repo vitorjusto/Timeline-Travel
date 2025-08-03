@@ -12,7 +12,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
     public int _xspeedModifier = 1;
 	[Export]
     public int _yspeedModifier = 1;
-	public int _shootingCooldown = 100;
+	public QuickTimer _shootingCooldown = new(100);
 	private bool _allowShoot = true;
     private DamageAnimationPlayer _damageAnimator;
     private bool _active;
@@ -34,9 +34,7 @@ public partial class OrbiterProtection : Node2D, IEnemy
 			EmitSignal("OnOrbiterDestroyed", this);
 		}
 
-		_shootingCooldown--;
-
-		if(_shootingCooldown == 0)
+		if(_shootingCooldown.Process(delta))
 			Shoot();
 
 		Move(delta);
@@ -47,9 +45,9 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
     private void Move(double delta)
     {
-        float xspeed = (-15 * (_time * _time)) + (_time * 100f);
-		xspeed *= _xspeedModifier * (float)(delta * 60); 
 		_time += 0.1f * (float)(delta * 60);
+        float xspeed = (-15 * (_time * _time)) + (_time * 100f);
+		xspeed *= _xspeedModifier; 
     
 		if(_time > 6.666)
 		{
@@ -57,9 +55,9 @@ public partial class OrbiterProtection : Node2D, IEnemy
 			_xspeedModifier *= (-1);
 		}
     
-		float yspeed = (-15 * (_ytime * _ytime)) + (_ytime * 100f);
-		yspeed *= _yspeedModifier * (float)(delta * 60); 
 		_ytime += 0.1f * (float)(delta * 60);
+		float yspeed = (-15 * (_ytime * _ytime)) + (_ytime * 100f);
+		yspeed *= _yspeedModifier; 
     
 		if(_ytime > 6.666)
 		{
@@ -72,8 +70,6 @@ public partial class OrbiterProtection : Node2D, IEnemy
 
     private void Shoot()
     {
-        _shootingCooldown = 100;
-
 		if(_allowShoot)
 			EmitSignal("OnShooting", this);
 	}

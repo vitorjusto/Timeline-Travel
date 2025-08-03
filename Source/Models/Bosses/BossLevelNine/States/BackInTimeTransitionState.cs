@@ -41,7 +41,7 @@ namespace Shooter.Source.Models.Bosses.BossLevelNine.States
 
         private void MakeTransition(double delta)
         {
-            _aniEntreringPortal.Scale *= new Vector2(1.01f, 1.01f) * (float)(delta * 60);
+            _aniEntreringPortal.Scale += new Vector2(0.2f, 0.2f) * (float)(delta * 60);
 
             _foregroundPanelOpacity += (float)(delta * 120);
             _foregroundPanel.Modulate = Color.Color8(255, 255, 255, (byte)Math.Clamp(_foregroundPanelOpacity, 0, 255));

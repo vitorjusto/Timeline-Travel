@@ -108,6 +108,8 @@ public partial class EnemySpawner : Node2D
 			GetBoss();
 		if(CurrentLevel == 22)
 			_enemySection = BetaTestEnemy.GetEnemies();
+		if(CurrentLevel == 23)
+			_enemySection = BetaTestEnemy.GetEnemies();
     }
 
     private void EndingLevelAnimation(double delta)
