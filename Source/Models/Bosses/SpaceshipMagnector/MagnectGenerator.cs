@@ -8,7 +8,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 	int _hp = GameManager.IsSpecialMode?50:10;
 	[Export]
 	public int Id = 0;
-	int _time = 0;
+	float _time = 0;
 	int _cycles = 0;
 	bool _isEntering = true;
 	bool _isAtracting = false;
@@ -47,7 +47,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 	{
 		if(_isEntering)
 		{
-			Position = new Vector2(Position.X, Position.Y + 2);
+			Position += new Vector2(0,  2) * (float)(delta * 60);
 
 			if(Position.Y > 90)
 			{
@@ -60,7 +60,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 			var angle = Math.Atan2(Position.X - player.Position.X, Position.Y - player.Position.Y);
 
-			player.SetSpeed((float)Math.Sin(angle) * (7), (float)Math.Cos(angle) * (7) );
+			player.SetSpeed((float)Math.Sin(angle) * (7) * (float)(delta * 60), (float)Math.Cos(angle) * (7) * (float)(delta * 60));
 
 			if(_time > 200)
 			{
@@ -81,12 +81,12 @@ public partial class MagnectGenerator : Node2D , IEnemy
 		if(!_isAtracting)
             _damageAnimator.Process(delta);
 
-		_time++;
+		_time+= (float)(delta * 60);
 	}
 
     private void StopAtracting()
     {
-        _time = 0;
+        _time -= 200;
 		_cycles = 0;
 		_isAtracting = false;
 
@@ -116,7 +116,7 @@ public partial class MagnectGenerator : Node2D , IEnemy
             GetNode<ShootPoint>("ShootPoint3").Shoot();
         }
 
-		_time = 0;
+		_time -= 50;
 		_cycles++;
     }
 

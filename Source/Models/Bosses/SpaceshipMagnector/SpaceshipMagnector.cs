@@ -15,7 +15,7 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
     private int _hp = GameManager.IsSpecialMode?500:20;
     private DamageAnimationPlayer _damageAnimator;
 
-    private int _warningTimer = 120;
+    private float _warningTimer = 120;
     public override void _Ready()
 	{
         GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("NoDash");
@@ -32,22 +32,23 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 		if(_state.Process(delta))
 			_state = _state.NextState();
 
-        ProcessNoDashWarning();
+        ProcessNoDashWarning(delta);
         if(!_isAtracting)
             _damageAnimator.Process(delta);
 	}
 
-    private void ProcessNoDashWarning()
+    private void ProcessNoDashWarning(double delta)
     {
+
         if(_warningTimer < 0)
             return;
 
-        if(_warningTimer == 0)
+        _warningTimer-= (float)(delta * 60);
+
+        if(_warningTimer <= 0)
         {
             GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
         }
-
-        _warningTimer--;
     }
 
     public void Destroy()

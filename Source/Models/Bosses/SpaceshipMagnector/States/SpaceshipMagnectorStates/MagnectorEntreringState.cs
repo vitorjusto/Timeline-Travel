@@ -1,12 +1,13 @@
 using Godot;
 using Shooter.Source.Interfaces;
+using Shooter.Source.Models.Misc;
 
 namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States
 {
     public class MagnectorEntreringState : IState
     {
         private int _speed = 5;
-        private int _time = 0;
+        private QuickTimer _time = new(220);
         private Node2D _node;
 
         public MagnectorEntreringState(Node2D node)
@@ -21,10 +22,9 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States
 
         public bool Process(double delta)
         {
-            _node.Position = new Vector2(x: _node.Position.X, _node.Position.Y + _speed);
-            _time++;
+            _node.Position += new Vector2(x: 0, _speed) * (float)(delta * 60);
 
-            return _time > 220;
+            return _time.Process(delta);
         }
     }
 }

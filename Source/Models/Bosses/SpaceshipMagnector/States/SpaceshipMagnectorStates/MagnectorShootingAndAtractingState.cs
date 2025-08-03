@@ -10,7 +10,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
         private SpaceshipMagnector _node;
         private Player _player;
         private IState _idleState;
-        private int _time;
+        private float _time;
         private bool _isAtracting;
         public MagnectorShootingAndAtractingState(Node2D node, IState idleState )
         {
@@ -29,26 +29,26 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.SpaceshipMa
 
         public bool Process(double delta)
         {
-            if(_time == 200)
+            if(!_isAtracting && _time >= 200)
             {
                 _isAtracting = true;
                 _node.StartAtracting();
-            }else if(_time == 260)
+            }else if(_time >= 260)
             {
                 _isAtracting = false;
                 _node.StopAtracting();
-                _time = 0;
+                _time -= 260;
 
             }else if(_isAtracting)
             {
 			    var angle = Math.Atan2(_node.Position.X - _player.Position.X, _node.Position.Y - _player.Position.Y);
-			    _player.SetSpeed((float)Math.Sin(angle) * (7), (float)Math.Cos(angle) * (7) );
+			    _player.SetSpeed((float)Math.Sin(angle) * (7) * (float)(delta * 60), (float)Math.Cos(angle) * (7) * (float)(delta * 60));
             }else
             {
                 _idleState.Process(delta);
             }
 
-            _time++;
+            _time+= (float)(delta * 60);
             return false;
         }
     }

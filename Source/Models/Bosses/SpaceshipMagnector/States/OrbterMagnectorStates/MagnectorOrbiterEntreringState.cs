@@ -12,7 +12,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
         private float _ytime = 3.333f;
         private int _xspeedModifier = 1;
         private int _yspeedModifier = 1;
-        private int _playerDistance = 2000;
+        private float _playerDistance = 2000;
 
         public MagnectorOrbterEntreringState(MacnectOrbiter node)
         {
@@ -50,6 +50,8 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 
         public bool Process(double delta)
         {
+			_playerDistance -= _node.Speed * (float)(delta * 60);
+
             if(_node.SpawnPosition == EDirection.Up)
 			{
 
@@ -80,7 +82,6 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 				    return true;
 			}
 
-			_playerDistance -= _node.Speed;
 
             return false;
         }

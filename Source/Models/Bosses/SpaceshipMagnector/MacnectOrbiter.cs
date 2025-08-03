@@ -35,8 +35,6 @@ public partial class MacnectOrbiter : CharacterBody2D, IEnemy
 
     private void MoveEnemy(double delta)
     {
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		
 		if(_state.Process(delta))
 			_state = _state.NextState();
 

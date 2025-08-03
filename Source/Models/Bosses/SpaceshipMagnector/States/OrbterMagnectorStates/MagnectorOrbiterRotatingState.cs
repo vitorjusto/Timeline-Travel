@@ -31,7 +31,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 
 		    float xspeed = (-15 * (_time * _time)) + (_time * 100f);
 		    xspeed *= _xspeedModifier; 
-		    _time += 0.1f;
+		    _time += 0.1f * (float)(delta * 60);
     
 		    //Caso altere o A ou o B, faça |B/A| e coloca aqui
 		    if(_time > 6.666)
@@ -42,7 +42,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
     
 		    float yspeed = (-15 * (_ytime * _ytime)) + (_ytime * 100f);
 		    yspeed *= _yspeedModifier; 
-		    _ytime += 0.1f;
+		    _ytime += 0.1f  * (float)(delta * 60);
     
 		    if(_ytime > 6.666)
 		    {
@@ -50,7 +50,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 		    	_yspeedModifier *= (-1);
 		    }
     
-            _node.Position = new Vector2(x:_player.Position.X + xspeed, y: _player.Position.Y + yspeed);
+            _node.Position = new Vector2(x:_player.Position.X + (xspeed * (float)(delta * 60)), y: _player.Position.Y + (yspeed * (float)(delta * 60)));
 
             return false;
         }

@@ -6,7 +6,7 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
     {
         private MagnectorOrbiterRotatingState _rotatingState;
         private MacnectOrbiter _node;
-        private int _time;
+        private float _time;
 
         public MagnectorOrbiterWaitingState(MagnectorOrbiterRotatingState rotatingState, MacnectOrbiter node)
         {
@@ -21,12 +21,12 @@ namespace Shooter.Source.Models.Bosses.SpaceshipMagnectorBoss.States.OrbterMagne
 
         public bool Process(double delta)
         {
-            if((int)_node.SpawnPosition * 50 == _time)
+            if((int)_node.SpawnPosition * 50 >= _time)
                 return true;
 
             _rotatingState.Process(delta);
             
-            _time++;
+            _time+= (float)(delta * 60);
             return false;
         }
     }
