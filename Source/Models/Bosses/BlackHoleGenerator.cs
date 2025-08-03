@@ -10,14 +10,14 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
 	private int _speed = 3;
     private bool _isDestroing = false;
-    private int _time = 0;
+    private float _time = 0;
 	private bool _walking = false;
 	private int _hp = 2;
 	public EEnemyProjectileType ProjectileType;
 
     private EnemySpawner _enemySpawner;
 	private BlackholeManager _blackholeManager;
-    private int _explosionCooldown;
+    private float _explosionCooldown;
 
     public override void _Ready()
 	{
@@ -32,30 +32,29 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 
     public override void _Process(double delta)
 	{
-
 		if(_isDestroing)
-			DestroyAnimation();
+			DestroyAnimation(delta);
 		else if(_walking)
 		{
-			WalkEnemy();
+			WalkEnemy(delta);
 			_blackholeManager.Update();
 		}
 		else
-			MoveEnemy();
+			MoveEnemy(delta);
 
-		_time++;
+		_time+= (float)(delta * 60);
 	}
 
-    private void DestroyAnimation()
+    private void DestroyAnimation(double delta)
     {
-        if(_explosionCooldown == 0)
+        if(_explosionCooldown <= 0)
         {
 		    _enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)));
-            _explosionCooldown = 10;
+            _explosionCooldown += 10;
         }else
         {
             _enemySpawner.AddExplosion(Position.X + (new Random().Next(-100, 100)), Position.Y + (new Random().Next(-100, 100)), makeSound: false);
-            _explosionCooldown--;
+            _explosionCooldown-= (float)(delta * 60);
         }
 
 		GetNode<ShootPoint>("ShootPoint").Active = false;
@@ -65,29 +64,26 @@ public partial class BlackHoleGenerator : CharacterBody2D, IEnemy
 		GetNode<ShootPoint>("ShootPoint5").Active = false;
 		GetNode<ShootPoint>("ShootPoint6").Active = false;
 
-		if(_time == 300)
+		if(_time >= 300)
 		{
 			_enemySpawner.EndLevel();
 			_enemySpawner.RemoveEnemy(this);
-
 		}
     }
 
-    private void WalkEnemy()
+    private void WalkEnemy(double delta)
 	{
-
-		Position = new Vector2(x: Position.X + _speed, y: Position.Y);
+		Position += new Vector2(x: _speed, y: 0) * (float)(delta * 60);
 
 		if(Position.X > 1212 || Position.X < 232)
 			_speed *= -1;
-
 	}
 
-    private void MoveEnemy()
+    private void MoveEnemy(double delta)
     {
 		if(_time < 100)
 		{
-        	Position = new Vector2(x: 722, y: Position.Y + _speed);
+        	Position = new Vector2(x: 722, y:  Position.Y + (_speed * (float)(delta * 60)));
 
 		}else
 		{

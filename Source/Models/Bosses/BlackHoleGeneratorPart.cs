@@ -9,8 +9,8 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 
 	public bool ShowBlackHole = false;
 	public int _hp = GameManager.IsSpecialMode?100:50;
-	public int _damageAnimation = 0;
-	public int _blackholeTimer = 0;
+	public float _damageAnimation = 0;
+	public QuickTimer _blackholeTimer = new(100);
 	public BlackHoleGenerator Boss;
 
 	[Export]
@@ -26,11 +26,14 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 			var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
 			var angle = Math.Atan2(Boss.Position.X + Position.X - player.Position.X, Boss.Position.Y + Position.Y + blackHole.Position.Y - player.Position.Y);
 
-			player.SetSpeed((float)Math.Sin(angle) * (7), (float)Math.Cos(angle) * (7) );
-			_blackholeTimer++;
+			player.SetSpeed((float)Math.Sin(angle) * (7) * (float)(delta * 60), (float)Math.Cos(angle) * (7) * (float)(delta * 60));
 
-			if(_blackholeTimer == 100)
+			if(_blackholeTimer.Process(delta))
+            {
 				ShowBlackHole = false;
+                _blackholeTimer.Reset();
+            }
+
 		}else
 		{
 			var blackHole = GetNode<Node2D>("AniBlackHole");
@@ -39,9 +42,9 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 
 		if(_damageAnimation > 0)
 		{
-			_damageAnimation--;
+			_damageAnimation-= (float)(delta * 60);
 
-			if(_damageAnimation == 0)
+			if(_damageAnimation <= 0)
 			{
 				var animation = GetNode<AnimatedSprite2D>("AniHand");
 				animation.Play("Idle");
@@ -76,7 +79,6 @@ public partial class BlackHoleGeneratorPart : CharacterBody2D, IEnemy
 	public void OnShowBlackHole()
 	{
 		ShowBlackHole = true;
-		_blackholeTimer = 0;
 	}
 
     public EnemyBoundy GetBoundy()
