@@ -21,6 +21,7 @@ public partial class Player : Area2D
 
     public Vector2 ScreenSize;
     private bool _unableToMove;
+    public bool MovimentBlocked => _unableToMove;
     private bool _playerDestroyed;
 	private float _time = 0;
     public int Hp {get; set;}
