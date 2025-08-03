@@ -1,10 +1,11 @@
+using System;
 using Godot;
 using Shooter.Source.Interfaces;
 
 public class DimentionalStarshipGoingInvisibleState : IState
 {
     private Node2D _node;
-    private byte _opacity = 250;
+    private float _opacity = 250;
 
     public DimentionalStarshipGoingInvisibleState(Node2D node)
     {
@@ -19,11 +20,12 @@ public class DimentionalStarshipGoingInvisibleState : IState
 
     public bool Process(double delta)
     {
-        _opacity -= GameManager.IsSpecialMode?(byte)25:(byte)10;
-        _node.GetNode<Node2D>("AnimatedSprite2D").Modulate = Color.Color8(255, 255, 255, _opacity);
-        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
+        _opacity -= (GameManager.IsSpecialMode?25:10) * (float)(delta * 60);
+        _opacity = Math.Clamp(_opacity, 0, 255);
+        _node.GetNode<Node2D>("AnimatedSprite2D").Modulate = Color.Color8(255, 255, 255, (byte)_opacity);
+        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, (byte)_opacity);
 
-        return _opacity == 0;
+        return (int)_opacity == 0;
     }
 
     private void MakeInvisible()

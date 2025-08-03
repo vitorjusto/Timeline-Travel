@@ -7,7 +7,7 @@ public class DimentionalStarshipGoingVisibleState : IState
     private Node2D _node;
     private Player _player;
     private bool _playerOnRight => _node.Position.X - _player.Position.X < 0;
-    private byte _opacity;
+    private float _opacity;
     public DimentionalStarshipGoingVisibleState(Node2D node)
     {
         _node = node;
@@ -23,13 +23,14 @@ public class DimentionalStarshipGoingVisibleState : IState
     public bool Process(double delta)
     {
         var animatedSprite = _node.GetNode<Node2D>("AnimatedSprite2D");
-        animatedSprite.Modulate = Color.Color8(255, 255, 255, _opacity);
+        animatedSprite.Modulate = Color.Color8(255, 255, 255, (byte)_opacity);
 
-        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
+        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, (byte)_opacity);
 
-        _opacity += 10;
+        _opacity += 10 * (float)(delta * 60);
+        _opacity = Math.Clamp(_opacity, 0, 255);
 
-        return _opacity == 250;
+        return (int)_opacity == 255;
     }
 
     private void MakeBossVisible()
@@ -42,7 +43,7 @@ public class DimentionalStarshipGoingVisibleState : IState
         animatedSprite.Scale = GetValuePlayerSide(animatedSprite.Scale);
         animatedSprite.Position = GetValuePlayerSide(animatedSprite.Position);
 
-        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, _opacity);
+        _node.GetNode<Node2D>("LevelThreeLight").Modulate = Color.Color8(255, 255, 255, (byte)_opacity);
         _node.GetNode<Node2D>("LevelThreeLight").Position = GetValuePlayerSide(_node.GetNode<Node2D>("LevelThreeLight").Position);
 
         EnableCollision(_node.GetNode<CollisionShape2D>("CollisionShape2D"));

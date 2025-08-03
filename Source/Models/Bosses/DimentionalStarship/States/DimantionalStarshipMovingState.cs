@@ -30,7 +30,7 @@ public class DimantionalStarshipMovingState : IState
 
     public bool Process(double delta)
     {
-        _node.Position += _speed;
+        _node.Position += _speed * (float)(delta * 60);
 
         return Math.Abs(_goToPosition.X - _node.Position.X) < 20 && (Math.Abs(_goToPosition.Y- _node.Position.Y) < 20);
     }
