@@ -113,7 +113,7 @@ public partial class FinalEndingScene2 : Node2D
         }
 
         _panelOpacity -= (float)(delta * 300);
-        _panelOpacity -= (float)Math.Clamp(Math.Floor(_panelOpacity), 0, 255);
+        _panelOpacity = (float)Math.Clamp(_panelOpacity, 0, 255);
         _panel.Modulate = Color.Color8(255, 255, 255, (byte)_panelOpacity);
     }
 
