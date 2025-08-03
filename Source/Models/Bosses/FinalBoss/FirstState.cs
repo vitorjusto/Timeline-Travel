@@ -86,7 +86,10 @@ public partial class FirstState : Node2D, IEnemy
     private void ShootLazers(double delta)
     {
         if(_time.Time == 0)
+        {
+            _yLazerPosition = Position.Y + 20;
             AudioManager.OnLaser();
+        }
             
         _timeLazer += (float)(delta * 60);
 
@@ -110,7 +113,7 @@ public partial class FirstState : Node2D, IEnemy
 			_lazerPosition1 = new Random().Next(-2, 3) * 100;
 			_lazerPosition2 = (new Random().Next(0, 3) * 100) + 50;
 			_lazerPosition3 = _lazerPosition2 * -1;
-            _yLazerPosition = Position.Y + 60;
+            
         }
     }
 
@@ -125,7 +128,8 @@ public partial class FirstState : Node2D, IEnemy
 
 		if(Position.Y > 50)
 		{
-			_isEntrering = false;
+            Position = new Vector2(Position.X, 50);
+            _isEntrering = false;
 			EmitSignal("OnWallEntered");
 		}
     }
