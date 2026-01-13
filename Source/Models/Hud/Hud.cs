@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Shooter.Source.Managers;
 
 public partial class Hud : Node2D
 {
@@ -13,16 +15,26 @@ public partial class Hud : Node2D
     private GameManager _game;
     public int CheckpointLabelTimer;
     private Label _lblCheckpoint;
+    private AnimatedSprite2D _aniSound;
 
     public override void _Ready()
 	{
 		_game = GetTree().Root.GetNode<GameManager>("/root/Main");
 		_hud = this;
         _lblCheckpoint = GetNode<Label>("ParallaxBackground/lblCheckpoint");
-	}
+        _aniSound = GetNode<AnimatedSprite2D>("ParallaxBackground/btnMute/SondButton");
+
+        if(MuteMusicManager.GetIsGameMute())
+            _aniSound.Play("Mute");
+        else
+            _aniSound.Play("Playing");
+    }
 
 	public override void _Process(double delta)
 	{
+        if(Input.IsActionJustPressed("Mute"))
+            TogleMusicGame();
+
         if(CheckpointLabelTimer > 0)
         {
             CheckpointLabelTimer--;
@@ -212,4 +224,22 @@ public partial class Hud : Node2D
 
 		panel.Size = new Vector2(whidth, panel.Size.Y);
 	}
+
+    public void OnBtnMutePressed()
+    {
+        TogleMusicGame();
+    }
+
+    private void TogleMusicGame()
+    {
+        if(MuteMusicManager.ToggleMute())
+            _aniSound.Play("Mute");
+        else
+            _aniSound.Play("Playing");
+
+        EmitSignal("OnChangeMute");
+    }
+
+    [Signal]
+    public delegate void OnChangeMuteEventHandler();
 }

@@ -1,12 +1,14 @@
 using Godot;
+using Shooter.Source.Managers;
 
 public partial class AudioManager : Node2D
 {
     private static AudioManager _manager;
     private static bool _startingBossTransition;
+    private static int _musicVolume = 0;
     public static void SetTimelineSong(int level)
     {
-        _player.VolumeDb = 0;
+        _player.VolumeDb = _musicVolume;
         _audio = null;
         switch (level)
         {
@@ -93,6 +95,7 @@ public partial class AudioManager : Node2D
 	{
         _manager = this;
         _player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        OnGameMute();
 	}
 
     public override void _Process(double delta)
@@ -118,7 +121,7 @@ public partial class AudioManager : Node2D
         _audio = ResourceLoader.Load<AudioStream>("res://Assets/Songs/Boss.wav");
         _player.Stream = _audio;
         _startingBossTransition = false;
-        _player.VolumeDb = 0;
+        _player.VolumeDb = _musicVolume;
         Play();
     } 
     public void OnAudioFinished()
@@ -129,6 +132,9 @@ public partial class AudioManager : Node2D
 
     public static void OnLighting()
     {
+        if(MuteMusicManager.GetIsGameMute())
+            return;
+            
         if(_thunderCalledInThisFrame)
             return;
         
@@ -142,6 +148,9 @@ public partial class AudioManager : Node2D
 
     public static void OnLaser()
     {
+        if(MuteMusicManager.GetIsGameMute())
+            return;
+
         if(_laserCalledInThisFrame)
             return;
         
@@ -155,6 +164,9 @@ public partial class AudioManager : Node2D
     
     public static void OnExplosion()
     {
+        if(MuteMusicManager.GetIsGameMute())
+            return;
+
         if(_explosionCalledInThisFrame)
             return;
         
@@ -164,5 +176,15 @@ public partial class AudioManager : Node2D
         else
             _manager.GetNode<AudioStreamPlayer>("Explosionsfx").Play();
 
+    }
+
+    public void OnGameMute()
+    {
+        if(MuteMusicManager.GetIsGameMute())
+            _musicVolume = -80;
+        else
+            _musicVolume = 0;
+        
+        _player.VolumeDb = _musicVolume;
     }
 }

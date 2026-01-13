@@ -50,3 +50,4 @@ texture = ExtResource("6_f2tug")
 [connection signal="PlayerLifeUpdated" from="Player" to="Hud" method="onPlayerLifeUpdated"]
 [connection signal="PlayerPowerUpPickUp" from="Player" to="AudioManager" method="OnPowerUpPickUp"]
 [connection signal="PlayerBulletUpdated" from="ProjectileManager" to="Hud" method="PlayerBulletUpdated"]
+[connection signal="OnChangeMute" from="Hud" to="AudioManager" method="OnGameMute"]

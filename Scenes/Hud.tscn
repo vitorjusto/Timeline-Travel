@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bm27is2hj0xno"]
+[gd_scene load_steps=29 format=3 uid="uid://bm27is2hj0xno"]
 
 [ext_resource type="Script" path="res://Source/Models/Hud/Hud.cs" id="1_sofgy"]
 [ext_resource type="Texture2D" uid="uid://nwwt2vhp6t4v" path="res://Assets/Misc/PauseButton.png" id="2_skput"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d0tmatv34hhbj" path="res://Assets/Player/spaceship.png" id="6_6jbvm"]
 [ext_resource type="Texture2D" uid="uid://cwxt5hbcb5cdv" path="res://Assets/Bosses/SpaceshipMagnector/NoDash.png" id="6_vv4tk"]
 [ext_resource type="Texture2D" uid="uid://cahwglt044jud" path="res://Assets/Misc/BulletUp.png" id="8_d2v5p"]
+[ext_resource type="Texture2D" uid="uid://o1473lgg1mh4" path="res://Assets/Misc/SoundButton.png" id="10_nw7pv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncljb"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
@@ -124,6 +125,33 @@ animations = [{
 "loop": true,
 "name": &"RightWarning",
 "speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ursxa"]
+atlas = ExtResource("10_nw7pv")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsxsl"]
+atlas = ExtResource("10_nw7pv")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbcfc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ursxa")
+}],
+"loop": true,
+"name": &"Mute",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsxsl")
+}],
+"loop": true,
+"name": &"Playing",
+"speed": 5.0
 }]
 
 [node name="Hud" type="Node2D"]
@@ -273,4 +301,20 @@ position = Vector2(48, 48)
 scale = Vector2(2, 2)
 texture = ExtResource("6_6jbvm")
 
+[node name="btnMute" type="Button" parent="ParallaxBackground"]
+offset_left = 1320.0
+offset_top = 104.0
+offset_right = 1400.0
+offset_bottom = 160.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_mmi7a")
+flat = true
+icon_alignment = 1
+
+[node name="SondButton" type="AnimatedSprite2D" parent="ParallaxBackground/btnMute"]
+position = Vector2(64, 32)
+sprite_frames = SubResource("SpriteFrames_gbcfc")
+animation = &"Mute"
+
 [connection signal="pressed" from="ParallaxBackground/Button" to="." method="OnPausePressed"]
+[connection signal="pressed" from="ParallaxBackground/btnMute" to="." method="OnBtnMutePressed"]
