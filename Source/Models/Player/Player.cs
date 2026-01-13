@@ -70,8 +70,12 @@ public partial class Player : Area2D
 
 	public override void _Process(double delta)
 	{
+
 		if(_gameManager.IsBlackScreen)
 			return;
+		
+		if(Input.IsActionJustPressed("DebugMode"))
+			_playerImortal = !_playerImortal;
 
 		if(_playerDestroyed)
 		{

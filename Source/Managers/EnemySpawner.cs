@@ -24,7 +24,7 @@ public partial class EnemySpawner : Node2D
 
 	public bool EnemiesSectionEmpty => !_enemySection.Any() && !Enemies.Any();
     [Export]
-	public int CurrentLevel = 1;
+	public int CurrentLevel = 0;//set -1 level becase of screen transition
 	public bool BossApeared = false;
     private bool _endingLevel;
 	private bool _startingLevel;
@@ -201,8 +201,6 @@ public partial class EnemySpawner : Node2D
 
 	private void GetBoss()
 	{
-		_boss = BossFactory.GetBoss(CurrentLevel);
-
 		CallDeferred("add_child", _boss);
 		BossApeared = true;
 	}
@@ -353,11 +351,14 @@ public partial class EnemySpawner : Node2D
 			Enemies.RemoveAt(0);
 		}
 		
-		_boss?.QueueFree();
-		_boss = null;
-		
 		_showingWarningBoss = false;
-		BossApeared = false;
+		if(BossApeared || _boss is null)
+		{
+			BossApeared = false;
+			_boss?.QueueFree();
+			_boss = BossFactory.GetBoss(CurrentLevel);
+		}
+
         _currentBossOnBossRush = 1;
     }
 

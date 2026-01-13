@@ -35,8 +35,8 @@ public partial class GameManager : Node2D
 		    GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").PlayerProjectileLevel = 6;
         }
 
-        AudioManager.SetTimelineSong(EnemySpawner.GetEnemySpawner().CurrentLevel);
-        AudioManager.Play();
+		StartNewLevel();
+
     }
 
 	public override void _Process(double delta)
