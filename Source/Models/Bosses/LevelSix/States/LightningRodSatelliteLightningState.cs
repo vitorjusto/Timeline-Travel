@@ -23,7 +23,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
 
         public IState NextState()
         {
-            _node.GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
+            Hud.ShowCustomWarning("None");
             return new Exploding(_node, 150);
         }
 

@@ -18,7 +18,7 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
     private float _warningTimer = 120;
     public override void _Ready()
 	{
-        GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("NoDash");
+        Hud.ShowCustomWarning("NoDash");
 		Position = new Vector2((int)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2, y: -1000);
 		int spawnPosition = (int)ProjectSettings.GetSetting("display/window/size/viewport_width") / 6;
 
@@ -47,7 +47,7 @@ public partial class SpaceshipMagnector : Node2D, IEnemy
 
         if(_warningTimer <= 0)
         {
-            GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
+            Hud.ShowCustomWarning("None");
         }
     }
 

@@ -5,6 +5,9 @@ using System;
 
 public partial class ProjectileManager : Node2D
 {
+	private static ProjectileManager _manager;
+	public static ProjectileManager GetManager()
+		=> _manager;
 	public int PlayerProjectileLevel { 
 		get => _playerProjectileLevel;
 		set  { SetPlayerProjectileLevel(value); }
@@ -23,17 +26,16 @@ public partial class ProjectileManager : Node2D
 
 	public override void _Ready()
 	{
+		_manager = this;
 		EnemiesProjectiles = new List<Node2D>();
-		_player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+		_player = Player.GetPlayer();
 	}
 	private float _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
     private Player _player;
 
     public override void _Process(double delta)
-	{
-		Shoot(delta);
-	}
+		=> Shoot(delta);
 
     private void Shoot(double delta)
     {

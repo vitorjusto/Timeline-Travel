@@ -16,9 +16,7 @@ public partial class EnemySpawner : Node2D
 	public static EnemySpawner GetEnemySpawner()
 		=> _enemySpawner;
 
-	// private int _time;
 	private QuickTimer _timer;
-	// private int _timeSection;
 
 	private bool _waitForEveryEnemy = false;
 	public List<Node2D> Enemies;
@@ -53,11 +51,11 @@ public partial class EnemySpawner : Node2D
 
         if(isBossRush)
         {
-            var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
+            var player = Player.GetPlayer();
             player.Life = 0;
             player.Hp = 10;
 
-		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player, 1);
+		    Hud.UpdateHud(player, 1);
         }
 	}
 
@@ -191,7 +189,6 @@ public partial class EnemySpawner : Node2D
             
 		_enemySection.RemoveAt(0);
 
-		// _timeSection = currentSection.Time;
 		_timer = new(currentSection.Time);
 
 		_waitForEveryEnemy = currentSection.WaitForEveryEnemy;
@@ -366,5 +363,4 @@ public partial class EnemySpawner : Node2D
 
 	public void ClearEnemySection()
 		=> _enemySection.Clear();
-	
 }

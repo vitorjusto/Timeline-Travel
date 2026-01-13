@@ -1,5 +1,6 @@
 using Godot;
 using Shooter.Source.Models.Misc;
+using TimelineTravel.Source.ScrensTransitions;
 
 public partial class GameManager : Node2D
 {
@@ -10,12 +11,16 @@ public partial class GameManager : Node2D
         => _game;
 
     public static bool IsSpecialMode => _game is not null && _game.SpecialMode;
-	private QuickTimer _time = new(130);
-	public bool IsBlackScreen {get; private set; } = false;
+	private readonly QuickTimer _time = new(130);
+	public bool IsBlackScreen {get; set; } = false;
+	public Node2D BlackScreen { get; private set; }
+
+	private ScreenTransition _screenTransition;
 
     public override void _Ready()
     {
         _game = this;
+		BlackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
         if(SpecialMode)
         {
             var player = GetNode<Player>("Player");
@@ -25,7 +30,7 @@ public partial class GameManager : Node2D
             player.Hp = 600;
             player.Life = 0;
             
-		    GetTree().Root.GetNode<Hud>("/root/Main/Hud").UpdateHud(player, 6);
+		    Hud.UpdateHud(player, 6);
             
 		    GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager").PlayerProjectileLevel = 6;
         }
@@ -38,6 +43,12 @@ public partial class GameManager : Node2D
 	{
 		if(!IsBlackScreen)
             return;
+
+		if(_screenTransition is not null)
+		{
+			_screenTransition.LoadLevel();
+			_screenTransition = null;
+		}
 
         if(_time.Process(delta))
 		{
@@ -68,37 +79,7 @@ public partial class GameManager : Node2D
 
     private void RestartLevel()
     {
-        var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
-		blackScreen.Visible = true;
-		IsBlackScreen = true;
-
-        AudioManager.Stop();
-
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		player.Hp = 10;
-
-		player.Life--;
-		player.Position = new Vector2(x: 722, y: 720);
-
-		player.EmitSignal("PlayerHpUpdated", player.Hp);
-		player.EmitSignal("PlayerLifeUpdated", player.Life);
-		player.ResetTargetCount();
-
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-
-		enemySpawner.RestartLevel();
-        
-        AudioManager.SetTimelineSong(enemySpawner.CurrentLevel);
-
-		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
-
-		projectileManager.RemoveAllProjectiles();
-		projectileManager.PlayerProjectileLevel = 1;
-
-		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
-
-		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
-
+		_screenTransition = new RestartLevelScreenTransition();
     }
 
 	public void OnLevelPassed()
@@ -108,30 +89,7 @@ public partial class GameManager : Node2D
 
 	private void StartNewLevel()
 	{
-		var blackScreen = GetTree().Root.GetNode<Node2D>("/root/Main/ParallaxBackground/BlackScreen");
-		blackScreen.Visible = true;
-		IsBlackScreen = true;
-        AudioManager.Stop();
-
-		var player = GetTree().Root.GetNode<Player>("/root/Main/Player");
-		player.Position = new Vector2(x: 722, y: 720);
-
-		var enemySpawner = GetTree().Root.GetNode<EnemySpawner>("/root/Main/EnemySpawner");
-		enemySpawner.RestartLevel();
-		enemySpawner.CurrentLevel += 1;
-        enemySpawner.CheckpointId = 0;
-        
-		var projectileManager = GetTree().Root.GetNode<ProjectileManager>("/root/Main/ProjectileManager");
-		projectileManager.RemoveAllProjectiles();
-
-		var backgroundManager = GetTree().Root.GetNode<BackgroundManager>("/root/Main/BackgroundManager");
-		backgroundManager.SetNewBackgroundLevel(enemySpawner.CurrentLevel);
-		player.ResetTargetCount();
-		
-		GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
-		GetTree().Root.GetNode<PowerUpManager>("/root/Main/PowerUpManager").ClearAllChild();
-
-        AudioManager.SetTimelineSong(enemySpawner.CurrentLevel);
+		_screenTransition = new StartLevelScreenTransition();
 	}
 
 	[Signal]

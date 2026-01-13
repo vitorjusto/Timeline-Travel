@@ -10,9 +10,7 @@ public partial class PowerUpManager : Node2D
     private static PowerUpManager _manager;
 
     public override void _Ready()
-    {
-        _manager = this;
-    }
+    	=> _manager = this;
 
 	public void AddEnemyDefeated(IEnemy node)
 	{
@@ -40,9 +38,9 @@ public partial class PowerUpManager : Node2D
 		_manager._bulletPoints = 0;
     }
 
-	public void ClearAllChild()
+	public static void ClearAllChild()
 	{
-		foreach(var node in GetChildren())
+		foreach(var node in _manager.GetChildren())
 		{
 			node.QueueFree();
 		}

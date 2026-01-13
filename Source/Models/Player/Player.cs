@@ -1,9 +1,11 @@
-using System;
 using Godot;
 using Shooter.Source.Interfaces;
 
 public partial class Player : Area2D
 {
+	private static Player _player;
+	public static Player GetPlayer()
+		=> _player;
 
 	[Export]
     public int Speed = 12; 
@@ -55,6 +57,7 @@ public partial class Player : Area2D
 
     public override void _Ready()
 	{
+		_player = this;
 		ScreenSize = GetViewportRect().Size;
 		_maxLimit = (int)ScreenSize.X - 32;
 		Hp = 10;

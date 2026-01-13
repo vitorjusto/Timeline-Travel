@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Shooter.Source.Managers;
 
@@ -127,11 +126,11 @@ public partial class Hud : Node2D
 		lblHp.Text = $"{life}";
 	}
 
-    public void UpdateHud(Player player, int bullet)
+    public static void UpdateHud(Player player, int bullet)
     {
-        PlayerHpUpdated(player.Hp);
-        PlayerBulletUpdated(bullet);
-        onPlayerLifeUpdated(player.Life);
+        _hud.PlayerHpUpdated(player.Hp);
+        _hud.PlayerBulletUpdated(bullet);
+        _hud.onPlayerLifeUpdated(player.Life);
     }
 
 	public void OnPausePressed()
@@ -211,10 +210,8 @@ public partial class Hud : Node2D
         _labeltimer = 0;
     }
 
-	public void ShowCustomWarning(string name)
-	{
-		GetNode<AnimatedSprite2D>("ParallaxBackground/AniCustomWarning").Play(name);
-	}
+	public static void ShowCustomWarning(string name)
+		=> _hud.GetNode<AnimatedSprite2D>("ParallaxBackground/AniCustomWarning").Play(name);
 
 	public void OnPlayerLifeProgressOpdated(int lifeProgress, int maxLifeProgress)
 	{

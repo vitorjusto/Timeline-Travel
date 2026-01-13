@@ -51,8 +51,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
             if(!_warningVisible)
             {
                 _warningVisible = true;
-                var hud = _node.GetTree().Root.GetNode<Hud>("/root/Main/Hud");
-                hud.ShowCustomWarning(_stayPosition < _node.Position.X? "LeftWarning": "RightWarning");
+                Hud.ShowCustomWarning(_stayPosition < _node.Position.X? "LeftWarning": "RightWarning");
             }
 
             if(_warningTimer.Process(delta))
@@ -61,7 +60,7 @@ namespace Shooter.Source.Models.Bosses.LevelSix.States
                 _isMoving = true;
                 _warningVisible = false;
                 _warningTimer.Reset();
-                _node.GetTree().Root.GetNode<Hud>("/root/Main/Hud").ShowCustomWarning("None");
+                Hud.ShowCustomWarning("None");
             }
 
         }
