@@ -7,11 +7,11 @@ you can play this game [Here](https://vitorjusto.itch.io/timeline-travel)!
 Advanced creatures from other timeline created a 4d explosion, corrupting time and space and invading others timelines, your objective is defeat these enemies and restore peace though all timelines
 
 ## Controls
-WASD or Arrows Keys: Move
-K or Z: Shoot
-L or X: Dash
-P: Pause
-M: Mute/Unmute music
+- **WASD** or **Arrows Keys**: Move
+- **K** or **Z**: Shoot
+- **L** or **X**: Dash
+- **P**: Pause
+- **M**: Mute/Unmute music
 
 ## Credits
 
