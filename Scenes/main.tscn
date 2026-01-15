@@ -16,7 +16,6 @@ script = ExtResource("1_lxf7m")
 [node name="AudioManager" parent="." instance=ExtResource("2_ycuj6")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_36fse")]
-CurrentLevel = 10
 
 [node name="Player" parent="." instance=ExtResource("1_fn8jx")]
 position = Vector2(721, 720)
