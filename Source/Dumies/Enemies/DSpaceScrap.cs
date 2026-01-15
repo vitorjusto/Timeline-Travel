@@ -22,8 +22,8 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var instance = LoaderManager.GetEnemy<SpaceScrap>("SpaceScrap");
-
+            var instance = (SpaceScrap)GD.Load<PackedScene>("res://Scenes/Bosses/SpaceScrap.tscn").Instantiate();
+			
             instance.XSpeed = _xSpeed;
             instance.YSpeed = _ySpeed;
 
