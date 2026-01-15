@@ -16,7 +16,7 @@ script = ExtResource("1_whj6n")
 [node name="AudioManager" parent="." instance=ExtResource("2_cux3n")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_p2ksw")]
-CurrentLevel = 12
+CurrentLevel = 11
 isBossRush = true
 
 [node name="Player" parent="." instance=ExtResource("4_kiaa4")]

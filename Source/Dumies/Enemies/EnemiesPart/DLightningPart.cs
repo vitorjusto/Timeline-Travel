@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies.Parts;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 {
@@ -16,10 +17,7 @@ namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/EnemiesPart/LightningPart.tscn");
-
-            var instance = (LightningPart)scene.Instantiate();
-
+            var instance = LoaderManager.GetEnemy<LightningPart>("EnemiesPart/LightningPart");
             instance.Position = new Vector2(_x, _y);
 
             return instance;

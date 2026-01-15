@@ -2,6 +2,7 @@ using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Enums;
 using Shooter.Source.Models.Enemies;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -11,7 +12,7 @@ namespace Shooter.Source.Dumies.Enemies
         private readonly EEnemyProjectileType _projectileType;
         private readonly int _speed;
 
-        public DSpreader(int x, EEnemyProjectileType projectileType, int speed = 1)
+		public DSpreader(int x, EEnemyProjectileType projectileType, int speed = 1)
         {
             _x = x;
             _projectileType = projectileType;
@@ -20,9 +21,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Spreader.tscn");
-
-            var instance = (Spreader)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Spreader>("Spreader");
 
             instance.Position = new Vector2(_x, y: -50);
 

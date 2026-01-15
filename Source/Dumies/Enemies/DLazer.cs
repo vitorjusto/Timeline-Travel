@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -8,8 +9,9 @@ namespace Shooter.Source.Dumies.Enemies
     {
         private readonly int _x;
         private readonly int _maxTimer;
+		private readonly PackedScene _scene;
 
-        public DLazer(int x, int maxTimer)
+		public DLazer(int x, int maxTimer)
         {
             _x = x;
             _maxTimer = maxTimer;
@@ -17,9 +19,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Lazer.tscn");
-
-            var instance = (Lazer)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Lazer>("Lazer");
 
             instance.Position = new Vector2(_x, y: -30);
             instance.MaxTime = _maxTimer;

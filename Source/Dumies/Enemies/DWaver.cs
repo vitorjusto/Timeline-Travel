@@ -1,14 +1,15 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
     public class DWaver: IEnemyDummy
     {
-        private int _x;
-        private int _waveCooldown;
+        private readonly int _x;
+        private readonly int _waveCooldown;
 
-        public DWaver(int x, int waveCooldown)
+		public DWaver(int x, int waveCooldown)
         {
             _x = x;
             _waveCooldown = waveCooldown;
@@ -16,9 +17,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Waver.tscn");
-
-            var instance = (Waver)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Waver>("Waver");
 
             instance.Position = new Vector2(_x, y: instance.GetStartPosition());
             instance.WaveCooldown = _waveCooldown;

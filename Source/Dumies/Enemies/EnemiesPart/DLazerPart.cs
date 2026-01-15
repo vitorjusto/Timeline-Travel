@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies.Parts;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 {
@@ -18,9 +19,7 @@ namespace Shooter.Source.Dumies.Enemies.EnemiesPart
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/EnemiesPart/LazerPart.tscn");
-
-            var instance = (LazerPart)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<LazerPart>("EnemiesPart/LazerPart");
 
             instance.Position = new Vector2(_x, _y);
             instance.SetMaxTimer(_maxTimer);

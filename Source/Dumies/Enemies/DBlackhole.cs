@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -11,7 +12,7 @@ namespace Shooter.Source.Dumies.Enemies
         private readonly bool _isWhiteHole;
         private readonly int _speed;
 
-        public DBlackHole(int x, bool isWhiteHole, int speed)
+		public DBlackHole(int x, bool isWhiteHole, int speed)
         {
             _x = x;
             _y = -30;
@@ -29,9 +30,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Blackhole.tscn");
-
-            var instance = (Blackhole)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Blackhole>("Blackhole");
 
             instance.Position = new Vector2(_x, _y);
             instance.Speed = _speed;

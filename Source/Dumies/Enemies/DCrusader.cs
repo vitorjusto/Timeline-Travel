@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -8,7 +9,8 @@ namespace Shooter.Source.Dumies.Enemies
     {
         private readonly int _x;
         private readonly float _speed;
-        public DCrusader(int x, float speed)
+
+		public DCrusader(int x, float speed)
         {
             _x = x;
             _speed = speed;
@@ -16,9 +18,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Crusader.tscn");
-
-            var instance = (Crusader)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Crusader>("Crusader");
 
             instance.Position = new Vector2(_x, y: -30);
 

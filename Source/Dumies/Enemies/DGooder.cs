@@ -1,6 +1,7 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
 using Shooter.Source.Models.Enemies;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies
 {
@@ -10,7 +11,7 @@ namespace Shooter.Source.Dumies.Enemies
         private readonly bool _walk;
         private readonly int _maxTimer;
 
-        public DGooder(int x, bool walk, int maxTimer = 900)
+		public DGooder(int x, bool walk, int maxTimer = 900)
         {
             _x = x;
             _walk = walk;
@@ -19,9 +20,7 @@ namespace Shooter.Source.Dumies.Enemies
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Enemies/Gooder.tscn");
-
-            var instance = (Gooder)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<Gooder>("Gooder");
 
             instance.Position = new Vector2(_x, y: -30);
             instance.Walk = _walk;

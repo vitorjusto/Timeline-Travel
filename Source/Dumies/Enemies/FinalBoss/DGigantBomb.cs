@@ -1,14 +1,15 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using TimelineTravel.Source.Managers;
 
 namespace Shooter.Source.Dumies.Enemies.FinalBoss
 {
     public class DGigantBomb: IEnemyDummy
     {
         private Vector2 _position;
-        private float _xSpeed;
+        private readonly float _xSpeed;
 
-        public DGigantBomb(Vector2 position, float xSpeed)
+		public DGigantBomb(Vector2 position, float xSpeed)
         {
             _position = position;
             _xSpeed = xSpeed;
@@ -16,9 +17,7 @@ namespace Shooter.Source.Dumies.Enemies.FinalBoss
 
         public Node2D GetInstance()
         {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/FinalBoss/GigantBomb.tscn");
-
-            var instance = (GigantBomb)scene.Instantiate();
+            var instance = LoaderManager.GetEnemy<GigantBomb>("FinalBoss/GigantBomb");
 
             instance.Position = _position;
             instance.XSpeed = _xSpeed;
