@@ -26,7 +26,9 @@ buses/channel_disable_time=0.0
 
 window/size/viewport_width=1400
 window/size/viewport_height=900
-window/size/resizable=false
+window/size/window_width_override=1400
+window/size/window_height_override=900
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
