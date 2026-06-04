@@ -13,5 +13,6 @@ motion_mirroring = Vector2(0, 3570)
 YSpeed = 5.0
 
 [node name="BackgroundLevelSeven" type="Sprite2D" parent="ParallaxBackground6/MovingParallaxLayer"]
+modulate = Color(0.7, 0.7, 0.7, 1)
 position = Vector2(784, -744)
 texture = ExtResource("2_6rre6")
