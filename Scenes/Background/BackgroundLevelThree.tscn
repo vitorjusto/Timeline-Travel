@@ -14,3 +14,4 @@ scale = Vector2(1.21098, 1.40054)
 texture = ExtResource("1_ftluy")
 
 [node name="LightCotainer" type="Node2D" parent="ParallaxBackground"]
+position = Vector2(0, -128)

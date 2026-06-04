@@ -11,7 +11,7 @@ public partial class LevelThreeLight : Node2D
 	{
 		try
 		{
-			Position = LightOwner.Position;
+			Position = LightOwner.Position + new Vector2(0, 128);
 
 		}catch
 		{
