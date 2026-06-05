@@ -1,22 +1,20 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using TimelineTravel.Source.Managers;
 
-namespace Shooter.Source.Dumies.FinalBoss
+namespace Shooter.Source.Dumies.FinalBoss;
+public class DTimelineTwoFourBoss : IEnemyDummy
 {
-    public class DTimelineTwoFourBoss : IEnemyDummy
-    {
-        private INextStateFinalBoss _nextState;
+	private readonly INextStateFinalBoss _nextState;
 
-        public DTimelineTwoFourBoss(INextStateFinalBoss nextState)
-            => _nextState = nextState;
-        public Node2D GetInstance()
-        {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/FinalBoss/TimelineTwoFourBoss.tscn");
+	public DTimelineTwoFourBoss(INextStateFinalBoss nextState)
+		=> _nextState = nextState;
+	public Node2D GetInstance()
+	{
+		var instance = LoaderManager.GetObjectPool<TimelineTwoFourBoss>("res://Scenes/Bosses/FinalBoss/TimelineTwoFourBoss.tscn");
+		instance.SetNextState(_nextState);
+		
 
-            var instance = (TimelineTwoFourBoss)scene.Instantiate();
-            instance.SetNextState(_nextState);
-
-            return instance;
-        }
-    }
+		return instance;
+	}
 }

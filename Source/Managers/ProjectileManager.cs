@@ -29,12 +29,14 @@ public partial class ProjectileManager : Node2D
 		_manager = this;
 		EnemiesProjectiles = new List<Node2D>();
 		_player = Player.GetPlayer();
+		_projectileScene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
 	}
 	private float _autoFireCooldown = 0;
 	public List<Node2D> EnemiesProjectiles;
     private Player _player;
+	private PackedScene _projectileScene;
 
-    public override void _Process(double delta)
+	public override void _Process(double delta)
 		=> Shoot(delta);
 
     private void Shoot(double delta)
@@ -126,9 +128,7 @@ public partial class ProjectileManager : Node2D
 
     private void AddPlayerProjectile(int xSpeed, int ySpeed, int xOffSet = 0)
     {
-		var scene = GD.Load<PackedScene>("res://Scenes/Projectiles/PlayerProjectiles/player_projectile.tscn");
-
-        var instance = (PlayerProjectile)scene.Instantiate();
+        var instance = (PlayerProjectile)_projectileScene.Instantiate();
 
         instance.SetPosition(_player.Position.X + xOffSet, _player.Position.Y - 32);
 		

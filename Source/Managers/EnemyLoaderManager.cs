@@ -2,35 +2,39 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace TimelineTravel.Source.Managers
+namespace TimelineTravel.Source.Managers;
+
+public class LoaderManager
 {
-    public class LoaderManager
-    {
-        private static List<EnemyLoad> _enemies = new();
+	private readonly static List<EnemyLoad> _objects = new();
 
-		public static T GetEnemy<T>(string name) where T : Node2D
-		{
-			var enemy = _enemies.FirstOrDefault((x) => x.Name.Equals(name));
-
-			if(enemy is not null)
-				return (T)(enemy.Scene.Instantiate());
-			
-			enemy = new EnemyLoad(name, GD.Load<PackedScene>($"res://Scenes/Enemies/{name}.tscn"));
-			_enemies.Add(enemy);
-
-			return (T)(enemy.Scene.Instantiate());
-		}
-    }
-
-	public class EnemyLoad
+	public static T GetEnemy<T>(string name) where T : Node2D
 	{
-		public string Name;
-		public PackedScene Scene;
+		return GetObjectPool<T>($"res://Scenes/Enemies/{name}.tscn");
+	}
 
-		public EnemyLoad(string name, PackedScene scene)
-		{
-			Name = name;
-			Scene = scene;
-		}
+	public static T GetObjectPool<T>(string path) where T : Node2D
+	{
+		var enemy = _objects.FirstOrDefault((x) => x.Name.Equals(path));
+
+		if(enemy is not null)
+			return (T)(enemy.Scene.Instantiate());
+		
+		enemy = new EnemyLoad(path, GD.Load<PackedScene>(path));
+		_objects.Add(enemy);
+
+		return (T)(enemy.Scene.Instantiate());
+	}
+}
+
+public class EnemyLoad
+{
+	public string Name;
+	public PackedScene Scene;
+
+	public EnemyLoad(string name, PackedScene scene)
+	{
+		Name = name;
+		Scene = scene;
 	}
 }

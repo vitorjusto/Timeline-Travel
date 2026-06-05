@@ -8,6 +8,7 @@ using Shooter.Source.Factories.Bosses;
 using Shooter.Source.Factories.Enemies;
 using Shooter.Source.Interfaces;
 using Shooter.Source.Models.Misc;
+using TimelineTravel.Source.Managers;
 
 public partial class EnemySpawner : Node2D
 {
@@ -266,8 +267,7 @@ public partial class EnemySpawner : Node2D
 
     public void AddExplosion(float x, float y, bool addScore = true, bool makeSound = true)
     {
-        var scene = GD.Load<PackedScene>("res://Scenes/Misc/Explosion.tscn");
-        var instance = (Explosion)scene.Instantiate();
+		var instance = LoaderManager.GetObjectPool<Explosion>("res://Scenes/Misc/Explosion.tscn");
 		instance.Position = new Vector2(x, y);
         instance.MakeSound = makeSound && !_explodedFrame;
         _explodedFrame = true;

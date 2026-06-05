@@ -1,17 +1,13 @@
 using Godot;
 using Shooter.Source.Models.Misc;
 using System;
+using TimelineTravel.Source.Managers;
 
+namespace Shooter.Scenes.Background;
 public partial class LeafContainer : Node2D
 {
 	public QuickTimer _time = new(20);
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(_time.Process(delta))
@@ -20,9 +16,7 @@ public partial class LeafContainer : Node2D
 
     private void AddLeaf()
     {
-        var scene = GD.Load<PackedScene>("res://Scenes/Background/Leaf.tscn");
-
-        var instance = (Node2D)scene.Instantiate();
+		var instance = LoaderManager.GetObjectPool<Node2D>("res://Scenes/Background/Leaf.tscn");
         instance.Position = new Vector2(new Random().Next(30, 3000), -30);
 
 		AddChild(instance);

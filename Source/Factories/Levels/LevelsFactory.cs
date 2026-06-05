@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using Shooter.Source.Models.Background.LevelOne;
 
 namespace Shooter.Source.Factories.Levels
 {

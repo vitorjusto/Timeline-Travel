@@ -1,29 +1,27 @@
 using Godot;
 using Shooter.Source.Dumies.Interfaces;
+using TimelineTravel.Source.Managers;
 
-namespace Shooter.Source.Dumies.FinalBoss
+namespace Shooter.Source.Dumies.FinalBoss;
+public class DAngryMotherShipCore : IEnemyDummy
 {
-    public class DAngryMotherShipCore : IEnemyDummy
+    private readonly int _removeProtectorId;
+
+    private readonly INextStateFinalBoss _nextState;
+
+    public DAngryMotherShipCore(INextStateFinalBoss nextState, int RemoveProtectorId = 0)
     {
-        private int _removeProtectorId;
+        _removeProtectorId = RemoveProtectorId;
+        _nextState = nextState;
+    }
 
-        private INextStateFinalBoss _nextState;
+    public Node2D GetInstance()
+    {
+		var instance = LoaderManager.GetObjectPool<angryCoreBase>("res://Scenes/Bosses/FinalBoss/angryMotherShipCore.tscn");
 
-        public DAngryMotherShipCore(INextStateFinalBoss nextState, int RemoveProtectorId = 0)
-        {
-            _removeProtectorId = RemoveProtectorId;
-            _nextState = nextState;
-        }
-        public Node2D GetInstance()
-        {
-            var scene = GD.Load<PackedScene>("res://Scenes/Bosses/FinalBoss/angryMotherShipCore.tscn");
+        instance.RemoveProtector(_removeProtectorId);
+        instance.AddNextState(_nextState);
 
-            var instance = (angryCoreBase)scene.Instantiate();
-
-            instance.RemoveProtector(_removeProtectorId);
-            instance.AddNextState(_nextState);
-
-            return instance;
-        }
+        return instance;
     }
 }
