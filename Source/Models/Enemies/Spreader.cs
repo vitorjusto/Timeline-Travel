@@ -71,6 +71,6 @@ namespace Shooter.Source.Models.Enemies
             => false;
 
         public EnemyBoundy GetBoundy()
-            => new(hpUpPoints: 2, bulletPoints: 3, position: Position);
+            => new(hpUpPoints: 3, bulletPoints: 3, position: Position);
     }
 }
