@@ -27,7 +27,7 @@ namespace Shooter.Source.Models.Bosses.ProjectileShowerState
 
 		    if(_node.Position.X - 100 <= 0 && (_node.Speed * _speedModifier) < 0)
 			    _speedModifier *= -1;
-		    else if(_node.Position.X + 100 >= _node.GetViewport().GetWindow().Size.X && (_node.Speed * _speedModifier) > 0)
+		    else if(_node.Position.X + 100 >= 1400 && (_node.Speed * _speedModifier) > 0)
 			    _speedModifier *= -1;
 
             return false;

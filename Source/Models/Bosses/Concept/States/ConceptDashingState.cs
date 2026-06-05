@@ -86,7 +86,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 		    {
 		    	yPosition = (16 * (float)(delta * 60)) + _node.Position.Y;
 
-		    	if(_node.Position.Y + 96 >= _node.GetViewport().GetWindow().Size.Y)
+		    	if(_node.Position.Y + 96 >= 900)
 		    	{
                     ShootProjectile();
 

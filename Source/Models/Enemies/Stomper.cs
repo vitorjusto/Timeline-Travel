@@ -53,7 +53,7 @@ namespace Shooter.Source.Models.Enemies
                 ySpeed = _ySpeed * 4;
                 _dashStatus = EDashStatus.Dashing;
 
-                if (Position.Y + 96 >= GetViewport().GetWindow().Size.Y && _timeDashed < 5)
+                if (Position.Y + 96 >= 800 && _timeDashed < 5)
                 {
                     _dashStatus = EDashStatus.GoingToOriginalPosition;
                     _timeDashed += 1;

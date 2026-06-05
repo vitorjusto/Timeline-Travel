@@ -35,7 +35,7 @@ public partial class ConceptPart : CharacterBody2D, IEnemy
 
 		if(Position.X - 64 <= 0 && _speed < 0)
 			_speed *= -1;
-		else if(Position.X + 64 >= GetViewport().GetWindow().Size.X && _speed > 0)
+		else if(Position.X + 64 >= 1400 && _speed > 0)
 			_speed *= -1;
     }
 

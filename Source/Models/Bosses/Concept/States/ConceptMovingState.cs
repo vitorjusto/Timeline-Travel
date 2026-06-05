@@ -40,7 +40,7 @@ namespace Shooter.Source.Models.Bosses.Concept.States
 
 		    if(_node.Position.X - 64 <= 0 && _speed < 0)
 			    _speed *= -1;
-		    else if(_node.Position.X + 64 >= _node.GetViewport().GetWindow().Size.X && _speed > 0)
+		    else if(_node.Position.X + 64 >= 1400 && _speed > 0)
 			    _speed *= -1;
         }
     }

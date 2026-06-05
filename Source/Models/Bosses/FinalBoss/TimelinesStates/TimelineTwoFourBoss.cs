@@ -28,7 +28,7 @@ public partial class TimelineTwoFourBoss : Node2D
         if(_labelsVisible)
             ShowTimelinesLabels(delta);
 
-		if(_enemiesSpawned < 4)
+		if(_enemiesSpawned < 3)
         {
             if(_timer.Process(delta))
                 AddEnemies();
