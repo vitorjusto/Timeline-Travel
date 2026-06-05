@@ -52,6 +52,7 @@ motion_mirroring = Vector2(0, 1144)
 YSpeed = 10.0
 
 [node name="StartingHallway" type="Sprite2D" parent="ParallaxBackground/MovingParallaxLayer3"]
+modulate = Color(1, 0.4, 0.4, 1)
 position = Vector2(-723.999, -572.002)
 rotation = -3.14159
 texture = ExtResource("2_qasl2")
