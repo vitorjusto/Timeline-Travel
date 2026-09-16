@@ -28,7 +28,7 @@ offset_left = 544.0
 offset_top = 592.0
 offset_right = 964.0
 offset_bottom = 668.0
-text = "CONTROLS"
+text = "INSTRUCTIONS"
 label_settings = SubResource("LabelSettings_ia1k6")
 
 [node name="lblStartGame" type="Label" parent="."]
