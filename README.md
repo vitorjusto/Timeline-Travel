@@ -24,7 +24,7 @@ Godot 4.1.1 Stable Mono · C# · Solo dev
 - Despise having the collision layer system in godot for colision check, this aproach have an avantage to calling function from the objects directily instead relaing from signals, However, the main problem is every object detecting evething.
 
 **Singleton Pattern**
-- Some objects like player or enemy spawner are instaniated once, and can be call from anywhere, so objects like this, I used the Singleton Patten.
+- Some objects like player or enemy spawner are instantiated once, and can be call from anywhere, so objects like this, I used the Singleton Patten.
 - But, this isn't an accurate implementation of Singleton because the classes it doesn't have an private constructor. The reason why is for the fact that godot only support partial classes for node objects, and private constructors doesn't work. The workaround I made is setting the private static property on the `_Ready()` function. While working for most of the time, it might happen to have some problems when the game is loading for the first time. So I made de implementation carefully.
 
 **Enemy Section Factory**
