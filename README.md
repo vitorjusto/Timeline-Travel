@@ -1,6 +1,6 @@
 # Timeline Travel
 
-Timeline Travel is a very hard space shoter game with 10 stages about traveling through timelines
+Timeline Travel is a very hard space shooter game with 10 stages about traveling through timelines
 you can play this game [Here](https://vitorjusto.itch.io/timeline-travel) 
 
 Godot 4.1.1 Stable Mono · C# · Solo dev
